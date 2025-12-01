@@ -119,7 +119,6 @@ public class Condition {
 	    private String mlpl_weight;
 	    
 	    
-	    
 	    // 품번, PK
 	    private String item_no;      
 	    
@@ -169,6 +168,118 @@ public class Condition {
 	    // 요구경도
 	    private String hardness_req;
 	    
+
+	    private String heat_treating_code;
+	    private String collection_date;
+	    private String machine_name;
+	    private String heat_report;
+	    private String cold_report;
+	    private String etc_file;
+	    private String note;
+	    private String original_heat_report;
+	    private String original_cold_report;
+	    private String original_etc_report;
+	    
+	    
+
+		public String getOriginal_etc_report() {
+			return original_etc_report;
+		}
+
+
+		public void setOriginal_etc_report(String original_etc_report) {
+			this.original_etc_report = original_etc_report;
+		}
+
+
+		public String getOriginal_heat_report() {
+			return original_heat_report;
+		}
+
+
+		public void setOriginal_heat_report(String original_heat_report) {
+			this.original_heat_report = original_heat_report;
+		}
+
+
+		public String getOriginal_cold_report() {
+			return original_cold_report;
+		}
+
+
+		public void setOriginal_cold_report(String original_cold_report) {
+			this.original_cold_report = original_cold_report;
+		}
+
+
+		public String getHeat_treating_code() {
+			return heat_treating_code;
+		}
+
+
+		public void setHeat_treating_code(String heat_treating_code) {
+			this.heat_treating_code = heat_treating_code;
+		}
+
+
+		public String getCollection_date() {
+			return collection_date;
+		}
+
+
+		public void setCollection_date(String collection_date) {
+			this.collection_date = collection_date;
+		}
+
+
+		public String getMachine_name() {
+			return machine_name;
+		}
+
+
+		public void setMachine_name(String machine_name) {
+			this.machine_name = machine_name;
+		}
+
+
+		public String getHeat_report() {
+			return heat_report;
+		}
+
+
+		public void setHeat_report(String heat_report) {
+			this.heat_report = heat_report;
+		}
+
+
+		public String getCold_report() {
+			return cold_report;
+		}
+
+
+		public void setCold_report(String cold_report) {
+			this.cold_report = cold_report;
+		}
+
+
+		public String getEtc_file() {
+			return etc_file;
+		}
+
+
+		public void setEtc_file(String etc_file) {
+			this.etc_file = etc_file;
+		}
+
+
+		public String getNote() {
+			return note;
+		}
+
+
+		public void setNote(String note) {
+			this.note = note;
+		}
 
 
 		@Override

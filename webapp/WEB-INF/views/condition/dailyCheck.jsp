@@ -328,7 +328,7 @@ $(function() {
 //함수
 function getDailyCheckData(){
 	$.ajax({
-		url:"/chunil/condition/dailyCheck/list",
+		url:"/mibogear/condition/dailyCheck/list",
 		type:"post",
 		dataType:"json",
 		data:{

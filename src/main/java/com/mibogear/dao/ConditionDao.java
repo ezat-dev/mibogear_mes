@@ -74,4 +74,13 @@ public interface ConditionDao {
 	    List<TempCorrectionQue> getTempCorrectionQueList(String year);
 	    
 	    void updateTempCorrectionField(Map<String, Object> param);
+	    
+	    boolean insertThermoChange(Thermocouple thermocouple);
+	    List<Thermocouple> selectThermoChange(Thermocouple thermocouple);
+	    
+	    List<Condition> selectHeatTreatingList(Condition condition);
+	    boolean insertHeatTreating(Condition condition);
+	    boolean deleteHeatTreating(Condition condition);
+	    List<TempCorrectionQue> tempCorrectionList(TempCorrectionQue tempCorrectionQue);
+	    boolean updateTempCorrectionField(TempCorrectionQue tempCorrectionQue);
 }

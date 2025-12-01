@@ -2,7 +2,6 @@ package com.mibogear.service;
 
 import java.util.List;
 
-import com.mibogear.domain.Facility;
 import com.mibogear.domain.Permission;
 import com.mibogear.domain.UserLog;
 import com.mibogear.domain.UserMenu;

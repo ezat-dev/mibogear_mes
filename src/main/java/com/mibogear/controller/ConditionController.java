@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.io.OutputStream;
 import java.lang.reflect.Field;
 import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -19,19 +20,17 @@ import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
-import org.apache.poi.sl.usermodel.VerticalAlignment;
 import org.apache.poi.ss.usermodel.BorderStyle;
-import org.apache.poi.ss.usermodel.FormulaEvaluator;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
-import org.apache.poi.xssf.usermodel.XSSFFont;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -63,6 +62,40 @@ public class ConditionController {
     
     @Autowired
     private ConditionService conditionService; 
+    
+    //파일 저장
+	//파일 업로드
+	private String saveFiles(MultipartFile files, String uploadDir) throws IOException {
+		System.out.println("파일 저장 함수 실행");
+		if (files == null) {
+			System.out.println("파일 객체 없음");
+			return null;
+		}
+
+		File directory = new File(uploadDir);
+		if (!directory.exists()) directory.mkdirs();
+
+
+			if (!files.isEmpty()) {
+				String originalFilename = files.getOriginalFilename();
+				String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmss").format(new Date());
+
+				String ext = "";
+				int dotIndex = originalFilename.lastIndexOf('.');
+				if (dotIndex > 0) {
+					ext = originalFilename.substring(dotIndex);
+					originalFilename = originalFilename.substring(0, dotIndex);
+				}
+
+				String savedFilename = originalFilename + "_" + timestamp + ext;
+				File destination = new File(uploadDir + "/" + savedFilename);
+				files.transferTo(destination);
+
+				return savedFilename; //
+			}
+
+		return null;
+	}
     
 	/*-----조건관리-----*/
     
@@ -984,31 +1017,6 @@ public class ConditionController {
 
         return rtnMap;
     }
-    
-    //열전대교체이력 저장
-    @RequestMapping(value = "/condition/thermocoupleChange/thermocoupleSave", method = RequestMethod.POST)
-    @ResponseBody
-    public Map<String, Object> thermocoupleSave(@ModelAttribute Thermocouple thermocouple) {
-        Map<String, Object> result = new HashMap<>();
-
-        try {
-            
-        	conditionService.thermocoupleSave(thermocouple);
-
-            result.put("status", "success");
-            result.put("message", "OK");
-
-        } catch (Exception e) {
-            result.put("status", "error");
-            result.put("message", e.getMessage());
-            e.printStackTrace();
-        }
-        System.out.println("cnt 값: " + thermocouple.getCnt());
-        System.out.println("Update Status: " + result.get("status"));
-        System.out.println("Update Message: " + result.get("message"));
-
-        return result;
-    }
 
 
 
@@ -1067,34 +1075,165 @@ public class ConditionController {
     }
     
     //온도조절계 저장
-    @RequestMapping(value = "/condition/tempCorrection/updateTempCorrectionField", method = RequestMethod.POST)
+//    @RequestMapping(value = "/condition/tempCorrection/updateTempCorrectionField", method = RequestMethod.POST)
+//    @ResponseBody
+//    public Map<String, Object> updateTempCorrectionField(@RequestBody Map<String, Object> param) {
+//        Map<String, Object> result = new HashMap<>();
+//        try {
+//            String gb = (String) param.get("gb"); // 구분 (ex. #1)
+//            String year = (String) param.get("year");
+//            String column = (String) param.get("column"); // val1, val2, val3 중 하나
+//            String value = (String) param.get("value");
+//
+//            Map<String, Object> updateParam = new HashMap<>();
+//            updateParam.put("gb", gb);
+//            updateParam.put("year", year);
+//            updateParam.put("column", column);
+//            updateParam.put("value", value);
+//
+//            conditionService.updateTempCorrectionField(updateParam); // mapper 호출
+//
+//            result.put("status", "success");
+//        } catch (Exception e) {
+//            result.put("status", "error");
+//            result.put("message", e.getMessage());
+//            e.printStackTrace();
+//        }
+//
+//        return result;
+//    }
+    
+    //열전대 교체이력 추가
+    @RequestMapping(value = "/condition/insertThermoChange", method = RequestMethod.POST)
     @ResponseBody
-    public Map<String, Object> updateTempCorrectionField(@RequestBody Map<String, Object> param) {
-        Map<String, Object> result = new HashMap<>();
-        try {
-            String gb = (String) param.get("gb"); // 구분 (ex. #1)
-            String year = (String) param.get("year");
-            String column = (String) param.get("column"); // val1, val2, val3 중 하나
-            String value = (String) param.get("value");
-
-            Map<String, Object> updateParam = new HashMap<>();
-            updateParam.put("gb", gb);
-            updateParam.put("year", year);
-            updateParam.put("column", column);
-            updateParam.put("value", value);
-
-            conditionService.updateTempCorrectionField(updateParam); // mapper 호출
-
-            result.put("status", "success");
-        } catch (Exception e) {
-            result.put("status", "error");
-            result.put("message", e.getMessage());
-            e.printStackTrace();
-        }
-
-        return result;
+    public boolean insertThermoChange(@RequestBody Thermocouple thermocouple) {
+    		return conditionService.insertThermoChange(thermocouple);
     }
-    
-    
-	
+    //열전대 교체이력 조회
+    @RequestMapping(value = "/condition/selectThermoChange", method = RequestMethod.POST)
+    @ResponseBody
+    public List<Thermocouple> selectThermoChange(@RequestBody Thermocouple thermocouple) {
+    		return conditionService.selectThermoChange(thermocouple);
+    }
+    //열처리유성상분석 조회
+    @RequestMapping(value = "/condition/selectHeatTreatingList", method = RequestMethod.POST)
+    @ResponseBody
+    public List<Condition> selectHeatTreatingList(Condition condition) {
+    		return conditionService.selectHeatTreatingList(condition);
+    }
+    //열처리유성상분석 추가
+    @RequestMapping(value = "/condition/insertHeatTreating", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean insertHeatTreating(Condition condition,
+    		@RequestParam(value = "heat_report_file", required = false) MultipartFile heat_report_file, 
+    	    @RequestParam(value = "cold_report_file", required = false) MultipartFile cold_report_file,
+    	    @RequestParam(value = "etc_report_file", required = false) MultipartFile etc_report_file) {
+    	System.out.println("열처리유 저장 컨트롤러 도착");
+    	String fileName1 = null;
+    	String fileName2 = null;
+    	String fileName3 = null;
+    	try {
+    		String path = "D:/미보기아파일/열처리상성유분석";
+    		if (heat_report_file != null && !heat_report_file.isEmpty()) { 
+    			fileName1 = saveFiles(heat_report_file, path);
+    			condition.setHeat_report(fileName1);
+    		}else {
+    			condition.setHeat_report(condition.getOriginal_heat_report());
+    		}
+    		if (cold_report_file != null && !cold_report_file.isEmpty()) { 
+    			fileName2 = saveFiles(cold_report_file, path);
+    			condition.setCold_report(fileName2);
+    		}else {
+    			condition.setCold_report(condition.getOriginal_cold_report());
+    		}
+    		if (etc_report_file != null && !etc_report_file.isEmpty()) { 
+    			fileName3 = saveFiles(etc_report_file, path);
+    			condition.setEtc_file(fileName3);
+    		}else {
+    			condition.setEtc_file(condition.getOriginal_etc_report());
+    		}
+    	}catch(Exception e) {
+    		System.err.println("파일 저장 오류: " + e.getMessage()); 
+            e.printStackTrace();
+    	}
+    	return conditionService.insertHeatTreating(condition);
+    		
+    }
+    //pdf 미리보기
+        @RequestMapping(value = "/condition/download_heat_treating", method = RequestMethod.GET)
+        @ResponseBody
+        public void downloadHeatOil(@RequestParam("filename") String filename, HttpServletResponse response) {
+        	String FILE_BASE_DIR = "D:/미보기아파일/열처리상성유분석"; 
+            String decodedFilename;
+            File file;
+            
+            try {
+                // 1. URL 디코딩: JS에서 encodeURIComponent로 인코딩된 파일명을 디코딩합니다.
+                decodedFilename = java.net.URLDecoder.decode(filename, StandardCharsets.UTF_8.toString());
+                
+                // 2. 파일 객체 생성
+                file = new File(FILE_BASE_DIR, decodedFilename);
+
+                // 3. 파일 존재 여부 및 접근 가능 여부 확인
+                if (!file.exists() || !file.canRead()) {
+                    System.err.println("파일을 찾을 수 없거나 접근 권한이 없습니다: " + file.getAbsolutePath());
+                    // 파일이 없을 경우 404 상태 코드 전송
+                    response.sendError(HttpStatus.NOT_FOUND.value(), "File Not Found");
+                    return;
+                }
+
+                
+                // 파일명을 UTF-8로 인코딩하여 Content-Disposition에 설정
+                // "inline": 브라우저가 파일을 바로 표시하도록 지시 (미리보기)
+                String encodedFilenameHeader = URLEncoder.encode(decodedFilename, StandardCharsets.UTF_8.toString()).replaceAll("\\+", "%20");
+                response.setHeader("Content-Disposition", "inline; filename=\"" + encodedFilenameHeader + "\"");
+                response.setContentLength((int) file.length());
+
+                // 5. 파일 스트림을 응답 스트림으로 복사
+                try (FileInputStream fis = new FileInputStream(file);
+                     OutputStream os = response.getOutputStream()) {
+                    
+                    byte[] buffer = new byte[1024];
+                    int bytesRead;
+                    while ((bytesRead = fis.read(buffer)) != -1) {
+                        os.write(buffer, 0, bytesRead);
+                    }
+                    os.flush();
+                }
+
+            } catch (IOException e) {
+                System.err.println("파일 처리 또는 스트리밍 중 오류 발생: " + e.getMessage());
+                try {
+                    // 스트리밍 중 오류 발생 시 500 상태 코드 전송 (클라이언트에게 오류를 알림)
+                    response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "File Streaming Error");
+                } catch (IOException innerE) {
+                    // do nothing
+                }
+            } catch (Exception e) {
+                System.err.println("알 수 없는 오류: " + e.getMessage());
+                try {
+                    response.sendError(HttpStatus.INTERNAL_SERVER_ERROR.value(), "Internal Server Error");
+                } catch (IOException innerE) {
+                    // do nothing
+                }
+            }
+        }
+        //열처리유상성분석 삭제
+        @RequestMapping(value = "/condition/deleteHeatTreating", method = RequestMethod.POST)
+        @ResponseBody
+        public boolean deleteHeatTreating(@RequestBody Condition condition) {
+        		return conditionService.deleteHeatTreating(condition);
+        }
+        //온도조절계보정현황 조회
+        @RequestMapping(value = "/condition/tempCorrection/tempCorrectionList", method = RequestMethod.POST)
+        @ResponseBody
+        public List<TempCorrectionQue> tempCorrectionList(TempCorrectionQue tempCorrectionQue) {
+        		return conditionService.tempCorrectionList(tempCorrectionQue);
+        }
+        //온도조절계보정현황 업데이트
+        @RequestMapping(value = "/condition/tempCorrection/updateTempCorrectionField", method = RequestMethod.POST)
+        @ResponseBody
+        public boolean updateTempCorrectionField(TempCorrectionQue tempCorrectionQue) {
+        		return conditionService.updateTempCorrectionField(tempCorrectionQue);
+        }
 }

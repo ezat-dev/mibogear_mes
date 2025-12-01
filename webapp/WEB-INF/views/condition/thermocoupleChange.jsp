@@ -17,7 +17,7 @@
 }
 .container {
 	display: flex;
-	justify-content: space-between;
+    justify-content: center;
 }
 .thermocoupleChangeModal {
     position: fixed; /* 화면에 고정 */
@@ -253,14 +253,20 @@
     <div class="tab">
     <div class="box1">
          <p class="tabP" style="font-size: 20px; margin-left: 40px; color: white; font-weight: 800;"></p>
-        
-		<label class="daylabel">기간 : </label>
-		<input type="date" class="sdate" id="sdate" style="font-size: 16px;" autocomplete="off"> ~ 
-		<input type="date" class="edate" id="edate" style="font-size: 16px;" autocomplete="off">
+
 		
 			
 	</div>
     <div class="button-container">
+            
+               <div class="box1">
+				    <label for="sdate">년도 선택:</label>
+				    <select id="year">
+				        <option value="2025">2025</option>
+				        <option value="2026">2026</option>
+				        <option value="2027">2027</option>
+				    </select>
+				</div>
         <button class="select-button" onclick="getThermocoupleChangeList();">
             <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">
            조회
@@ -307,31 +313,33 @@
             <th>설비</th>
             <td>
               <input id="fac_code" name="fac_code" class="basic" type="hidden" style="width:50%;" readonly="readonly"> 
-              <input id="fac_name" name="fac_name" class="basic" type="text" style="width:50%;" readonly="readonly">
+              <input id="fac_name" name="machine_name" class="basic" type="text" style="width:50%;" readonly="readonly">
               <input type="button" title="검색" class="btnSearchSmall" value="설비검색" onclick="openFacListModal();">
             </td>
             <th>존 구분</th>
-            <td><input id="th_zone" name="th_zone" type="text" class="basic"></td>
+            <td><input id="th_zone" name="zone" type="text" class="basic"></td>
           </tr>
 
           <!-- 내용 / 수리처 -->
           <tr>
             <th>이전 교체일자</th>
-            <td><input id="th_sdate" name="th_sdate" type="date" class="basic"></td>
+            <td><input id="th_sdate" name="before_change_date" type="date" class="basic"></td>
             <th>교체일자</th>
-            <td><input id="th_edate" name="th_edate" type="date" class="basic"></td>
+            <td><input id="th_edate" name="change_date" type="date" class="basic"></td>
           </tr>
 
           <!-- 수리비용 / 담당자 -->
           <tr>
             <th>차기 교체일자</th>
             <td>
-              <input id="th_ldate" name="th_ldate" type="date" class="basic">
+              <input id="th_ldate" name="next_change_date" type="date" class="basic">
             </td>
             <th>비고</th>
-            <td><textarea id="th_bigo" name="th_bigo" class="basic"></textarea></td>
+            <td><textarea id="th_bigo" name="note" class="basic"></textarea></td>
+          <td>
+        <input type="hidden" id="th_change_code" name="th_change_code">
+    	</td>
           </tr>
-
         </tbody>
       </table>
 
@@ -362,12 +370,10 @@
     var isEditMode = false; //수정,최초저장 구분값
 	//로드
 	$(function(){
-		var tdate = todayDate();
-		var ydate = yesterDate();
-		
-		$("#sdate").val(ydate);
-		$("#edate").val(tdate);
-		getThermocoupleChangeList();
+		var currentYear = new Date().getFullYear(); 
+	    $("#year").val(currentYear);
+	    
+	    getThermocoupleChangeList();
 	});
 
 
@@ -377,44 +383,37 @@
 	function getThermocoupleChangeList(){
 		
 		userTable = new Tabulator("#tab1", {
-		    height:"750px",
-		    layout:"fitColumns",
-		    selectable:true,	//로우 선택설정
-		    tooltips:true,
-		    selectableRangeMode:"click",
-		    reactiveData:true,
-		    headerHozAlign:"center",
-		    ajaxConfig:"POST",
-		    ajaxLoader:false,
-		    ajaxURL:"/mibogear/condition/thermocoupleChange/getThermocoupleChangeList",
-		    ajaxProgressiveLoad:"scroll",
-		    ajaxParams:{
-		    	"sdate": $("#sdate").val(),
-                "edate": $("#edate").val(),
-			},
-			placeholder:"조회된 데이터가 없습니다.",
-		    paginationSize:20,
-		    ajaxResponse:function(url, params, response){
-				$("#tab1 .tabulator-col.tabulator-sortable").css("height","55px");
-		        return response; //return the response data to tabulator
-		    },
+	        height: "750px", // 테이블 높이 설정 (모달 크기에 맞게)
+	        layout: "fitColumns",
+	        headerHozAlign: "center",
+	        ajaxConfig: {
+	            method: "POST",
+	            headers: {
+	                "Content-Type": "application/json;charset=UTF-8" 
+	            }
+	        },
+	        ajaxParams:{
+	        	change_date: $("#year").val()
+		        },
+	        ajaxContentType: "json",  
+	        ajaxLoader: false,
+	        ajaxURL: "/mibogear/condition/selectThermoChange",
+	        placeholder: "조회된 데이터가 없습니다.",
 		    columns:[
-		        {title:"NO", field:"idx", sorter:"int", width:80,
-		        	hozAlign:"center"},
-			    {title:"설비명", field:"fac_name", sorter:"string", width:120,
+		    	{title: "th_change_code", formatter: "th_change_code", hozAlign: "center", visible:false},
+		    	{title: "NO", formatter: "rownum", hozAlign: "center", width: 80, headerFilter:true},
+			    {title:"설비명", field:"machine_name", sorter:"string", width:200,
 				    hozAlign:"center", headerFilter:"input"},     
-				{title:"존 구분", field:"th_zone", sorter:"string", width:120,
+				{title:"존 구분", field:"zone", sorter:"string", width:120,
 				    hozAlign:"center", headerFilter:"input"},	        
-		        {title:"이전교체일자", field:"th_sdate", sorter:"string", width:100,
+		        {title:"이전교체일자", field:"before_change_date", sorter:"string", width:150,
 		        	hozAlign:"center", headerFilter:"input"},
-		        {title:"교체일자", field:"th_edate", sorter:"int", width:100,
+		        {title:"교체일자", field:"change_date", sorter:false, width:150,
 		        	hozAlign:"center", headerFilter:"input"},
-		        {title:"차기교체일자", field:"th_ldate", sorter:"string", width:600,
+		        {title:"차기교체일자", field:"next_change_date", sorter:"string", width:150,
 			        hozAlign:"center", headerFilter:"input"},      
-			    {title:"비고", field:"th_bigo", sorter:"string", width:80,
-			        	hozAlign:"center" ,visible:false},   
-			    {title:"NO", field:"fac_code", sorter:"string", width:80,
-				        hozAlign:"center" ,visible:false},    
+			    {title:"비고", field:"note", sorter:"string", width:300,
+			        	hozAlign:"center"},
 		    ],
 		    rowFormatter:function(row){
 			    var data = row.getData();
@@ -440,12 +439,18 @@
 			},
 			rowDblClick:function(e, row){
 
-				var data = row.getData();
+				const data = row.getData();
 				selectedRowData = data;
-				isEditMode = true;
 				$('#thermocoupleChangeForm')[0].reset();
-				thermocoupleChangeDetail(data.th_code);
-				 $('.delete').show();
+				thermocoupleChangeModal.style.display = 'block';
+				
+				$("input[name='machine_name']").val(data.machine_name);
+				$("input[name='zone']").val(data.zone);
+				$("input[name='before_change_date']").val(data.before_change_date);
+				$("input[name='change_date']").val(data.change_date);
+				$("input[name='next_change_date']").val(data.next_change_date);
+				$("textarea[name='note']").val(data.note);
+				$("#th_change_code").val(data.th_change_code);
 			},
 		});		
 	}
@@ -517,7 +522,7 @@
 	insertButton.addEventListener('click', function() {
 		isEditMode = false;  // 추가 모드
 	    $('#thermocoupleChangeForm')[0].reset(); // 폼 초기화
-
+	    $("#th_change_code").val("");
 	  
 	    thermocoupleChangeModal.style.display = 'block'; // 모달 표시
 
@@ -537,7 +542,14 @@
 	    var formData = new FormData($("#thermocoupleChangeForm")[0]);
 
 	    let confirmMsg = "";
-
+	    const unindexed_array = $("#thermocoupleChangeForm").serializeArray();
+	    const jsonData = {};
+	    
+	    $.each(unindexed_array, function(i, field){
+	        // 필드 name으로 값 넣기
+	        jsonData[field.name] = field.value;
+	    });
+/* 
 	    if (isEditMode && selectedRowData && selectedRowData.th_code) {
 	        formData.append("mode", "update");
 	        formData.append("th_code", selectedRowData.th_code);
@@ -549,19 +561,23 @@
 
 	    if (!confirm(confirmMsg)) {
 	        return;
-	    }
+	    } */
 
 	    $.ajax({
-	        url: "/mibogear/condition/thermocoupleChange/thermocoupleChangeSave",
+	        url: "/mibogear/condition/insertThermoChange",
 	        type: "POST",
 	        data: formData,
-	        contentType: false,
-	        processData: false,
+	        data: JSON.stringify(jsonData), 
+	        contentType: "application/json",
 	        dataType: "json",
 	        success: function(result) {
+		        if(result == true){
 	            alert("저장 되었습니다.");
 	            $(".thermocoupleChangeModal").hide();
 	            getThermocoupleChangeList();
+		        }else{
+					console.log("저장 실패했습니다.")
+		            }
 	        },
 	        error: function(xhr, status, error) {
 	            console.error("저장 오류:", error);

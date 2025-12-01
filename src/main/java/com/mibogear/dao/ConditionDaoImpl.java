@@ -9,7 +9,6 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.mibogear.domain.Condition;
-import com.mibogear.domain.StandardData;
 import com.mibogear.domain.TempCorrectionQue;
 import com.mibogear.domain.Thermocouple;
 
@@ -173,5 +172,48 @@ public class ConditionDaoImpl implements ConditionDao {
   	public void updateTempCorrectionField(Map<String, Object> param) {
   		sqlSession.update("condition.updateTempCorrectionField",param);
   	}
-
+  	@Override
+  	public boolean insertThermoChange(Thermocouple thermocouple) {
+  		int result = sqlSession.insert("condition.insertThermoChange",thermocouple);
+  		if(result <= 0) {
+  			return false;
+  		}
+  		return true;
+  	}
+  	@Override
+  	public List<Thermocouple> selectThermoChange(Thermocouple thermocouple) {
+  		return sqlSession.selectList("condition.selectThermoChange", thermocouple);
+  	}
+  	@Override
+  	public List<Condition> selectHeatTreatingList(Condition condition) {
+  		return sqlSession.selectList("condition.selectHeatTreatingList", condition);
+  	}
+  	@Override
+  	public boolean insertHeatTreating(Condition condition) {
+  		int result = sqlSession.insert("condition.insertHeatTreating",condition);
+  		if(result <= 0) {
+  			return false;
+  		}
+  		return true;
+  	}
+  	@Override
+  	public boolean deleteHeatTreating(Condition condition) {
+  		int result = sqlSession.delete("condition.deleteHeatTreating",condition);
+  		if(result <= 0) {
+  			return false;
+  		}
+  		return true;
+  	}
+  	@Override
+  	public List<TempCorrectionQue> tempCorrectionList(TempCorrectionQue tempCorrectionQue) {
+  		return sqlSession.selectList("condition.tempCorrectionList", tempCorrectionQue);
+  	}
+  	@Override
+  	public boolean updateTempCorrectionField(TempCorrectionQue tempCorrectionQue) {
+  		int result = sqlSession.update("condition.updateTempCorrectionField",tempCorrectionQue);
+  		if(result <= 0) {
+  			return false;
+  		}
+  		return true;
+  	}
 }

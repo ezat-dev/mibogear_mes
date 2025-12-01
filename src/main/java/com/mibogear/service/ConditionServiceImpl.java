@@ -162,4 +162,33 @@ public class ConditionServiceImpl implements ConditionService {
   	public void updateTempCorrectionField(Map<String, Object> param) {
   		conditionDao.updateTempCorrectionField(param);
   	}
+  	
+  	@Override
+  	public boolean insertThermoChange(Thermocouple thermocouple) {
+  		return conditionDao.insertThermoChange(thermocouple);
+  	}
+  	@Override
+  	public List<Thermocouple> selectThermoChange(Thermocouple thermocouple) {
+  	    return conditionDao.selectThermoChange(thermocouple);
+  	}
+  	@Override
+  	public List<Condition> selectHeatTreatingList(Condition condition) {
+  	    return conditionDao.selectHeatTreatingList(condition);
+  	}
+  	@Override
+  	public boolean insertHeatTreating(Condition condition) {
+  		return conditionDao.insertHeatTreating(condition);
+  	}
+  	@Override
+  	public boolean deleteHeatTreating(Condition condition) {
+  		return conditionDao.deleteHeatTreating(condition);
+  	}
+  	@Override
+  	public List<TempCorrectionQue> tempCorrectionList(TempCorrectionQue tempCorrectionQue) {
+  	    return conditionDao.tempCorrectionList(tempCorrectionQue);
+  	}
+  	@Override
+  	public boolean updateTempCorrectionField(TempCorrectionQue tempCorrectionQue) {
+  		return conditionDao.updateTempCorrectionField(tempCorrectionQue);
+  	}
 }

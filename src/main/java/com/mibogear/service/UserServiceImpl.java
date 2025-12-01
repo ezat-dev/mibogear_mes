@@ -2,11 +2,11 @@ package com.mibogear.service;
 
 import java.util.List;
 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.mibogear.dao.UserDao;
-import com.mibogear.domain.Facility;
 import com.mibogear.domain.Permission;
 import com.mibogear.domain.UserLog;
 import com.mibogear.domain.UserMenu;

@@ -13,14 +13,57 @@ public class Thermocouple {
 	private String th_bigo;
 	private String year;
 	
+	private String th_change_code;
+	private String machine_name;
+	private String zone;
+	private String before_change_date;
+	private String change_date;
+	private String next_change_date;
+	private String note;
 	
-	
-	
-	
-	
-	
-	
-	
+
+	public String getTh_change_code() {
+		return th_change_code;
+	}
+	public void setTh_change_code(String th_change_code) {
+		this.th_change_code = th_change_code;
+	}
+	public String getMachine_name() {
+		return machine_name;
+	}
+	public void setMachine_name(String machine_name) {
+		this.machine_name = machine_name;
+	}
+	public String getZone() {
+		return zone;
+	}
+	public void setZone(String zone) {
+		this.zone = zone;
+	}
+	public String getBefore_change_date() {
+		return before_change_date;
+	}
+	public void setBefore_change_date(String before_change_date) {
+		this.before_change_date = before_change_date;
+	}
+	public String getChange_date() {
+		return change_date;
+	}
+	public void setChange_date(String change_date) {
+		this.change_date = change_date;
+	}
+	public String getNext_change_date() {
+		return next_change_date;
+	}
+	public void setNext_change_date(String next_change_date) {
+		this.next_change_date = next_change_date;
+	}
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
 	public String getTh_code() {
 		return th_code;
 	}

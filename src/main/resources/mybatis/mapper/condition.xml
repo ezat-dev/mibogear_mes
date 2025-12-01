@@ -524,14 +524,128 @@
 	    WHERE year = #{year}
 	</select>
 	
-	<update id="updateTempCorrectionField" parameterType="map">
+<!-- 	<update id="updateTempCorrectionField" parameterType="map">
 	    UPDATE tb_temp_correction_que
 	    SET ${column} = #{value}
 	    WHERE gb = #{gb}
 	      AND year = #{year}
+	</update> -->
+	
+	<!-- 열전대 교체이력 추가 -->
+	<insert id="insertThermoChange" parameterType="Thermocouple">
+INSERT INTO tb_thermocouple_change (
+        th_change_code,
+        machine_name,
+        zone,
+        before_change_date,
+        change_date,
+        next_change_date,
+        note
+    ) VALUES (
+        <choose>
+            <when test="th_change_code != null and th_change_code != ''">
+                #{th_change_code}
+            </when>
+            <otherwise>
+                (SELECT CONCAT('thc_', LPAD(COALESCE(MAX(CAST(SUBSTRING(t.th_change_code, 5) AS UNSIGNED)), 0) + 1, 4, '0'))
+                 FROM tb_thermocouple_change t)
+            </otherwise>
+        </choose>,
+        
+        #{machine_name},
+        #{zone},
+        #{before_change_date},
+        #{change_date},
+        #{next_change_date},
+        #{note}
+    )
+    ON DUPLICATE KEY UPDATE
+        machine_name = VALUES(machine_name),
+        zone = VALUES(zone),
+        before_change_date = VALUES(before_change_date),
+        change_date = VALUES(change_date),
+        next_change_date = VALUES(next_change_date),
+        note = VALUES(note)
+	</insert>
+	
+	<!-- 열전대 교체이력 조회 -->
+	<select id="selectThermoChange" parameterType="Thermocouple" resultType="Thermocouple">
+	SELECT * FROM tb_thermocouple_change
+	WHERE 1=1
+		<if test="change_date != null and change_date != ''">
+			AND change_date LIKE CONCAT(#{change_date}, '%')
+		</if>
+	</select>
+		<!-- 열처리유성상분석 조회 -->
+	<select id="selectHeatTreatingList" parameterType="Condition" resultType="Condition">
+SELECT * 
+    FROM tb_heat_treating
+    WHERE 1=1
+    <![CDATA[
+        AND collection_date >= #{startDate}
+        AND collection_date <= #{endDate}
+    ]]>
+		<if test="machine_name != null and machine_name != ''">
+			AND machine_name LIKE CONCAT(#{machine_name}, '%')
+		</if>
+    ORDER BY collection_date DESC
+	</select>
+	<!-- 열처리유성상분석 -->
+		<insert id="insertHeatTreating" parameterType="Condition">
+INSERT INTO tb_heat_treating (
+        heat_treating_code,
+        collection_date,
+        machine_name,
+        heat_report,
+        cold_report,
+        etc_file,
+        note
+    ) VALUES (
+        <choose>
+            <when test="heat_treating_code != null and heat_treating_code != ''">
+                #{heat_treating_code}
+            </when>
+            <otherwise>
+                (SELECT CONCAT('HT', LPAD(COALESCE(MAX(CAST(SUBSTRING(t.heat_treating_code, 3) AS UNSIGNED)), 0) + 1, 4, '0'))
+                 FROM tb_heat_treating t)
+            </otherwise>
+        </choose>,
+        
+        #{collection_date},
+        #{machine_name},
+        #{heat_report},
+        #{cold_report},
+        #{etc_file},
+        #{note}
+    )
+    ON DUPLICATE KEY UPDATE
+    	collection_date = VALUES(collection_date),
+        machine_name = VALUES(machine_name),
+        heat_report = VALUES(heat_report),
+        cold_report = VALUES(cold_report),
+        etc_file = VALUES(etc_file),
+        note = VALUES(note)
+	</insert>
+	<!-- 열처리유상성분석 삭제 -->
+	<delete id="deleteHeatTreating" parameterType="Condition">
+	DELETE FROM tb_heat_treating
+	WHERE heat_treating_code = #{heat_treating_code}
+	</delete>
+	<!-- 온도조절계보정현황 조회 -->
+	<select id="tempCorrectionList" parameterType="TempCorrectionQue" resultType="TempCorrectionQue">
+	SELECT * FROM tb_temp_correction
+	WHERE 1=1
+		<if test="machine_name != null and machine_name != ''">
+			AND machine_name LIKE CONCAT(#{machine_name}, '%')
+		</if>
+		<if test="year != null and year != ''">
+			AND year = #{year}
+		</if>
+	</select>
+	<!-- 온도조절계보정현황 업데이트 -->
+	<update id="updateTempCorrectionField" parameterType="TempCorrectionQue">
+	UPDATE tb_temp_correction
+	SET ${c_field} = #{c_value}
+	WHERE temp_correction_id = #{temp_correction_id}
 	</update>
-	
-	
-	
-
 </mapper>

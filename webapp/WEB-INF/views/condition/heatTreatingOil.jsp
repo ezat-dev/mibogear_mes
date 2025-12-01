@@ -22,7 +22,7 @@
             margin-top: 1%;
         }
         .tab {
-            width: 88%;
+            width: 95%;
             margin-bottom: 37px;
             margin-top: 5px;
             height: 45px;
@@ -42,7 +42,7 @@
 		    display: flex;
 		    justify-content: right;
 		    align-items: center;
-		    width: 800px;
+		    width: 1100px;
 		    margin-right: 20px;
 		    margin-top:4px;
 		}
@@ -136,15 +136,15 @@
 		}
 		
 		.modal-content input, .modal-content textarea {
-		    width: 100%;
+		    width: 90%;
 		    padding: 8px;
 		    margin-bottom: 10px;
 		    border: 1px solid #ccc;
 		    border-radius: 5px;
 		}
 
-		select {
-		    width: 104%;
+		.modal-content select {
+		    width: 94%;
 		    height: 38px;
 		    margin-bottom: 10px;
 		    border: 1px solid #ccc;
@@ -259,38 +259,42 @@
 
 			
 			
-			<label class="daylabel">검색일자 :</label>
-			<input type="text" class="yearSet" id="t_year"
-			       placeholder="시작 연도 선택"
-			       style="width: 30%; font-size: 16px; height: 30px; text-align: center; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+			           <label class="daylabel">검색 날짜 :</label>
+				<input type="text" autocomplete="off"class="daySet" id="startDate" style="font-size: 16px; margin-bottom:10px;" placeholder="시작 날짜 선택">
+				
+				<span class="mid" style="font-size: 20px; font-weight: bold; margin-botomm:10px;"> ~ </span>
+	
+				<input type="text"autocomplete="off" class="daySet" id="endDate" style="font-size: 16px; margin-bottom:10px;" placeholder="종료 날짜 선택">
 			
-		<!-- 	<label class="daylabel">설비명 :</label>
-			<select name="mch_name"id="mch_name" class="dayselect" style="width: 30%; font-size: 15px; height: 34px; text-align: center; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
-			    <option value="G-600">G-600</option>
-			    <option value="G-800">G-800</option>
-			    <option value="공용설비">공용설비</option>
-			    <option value="K-BLACK">K-BLACK</option>
-			</select> -->
+			<label class="daylabel">설비명 :</label>
+			<select name="mch_name"id="mch_name" class="dayselect" style="width: 20%; font-size: 15px; height: 34px; text-align: center; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
+			    <option value="BCF-1">BCF-1</option>
+				<option value="BCF-2">BCF-2</option>
+				<option value="BCF-3">BCF-3</option>
+				<option value="BCF-4">BCF-4</option>				
+				<option value="TF-1">TF-1</option>
+				<option value="TF-2">TF-2</option>
+			</select>
 
 
     
 			</div>
                 <button class="select-button">
-                    <img src="/chunil/css/tabBar/search-icon.png" alt="select" class="button-image">조회
+                    <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">조회
                 </button>
-                <!-- <button class="insert-button">
-                    <img src="/chunil/css/tabBar/add-outline.png" alt="insert" class="button-image">추가
-                </button>
- -->
-            <button class="delete-button">
-				    <img src="/chunil/css/tabBar/xDel3.png" alt="delete" class="button-image"> 삭제
+        <button class="insert-button">
+            <img src="/mibogear/image/insert-icon.png" alt="insert" class="button-image">추가 
+        </button>
+
+                <button class="delete-button">
+				    <img src="/mibogear/css/tabBar/xDel3.png" alt="delete" class="button-image"> 삭제
 				</button>
 				
-				<button class="excel-button">
-                    <img src="/chunil/css/tabBar/excel-icon.png" alt="excel" class="button-image" >Download
-                </button>
+				
             </div>
         </div>
+
+		
 
 
 
@@ -305,130 +309,89 @@
 <div id="modalContainer" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
-        <h2>온도 균일성 테스트</h2>
+        <h2>열처리유 성상 분석</h2>
        <form id="corrForm" autocomplete="off" enctype="multipart/form-data">
-            
- 			<input type="hidden" name="id" id="id">
- 			<input type="hidden" name="year" id="year">
-	
-	      <label>년/월</label>
-	      <input type="text"  class="monthSet" name="y_month" placeholder="예: 2024/06" style="text-align: left;">
-	
-	      <label>동점도 (15~18)</label>
-	      <input type="text" name="tx1" placeholder="동점도 입력" style="text-align: left;">
-	
-	      <label>수분 (0.05 이하)</label>
-	      <input type="text" name="tx2" placeholder="수분 입력" style="text-align: left;">
-	
-	      <label>최대냉각속도 (93.7 ~ 114.6)</label>
-	      <input type="text" name="tx3" placeholder="최대냉각속도 입력" style="text-align: left;">
-	
-	      <label>전산가 (1.0 이하)</label>
-	      <input type="text" name="tx4" placeholder="전산가 입력" style="text-align: left;">
 
+          <label>채취일</label>
+			  <input type="text"name="collection_date"  class="daySet" placeholder="일 선택" style="text-align: left;">
+           
+              <input type="hidden" id="heat_treating_code" name="heat_treating_code" />
+            <label>설비</label>
+			
+			<select name="machine_name" class="daySet" style="text-align: left;">
+			    <option value="BCF-1">BCF-1</option>
+			    <option value="BCF-2">BCF-2</option>
+			    <option value="BCF-3">BCF-3</option>
+			    <option value="BCF-4">BCF-4</option>
+			    <option value="TF-1">TF-1</option>
+			    <option value="TF-2">TF-2</option>
+			</select>
+			
+			<label>열분석 보고서</label>
+			<input type="file" name="heat_report_file" id="fileInput1" placeholder="열분석 보고서" accept="application/pdf">
+			<span id="box1FileName"></span>
+			<input type="hidden" name="original_heat_report" id="originalFile1" />
+			
+			<label>냉각시험 그래프</label>
+			<input type="file" name="cold_report_file" id="fileInput2" placeholder="냉각시험 그래프" accept="application/pdf">
+			<span id="box2FileName"></span>
+			<input type="hidden" name="original_cold_report" id="originalFile2" />
+			
+			<label>기타 파일</label>
+			<input type="file" name="etc_report_file" id="fileInput3" placeholder="기타 파일" accept="application/pdf">
+			<span id="box3FileName"></span>
+			<input type="hidden" name="original_etc_report" id="originalFile3" />
+			
+            <label>비고</label>
+			 <input type="text"  name="note" placeholder="비고 입력">
 	
+
             <button type="submit" id="saveCorrStatus">저장</button>
             <button type="button" id="closeModal">닫기</button>
         </form>
     </div>
 </div>
 
+
+<div id="pdfViewerModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
+     background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center;">
+  <div style="position:relative; width:80%; height:90%; background:#fff; border-radius:8px; overflow:hidden;">
+    <button id="closePdfModal" 
+            style="position:absolute; top:8px; right:8px; z-index:10; padding:4px 8px;">✕ 닫기</button>
+    <iframe id="pdfFrame" 
+            style="width:100%; height:100%; border:none;" 
+            src=""></iframe>
+  </div>
+</div>
+
 <script>
-
-let now_page_code = "d02";
-
-$(document).ready(function () {
-    // 페이지 로딩 시 데이터 불러오기
- 
-
-    const currentYear = new Date().getFullYear();
-	$('#t_year').val(currentYear);
-
-    getDataList();
-
-    
-    $(".insert-button").click(function () {
-        const t_year = $("#t_year").val() || ""; 
-  
-
-        // 폼 초기화
-        $("#corrForm")[0].reset(); 
-        $("#id").val(""); // 숨겨진 id 필드도 비워주기
-
-        let modal = $("#modalContainer");
-        modal.show();
-        modal.addClass("show");
-    });
+//let now_page_code = "d03";
+let dataTable;
+let selectedRow;
 
 
+function pdfLinkFormatter(cell) {
+    var fn = cell.getValue();
+    if (!fn) return "";
+    var enc = encodeURIComponent(fn);
+    enc = enc.replace(/\(/g, '%28').replace(/\)/g, '%29');
+    return '<a href="javascript:void(0);" onclick="openPdf(\'' + enc + '\')">' + fn + '</a>';
+}
 
-    $(".close, #closeModal").click(function () {
-        $("#modalContainer").removeClass("show").hide();
-    });
-
-
-/*     $("#mch_name").on("change", function () {
-        console.log("선택된 설비명:", $(this).val());
-    }); */
-
-
-    $(".select-button").click(function () {
-   /*      const equipmentName = $("#mch_name").val() || ""; */
-        const t_year = $("#t_year").val() || "";
-
-
-        console.log("검색 요청 값 =>", {
-      /*       mch_name: equipmentName, */
-            t_year: t_year
-        });
-
-        dataTable.setData("/chunil/quality/heatTreatingOil/list", {
-         /*    mch_name: equipmentName, */
-            t_year: t_year
-        });
-    });
-
-$("#saveCorrStatus").click(function (event) {
-    event.preventDefault();
-
-    const formElement = document.getElementById("corrForm");
-    const formData = new FormData(formElement);
-
-    // id 값이 비어 있으면 제거
-    if (!formData.get("id") || formData.get("id").trim() === "") {
-        formData.delete("id");
+// PDF 팝업 열기
+function openPdf(encodedName) {
+    console.log(">>> openPdf called with:", encodedName);
+    if (!encodedName) {
+        alert("파일명이 없습니다!");
+        return;
     }
+    document.getElementById('pdfFrame').src = 
+        '/mibogear/condition/download_heat_treating?filename=' + encodedName;
+    document.getElementById('pdfViewerModal').style.display = 'flex';
+}
 
-    // 디버깅 로그
-    for (let pair of formData.entries()) {
-        console.log(pair[0] + ": " + pair[1]);
-    }
-
-    $.ajax({
-        url: "/chunil/quality/heatTreatingOil/insert",
-        type: "POST",
-        data: formData, 
-        dataType: "json",
-        processData: false,
-        contentType: false,
-        success: function (response) {
-            if (response.result === "success") {
-                alert("온도 균일성 테스트 성공적으로 저장되었습니다!");
-                $("#modalContainer").hide();
-                getDataList(); 
-            } else {
-                alert("저장 실패: " + (response.message || "알 수 없는 오류"));
-            }
-        },
-        error: function () {
-            alert("서버 오류 발생!");
-        }
-    });
-});
-
-
-
-  function getDataList() {
+// getDataList 
+function getDataList() {
     dataTable = new Tabulator("#dataList", {
         height: "760px",
         layout: "fitColumns",
@@ -437,138 +400,226 @@ $("#saveCorrStatus").click(function (event) {
         rowVertAlign: "middle",
         ajaxConfig: "POST",
         ajaxLoader: false,
-        ajaxURL: "/chunil/quality/heatTreatingOil/list",
-
+        ajaxURL: "/mibogear/condition/selectHeatTreatingList",
         ajaxParams: {
-/*             mch_name: $("#mch_name").val() || "", */
-            t_year: $("#t_year").val() || ""
+            machine_name: $("#mch_name").val() || "",
+            startDate: $("#startDate").val() || "",
+            endDate: $("#endDate").val() || ""
         },
-
-        placeholder: "조회된 데이터가 없습니다.",
-
+        placeholder: "데이터 없음",
         ajaxResponse: function (url, params, response) {
-            console.log("서버 응답 데이터:", response);
+            console.log("응답 데이터: ", response);
             return response;
         },
-
         columns: [
-            { title: "NO2", field: "id", visible: false },
-
             { title: "No", formatter: "rownum", hozAlign: "center", width: 70, headerSort: false },
-            { title: "년/월", field: "y_month", width: 200, hozAlign: "center"  },
-            { title: "년", field: "year", width: 290, hozAlign: "center",visible: false },
-            { title: "동점도</br>15~18", field: "tx1", width: 290, hozAlign: "center" },
-            { title: "수분</br>0.05이하", field: "tx2", width: 290, hozAlign: "center" },
-         
-            { title: "최대냉각속도</br> 93.7 ~ 114.6", field: "tx3", width: 290, hozAlign: "center" },
-            
-            {title: "전산가</br>1.0이하", field: "tx4", width: 290, hozAlign: "center"}
-        ],
+            { title: "heat_treating_code", field: "heat_treating_code", visible: false },
+            { title: "채취일", field: "collection_date", hozAlign: "center", width: 120 },
+            { title: "설비", field: "machine_name", hozAlign: "center", width: 120 },
 
+            {
+                title: "열분석 보고서", field: "heat_report", hozAlign: "center", width: 250,
+                formatter: function (cell) {
+                    var fn = cell.getValue();
+                    if (!fn) return "";
+                    return '<a href="javascript:void(0);" onclick="openPdf(\'' + encodeURIComponent(fn) + '\')">' + fn + '</a>';
+                }
+            },
+            {
+                title: "냉각시험 그래프", field: "cold_report", hozAlign: "center", width: 250,
+                formatter: function (cell) {
+                    var fn = cell.getValue();
+                    if (!fn) return "";
+                    return '<a href="javascript:void(0);" onclick="openPdf(\'' + encodeURIComponent(fn) + '\')">' + fn + '</a>';
+                }
+            },
+            {
+                title: "기타 파일", field: "etc_file", hozAlign: "center", width: 250,
+                formatter: function (cell) {
+                    var fn = cell.getValue();
+                    if (!fn) return "";
+                    return '<a href="javascript:void(0);" onclick="openPdf(\'' + encodeURIComponent(fn) + '\')">' + fn + '</a>';
+                }
+            },
+            { title: "비고", field: "note", hozAlign: "center", width: 300 }
+        ],
         rowClick: function (e, row) {
-            $("#dataList .tabulator-row").removeClass("row_select");  
+            $("#dataList .tabulator-row").removeClass("row_select");
             row.getElement().classList.add("row_select");
             selectedRow = row;
-            console.log("선택된 row id:", selectedRow.getData().id);
         },
-
         rowDblClick: function (e, row) {
-            const rowData = row.getData();
+            $("#originalFile1").val("");
+            $("#originalFile2").val("");
+            $("#originalFile3").val("");
+            $("#heat_treating_code").val("");
+            var d = row.getData();
+            $("input[name='heat_treating_code']").val(d.heat_treating_code);
+            $("input[name='collection_date']").val(d.collection_date);
+            $("select[name='machine_name']").val(d.machine_name);
 
-          
-            $("input[name='id']").val(rowData.id);
-            $("input[name='year']").val(rowData.year);
-            $("input[name='y_month']").val(rowData.y_month);
-            $("input[name='tx1']").val(rowData.tx1);
-            $("input[name='tx2']").val(rowData.tx2);
-            $("input[name='tx3']").val(rowData.tx3);
-            $("input[name='tx4']").val(rowData.tx4);
-            
-            let modal = $("#modalContainer");
-            modal.show();
-            modal.addClass("show");
+            const heatReport = d.heat_report || "";
+            $("#box1FileName").text("기존 파일: " + heatReport || "파일 없음");
+            $("#originalFile1").val(d.heat_report || "");
 
+            const coldReport = d.cold_report || "";
+            $("#box2FileName").text("기존 파일: " + coldReport || "파일 없음");
+            $("#originalFile2").val(d.cold_report || "");
+
+            const etcReport = d.etc_report || "";
+            $("#box3FileName").text("기존 파일: " + etcReport || "파일 없음");
+            $("#originalFile3").val(d.etc_report || "");
+             
+            $("input[name='note']").val(d.note);
+            $("#modalContainer").show().addClass("show");
         }
-
     });
 }
 
+$(document).ready(function () {
+    // 날짜 세팅
+    var today = new Date(),
+        yesterday = new Date(today);
+    yesterday.setDate(today.getDate() - 1);
 
+    function formatDate(date) {
+        var y = date.getFullYear(),
+            m = ("0" + (date.getMonth() + 1)).slice(-2),
+            d = ("0" + date.getDate()).slice(-2);
+        return y + "-" + m + "-" + d;
+    }
 
+    $("#startDate").val(formatDate(yesterday));
+    $("#endDate").val(formatDate(today));
 
-  $(".delete-button").click(function(event) {
-	    event.preventDefault();
+    getDataList();
 
-	    if (!selectedRow) {
-	        alert("삭제할 행을 선택하세요.");
-	        return;
-	    }
+    // 모달 닫기 (PDF 뷰어)
+    $("#closePdfModal").click(function () {
+        $("#pdfViewerModal").hide();
+        $("#pdfFrame").attr("src", "");
+    });
 
-	    var id = selectedRow.getData().id;
+    // insert 버튼
+    $(".insert-button").click(function () {
+        $("#corrForm")[0].reset();
+        $("#originalFile1").val("");
+        $("#originalFile2").val("");
+        $("#originalFile3").val("");
+        $("#heat_treating_code").val("");
+        $("input[name='cr_date']").val(formatDate(today));
+        $("#box1FileName, #box2FileName, #box3FileName, #box4FileName").text("");
+        $("#modalContainer").show().addClass("show");
+    });
 
-	    if (!id) {
-	        alert("삭제할 항목이 없습니다.");
-	        return;
-	    }
+    $(".close, #closeModal").click(function () {
+        $("#modalContainer").removeClass("show").hide();
+    });
 
-	    if (!confirm("정말 삭제하시겠습니까?")) {
-	        return;
-	    }
+    $("#mch_name").on("change", function () {
+        console.log("선택된 설비명:", $(this).val());
+    });
 
-	    var requestData = JSON.stringify({ "id": id });
+    $(".select-button").click(function () {
+        dataTable.setData("/mibogear/condition/selectHeatTreatingList", {
+            machine_name: $("#mch_name").val(),
+            startDate: $("#startDate").val(),
+            endDate: $("#endDate").val()
+        });
+    });
 
-	    $.ajax({
-	        url: "/chunil/quality/heatTreatingOil/del",
-	        type: "POST",
-	        contentType: "application/json",
-	        data: requestData,
-	        dataType: "json",
-	        success: function(response) {
-	            alert("삭제가 완료되었습니다.");
-	            dataTable.replaceData();
-	        },
-	        error: function(xhr, status, error) {
-	            alert("삭제 중 오류가 발생했습니다: " + error);
-	        }
-	    });
-	});
+    // 저장 버튼 (PDF 검증)
+    $("#saveCorrStatus").click(function (event) {
+    	event.preventDefault();
+        console.log("[EVENT] 저장 버튼 클릭됨");
 
+        const form = document.getElementById("corrForm");
+        if (!form) {
+            console.error("[ERROR] corrForm 요소를 찾을 수 없음");
+            return;
+        }
 
-    $(".excel-button").on("click", function () {
-  	  console.log("엑셀 다운로드 버튼 클릭됨"); 
+        const formData = new FormData(form);
 
-  	 /*  const equipmentName = $("#mch_name").val() || ""; */
-      const t_year = $("#t_year").val() || "";
-   
+        // FormData 내용 전체 출력 로그
+        console.log("[INFO] FormData 구성값:");
+        for (const [key, value] of formData.entries()) {
+            console.log(" -", key, ":", value);
+        }
+        console.log("[AJAX] HeatTreating insert 요청 시작");
 
-      console.log("엑셀 다운로드 요청 값 =>", {
- /*          mch_name: equipmentName, */
-          t_year: t_year
-       
-      });
-    	  
-        
-      $.ajax({
-          url: "/chunil/quality/heatTreatingOil/excel",
-          type: "post",
-          data: {
-         /*      mch_name: equipmentName, */
-              t_year: t_year
-          },
-          dataType: "json",
-          success: function (result) {
-              console.log(result);
-              alert("D:\\chunil_양식\\열처리유 저장 완료되었습니다.");
-          },
-          error: function (xhr, status, error) {
-              alert("엑셀 다운로드 중 오류가 발생했습니다. 다시 시도해주세요.");
-              console.error("Error:", error);
-          }
-      });
-  });
-    
+        $.ajax({
+            url: "/mibogear/condition/insertHeatTreating",
+            type: "POST",
+            data: formData,
+            processData: false, // FormData → 무조건 false
+            contentType: false, // multipart 자동 처리
+            enctype: "multipart/form-data",
+
+            beforeSend: function(xhr) {
+                console.log("[AJAX] beforeSend - 요청 헤더 확인:");
+                console.log("  contentType:", this.contentType);
+                console.log("  processData:", this.processData);
+            },
+
+            success: function(res, status, xhr) {
+                console.log("[AJAX] success 응답 수신");
+                console.log("  status:", status);
+                console.log("  response:", res);
+                console.log("  RawHeader:", xhr.getAllResponseHeaders());
+
+                if (res === true || res?.success === true) {
+                    alert("저장 완료");
+                    $("#modalContainer").hide();
+                    getDataList();
+                } else {
+                    alert("저장 실패: " + (res?.message || res));
+                }
+            },
+
+            error: function(xhr, status, error) {
+                console.log("[AJAX] error 발생");
+                console.log("  status:", status);
+                console.log("  error:", error);
+                console.log("  xhr:", xhr);
+                console.log("  responseText:", xhr?.responseText);
+
+                alert("서버 오류 발생");
+            }
+        });
+    });
+
+    // 삭제 버튼
+    $(".delete-button").click(function (event) {
+        event.preventDefault();
+        if (!selectedRow) return alert("삭제할 행을 선택하세요.");
+        if (!confirm("정말 삭제하시겠습니까?")) return;
+
+        $.ajax({
+            url: "/mibogear/condition/deleteHeatTreating",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({ heat_treating_code: selectedRow.getData().heat_treating_code }),
+            dataType: "json",
+            success: function () {
+                alert("삭제 완료");
+                getDataList();
+            },
+            error: function (_, __, e) {
+                alert("삭제 중 오류: " + e);
+            }
+        });
+    });
 });
 </script>
+
+
+
+
+
+
+
+
 
 </body>
 </html>

@@ -16,7 +16,45 @@ public class TempCorrectionQue {
 	private String c_field;
 	private String c_value;
 	
+	//온도조절계보정현황
+	private String temp_correction_id;
+	private String before_correction;
+	private String first_correction;
+	private String second_correction;
+	private String machine_name;
 	
+	
+	
+	public String getTemp_correction_id() {
+		return temp_correction_id;
+	}
+	public void setTemp_correction_id(String temp_correction_id) {
+		this.temp_correction_id = temp_correction_id;
+	}
+	public String getBefore_correction() {
+		return before_correction;
+	}
+	public void setBefore_correction(String before_correction) {
+		this.before_correction = before_correction;
+	}
+	public String getFirst_correction() {
+		return first_correction;
+	}
+	public void setFirst_correction(String first_correction) {
+		this.first_correction = first_correction;
+	}
+	public String getSecond_correction() {
+		return second_correction;
+	}
+	public void setSecond_correction(String second_correction) {
+		this.second_correction = second_correction;
+	}
+	public String getMachine_name() {
+		return machine_name;
+	}
+	public void setMachine_name(String machine_name) {
+		this.machine_name = machine_name;
+	}
 	public int getCnt() {
 		return cnt;
 	}

@@ -171,8 +171,17 @@
 				<option value="2026">2026</option>
 				<option value="2027">2027</option>
 			</select>
+			<label for="sdate">설비 선택:</label> 
+			<select id="machine_name">
+				<option value="BCF-1">BCF-1</option>
+				<option value="BCF-2">BCF-2</option>
+				<option value="BCF-3">BCF-3</option>
+				<option value="BCF-4">BCF-4</option>				
+				<option value="TF-1">TF-1</option>
+				<option value="TF-2">TF-2</option>
+			</select>
 		
-			<button class="select-button" onclick="getTempCorrData();">
+			<button class="select-button" onclick="getTempCorrectionList();">
 				<img src="/mibogear/css/tabBar/search-icon.png" alt="select"
 					class="button-image">조회
 			</button>
@@ -198,11 +207,8 @@
 
 	<main class="main">
 		<div class="container">
-			<h3>퀜칭로</h3>
+			<h3 id="machineTitle">퀜칭로</h3>
 			<div id="tab1" class="tabulator"></div>
-
-			<h3>템퍼링로</h3>
-			<div id="tab2" class="tabulator"></div>
 		</div>
 	</main>
 	
@@ -218,106 +224,67 @@
 
 	<script>
 		//전역변수
-		let now_page_code = "c03";
+		//let now_page_code = "c03";
 
 		$(function() {
-			getTempCorrectionQueList();
-			getTempCorrectionTemList();
-			
-			getTempCorrData();
+			updateMachineTitle(); 
+	        
+	        $("#machine_name").on('change', function() {
+	            updateMachineTitle();
+	        });
+	        
+			getTempCorrectionList();
 		});
-
-
-		function getTempCorrData(){
-			$.ajax({
-				url:"/mibogear/condition/tempCorrection/getTempCorrectionQueList",
-				type:"post",
-				dataType:"json",
-				data:{
-					"year":$("#sdate").val()
-				},
-				success:function(result){
-					var d = result.data;
-					
-					var qArray = new Array();
-					var tArray = new Array();
-					
-					if(d.length > 0){
-						for(var i=0; i<d.length; i++){
-							var gbVal = "";
-							if(d[i].gb.indexOf("퀜칭로") != -1){
-								gbVal = d[i].gb.replace("퀜칭로 ","");
-								d[i].gb = gbVal;
-								qArray.push(d[i]);
-							}
-							
-							if(d[i].gb.indexOf("템퍼링로") != -1){
-								gbVal = d[i].gb.replace("템퍼링로 ","");
-								d[i].gb = gbVal;
-								
-								tArray.push(d[i]);
-							}
-						}
-						
-						corrQue.setData(qArray);
-						corrTem.setData(tArray);
-					}
-				}
-			})
-		}
-		
-		let corrQue;
-		function getTempCorrectionQueList() {
+		function getTempCorrectionList() {
 			corrQue = new Tabulator("#tab1", {
-		        height: "233px",
+		        height: "145px",
 		        layout: "fitColumns",
 		        selectable: true,
 		        tooltips: true,
 		        selectableRangeMode: "click",
 		        reactiveData: true,
 		        headerHozAlign: "center",
-/*
 		        ajaxConfig: "POST",
 		        ajaxLoader: false,
-		        ajaxURL: "/mibogear/condition/tempCorrection/getTempCorrectionQueList",
+		        ajaxURL: "/mibogear/condition/tempCorrection/tempCorrectionList",
 		        ajaxParams: {
-		            year: $("#sdate").val()
+		            year: $("#sdate").val(),
+		            machine_name: $("#machine_name").val()
 		        },
-*/
+
 		        ajaxResponse: function (url, params, response) {
 		            $("#tab1 .tabulator-col.tabulator-sortable").css("height", "55px");
-		            return response.data; // 리스트 전체 반환
+		            return response; // 리스트 전체 반환
 		        },
 		        placeholder: "조회된 데이터가 없습니다.",
 		        paginationSize: 20,
 		        columns: [
 		        	{
-		        		title:"cnt",
-		        		field:"cnt",
+		        		title:"temp_correction_id",
+		        		field:"temp_correction_id",
 		        		visible:false		        		
 		        	},
 		            {
 		                title: "구분",
-		                field: "gb",
+		                field: "machine_name",
 		                hozAlign: "center",
-		                width: 120,
-		                headerSort: false
+		                width: 120
 		            },
 		            {
 		                title: "보정전",
-		                field: "val1",
+		                field: "before_correction",
 		                hozAlign: "center",
 		                editor: "input"
 		            },
 		            {
 		                title: "상반기 보정",
-		                field: "val2",
+		                field: "first_correction",
 		                hozAlign: "center",
 		                editor: "input"
 		            },
 		            {
 		                title: "하반기 보정",
-		                field: "val3",
+		                field: "second_correction",
 		                hozAlign: "center",
 		                editor: "input"
 		            }
@@ -330,7 +297,7 @@
 				    var field = cell.getField(); 
 				    var value = cell.getValue(); 
 				    var rowData = cell.getRow().getData(); 
-				    var cnt = rowData.cnt; 
+				    var temp_correction_id = rowData.temp_correction_id; 
 
 				    $.ajax({
 				        url: "/mibogear/condition/tempCorrection/updateTempCorrectionField",
@@ -339,7 +306,7 @@
 				        data: {
 				        	"c_field":field,
 				        	"c_value":value,
-				        	"cnt":cnt
+				        	"temp_correction_id":temp_correction_id
 				        },
 				        success: function(result) {
 				        	
@@ -350,67 +317,15 @@
 		}
 
 
-
+		function updateMachineTitle() {
+	        const selectedMachine = $("#machine_name option:selected").text(); // 선택된 옵션의 텍스트(예: BCF-1)
+	        $("#machineTitle").text(selectedMachine); // <h3> 태그의 텍스트를 업데이트
+	        
+	        // Tabulator를 다시 로드하거나 필터링해야 하는 경우 여기에 getTempCorrectionList()를 호출할 수 있습니다.
+	        // getTempCorrectionList(); 
+	    }
 		function closeModal() {
 		    $("#inputModal").hide();
-		}
-
-
-		
-		let corrTem;
-		function getTempCorrectionTemList() {
-			corrTem = new Tabulator("#tab2",{
-						height : "233px",
-						layout : "fitColumns",
-						selectable : true, //로우 선택설정
-						tooltips : true,
-						selectableRangeMode : "click",
-						reactiveData : true,
-						headerHozAlign : "center",
-/*						
-						ajaxConfig : "POST",
-						ajaxLoader : false,
-						ajaxURL : "/mibogear/condition/tempCorrection/getTempCorrectionTemList",
-						ajaxProgressiveLoad : "scroll",
-						ajaxParams : {},
-*/
-						placeholder : "조회된 데이터가 없습니다.",
-						paginationSize : 20,
-						ajaxResponse : function(url, params, response) {
-							$("#tab1 .tabulator-col.tabulator-sortable").css(
-									"height", "55px");
-							return response; //return the response data to tabulator
-						},
-						columns : [ {
-							title : "구분",
-							field : "gb",
-							hozAlign : "center",
-							width : 120,
-							headerSort : false
-						}, {
-							title : "보정전",
-							field : "val1",
-							hozAlign : "center",
-							editor : "input"
-						}, {
-							title : "상반기 보정",
-							field : "val2",
-							hozAlign : "center",
-							editor : "input"
-						}, {
-							title : "하반기 보정",
-							field : "val3",
-							hozAlign : "center",
-							editor : "input"
-						} ],
-						rowFormatter : function(row) {
-							row.getElement().style.fontWeight = "600";
-							row.getElement().style.backgroundColor = "#fdfdfd";
-						},
-						cellDblClick : function(e, cell) {
-							cell.edit(true);
-						},
-					});
 		}
 	</script>
 </body>
