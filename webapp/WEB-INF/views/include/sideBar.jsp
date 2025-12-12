@@ -380,6 +380,7 @@
 
 	function updateHeaderAndNavigate(event, url, menuGroupName) {
 		event.preventDefault(); // 기본 링크 동작 방지
+		event.stopPropagation(); //이거 있어야 페이지 이동 시 메뉴 안닫힘
             
 		iframeSrc(url,menuGroupName);
 		//각 사용자별 메뉴 저장
