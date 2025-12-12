@@ -8,6 +8,7 @@
     <title>일상점검일지</title>
 	<%@include file="../include/pluginpage.jsp" %>    
     <jsp:include page="../include/tabBar.jsp"/>
+    <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 </head>
     <style>
         .container {
@@ -315,10 +316,10 @@ $(function() {
   });
 
 //엑셀 다운로드
- $('.excel-download-button').click(function() {
-	    dataTable.download("xlsx", "스페어부품 관리.xlsx", {sheetName:"스페어부품 관리",
-	    	 visibleColumnsOnly: false //숨겨진 데이터도 출력
-	    	 });
+	$(".excel-download-button").click(function () {
+	    const today = new Date().toISOString().slice(0, 10).replace(/-/g, "");
+	    const filename = "일상점검일지_" + today + ".xlsx";
+	    dataTable.download("xlsx", filename, { sheetName: "일상점검일지" });
 	});
 
  $(".excel-upload-button").on("click", function () {

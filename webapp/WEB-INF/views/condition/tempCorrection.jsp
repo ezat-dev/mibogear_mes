@@ -193,14 +193,14 @@
 				<img src="/mibogear/css/tabBar/xDel3.png" alt="delete"
 					class="button-image">삭제
 			</button>
-			<button class="excel-download-button">
+<!-- 			<button class="excel-download-button">
 				<img src="/mibogear/css/tabBar/excel-icon.png" alt="excel"
 					class="button-image">엑셀다운로드
 			</button>
 			<button class="excel-upload-button">
 				<img src="/mibogear/css/tabBar/excel-icon.png" alt="excel"
 					class="button-image">엑셀업로드
-			</button>
+			</button> -->
 			<input type="file" id="fileInput" style="display: none;">
 		</div>
 	</div>

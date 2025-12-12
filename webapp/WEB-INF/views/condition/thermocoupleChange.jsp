@@ -409,7 +409,7 @@
 	        placeholder: "조회된 데이터가 없습니다.",
 		    columns:[
 		    	{title: "th_change_code", formatter: "th_change_code", hozAlign: "center", visible:false},
-		    	{title: "NO", formatter: "rownum", hozAlign: "center", width: 80, headerFilter:true},
+		    	{title: "NO", field: "rownum", hozAlign: "center", width: 80, headerFilter:true},
 			    {title:"설비명", field:"machine_name", sorter:"string", width:200,
 				    hozAlign:"center", headerFilter:"input"},     
 				{title:"존 구분", field:"zone", sorter:"string", width:120,
@@ -460,9 +460,17 @@
 				$("textarea[name='note']").val(data.note);
 				$("#th_change_code").val(data.th_change_code);
 			},
+			dataLoaded: function(data) {
+	            data.forEach(function(row, index) {
+	                row.rownum = (index + 1).toString();
+	            });
+				userTable.redraw(true);
+				return data;
+	        }
 		});		
 	}
 
+    
 	function thermocoupleChangeDetail(th_code){
 		$.ajax({
 			url:"/mibogear/condition/thermocoupleChange/thermocoupleChangeDetail",
@@ -633,8 +641,8 @@
     //엑셀 다운로드
 	$(".excel-button").click(function () {
 	    const today = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-	    const filename = "설비수리이력관리_" + today + ".xlsx";
-	    userTable.download("xlsx", filename, { sheetName: "설비수리이력관리" });
+	    const filename = "열전대교체이력_" + today + ".xlsx";
+	    userTable.download("xlsx", filename, { sheetName: "열전대교체이력" });
 	});
 
 
