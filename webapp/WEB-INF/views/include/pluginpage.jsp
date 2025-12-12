@@ -232,8 +232,8 @@ function pageObject(paramKey){
 			//품질관리
 			"e01":["/mibogear/quality/tempUniformity","온도균일성 조사보고서"],
 			"e02":["/mibogear/quality/fProof","F/PROOF"],
-			"e03":["/mibogear/quality/cpk","Cpk"],
-			"e04":["/mibogear/quality/ppk","Ppk"],
+			//"e03":["/mibogear/quality/cpk","Cpk"],
+			//"e04":["/mibogear/quality/ppk","Ppk"],
 			"e05":"",
 			"e06":"",
 			"e07":"",

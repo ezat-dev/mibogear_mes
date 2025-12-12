@@ -1,5 +1,29 @@
 package com.mibogear.service;
 
-public class MonitoringServiceImpl {
+import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.mibogear.dao.MonitoringDAO;
+import com.mibogear.domain.Monitoring;
+
+@Service
+public class MonitoringServiceImpl implements MonitoringService{
+	
+	@Autowired
+	private MonitoringDAO monitoringDao;
+	
+    @Override
+    public List<Monitoring> getAlarmList(Monitoring monitoring) {
+        return monitoringDao.getAlarmList(monitoring);
+    }
+    @Override
+    public List<Monitoring> getTempList(Monitoring monitoring) {
+        return monitoringDao.getTempList(monitoring);
+    }
+    @Override
+    public List<Monitoring> getAlarmRankingList(Monitoring monitoring) {
+        return monitoringDao.getAlarmRankingList(monitoring);
+    }
 }

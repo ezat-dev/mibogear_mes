@@ -360,6 +360,15 @@
 	//전역변수
     var cutumTable;	
     var isEditMode = false; //수정,최초저장 구분값
+    var today = new Date();
+
+    function formatDate(date) {
+        var y = date.getFullYear(),
+            m = ("0" + (date.getMonth() + 1)).slice(-2),
+            d = ("0" + date.getDate()).slice(-2);
+        return y + "-" + m + "-" + d;
+    }
+    
 	//로드
 	$(function(){
 		var tdate = todayDate();
@@ -517,7 +526,8 @@
 	insertButton.addEventListener('click', function() {
 		isEditMode = false;  // 추가 모드
 	    $('#suriHistoryForm')[0].reset(); // 폼 초기화
-
+		$('#ffx_date').val(formatDate(today));
+		$('#ffx_next').val(formatDate(today));
 	  
 	    suriHistoryModal.style.display = 'block'; // 모달 표시
 

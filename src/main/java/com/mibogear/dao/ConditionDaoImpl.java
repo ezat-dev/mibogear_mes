@@ -216,4 +216,32 @@ public class ConditionDaoImpl implements ConditionDao {
   		}
   		return true;
   	}
+	@Override
+	public List<Condition> getDailyCheckList(Condition params) {
+		return sqlSession.selectList("condition.getDailyCheckList", params);
+	}
+  	@Override
+  	public boolean dailyCheckUpdate(Condition condition) {
+  		int result = sqlSession.update("condition.dailyCheckUpdate",condition);
+  		if(result <= 0) {
+  			return false;
+  		}
+  		return true;
+  	}
+  	@Override
+  	public boolean dailyCheckDelete(Condition condition) {
+  		int result = sqlSession.delete("condition.dailyCheckDelete",condition);
+  		if(result <= 0) {
+  			return false;
+  		}
+  		return true;
+  	}
+  	@Override
+  	public boolean dailyCheckInsert(Condition condition) {
+  		int result = sqlSession.insert("condition.dailyCheckInsert",condition);
+  		if(result <= 0) {
+  			return false;
+  		}
+  		return true;
+  	}
 }

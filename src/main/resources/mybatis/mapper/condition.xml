@@ -648,4 +648,35 @@ INSERT INTO tb_heat_treating (
 	SET ${c_field} = #{c_value}
 	WHERE temp_correction_id = #{temp_correction_id}
 	</update>
+	<!-- 일상점검일지 조회 -->
+		<select id="getDailyCheckList" parameterType="Condition" resultType="Condition">
+	SELECT * FROM tb_dailycheck
+	WHERE 1=1
+		<if test="date != null and date != ''">
+			AND d_ym LIKE CONCAT(#{date}, '%')
+		</if>
+	</select>
+		<!-- 일상점검일지 업데이트 -->
+	<update id="dailyCheckUpdate" parameterType="Condition">
+	UPDATE tb_dailycheck
+	SET ${d_field} = #{d_value}
+	WHERE cnt = #{cnt}
+	</update>
+	<!-- 일상점검일지 삭제 -->
+	<delete id="dailyCheckDelete" parameterType="Condition">
+	DELETE FROM tb_dailycheck
+	WHERE cnt = #{cnt}
+	</delete>
+	<!-- 일상점검일지 추가 -->
+	<insert id="dailyCheckInsert" parameterType="Condition">
+INSERT INTO tb_dailycheck (
+        d_title,
+        d_desc,
+        d_ym
+    ) VALUES (
+        '',
+        '',
+        #{d_ym}
+    )
+	</insert>
 </mapper>

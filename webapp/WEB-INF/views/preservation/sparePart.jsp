@@ -18,6 +18,7 @@
 .container {
 	display: flex;
 	justify-content: space-between;
+	margin-left: 10%;
 }
 /* 📋 제품등록 테이블 폼 */
 .product-content-table {
@@ -424,7 +425,7 @@ textarea {
     	
     	
 	    <div class="btnSaveClose">
-	    		<button class="delete" type="button" onclick="deletesparePart();"  style="display: none;">삭제</button>
+	    		<button class="delete" type="button" onclick="deleteSparePart();"  style="display: none;">삭제</button>
 	            <button class="save" type="button" onclick="save();">저장</button>
 	            <button class="close" type="button" onclick="window.close();">닫기</button>
 	    </div>
@@ -830,8 +831,8 @@ textarea {
     //엑셀 다운로드
 	$(".excel-button").click(function () {
 	    const today = new Date().toISOString().slice(0, 10).replace(/-/g, "");
-	    const filename = "제품등록_" + today + ".xlsx";
-	    userTable.download("xlsx", filename, { sheetName: "spare등록" });
+	    const filename = "spare 부품관리_" + today + ".xlsx";
+	    userTable.download("xlsx", filename, { sheetName: "spare 부품관리" });
 	});
 
 

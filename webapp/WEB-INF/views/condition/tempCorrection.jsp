@@ -171,7 +171,7 @@
 				<option value="2026">2026</option>
 				<option value="2027">2027</option>
 			</select>
-			<label for="sdate">설비 선택:</label> 
+<!-- 			<label for="sdate">설비 선택:</label> 
 			<select id="machine_name">
 				<option value="BCF-1">BCF-1</option>
 				<option value="BCF-2">BCF-2</option>
@@ -179,7 +179,7 @@
 				<option value="BCF-4">BCF-4</option>				
 				<option value="TF-1">TF-1</option>
 				<option value="TF-2">TF-2</option>
-			</select>
+			</select> -->
 		
 			<button class="select-button" onclick="getTempCorrectionList();">
 				<img src="/mibogear/css/tabBar/search-icon.png" alt="select"
@@ -229,15 +229,15 @@
 		$(function() {
 			updateMachineTitle(); 
 	        
-	        $("#machine_name").on('change', function() {
+/* 	        $("#machine_name").on('change', function() {
 	            updateMachineTitle();
-	        });
+	        }); */
 	        
 			getTempCorrectionList();
 		});
 		function getTempCorrectionList() {
 			corrQue = new Tabulator("#tab1", {
-		        height: "145px",
+		        height: "578px",
 		        layout: "fitColumns",
 		        selectable: true,
 		        tooltips: true,
@@ -248,8 +248,8 @@
 		        ajaxLoader: false,
 		        ajaxURL: "/mibogear/condition/tempCorrection/tempCorrectionList",
 		        ajaxParams: {
-		            year: $("#sdate").val(),
-		            machine_name: $("#machine_name").val()
+		            year: $("#sdate").val()
+		            //machine_name: $("#machine_name").val()
 		        },
 
 		        ajaxResponse: function (url, params, response) {

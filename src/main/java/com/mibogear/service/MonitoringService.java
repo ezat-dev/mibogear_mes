@@ -1,5 +1,12 @@
 package com.mibogear.service;
 
-public interface MonitoringService {
+import java.util.List;
 
+import com.mibogear.domain.Monitoring;
+
+public interface MonitoringService {
+	
+	List<Monitoring> getAlarmList(Monitoring monitoring);
+	List<Monitoring> getTempList(Monitoring monitoring);
+	List<Monitoring> getAlarmRankingList(Monitoring monitoring);
 }

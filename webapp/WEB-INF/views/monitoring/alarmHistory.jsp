@@ -449,7 +449,7 @@
 	            <input type="text" id="s_edate" class="dayselect daySet"/>
 			</div>
                 <button class="select-button">
-                    <img src="/chunil/css/tabBar/search-icon.png" alt="select" class="button-image">조회
+                    <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">조회
                 </button>
 
                 
@@ -512,11 +512,11 @@ $(function() {
 
   function fetchAlarm(){
 	    $.ajax({
-	        url: "/chunil/productionManagement/alarmRecordListAll/list",
+	        url: "/mibogear/monitoring/getAlarmList",
 	        method: "POST",
 	        data: {
-	            s_sdate: $("#s_sdate").val(),
-	            s_edate: $("#s_edate").val()
+	            startDate: $("#s_sdate").val(),
+	            endDate: $("#s_edate").val()
 	        },
 	        dataType: "json",
 	        success: function(resp){
@@ -530,15 +530,15 @@ $(function() {
 
 	            arr.forEach(function(r, idx){
 	                var tr = $("<tr></tr>");
-	                tr.append("<td>"+(r.idx!=null?r.idx:"")+"</td>");
-	                tr.append("<td>"+(r.a_addr || "")+"</td>");
-	                tr.append("<td style='text-align:left;padding-left:12px;'>"+(r.a_desc || "")+"</td>");
-	                tr.append("<td>"+(r.a_stime || "")+"</td>");
-	                tr.append("<td>"+(r.a_etime || "")+"</td>");
+	                tr.append("<td>"+(idx + 1)+"</td>");
+	                tr.append("<td>"+(r.alarm_address || "")+"</td>");
+	                tr.append("<td padding-left:12px;'>"+(r.comment || "")+"</td>");
+	                tr.append("<td>"+(r.occur_time || "")+"</td>");
+	                tr.append("<td>"+(r.clear_time || "")+"</td>");
 	                tr.data("rowdata", r);
 
 	                // ✅ 진행 중인 알람 시각적 강조
-	                if(!r.a_etime || r.a_etime === ""){
+	                if(!r.clear_time || r.clear_time === ""){
 	                    tr.css({
 	                        "background": "linear-gradient(90deg, rgba(255,230,0,0.2), rgba(255,255,255,0))",
 	                        "font-weight": "bold",

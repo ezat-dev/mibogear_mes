@@ -1236,4 +1236,28 @@ public class ConditionController {
         public boolean updateTempCorrectionField(TempCorrectionQue tempCorrectionQue) {
         		return conditionService.updateTempCorrectionField(tempCorrectionQue);
         }
+        //일상점검일지 조회
+        @RequestMapping(value = "/condition/dailyCheck/list", method = RequestMethod.POST)
+        @ResponseBody
+        public List<Condition> dailyCheckList(Condition condition) {
+            return conditionService.getDailyCheckList(condition);
+        }
+        //일상점검일지 업데이트
+        @RequestMapping(value = "/condition/dailyCheckUpdate", method = RequestMethod.POST)
+        @ResponseBody
+        public boolean dailyCheckUpdate(Condition condition) {
+        		return conditionService.dailyCheckUpdate(condition);
+        }
+        //일상점검일지 삭제
+        @RequestMapping(value = "/condition/dailyCheckDelete", method = RequestMethod.POST)
+        @ResponseBody
+        public boolean dailyCheckDelete(Condition condition) {
+        		return conditionService.dailyCheckDelete(condition);
+        }
+        //일상점검일지 추가
+        @RequestMapping(value = "/condition/dailyCheckInsert", method = RequestMethod.POST)
+        @ResponseBody
+        public boolean dailyCheckInsert(Condition condition) {
+        		return conditionService.dailyCheckInsert(condition);
+        }
 }

@@ -449,7 +449,7 @@
 	            <input type="text" id="s_edate" class="dayselect daySet"/>
 			</div>
                 <button class="select-button">
-                    <img src="/chunil/css/tabBar/search-icon.png" alt="select" class="button-image">조회
+                    <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">조회
                 </button>
 
                 
@@ -510,11 +510,11 @@ $(function() {
 
   function fetchAlarm(){
 	    $.ajax({
-	        url: "/chunil/productionManagement/alarmRanking/list",
+	        url: "/mibogear/monitoring/getAlarmRankingList",
 	        method: "POST",
 	        data: {
-	            s_sdate: $("#s_sdate").val(),
-	            s_edate: $("#s_edate").val()
+	            startDate: $("#s_sdate").val(),
+	            endDate: $("#s_edate").val()
 	        },
 	        dataType: "json",
 	        success: function(resp){
@@ -528,10 +528,10 @@ $(function() {
 
 	            arr.forEach(function(r, idx){
 	                var tr = $("<tr></tr>");
-	                tr.append("<td>"+(r.idx!=null?r.idx:"")+"</td>");
-	                tr.append("<td>"+(r.a_addr || "")+"</td>");
-	                tr.append("<td style='text-align:left;padding-left:12px;'>"+(r.a_desc || "")+"</td>");
-	                tr.append("<td>"+(r.cnt || "")+"</td>")
+	                tr.append("<td>"+(idx+1)+"</td>");
+	                tr.append("<td>"+(r.alarm_address || "")+"</td>");
+	                tr.append("<td padding-left:12px;'>"+(r.comment || "")+"</td>");
+	                tr.append("<td>"+(r.alarm_count || "")+"</td>")
 	                tr.data("rowdata", r);
 
 

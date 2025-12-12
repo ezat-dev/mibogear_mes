@@ -266,7 +266,7 @@
 	
 				<input type="text"autocomplete="off" class="daySet" id="endDate" style="font-size: 16px; margin-bottom:10px;" placeholder="종료 날짜 선택">
 			
-			<label class="daylabel">설비명 :</label>
+<!-- 			<label class="daylabel">설비명 :</label>
 			<select name="mch_name"id="mch_name" class="dayselect" style="width: 20%; font-size: 15px; height: 34px; text-align: center; margin-bottom: 10px; border: 1px solid #ccc; border-radius: 5px;">
 			    <option value="BCF-1">BCF-1</option>
 				<option value="BCF-2">BCF-2</option>
@@ -274,7 +274,7 @@
 				<option value="BCF-4">BCF-4</option>				
 				<option value="TF-1">TF-1</option>
 				<option value="TF-2">TF-2</option>
-			</select>
+			</select> -->
 
 
     
@@ -368,7 +368,7 @@
 //let now_page_code = "d03";
 let dataTable;
 let selectedRow;
-
+var today = new Date();
 
 function pdfLinkFormatter(cell) {
     var fn = cell.getValue();
@@ -402,7 +402,7 @@ function getDataList() {
         ajaxLoader: false,
         ajaxURL: "/mibogear/condition/selectHeatTreatingList",
         ajaxParams: {
-            machine_name: $("#mch_name").val() || "",
+            //machine_name: $("#mch_name").val() || "",
             startDate: $("#startDate").val() || "",
             endDate: $("#endDate").val() || ""
         },
@@ -478,7 +478,7 @@ function getDataList() {
 
 $(document).ready(function () {
     // 날짜 세팅
-    var today = new Date(),
+
         yesterday = new Date(today);
     yesterday.setDate(today.getDate() - 1);
 
@@ -507,7 +507,7 @@ $(document).ready(function () {
         $("#originalFile2").val("");
         $("#originalFile3").val("");
         $("#heat_treating_code").val("");
-        $("input[name='cr_date']").val(formatDate(today));
+        $("input[name='collection_date']").val(formatDate(today));
         $("#box1FileName, #box2FileName, #box3FileName, #box4FileName").text("");
         $("#modalContainer").show().addClass("show");
     });
@@ -516,13 +516,13 @@ $(document).ready(function () {
         $("#modalContainer").removeClass("show").hide();
     });
 
-    $("#mch_name").on("change", function () {
+/*     $("#mch_name").on("change", function () {
         console.log("선택된 설비명:", $(this).val());
-    });
+    }); */
 
     $(".select-button").click(function () {
         dataTable.setData("/mibogear/condition/selectHeatTreatingList", {
-            machine_name: $("#mch_name").val(),
+            //machine_name: $("#mch_name").val(),
             startDate: $("#startDate").val(),
             endDate: $("#endDate").val()
         });

@@ -268,18 +268,18 @@
 	            <input type="text" id="s_sdate" class="dayselect monthSet"/>
 			</div>
                 <button class="select-button">
-                    <img src="/chunil/css/tabBar/search-icon.png" alt="select" class="button-image">조회
+                    <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">조회
                 </button>
                 <button class="insert-button">
-                    <img src="/chunil/css/tabBar/add-outline.png" alt="insert" class="button-image">추가
+                    <img src="/mibogear/image/insert-icon.png" alt="insert" class="button-image">추가
                 </button>
                 <button class="delete-button">
-				    <img src="/chunil/css/tabBar/xDel3.png" alt="delete" class="button-image"> 삭제
+				    <img src="/mibogear/css/tabBar/xDel3.png" alt="delete" class="button-image"> 삭제
 				</button>
                 
                 
                 <button class="excel-download-button">
-                    <img src="/chunil/css/tabBar/excel-icon.png" alt="excel" class="button-image">엑셀다운로드
+                    <img src="/mibogear/image/excel-icon.png" alt="excel" class="button-image">엑셀다운로드
                 </button>
                 
                 
@@ -296,6 +296,7 @@ let now_page_code = "c04";
 
 var dataTable;
 var selectedRowData = null;
+var clickedCnt = null;
 
 $(function() {
 	var tdate = todayDate();
@@ -327,15 +328,16 @@ $(function() {
 
 //함수
 function getDailyCheckData(){
+	console.log("데이터 조회 함수");
 	$.ajax({
 		url:"/mibogear/condition/dailyCheck/list",
 		type:"post",
 		dataType:"json",
 		data:{
-			"d_sdate":$("#s_sdate").val()
+			"date":$("#s_sdate").val()
 		},
 		success:function(result){
-			dataTable.setData(result.data);
+			dataTable.setData(result);
 		}
 	})
 }
@@ -350,7 +352,7 @@ function getDailyCheck(){
 		    headerSort: false,
 		    reactiveData: true,
 		    columnHeaderVertAlign: "middle",
-		    rowVertAlign: "middle",
+		    rowVerticalAlign: "middle",
 		    headerHozAlign: 'center',
 //		    ajaxConfig: { method: 'POST' },
 //		    ajaxURL: "/chunil/productionManagement/alarmRecord/list",
@@ -364,60 +366,50 @@ function getDailyCheck(){
 		        return response; //return the response data to tabulator
 		    },
 		    placeholder: "조회된 데이터가 없습니다.",
-		    columns: [
-		      { title: "년-월", field: "d_ym", width: 80, hozAlign: "center", headerSort:false, frozen:true},
-		      { title: "점검항목", field: "d_title", width: 250, hozAlign: "left", headerSort:false, frozen:true },
-		      { title: "점검내용", field: "d_desc", width: 450, hozAlign: "left", headerSort:false, frozen:true },
-		      { title: "1일", field: "d01",  width: 60, hozAlign: "center", headerSort:false, 
-		    	  editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}
-		      },
-		      { title: "2일", field: "d02",width: 60, hozAlign: "center", headerSort:false,
-		    	  editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}
-		      },
-		      { title: "3일", field: "d03",width: 60, hozAlign: "center", headerSort:false,
-		    	  editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}
-		      },
-		      { title: "4일", field: "d04",width: 60, hozAlign: "center", headerSort:false,
-		    	  editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}
-		      },
-		      { title: "5일", field: "d05",width: 60, hozAlign: "center", headerSort:false,
-		    	  editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}
-		      },
-		      { title: "6일", field: "d06",width: 60, hozAlign: "center", headerSort:false,
-		    	  editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}
-		      },
-		      { title: "7일", field: "d07",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "8일", field: "d08",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "9일", field: "d09",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "10일", field: "d10",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "11일", field: "d11",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "12일", field: "d12",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "13일", field: "d13",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "14일", field: "d14",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "15일", field: "d15",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "16일", field: "d16",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "17일", field: "d17",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "18일", field: "d18",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "19일", field: "d19",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "20일", field: "d20",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "21일", field: "d21",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "22일", field: "d22",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "23일", field: "d23",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "24일", field: "d24",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "25일", field: "d25",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "26일", field: "d26",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "27일", field: "d27",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "28일", field: "d28",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "29일", field: "d29",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "30일", field: "d30",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "31일", field: "d31",width: 60, hozAlign: "center", headerSort:false, editor:"select", editorParams:{values:{"OK":"OK", "NG":"NG"}}},
-		      { title: "비고", field: "d_bigo",width: 200, hozAlign: "center", headerSort:false },
-			    {field:"cnt",visible:false},
-		    ],
+	        columns: [
+	            { title: "년-월", field: "d_ym", width: 80, hozAlign: "center", headerSort:false, frozen:true},
+	            { title: "점검항목", field: "d_title", width: 250, hozAlign: "left", headerSort:false, frozen:true, editor:"input" },
+	            { title: "점검내용", field: "d_desc", width: 450, hozAlign: "left", headerSort:false, frozen:true, editor:"input" },
+	            { title: "1일", field: "d01", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "2일", field: "d02", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "3일", field: "d03", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "4일", field: "d04", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "5일", field: "d05", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "6일", field: "d06", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "7일", field: "d07", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "8일", field: "d08", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "9일", field: "d09", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "10일", field: "d10", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "11일", field: "d11", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "12일", field: "d12", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "13일", field: "d13", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "14일", field: "d14", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "15일", field: "d15", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "16일", field: "d16", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "17일", field: "d17", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "18일", field: "d18", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "19일", field: "d19", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "20일", field: "d20", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "21일", field: "d21", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "22일", field: "d22", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "23일", field: "d23", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "24일", field: "d24", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "25일", field: "d25", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "26일", field: "d26", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "27일", field: "d27", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "28일", field: "d28", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "29일", field: "d29", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "30일", field: "d30", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "31일", field: "d31", width: 60, hozAlign: "center", headerSort:false, editor:"input" },
+	            { title: "비고", field: "d_bigo", width: 200, hozAlign: "center", headerSort:false, editor:"input" },
+	            {field:"cnt", visible:false},
+	        ],
 		    rowClick: function(e, row) {
 		      $('#dataTable .tabulator-row').removeClass('row_select');
 		      row.getElement().classList.add('row_select');
 		      selectedRowData = row.getData();
+		      clickedCnt = selectedRowData.cnt;
+		      console.log("선택된 행 cnt: ", clickedCnt);
 		    },
 			cellEdited: function(cell) {
 			    var field = cell.getField(); 
@@ -426,7 +418,7 @@ function getDailyCheck(){
 			    var cnt = rowData.cnt; 
 
 			    $.ajax({
-			        url: "/chunil/condition/dailycheck/update",
+			        url: "/mibogear/condition/dailyCheckUpdate",
 			        type: "POST",
 			        dataType:"json",			        
 			        data: {
@@ -442,6 +434,75 @@ function getDailyCheck(){
 		  });
 }
 
+function deleteDailyCheck() {
+    // 1. 선택된 데이터(cnt) 유효성 검사
+    if (clickedCnt === null || typeof clickedCnt === 'undefined') {
+        alert("삭제할 항목을 먼저 선택해주세요.");
+        return;
+    }
+
+    // 2. 사용자 확인
+    if (!confirm("선택된 항목을 정말로 삭제하시겠습니까?")) {
+        return; // 사용자가 취소하면 종료
+    }
+    
+    // 3. Ajax 요청
+    $.ajax({
+        url: "/mibogear/condition/dailyCheckDelete",
+        type: "POST",
+        dataType: "json",
+        data: {
+            "cnt": clickedCnt 
+        },
+        success: function(result) {
+            if (result === true) {
+                alert("삭제가 완료되었습니다.");
+                clickedCnt = null;
+                getDailyCheckData(); 
+            } else {
+                alert("삭제에 실패했습니다.");
+            }
+        },
+        error: function(xhr, status, error) {
+            alert("삭제 요청 중 네트워크 오류가 발생했습니다: " + error);
+            console.error("Ajax Error:", status, error);
+        }
+    });
+}
+function insertDailyCheck() {
+	const d_date = $("#s_sdate").val();
+    // 2. 사용자 확인
+    if (!confirm(d_date + "에 항목을 추가하시겠습니까?")) {
+        return; 
+    }
+    
+    // 3. Ajax 요청
+    $.ajax({
+        url: "/mibogear/condition/dailyCheckInsert",
+        type: "POST",
+        dataType: "json",
+        data: {
+            "d_ym": d_date 
+        },
+        success: function(result) {
+            if (result === true) {
+                getDailyCheckData(); 
+            } else {
+                alert("추가 실패했습니다.");
+            }
+        },
+        error: function(xhr, status, error) {
+            alert("추가 요청 중 네트워크 오류가 발생했습니다: " + error);
+            console.error("Ajax Error:", status, error);
+        }
+    });
+}
+$('.delete-button').on('click', function() {
+    deleteDailyCheck();
+});
+$('.insert-button').on('click', function() {
+    insertDailyCheck();
+});
 </script>
 
 </body>

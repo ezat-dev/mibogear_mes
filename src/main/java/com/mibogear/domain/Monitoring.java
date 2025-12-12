@@ -50,6 +50,158 @@ public class Monitoring {
     private Integer tf1_zone2;
     private Integer tf1_zone3;
     
+    //알람
+    private String alarm_address;
+    private String  comment;
+    private String occur_time;
+    private String clear_time;
+    private String id;
+    private String alarm_count;
+    
+    //트렌드
+    private String date;
+    private String bcf1_chim;
+    private String bcf1_oil;
+    private String bcf1_cp;
+    private String bcf1_tempering;
+    private String bcf2_chim;
+    private String bcf2_oil;
+    private String bcf2_cp;
+    private String bcf3_chim;
+    private String bcf3_oil;
+    private String bcf3_cp;
+    private String bcf3_tempering;
+    private String bcf4_chim;
+    private String bcf4_oil;
+    private String bcf4_cp;
+    
+    
+	public String getAlarm_count() {
+		return alarm_count;
+	}
+	public void setAlarm_count(String alarm_count) {
+		this.alarm_count = alarm_count;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getBcf1_chim() {
+		return bcf1_chim;
+	}
+	public void setBcf1_chim(String bcf1_chim) {
+		this.bcf1_chim = bcf1_chim;
+	}
+	public String getBcf1_oil() {
+		return bcf1_oil;
+	}
+	public void setBcf1_oil(String bcf1_oil) {
+		this.bcf1_oil = bcf1_oil;
+	}
+	public String getBcf1_cp() {
+		return bcf1_cp;
+	}
+	public void setBcf1_cp(String bcf1_cp) {
+		this.bcf1_cp = bcf1_cp;
+	}
+	public String getBcf1_tempering() {
+		return bcf1_tempering;
+	}
+	public void setBcf1_tempering(String bcf1_tempering) {
+		this.bcf1_tempering = bcf1_tempering;
+	}
+	public String getBcf2_chim() {
+		return bcf2_chim;
+	}
+	public void setBcf2_chim(String bcf2_chim) {
+		this.bcf2_chim = bcf2_chim;
+	}
+	public String getBcf2_oil() {
+		return bcf2_oil;
+	}
+	public void setBcf2_oil(String bcf2_oil) {
+		this.bcf2_oil = bcf2_oil;
+	}
+	public String getBcf2_cp() {
+		return bcf2_cp;
+	}
+	public void setBcf2_cp(String bcf2_cp) {
+		this.bcf2_cp = bcf2_cp;
+	}
+	public String getBcf3_chim() {
+		return bcf3_chim;
+	}
+	public void setBcf3_chim(String bcf3_chim) {
+		this.bcf3_chim = bcf3_chim;
+	}
+	public String getBcf3_oil() {
+		return bcf3_oil;
+	}
+	public void setBcf3_oil(String bcf3_oil) {
+		this.bcf3_oil = bcf3_oil;
+	}
+	public String getBcf3_cp() {
+		return bcf3_cp;
+	}
+	public void setBcf3_cp(String bcf3_cp) {
+		this.bcf3_cp = bcf3_cp;
+	}
+	public String getBcf3_tempering() {
+		return bcf3_tempering;
+	}
+	public void setBcf3_tempering(String bcf3_tempering) {
+		this.bcf3_tempering = bcf3_tempering;
+	}
+	public String getBcf4_chim() {
+		return bcf4_chim;
+	}
+	public void setBcf4_chim(String bcf4_chim) {
+		this.bcf4_chim = bcf4_chim;
+	}
+	public String getBcf4_oil() {
+		return bcf4_oil;
+	}
+	public void setBcf4_oil(String bcf4_oil) {
+		this.bcf4_oil = bcf4_oil;
+	}
+	public String getBcf4_cp() {
+		return bcf4_cp;
+	}
+	public void setBcf4_cp(String bcf4_cp) {
+		this.bcf4_cp = bcf4_cp;
+	}
+	public String getOccur_time() {
+		return occur_time;
+	}
+	public void setOccur_time(String occur_time) {
+		this.occur_time = occur_time;
+	}
+	public String getClear_time() {
+		return clear_time;
+	}
+	public void setClear_time(String clear_time) {
+		this.clear_time = clear_time;
+	}
+	public String getId() {
+		return id;
+	}
+	public void setId(String id) {
+		this.id = id;
+	}
+	public String getAlarm_address() {
+		return alarm_address;
+	}
+	public void setAlarm_address(String alarm_address) {
+		this.alarm_address = alarm_address;
+	}
+	public String getComment() {
+		return comment;
+	}
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 	public String getHogi() {
 		return hogi;
 	}

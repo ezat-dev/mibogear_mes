@@ -191,4 +191,21 @@ public class ConditionServiceImpl implements ConditionService {
   	public boolean updateTempCorrectionField(TempCorrectionQue tempCorrectionQue) {
   		return conditionDao.updateTempCorrectionField(tempCorrectionQue);
   	}
+  	
+    @Override
+    public List<Condition> getDailyCheckList(Condition condition) {
+        return conditionDao.getDailyCheckList(condition);
+    }
+  	@Override
+  	public boolean dailyCheckUpdate(Condition condition) {
+  		return conditionDao.dailyCheckUpdate(condition);
+  	}
+  	@Override
+  	public boolean dailyCheckDelete(Condition condition) {
+  		return conditionDao.dailyCheckDelete(condition);
+  	}
+  	@Override
+  	public boolean dailyCheckInsert(Condition condition) {
+  		return conditionDao.dailyCheckInsert(condition);
+  	}
 }

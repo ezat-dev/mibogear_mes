@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="monitoring">
+		<!-- 알람이력 조회 -->
+	<select id="getAlarmList" parameterType="Monitoring" resultType="Monitoring">
+SELECT
+    aa.alarm_address AS alarm_address,
+    aa.comment AS comment,
+    aa.regtime AS occur_time,
+    aa.clear_time
+FROM (
+    SELECT
+        *,
+        CASE 
+            WHEN LEAD(a_value) OVER (PARTITION BY alarm_address ORDER BY regtime) = 0
+            THEN LEAD(regtime) OVER (PARTITION BY alarm_address ORDER BY regtime)
+            ELSE NULL
+        END AS clear_time
+    FROM tb_alarmlist
+) AS aa
+WHERE 1=1
+<if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+AND regtime between #{startDate} and #{endDate}
+</if>
+    AND aa.a_value = 1
+ORDER BY aa.regtime DESC;
+	</select>
+		<select id="getTempList" parameterType="Monitoring" resultType="Monitoring">
+SELECT * FROM tb_trend_temp
+WHERE 1=1
+<if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+AND date between #{startDate} and #{endDate}
+</if>
+ORDER BY date ASC;
+	</select>
+	<!-- 알람 랭킹 -->
+		<select id="getAlarmRankingList" parameterType="Monitoring" resultType="Monitoring">
+SELECT
+    aa.alarm_address AS alarm_address,
+    aa.comment AS comment,
+    aa.regtime AS occur_time,
+    aa.clear_time,
+    COUNT(aa.alarm_address) AS alarm_count
+FROM (
+    SELECT
+        *,
+        CASE 
+            WHEN LEAD(a_value) OVER (PARTITION BY alarm_address ORDER BY regtime) = 0
+            THEN LEAD(regtime) OVER (PARTITION BY alarm_address ORDER BY regtime)
+            ELSE NULL
+        END AS clear_time
+    FROM tb_alarmlist
+) AS aa
+WHERE 1=1
+<if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+AND regtime between #{startDate} and #{endDate}
+</if>
+    AND aa.a_value = 1
+    AND aa.clear_time IS NOT null
+    GROUP BY aa.alarm_address
+ORDER BY alarm_count DESC;
+	</select>
+</mapper>

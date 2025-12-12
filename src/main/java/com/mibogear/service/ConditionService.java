@@ -81,4 +81,10 @@ public interface ConditionService {
     boolean deleteHeatTreating(Condition condition);
     List<TempCorrectionQue> tempCorrectionList(TempCorrectionQue tempCorrectionQue);
     boolean updateTempCorrectionField(TempCorrectionQue tempCorrectionQue);
+    
+    //일상점검일지
+    List<Condition> getDailyCheckList(Condition condition);
+    boolean dailyCheckUpdate(Condition condition);
+    boolean dailyCheckDelete(Condition condition);
+    boolean dailyCheckInsert(Condition condition);
 }

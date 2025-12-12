@@ -1,5 +1,12 @@
 package com.mibogear.dao;
 
-public interface MonitoringDAO {
+import java.util.List;
 
+import com.mibogear.domain.Monitoring;
+
+public interface MonitoringDAO {
+	
+	List<Monitoring> getAlarmList(Monitoring monitoring);
+	List<Monitoring> getTempList(Monitoring monitoring);
+	List<Monitoring> getAlarmRankingList(Monitoring monitoring);
 }

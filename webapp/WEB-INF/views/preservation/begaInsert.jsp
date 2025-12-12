@@ -405,6 +405,14 @@ th{
 		//전역변수
 		var cutumTable;
 		var isEditMode = false; //수정,최초저장 구분값
+		var today = new Date();
+
+	    function formatDate(date) {
+	        var y = date.getFullYear(),
+	            m = ("0" + (date.getMonth() + 1)).slice(-2),
+	            d = ("0" + date.getDate()).slice(-2);
+	        return y + "-" + m + "-" + d;
+	    }
 
 		//로드
 		$(function() {
@@ -779,6 +787,7 @@ th{
 	insertButton.addEventListener('click', function() {
 		isEditMode = false;  // 추가 모드
 	    $('#begaInsertForm')[0].reset(); // 폼 초기화
+	    $('#fstp_date').val(formatDate(today));
 	    begaInsertModal.style.display = 'block'; // 모달 표시
 
 		$('.delete').hide();

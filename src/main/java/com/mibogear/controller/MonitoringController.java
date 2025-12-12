@@ -1,14 +1,21 @@
 package com.mibogear.controller;
 
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mibogear.domain.Monitoring;
 import com.mibogear.domain.Users;
+import com.mibogear.service.MonitoringService;
 
 @Controller
 public class MonitoringController {
-
+	@Autowired
+	private MonitoringService monitoringService;
 	
 	@RequestMapping(value = "/monitoring/overView", method = RequestMethod.GET)
 	public String overView(Users users) {
@@ -39,5 +46,24 @@ public class MonitoringController {
 
 		return "/monitoring/trend.jsp";
 	}
+    //알람이력 조회
+    @RequestMapping(value = "/monitoring/getAlarmList", method = RequestMethod.POST)
+    @ResponseBody
+    public List<Monitoring> getAlarmList(Monitoring monitoring) {
+        return monitoringService.getAlarmList(monitoring);
+    }
+    //트렌드 조회
+    @RequestMapping(value = "/monitoring/getTempList", method = RequestMethod.POST)
+    @ResponseBody
+    public List<Monitoring> getTempList(Monitoring monitoring) {
+        return monitoringService.getTempList(monitoring);
+    }
+    //알람랭킹 조회
+    //트렌드 조회
+    @RequestMapping(value = "/monitoring/getAlarmRankingList", method = RequestMethod.POST)
+    @ResponseBody
+    public List<Monitoring> getAlarmRankingList(Monitoring monitoring) {
+        return monitoringService.getAlarmRankingList(monitoring);
+    }
 
 }

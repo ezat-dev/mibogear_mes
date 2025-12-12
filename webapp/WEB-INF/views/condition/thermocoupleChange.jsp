@@ -368,6 +368,14 @@
 	//전역변수
     var cutumTable;	
     var isEditMode = false; //수정,최초저장 구분값
+    var today = new Date();
+
+    function formatDate(date) {
+        var y = date.getFullYear(),
+            m = ("0" + (date.getMonth() + 1)).slice(-2),
+            d = ("0" + date.getDate()).slice(-2);
+        return y + "-" + m + "-" + d;
+    }
 	//로드
 	$(function(){
 		var currentYear = new Date().getFullYear(); 
@@ -523,6 +531,9 @@
 		isEditMode = false;  // 추가 모드
 	    $('#thermocoupleChangeForm')[0].reset(); // 폼 초기화
 	    $("#th_change_code").val("");
+	    $("input[name='before_change_date']").val(formatDate(today));
+	    $("input[name='change_date']").val(formatDate(today));
+	    $("input[name='next_change_date']").val(formatDate(today));
 	  
 	    thermocoupleChangeModal.style.display = 'block'; // 모달 표시
 
