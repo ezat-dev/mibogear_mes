@@ -68,8 +68,10 @@ ORDER BY alarm_count DESC;
 SELECT *
 FROM v_alarm_status
 WHERE 1=1
-AND info_hogi = 'BCF1'
-AND alarm_hogi = 'BCF1'
+AND info_hogi = #{machine_name}
+AND alarm_hogi = #{machine_name}
+<if test="machine_name != null and machine_name.contains('BCF')">
 LIMIT 50
+</if>
 	</select>
 </mapper>
