@@ -626,7 +626,7 @@ textarea {
 		
 		    if (isEditMode && selectedRowData && selectedRowData.fac_code) {
 		        formData.append("mode", "update");
-		        formData.append("fac_code", selectedRowData.fac_code);
+		        //formData.append("fac_code", selectedRowData.fac_code);
 		        confirmMsg = "수정하시겠습니까?";
 		    } else {
 		        formData.append("mode", "insert");

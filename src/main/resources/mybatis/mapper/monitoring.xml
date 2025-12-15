@@ -62,4 +62,14 @@ AND regtime between #{startDate} and #{endDate}
     GROUP BY aa.alarm_address
 ORDER BY alarm_count DESC;
 	</select>
+	<!-- 알람현황 -->
+		<!-- 알람 랭킹 -->
+		<select id="getAlarm1" parameterType="Monitoring" resultType="Monitoring">
+SELECT *
+FROM v_alarm_status
+WHERE 1=1
+AND info_hogi = 'BCF1'
+AND alarm_hogi = 'BCF1'
+LIMIT 50
+	</select>
 </mapper>

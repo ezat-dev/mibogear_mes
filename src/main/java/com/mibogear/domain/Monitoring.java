@@ -75,7 +75,44 @@ public class Monitoring {
     private String bcf4_oil;
     private String bcf4_cp;
     
+    //알람현황
+    private String alarm_hogi;
+    private String addr;
+    private String value;
+    private String r_num;
+    private String idx;
     
+    
+	public String getIdx() {
+		return idx;
+	}
+	public void setIdx(String idx) {
+		this.idx = idx;
+	}
+	public String getAlarm_hogi() {
+		return alarm_hogi;
+	}
+	public void setAlarm_hogi(String alarm_hogi) {
+		this.alarm_hogi = alarm_hogi;
+	}
+	public String getAddr() {
+		return addr;
+	}
+	public void setAddr(String addr) {
+		this.addr = addr;
+	}
+	public String getValue() {
+		return value;
+	}
+	public void setValue(String value) {
+		this.value = value;
+	}
+	public String getR_num() {
+		return r_num;
+	}
+	public void setR_num(String r_num) {
+		this.r_num = r_num;
+	}
 	public String getAlarm_count() {
 		return alarm_count;
 	}

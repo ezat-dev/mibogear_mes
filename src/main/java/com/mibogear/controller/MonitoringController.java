@@ -59,11 +59,16 @@ public class MonitoringController {
         return monitoringService.getTempList(monitoring);
     }
     //알람랭킹 조회
-    //트렌드 조회
     @RequestMapping(value = "/monitoring/getAlarmRankingList", method = RequestMethod.POST)
     @ResponseBody
     public List<Monitoring> getAlarmRankingList(Monitoring monitoring) {
         return monitoringService.getAlarmRankingList(monitoring);
+    }
+    //알람현황 조회
+    @RequestMapping(value = "/monitoring/getAlarm1", method = RequestMethod.POST)
+    @ResponseBody
+    public List<Monitoring> getAlarm1(Monitoring monitoring) {
+        return monitoringService.getAlarm1(monitoring);
     }
 
 }

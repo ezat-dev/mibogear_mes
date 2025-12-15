@@ -27,4 +27,8 @@ public class MonitoringDAOImpl implements MonitoringDAO{
 	public List<Monitoring> getAlarmRankingList(Monitoring monitoring) {
 		return sqlSession.selectList("monitoring.getAlarmRankingList", monitoring);
 	}
+	@Override
+	public List<Monitoring> getAlarm1(Monitoring monitoring) {
+		return sqlSession.selectList("monitoring.getAlarm1", monitoring);
+	}
 }

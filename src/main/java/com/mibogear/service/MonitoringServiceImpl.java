@@ -26,4 +26,8 @@ public class MonitoringServiceImpl implements MonitoringService{
     public List<Monitoring> getAlarmRankingList(Monitoring monitoring) {
         return monitoringDao.getAlarmRankingList(monitoring);
     }
+    @Override
+    public List<Monitoring> getAlarm1(Monitoring monitoring) {
+        return monitoringDao.getAlarm1(monitoring);
+    }
 }

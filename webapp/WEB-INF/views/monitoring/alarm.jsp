@@ -17,26 +17,17 @@
 
 .container {
 	display: flex;
-	justify-content: space-between;
-}
-
-div {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	text-align: center;
-	font-size: 13px;
-	padding: 2px;
-	overflow: hidden;
-	text-overflow: ellipsis;
-	white-space: nowrap;
-	box-sizing: border-box;
-	border: 1px solid #ccc; /* 경계 확인용 */
-	height: 28px; /* 고정 높이로 정렬 유지 */
+    /*justify-content: center;*/
 }
 </style>
 <body>
-
+    <main class="main">
+		<div class="container">
+			<div id="alarmTable1" class="tabulator"></div>
+			<div id="alarmTable2" class="tabulator"></div>
+			<div id="alarmTable3" class="tabulator"></div>
+		</div>
+	</main>
 	<!-- <main class="main">
 	<div class="alarm-big-box-1"></div>
     <div class="alarm-1">소입로 1존 FAN 이상</div>
@@ -150,6 +141,122 @@ div {
 		
 	});
 	
+	function getAlarm1(){
+		
+		alarmTable1 = new Tabulator("#alarmTable1", {
+	        height: "800px", // 테이블 높이 설정 (모달 크기에 맞게)
+	        layout: "fitColumns",
+	        headerHozAlign: "center",
+	        ajaxConfig: {
+	            method: "POST",
+	            headers: {
+	                "Content-Type": "application/json;charset=UTF-8" 
+	            }
+	        },
+	        ajaxParams:{
+	        	change_date: $("#year").val()
+		        },
+	        ajaxContentType: "json",  
+	        ajaxLoader: false,
+	        ajaxURL: "/mibogear/monitoring/getAlarm1",
+	        placeholder: "조회된 데이터가 없습니다.",
+		    columns:[
+		    	{title: "idx", formatter: "ids", hozAlign: "center", visible:false, sorter:false},
+		    	{title: "NO", field: "r_num", hozAlign: "center", width: 60, sorter:false},
+			    {title:"호기", field:"alarm_hogi", sorter:"string", width:80, hozAlign:"center", sorter:false},     
+				{title:"주소", field:"addr", sorter:"string", width:110,hozAlign:"center", sorter:false},	        
+		        {title:"알람 내용", field:"comment", sorter:"string", width:190,hozAlign:"center", sorter:false},
+		        {title:"값", field:"value", width:80,hozAlign:"center", sorter:false}
+		    ],
+		    rowFormatter:function(row){
+			    var data = row.getData();
+			    
+			    row.getElement().style.fontWeight = "700";
+				row.getElement().style.backgroundColor = "#FFFFFF";
+			},
+			rowClick:function(e, row){
+				
+			},
+			rowDblClick:function(e, row){
+			}
+		});		
+
+		alarmTable2 = new Tabulator("#alarmTable2", {
+	        height: "800px", // 테이블 높이 설정 (모달 크기에 맞게)
+	        layout: "fitColumns",
+	        headerHozAlign: "center",
+	        ajaxConfig: {
+	            method: "POST",
+	            headers: {
+	                "Content-Type": "application/json;charset=UTF-8" 
+	            }
+	        },
+	        ajaxParams:{
+	        	change_date: $("#year").val()
+		        },
+	        ajaxContentType: "json",  
+	        ajaxLoader: false,
+	        ajaxURL: "/mibogear/monitoring/getAlarm1",
+	        placeholder: "조회된 데이터가 없습니다.",
+		    columns:[
+		    	{title: "idx", formatter: "ids", hozAlign: "center", visible:false, sorter:false},
+		    	{title: "NO", field: "r_num", hozAlign: "center", width: 60, sorter:false},
+			    {title:"호기", field:"alarm_hogi", sorter:"string", width:80, hozAlign:"center", sorter:false},     
+				{title:"주소", field:"addr", sorter:"string", width:110,hozAlign:"center", sorter:false},	        
+		        {title:"알람 내용", field:"comment", sorter:"string", width:190,hozAlign:"center", sorter:false},
+		        {title:"값", field:"value", width:80,hozAlign:"center", sorter:false}
+		    ],
+		    rowFormatter:function(row){
+			    var data = row.getData();
+			    
+			    row.getElement().style.fontWeight = "700";
+				row.getElement().style.backgroundColor = "#FFFFFF";
+			},
+			rowClick:function(e, row){
+				
+			},
+			rowDblClick:function(e, row){
+			}
+		});	
+
+		alarmTable3 = new Tabulator("#alarmTable3", {
+	        height: "800px", // 테이블 높이 설정 (모달 크기에 맞게)
+	        layout: "fitColumns",
+	        headerHozAlign: "center",
+	        ajaxConfig: {
+	            method: "POST",
+	            headers: {
+	                "Content-Type": "application/json;charset=UTF-8" 
+	            }
+	        },
+	        ajaxParams:{
+	        	change_date: $("#year").val()
+		        },
+	        ajaxContentType: "json",  
+	        ajaxLoader: false,
+	        ajaxURL: "/mibogear/monitoring/getAlarm1",
+	        placeholder: "조회된 데이터가 없습니다.",
+		    columns:[
+		    	{title: "idx", formatter: "ids", hozAlign: "center", visible:false, sorter:false},
+		    	{title: "NO", field: "r_num", hozAlign: "center", width: 60, sorter:false},
+			    {title:"호기", field:"alarm_hogi", sorter:"string", width:80, hozAlign:"center", sorter:false},     
+				{title:"주소", field:"addr", sorter:"string", width:110,hozAlign:"center", sorter:false},	        
+		        {title:"알람 내용", field:"comment", sorter:"string", width:190,hozAlign:"center", sorter:false},
+		        {title:"값", field:"value", width:80,hozAlign:"center", sorter:false}
+		    ],
+		    rowFormatter:function(row){
+			    var data = row.getData();
+			    
+			    row.getElement().style.fontWeight = "700";
+				row.getElement().style.backgroundColor = "#FFFFFF";
+			},
+			rowClick:function(e, row){
+				
+			},
+			rowDblClick:function(e, row){
+			}
+		});	
+	}
 
 
 	/* //OPC값 알람 조회
