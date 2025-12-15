@@ -359,7 +359,6 @@ public class StandardController {
 			@ModelAttribute Corp corp,
 			@RequestParam("mode") String mode) { 
 		Map<String, Object> result = new HashMap<>();
-
 		try {
 			if ("insert".equalsIgnoreCase(mode)) {
 				standardService.cutumInsertSave(corp);
@@ -375,6 +374,7 @@ public class StandardController {
 		} catch (Exception e) {
 			result.put("status", "error");
 			result.put("message", e.getMessage());
+			e.printStackTrace();
 		}
 
 		System.out.println(result.get("status"));

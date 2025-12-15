@@ -312,11 +312,11 @@
 			type:"post",
 			dataType:"json",
 			success:function(result){
-
 				var data = result.data;
 				var idx = 0;
+				console.log("메뉴세팅: ", data);
 				for(let key in data){
-//					console.log(key);
+					console.log(key);
 					if(key != "perm_code" && key != "user_code"){
 						if(data[key] != null && data[key] != "N"){
 						//	console.log(data[key]);

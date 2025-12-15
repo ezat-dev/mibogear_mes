@@ -474,7 +474,7 @@ textarea {
 
 	    
 <script>
-
+let now_page_code = "f01";
 
    
 	//전역변수

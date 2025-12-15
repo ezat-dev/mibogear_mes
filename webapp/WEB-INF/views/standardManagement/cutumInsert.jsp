@@ -620,13 +620,13 @@ function save() {
 
     if (isEditMode && selectedRowData && selectedRowData.corp_code) {
         formData.append("mode", "update");
-        formData.append("corp_code", selectedRowData.corp_code);
+        //formData.append("corp_code", selectedRowData.corp_code);
         confirmMsg = "수정하시겠습니까?";
     } else {
         formData.append("mode", "insert");
         confirmMsg = "저장하시겠습니까?";
     }
-
+	console.log("수정 or 업데이트", formData);
     if (!confirm(confirmMsg)) {
         return;
     }
@@ -639,9 +639,13 @@ function save() {
         processData: false,
         dataType: "json",
         success: function(result) {
+            if(result.status == "success"){
             alert("저장 되었습니다.");
             $(".cutumModal").hide();
             getCutumList();
+            }else{
+			alert("저장 실패했습니다.");
+                }
         },
         error: function(xhr, status, error) {
             console.error("저장 오류:", error);
