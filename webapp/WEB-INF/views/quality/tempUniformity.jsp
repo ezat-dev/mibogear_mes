@@ -350,7 +350,7 @@
 
 <script>
 
-let now_page_code = "e04";
+let now_page_code = "e01";
 
 $(document).ready(function () {
     // 페이지 로딩 시 데이터 불러오기
@@ -459,7 +459,7 @@ $("#saveCorrStatus").click(function (event) {
         layout: "fitColumns",
         headerHozAlign: "center",
         columnHeaderVertAlign: "middle",
-        rowVertAlign: "middle",
+        //rowVerticalAlign: "middle",
         ajaxConfig: "POST",
         ajaxLoader: false,
         ajaxURL: "/mibogear/quality/getTempUniformityList",

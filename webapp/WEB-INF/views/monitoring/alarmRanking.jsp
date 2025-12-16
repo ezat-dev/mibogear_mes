@@ -485,7 +485,7 @@
     </main>
     
 <script>
-let now_page_code = "b03";
+let now_page_code = "a04";
 
 var dataTable;
 var selectedRowData = null;

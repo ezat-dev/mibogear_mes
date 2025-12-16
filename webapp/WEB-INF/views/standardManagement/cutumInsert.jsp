@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>거래처등록</title>
-    <link rel="stylesheet" href="/mibogear/css/standardstandardManagement/productInsert.css">
+<!--     <link rel="stylesheet" href="/mibogear/css/standardstandardManagement/productInsert.css"> -->
     <link rel="stylesheet" href="/mibogear/css/tabBar/tabBar.css">
     <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 <%@include file="../include/pluginpage.jsp" %> 
@@ -348,19 +348,19 @@ textarea {
     
     <div class="button-container">
         <button class="select-button" onclick="getCutumList();">
-            <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">
+            <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">조회
            
         </button>
         <button class="insert-button">
-            <img src="/mibogear/image/insert-icon.png" alt="insert" class="button-image">
+            <img src="/mibogear/image/insert-icon.png" alt="insert" class="button-image">추가
           
         </button>
         <button class="excel-button">
-            <img src="/mibogear/image/excel-icon.png" alt="excel" class="button-image">
+            <img src="/mibogear/image/excel-icon.png" alt="excel" class="button-image">엑셀
             
         </button>
         <button class="printer-button">
-            <img src="/mibogear/image/printer-icon.png" alt="printer" class="button-image">
+            <img src="/mibogear/image/printer-icon.png" alt="printer" class="button-image">출력
             
         </button>
     </div>
@@ -445,7 +445,7 @@ textarea {
 <script>
 
 
-   
+let now_page_code = "f03";   
 var cutumTable;	
 var isEditMode = false; //수정,최초저장 구분값
 
@@ -465,7 +465,7 @@ function getCutumList(){
 	    selectable:true,	//로우 선택설정
 	    tooltips:true,
 	    selectableRangeMode:"click",
-	    selectableRows:true,
+	    //selectableRows:true,
 	    reactiveData:true,
 	    headerHozAlign:"center",
 	    ajaxConfig:"POST",
@@ -486,19 +486,19 @@ function getCutumList(){
 	        return response; //return the response data to tabulator
 	    },
 	    columns:[
-	        {title:"NO", field:"corp_code", sorter:"int", width:80,
+	        {title:"NO", field:"corp_code", sorter:"number", width:80,
 	        	hozAlign:"center"},
 	        {title:"거래처명", field:"corp_name", sorter:"string", width:150,
 	        	hozAlign:"center", headerFilter:"input"},
 	        {title:"사업자번호", field:"corp_no", sorter:"string", width:200,
 	        	hozAlign:"center", headerFilter:"input"},
-	        {title:"전화", field:"corp_tel", sorter:"int", width:200,
+	        {title:"전화", field:"corp_tel", sorter:"number", width:200,
 	        	hozAlign:"center", headerFilter:"input"},
-	        {title:"FAX", field:"corp_fax", sorter:"int", width:200,
+	        {title:"FAX", field:"corp_fax", sorter:"number", width:200,
 		        hozAlign:"center", headerFilter:"input"},
-		    {title:"대표", field:"corp_boss", sorter:"int", width:120,
+		    {title:"대표", field:"corp_boss", sorter:"number", width:120,
 			    hozAlign:"center", headerFilter:"input"},
-			{title:"담당자", field:"corp_mast", sorter:"int", width:150,
+			{title:"담당자", field:"corp_mast", sorter:"number", width:150,
 				hozAlign:"center", headerFilter:"input"},   
 			{title:"거래처코드", field:"corp_code", width:120, 
 				hozAlign:"center",visible:false},  		

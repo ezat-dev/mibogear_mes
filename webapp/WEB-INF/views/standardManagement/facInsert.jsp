@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>설비등록</title>
-    <link rel="stylesheet" href="/mibogear/css/standardstandardstandardManagement/productInsert.css">
+<!--     <link rel="stylesheet" href="/mibogear/css/standardstandardstandardManagement/productInsert.css"> -->
     <link rel="stylesheet" href="/mibogear/css/tabBar/tabBar.css">
     <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 <%@include file="../include/pluginpage.jsp" %> 
@@ -348,19 +348,19 @@ textarea {
     
     <div class="button-container">
         <button class="select-button" onclick="getFacList();">
-            <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">
+            <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">조회
            
         </button>
         <button class="insert-button">
-            <img src="/mibogear/image/insert-icon.png" alt="insert" class="button-image">
+            <img src="/mibogear/image/insert-icon.png" alt="insert" class="button-image">추가
           
         </button>
         <button class="excel-button">
-            <img src="/mibogear/image/excel-icon.png" alt="excel" class="button-image">
+            <img src="/mibogear/image/excel-icon.png" alt="excel" class="button-image">엑셀
             
         </button>
         <button class="printer-button">
-            <img src="/mibogear/image/printer-icon.png" alt="printer" class="button-image">
+            <img src="/mibogear/image/printer-icon.png" alt="printer" class="button-image">출력
             
         </button>
     </div>
@@ -447,6 +447,7 @@ textarea {
 
    
 		//전역변수
+		let now_page_code = "f02";
 		var cutumTable;	
 		var isEditMode = false; //수정,최초저장 구분값
 		
@@ -468,7 +469,7 @@ textarea {
 			    selectable:true,	//로우 선택설정
 			    tooltips:true,
 			    selectableRangeMode:"click",
-			    selectableRows:true,
+			    //selectableRows:true,
 			    reactiveData:true,
 			    headerHozAlign:"center",
 			    ajaxConfig:"POST",
@@ -487,7 +488,7 @@ textarea {
 			        return response; //return the response data to tabulator
 			    },
 			    columns:[
-			        {title:"NO", field:"fac_code", sorter:"int", width:80,
+			        {title:"NO", field:"fac_code", sorter:"number", width:80,
 			        	hozAlign:"center"},
 			        {title:"설비NO", field:"fac_no", sorter:"string", width:120,
 			        	hozAlign:"center", headerFilter:"input"},
@@ -497,7 +498,7 @@ textarea {
 			        	hozAlign:"center", headerFilter:"input"},
 			        {title:"형식", field:"fac_hyun", sorter:"string", width:200,
 			        	hozAlign:"center", headerFilter:"input"},
-			        {title:"용도", field:"fac_yong", sorter:"int", width:200,
+			        {title:"용도", field:"fac_yong", sorter:"number", width:200,
 			        	hozAlign:"center", headerFilter:"input"},
 			    ],
 			    rowFormatter:function(row){

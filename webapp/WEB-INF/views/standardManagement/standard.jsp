@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>작업표준등록</title>
-    <link rel="stylesheet" href="/mibogear/css/standardManagement/productInsert.css">
+<!--     <link rel="stylesheet" href="/mibogear/css/standardManagement/productInsert.css"> -->
     <link rel="stylesheet" href="/mibogear/css/tabBar/tabBar.css">
     <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 <%@include file="../include/pluginpage.jsp" %> 
@@ -382,19 +382,19 @@ textarea {
     
     <div class="button-container">
         <button class="select-button" onclick="getStandardList();">
-            <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">
+            <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">조회
            
         </button>
         <button class="insert-button">
-            <img src="/mibogear/image/insert-icon.png" alt="insert" class="button-image">
+            <img src="/mibogear/image/insert-icon.png" alt="insert" class="button-image">추가
           
         </button>
         <button class="excel-button">
-            <img src="/mibogear/image/excel-icon.png" alt="excel" class="button-image">
+            <img src="/mibogear/image/excel-icon.png" alt="excel" class="button-image">엑셀
             
         </button>
         <button class="printer-button">
-            <img src="/mibogear/image/printer-icon.png" alt="printer" class="button-image">
+            <img src="/mibogear/image/printer-icon.png" alt="printer" class="button-image">출력
             
         </button>
     </div>
@@ -554,6 +554,7 @@ textarea {
 
    
 	//전역변수
+	let now_page_code = "f04";
     var productTable;	
     var isEditMode = false; //수정,최초저장 구분값
     

@@ -63,39 +63,39 @@
     </div>
     <div class="section">
       <h3>생산관리</h3>
-      <div class="control"><label for="b01">LOT보고서</label><select id="b01" name="b01"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="b02">종합생산현황</label><select id="b02" name="b02"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="b03">작업일보</label><select id="b03" name="b03"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="b01">LOT보고서</label><select id="b01" name="b01"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="b02">종합생산현황</label><select id="b02" name="b02"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="b03">작업일보</label><select id="b03" name="b03"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
     </div>
     <div class="section">
       <h3>조건관리</h3>
-      <div class="control"><label for="c01">열전대교체이력</label><select id="c01" name="c01"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="c02">온도조절계보정현황</label><select id="c02" name="c02"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="c03">열처리유성상분석</label><select id="c03" name="c03"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="c04">일상점검일지</label><select id="c04" name="c04"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>     
+      <div class="control"><label for="c01">열전대교체이력</label><select id="c01" name="c01"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="c02">온도조절계보정현황</label><select id="c02" name="c02"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="c03">열처리유성상분석</label><select id="c03" name="c03"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="c04">일상점검일지</label><select id="c04" name="c04"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>     
     </div>
     <div class="section">
       <h3>설비보존관리</h3>
-      <div class="control"><label for="d01">Spare부품관리</label><select id="d01" name="d01"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="d02">설비비가동등록</label><select id="d02" name="d02"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="d03">설비수리이력관리</label><select id="d03" name="d03"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="d01">Spare부품관리</label><select id="d01" name="d01"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="d02">설비비가동등록</label><select id="d02" name="d02"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="d03">설비수리이력관리</label><select id="d03" name="d03"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
     </div>
     <div class="section">
       <h3>품질정보</h3>
-      <div class="control"><label for="e01">온도균일성 조사보고서</label><select id="e01" name="e01"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="e02">F/PROOF</label><select id="e02" name="e02"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="e01">온도균일성 조사보고서</label><select id="e01" name="e01"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="e02">F/PROOF</label><select id="e02" name="e02"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
 <!--       <div class="control"><label for="e03">Cpk</label><select id="e03" name="e03"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
       <div class="control"><label for="e04">Ppk</label><select id="e04" name="e04"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div> -->
     </div>
     <div class="section">
       <h3>기준정보</h3>
-      <div class="control"><label for="f01">제품등록</label><select id="f01" name="f01"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="f02">설비등록</label><select id="f02" name="f02"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="f03">거래처등록</label><select id="f03" name="f03"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="f04">작업표준등록</label><select id="f04" name="f04"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="f05">사용자등록</label><select id="f05" name="f05"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="f06">사용자권한부여</label><select id="f06" name="f06"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="f07">측정기기관리</label><select id="f07" name="f07"><option value="N">없음</option><option value="R">조회</option><option value="I">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="f01">제품등록</label><select id="f01" name="f01"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="f02">설비등록</label><select id="f02" name="f02"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="f03">거래처등록</label><select id="f03" name="f03"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="f04">작업표준등록</label><select id="f04" name="f04"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="f05">사용자등록</label><select id="f05" name="f05"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="f06">사용자권한부여</label><select id="f06" name="f06"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <div class="control"><label for="f07">측정기기관리</label><select id="f07" name="f07"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
     </div>
 	
 	<!-- <div class="section">
@@ -146,6 +146,8 @@
 
 
 <script>
+
+let now_page_code = "f06";
 $(function(){
   var userTable;
   var user_code = 0;
@@ -201,7 +203,7 @@ $(function(){
 	  userTable = new Tabulator('#dataList', {
 		  height: '250px',
           columnHeaderVertAlign: "middle",
-          rowVertAlign: "middle",
+          //rowVertAlign: "middle",
 		  layout: 'fitColumns',
 		  reactiveData: true,
 		  ajaxConfig: { method: 'POST' },

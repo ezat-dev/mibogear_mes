@@ -353,7 +353,7 @@ function getDailyCheck(){
 		    headerSort: false,
 		    reactiveData: true,
 		    columnHeaderVertAlign: "middle",
-		    rowVerticalAlign: "middle",
+		    //rowVerticalAlign: "middle",
 		    headerHozAlign: 'center',
 //		    ajaxConfig: { method: 'POST' },
 //		    ajaxURL: "/chunil/productionManagement/alarmRecord/list",

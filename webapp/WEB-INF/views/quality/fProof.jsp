@@ -292,7 +292,7 @@
     </main>
     
 <script>
-let now_page_code = "c04";
+let now_page_code = "e02";
 
 var dataTable;
 var selectedRowData = null;
@@ -352,7 +352,7 @@ function getDailyCheck(){
 		    headerSort: false,
 		    reactiveData: true,
 		    columnHeaderVertAlign: "middle",
-		    rowVerticalAlign: "middle",
+		    //rowVerticalAlign: "middle",
 		    headerHozAlign: 'center',
 //		    ajaxConfig: { method: 'POST' },
 //		    ajaxURL: "/chunil/productionManagement/alarmRecord/list",

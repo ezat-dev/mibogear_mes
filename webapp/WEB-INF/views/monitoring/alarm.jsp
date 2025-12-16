@@ -6,10 +6,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>알람</title>
+<title>알람현황</title>
 <%@include file="../include/pluginpage.jsp"%>
 <jsp:include page="../include/tabBar.jsp" />
-<link rel="stylesheet" href="/geomet/css/monitoring/alarm.css">
+<!-- <link rel="stylesheet" href="/geomet/css/monitoring/alarm.css"> -->
 <style>
 .main {
 	width: 98%;
@@ -201,6 +201,7 @@
 
 
 	<script>
+	let now_page_code = "a02";
 let alarmTable1;
 let alarmTable2;
 let alarmTable3;
@@ -215,7 +216,7 @@ let alarmTable4;
 	        data: [], // 초기 데이터를 빈 배열로 설정
 	        placeholder: "조회된 데이터가 없습니다.",
 	        columns: [
-	            {title: "idx", formatter: "idx", hozAlign: "center", visible:false},
+	            {title: "idx", field: "idx", hozAlign: "center", visible:false},
 	            {title: "NO", field: "r_num", hozAlign: "center", width: 30, headerSort:false},
 	            {title:"호기", field:"alarm_hogi", sorter:"string", width:60, hozAlign:"center", headerSort:false, visible: false},
 	            {title:"주소", field:"addr", sorter:"string", width:70,hozAlign:"center", headerSort:false},
@@ -241,7 +242,7 @@ let alarmTable4;
 	        data: [], // 초기 데이터를 빈 배열로 설정
 	        placeholder: "조회된 데이터가 없습니다.",
 	        columns: [
-	            {title: "idx", formatter: "idx", hozAlign: "center", visible:false},
+	            {title: "idx", field: "idx", hozAlign: "center", visible:false},
 	            {title: "NO", field: "r_num", hozAlign: "center", width: 30, headerSort:false},
 	            {title:"호기", field:"alarm_hogi", sorter:"string", width:60, hozAlign:"center", headerSort:false, visible: false},
 	            {title:"주소", field:"addr", sorter:"string", width:70,hozAlign:"center", headerSort:false},
@@ -267,7 +268,7 @@ let alarmTable4;
 	        data: [], // 초기 데이터를 빈 배열로 설정
 	        placeholder: "조회된 데이터가 없습니다.",
 	        columns: [
-	            {title: "idx", formatter: "idx", hozAlign: "center", visible:false},
+	            {title: "idx", field: "idx", hozAlign: "center", visible:false},
 	            {title: "NO", field: "r_num", hozAlign: "center", width: 30, headerSort:false},
 	            {title:"호기", field:"alarm_hogi", sorter:"string", width:60, hozAlign:"center", headerSort:false, visible: false},
 	            {title:"주소", field:"addr", sorter:"string", width:70,hozAlign:"center", headerSort:false},
@@ -293,7 +294,7 @@ let alarmTable4;
 	        data: [], // 초기 데이터를 빈 배열로 설정
 	        placeholder: "조회된 데이터가 없습니다.",
 	        columns: [
-	            {title: "idx", formatter: "idx", hozAlign: "center", visible:false},
+	            {title: "idx", field: "idx", hozAlign: "center", visible:false},
 	            {title: "NO", field: "r_num", hozAlign: "center", width: 30, headerSort:false},
 	            {title:"호기", field:"alarm_hogi", sorter:"string", width:60, hozAlign:"center", headerSort:false, visible: false},
 	            {title:"주소", field:"addr", sorter:"string", width:70,hozAlign:"center", headerSort:false},

@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>작업현황</title>
+    <title>종합생산현황</title>
    <%@include file="../include/pluginpage.jsp" %>    
     <jsp:include page="../include/tabBar.jsp"/>
 <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
@@ -499,6 +499,7 @@ body, html {
 */
 
 /*전역변수*/
+let now_page_code = "b02";
 var opcInterval;
 var selectedRowData = null;
 var tempAuto = true;

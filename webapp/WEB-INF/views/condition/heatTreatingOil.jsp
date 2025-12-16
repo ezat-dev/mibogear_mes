@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>온도균일성 테스트</title>
+    <title>열처리유성상분석</title>
      <%@include file="../include/pluginpage.jsp" %>    
     <jsp:include page="../include/tabBar.jsp"/> 
     <style>
@@ -365,7 +365,7 @@
 </div>
 
 <script>
-//let now_page_code = "d03";
+let now_page_code = "c03";
 let dataTable;
 let selectedRow;
 var today = new Date();
@@ -397,7 +397,7 @@ function getDataList() {
         layout: "fitColumns",
         headerHozAlign: "center",
         columnHeaderVertAlign: "middle",
-        rowVertAlign: "middle",
+        //rowVertAlign: "middle",
         ajaxConfig: "POST",
         ajaxLoader: false,
         ajaxURL: "/mibogear/condition/selectHeatTreatingList",

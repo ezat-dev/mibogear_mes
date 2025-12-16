@@ -277,7 +277,7 @@
 
 <script>
 
-
+let now_page_code = "f05";
 var dataTable;
 var selectedRowData = null;
 

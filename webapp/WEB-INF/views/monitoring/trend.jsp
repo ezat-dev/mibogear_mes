@@ -270,7 +270,7 @@
 			<div id="container" style="width: 100%; height: 600px; margin-top:100px;"></div>
 
 <script>
-//let now_page_code = "b04";
+let now_page_code = "a05";
 
 let categories;
 

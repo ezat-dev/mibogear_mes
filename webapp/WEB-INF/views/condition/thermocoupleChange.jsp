@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>열전대교체이력</title>
-    <link rel="stylesheet" href="/mibogear/css/management/productInsert.css">
+<!--     <link rel="stylesheet" href="/mibogear/css/management/productInsert.css"> -->
     <link rel="stylesheet" href="/mibogear/css/tabBar/tabBar.css">
     <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 <%@include file="../include/pluginpage.jsp" %> 
@@ -366,6 +366,7 @@
 	    
 <script>
 	//전역변수
+	let now_page_code = "c01";
     var cutumTable;	
     var isEditMode = false; //수정,최초저장 구분값
     var today = new Date();
@@ -408,7 +409,7 @@
 	        ajaxURL: "/mibogear/condition/selectThermoChange",
 	        placeholder: "조회된 데이터가 없습니다.",
 		    columns:[
-		    	{title: "th_change_code", formatter: "th_change_code", hozAlign: "center", visible:false},
+		    	{title: "th_change_code", field: "th_change_code", hozAlign: "center", visible:false},
 		    	{title: "NO", field: "rownum", hozAlign: "center", width: 80, headerFilter:true},
 			    {title:"설비명", field:"machine_name", sorter:"string", width:200,
 				    hozAlign:"center", headerFilter:"input"},     

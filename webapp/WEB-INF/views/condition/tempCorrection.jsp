@@ -224,7 +224,7 @@
 
 	<script>
 		//전역변수
-		//let now_page_code = "c03";
+		let now_page_code = "c02";
 
 		$(function() {
 			updateMachineTitle(); 

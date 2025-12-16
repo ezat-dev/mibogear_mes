@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>설비수리이력관리</title>
-    <link rel="stylesheet" href="/mibogear/css/management/productInsert.css">
+<!--     <link rel="stylesheet" href="/mibogear/css/management/productInsert.css"> -->
     <link rel="stylesheet" href="/mibogear/css/tabBar/tabBar.css">
     <script type="text/javascript" src="https://oss.sheetjs.com/sheetjs/xlsx.full.min.js"></script>
 <%@include file="../include/pluginpage.jsp" %> 
@@ -358,6 +358,7 @@
 	    
 <script>
 	//전역변수
+	let now_page_code = "d03";
     var cutumTable;	
     var isEditMode = false; //수정,최초저장 구분값
     var today = new Date();
@@ -408,7 +409,7 @@
 		        return response; //return the response data to tabulator
 		    },
 		    columns:[
-		        {title:"NO", field:"idx", sorter:"int", width:80,
+		        {title:"NO", field:"idx", sorter:"number", width:80,
 		        	hozAlign:"center"},
 			    {title:"설비명", field:"fac_name", sorter:"string", width:120,
 				    hozAlign:"center", headerFilter:"input"},     
@@ -416,13 +417,13 @@
 				    hozAlign:"center", headerFilter:"input"},	        
 		        {title:"수리처", field:"ffx_wrk", sorter:"string", width:100,
 		        	hozAlign:"center", headerFilter:"input"},
-		        {title:"금액", field:"ffx_cost", sorter:"int", width:100,
+		        {title:"금액", field:"ffx_cost", sorter:"number", width:100,
 		        	hozAlign:"center", headerFilter:"input"},
 		        {title:"내용", field:"ffx_note", sorter:"string", width:600,
 			        hozAlign:"center", headerFilter:"input"},      
-			    {title:"NO", field:"ffx_no", sorter:"int", width:80,
+			    {title:"NO", field:"ffx_no", sorter:"number", width:80,
 			        	hozAlign:"center" ,visible:false},   
-			    {title:"NO", field:"fac_code", sorter:"int", width:80,
+			    {title:"NO", field:"fac_code", sorter:"number", width:80,
 				        hozAlign:"center" ,visible:false},    
 		    ],
 		    rowFormatter:function(row){

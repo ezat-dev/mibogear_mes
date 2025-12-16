@@ -548,7 +548,7 @@
 	    
 <script>
 
-    let now_page_code = "e04";
+    let now_page_code = "a01";
 
 	//전역변수
     var cutumTable;	
