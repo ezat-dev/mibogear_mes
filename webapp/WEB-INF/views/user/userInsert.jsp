@@ -254,7 +254,7 @@
 	         
 	          	<select name="user_level" >
 	
-				    <option value="3">기본</option>
+				    <option value="3">일반</option>
 				
 				</select>	
 	            	
@@ -305,7 +305,18 @@ $(function() {
       { title: "성명", field: "user_name", sorter: "string", width: 240, hozAlign: "center" },
       { title: "입사일", field: "st_day", width: 140, hozAlign: "center" },
       { title: "전화번호", field: "user_phone", width: 140, hozAlign: "center" },
-      { title: "등급", field: "user_level", sorter: "string", width: 240, hozAlign: "center" },
+      { title: "등급", field: "user_level", sorter: "string", width: 240, hozAlign: "center",
+		formatter:function(cell, formatterParams, onRender){
+			var value = cell.getValue();
+			if(value === '1'){
+				return "관리자";
+			}else if(value === '3'){
+				return "일반";
+			}else{
+				return value;
+				}
+			}
+           },
       { title: "부서", field: "user_busu", sorter: "string", width: 240, hozAlign: "center" },
       { title: "직책", field: "user_jick", sorter: "string", width: 240, hozAlign: "center" }
     ],
@@ -395,18 +406,26 @@ $(function() {
   $('#saveCorrStatus').click(function(event) {
     event.preventDefault();
     var formData = new FormData($('#corrForm')[0]);
+    
     if (selectedRowData && selectedRowData.user_code) {
-      formData.append('user_code', selectedRowData.user_code);  // 수정 시 user_code 추가
+        // 수정 
+        formData.append('user_code', selectedRowData.user_code); 
+        requestUrl = "/mibogear/user/userInsert/update";
+        successMessage = "수정되었습니다!"; 
+    } else {
+        // 등록 
+        requestUrl = "/mibogear/user/userInsert/insert";
+        successMessage = "저장되었습니다!"; 
     }
 
     $.ajax({
-      url: "/mibogear/user/userInsert/insert",
+      url: requestUrl,
       type: "POST",
       data: formData,
       processData: false,
       contentType: false,
       success: function() {
-        alert("저장되었습니다!");
+        alert(successMessage);
         $('#modalContainer').hide();
     
         dataTable.setData("/mibogear/user/userInsert/select", {});

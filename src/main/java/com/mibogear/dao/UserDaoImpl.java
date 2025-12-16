@@ -207,4 +207,13 @@ public class UserDaoImpl implements UserDao{
 				public void insertUserLog(UserLog userLog) {
 				   sqlSession.insert("users.insertUserLog",userLog);
 				 }
+				
+				@Override
+				public boolean userInsertUpdate(Users users) {
+				   int result = sqlSession.update("users.userInsertUpdate",users);
+				   if(result <= 0) {
+					   return false;
+				   }
+				   return true;
+				 }
 }

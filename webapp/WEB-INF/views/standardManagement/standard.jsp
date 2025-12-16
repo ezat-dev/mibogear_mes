@@ -381,7 +381,7 @@ textarea {
 			</div>
     
     <div class="button-container">
-        <button class="select-button" onclick="getStandardtList();">
+        <button class="select-button" onclick="getStandardList();">
             <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">
            
         </button>
@@ -567,7 +567,7 @@ textarea {
 	//함수
 	function getStandardList(){
 		userTable = new Tabulator("#tab1", {
-		    height:"750px",
+		    height:"700px",
 		    layout:"fitColumns",
 		    selectable:true,	//로우 선택설정
 		    tooltips:true,
@@ -577,24 +577,46 @@ textarea {
 		    ajaxConfig:"POST",
 		    ajaxLoader:false,
 		    ajaxURL:"/mibogear/standardManagement/standard/standardList",
-		    ajaxProgressiveLoad:"scroll",
+		    //ajaxProgressiveLoad:"scroll",
 		    ajaxParams:{
 			    },
      	    placeholder:"조회된 데이터가 없습니다.",
 		    paginationSize:20,
 		    ajaxResponse:function(url, params, response){
 				$("#tab1 .tabulator-col.tabulator-sortable").css("height","55px");
-		        return response; //return the response data to tabulator
+				console.log("response.datas", response.datas);
+		        return response.datas; //return the response data to tabulator
 		    },
 		    columns:[
-		        {title:"NO", field:"idx", sorter:"int", width:80,
-		        	hozAlign:"center"},
-		        {title:"설비명", field:"fac_name", sorter:"string", width:120,
-			        hozAlign:"center", headerFilter:"input"},
-				{title:"패턴번호", field:"pattern", sorter:"string", width:200,
-				    hozAlign:"center", headerFilter:"input"}, 
-		        {title:"설비코드", field:"fac_code", sorter:"string", width:200,
-					hozAlign:"center", headerFilter:"input",visible:false},  	
+		        {title:"NO", formatter:"rownum", width:50, hozAlign:"center", headerSort: false},
+		        {title:"설비명", field:"fac_name", width:120, hozAlign:"center", headerSort: false},
+				{title:"패턴번호", field:"pattern", width:180, hozAlign:"center", headerSort: false}, 
+				{title:"처리시간(분)", columns: [
+					{title:"승온&팬정지", field:"heat_time", width:90, hozAlign:"center", headerSort: false},
+					{title:"침탄(엔리치)", field:"chim_time", width:90, hozAlign:"center", headerSort: false},
+					{title:"확산", field:"diff_time", width:90, hozAlign:"center", headerSort: false},
+					{title:"강온", field:"gang_time", width:90, hozAlign:"center", headerSort: false},
+					{title:"소입(퀜칭)", field:"que_time", width:90, hozAlign:"center", headerSort: false},
+					{title:"드레인", field:"drain_time", width:90, hozAlign:"center", headerSort: false}
+					]
+				},
+				{title:"처리온도(°C)", columns: [
+					{title:"승온&팬정지", field:"heat_pv", width:90, hozAlign:"center", headerSort: false},
+					{title:"침탄(엔리치)", field:"chim_pv", width:90, hozAlign:"center", headerSort: false},
+					{title:"확산", field:"diff_pv", width:90, hozAlign:"center", headerSort: false},
+					{title:"강온", field:"gang_pv", width:90, hozAlign:"center", headerSort: false},
+					{title:"소입(퀜칭)", field:"queDrain_pv", width:90, hozAlign:"center", headerSort: false}
+					]
+				},
+				{title:"처리 C.P(%)", columns: [
+					{title:"승온&팬정지", field:"heat_cp", width:90, hozAlign:"center", headerSort: false},
+					{title:"침탄(엔리치)", field:"chim_cp", width:90, hozAlign:"center", headerSort: false},
+					{title:"확산", field:"diff_cp", width:90, hozAlign:"center", headerSort: false},
+					{title:"강온", field:"gang_cp", width:90, hozAlign:"center", headerSort: false},
+					{title:"소입(퀜칭)", field:"queDrain_cp", width:90, hozAlign:"center", headerSort: false}
+					]
+				},
+		        {title:"설비코드", field:"fac_code", sorter:"string", width:100, hozAlign:"center", visible:false},  	
 		        
 		    ],
 		    rowFormatter:function(row){

@@ -443,6 +443,7 @@ public class StandardController {
 
 		rtnMap.put("last_page",1);
 		rtnMap.put("data",rtnList);
+		rtnMap.put("datas", standardList);
 
 		return rtnMap; 
 	}	 

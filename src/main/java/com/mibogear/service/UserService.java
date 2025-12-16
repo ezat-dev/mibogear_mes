@@ -73,4 +73,6 @@ public interface UserService {
     
     
     void insertUserLog(UserLog userLog);
+    
+    boolean userInsertUpdate(Users users);
 }

@@ -811,5 +811,15 @@ public class UserController {
         return rtnMap;
     }
 
+    //사용자 정보 업데이트
+	 @RequestMapping(value = "/user/userInsert/update", method = RequestMethod.POST)
+	 @ResponseBody
+	 public Map<String, Object> userInsertUpdate(@ModelAttribute Users users) {
+		 Map<String, Object> rtnMap = new HashMap<>();
+		 
+		 userService.userInsertUpdate(users);
+		 	 
+		 return rtnMap; 
+	 }
 }
 

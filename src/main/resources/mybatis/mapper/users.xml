@@ -144,44 +144,7 @@
 		       f04 = #{f04}, 
 		       f05 = #{f05},  
 		       f06 = #{f06},  
-		       f07 = #{f07},  
-		       g01 = #{g01},
-		       g02 = #{g02}, 
-		       g03 = #{g03}, 
-		       g04 = #{g04}, 
-		       g05 = #{g05}, 
-		       g06 = #{g06}, 
-		       g07 = #{g07}, 
-		       h01 = #{h01},
-		       h02 = #{h02}, 
-		       h03 = #{h03}, 
-		       h04 = #{h04}, 
-		       h05 = #{h05}, 
-		       h06 = #{h06}, 
-		       h07 = #{h07},
-		       i01 = #{i01},
-		       i02 = #{i02},
-		       i03 = #{i03},
-		       i04 = #{i04},
-		       i05 = #{i05},
-		       i06 = #{i06},
-		       i07 = #{i07},
-		       i05 = #{i05},
-	           i06 = #{i06},
-	           i07 = #{i07},
-	           j01 = #{j01},
-	           j02 = #{j02},
-	           j03 = #{j03},
-	           j04 = #{j04},
-	           j05 = #{j05},
-	           j06 = #{j06},
-	           j07 = #{j07},
-	           k01 = #{k01},
-	           k02 = #{k02},
-	           k03 = #{k03},
-	           k03 = #{k04},
-	           k03 = #{k05},
-	           k03 = #{k06}
+		       f07 = #{f07}
 		 WHERE user_code = #{user_code}	
 	</update>
 	
@@ -609,5 +572,23 @@
       CURRENT_TIMESTAMP
     )
   </insert>
-    
+  
+  <!-- 사용자 정보 업데이트 -->
+    <update id="userInsertUpdate" parameterType="Users">
+	  UPDATE tb_user
+	  SET 
+	  user_id = #{user_id},
+	  user_pw = #{user_pw},
+	  user_name = #{user_name},
+	  user_busu = #{user_busu},
+	  user_jick = #{user_jick},
+	  user_phone = #{user_phone},
+	  st_day = #{st_day},
+	  user_level = #{user_level}
+	  WHERE user_code = #{user_code}
+	</update>
+	
+	
+	
+	
 </mapper>

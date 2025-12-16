@@ -175,4 +175,9 @@ public class UserServiceImpl implements UserService {
     public void insertUserLog(UserLog userLog) {
         userDao.insertUserLog(userLog);
     }
+    
+    @Override
+    public boolean userInsertUpdate(Users users) {
+        return userDao.userInsertUpdate(users);
+    }
 }
