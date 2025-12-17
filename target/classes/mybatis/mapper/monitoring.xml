@@ -22,7 +22,7 @@ FROM (
 ) AS aa
 WHERE 1=1
 <if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
-AND regtime between #{startDate} and #{endDate}
+AND DATE(regtime) between #{startDate} and #{endDate}
 </if>
     AND aa.a_value = 1
 ORDER BY aa.regtime DESC;
@@ -55,7 +55,7 @@ FROM (
 ) AS aa
 WHERE 1=1
 <if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
-AND regtime between #{startDate} and #{endDate}
+AND DATE(regtime) between #{startDate} and #{endDate}
 </if>
     AND aa.a_value = 1
     AND aa.clear_time IS NOT null
@@ -63,7 +63,6 @@ AND regtime between #{startDate} and #{endDate}
 ORDER BY alarm_count DESC;
 	</select>
 	<!-- 알람현황 -->
-		<!-- 알람 랭킹 -->
 		<select id="getAlarm1" parameterType="Monitoring" resultType="Monitoring">
 SELECT *
 FROM v_alarm_status
