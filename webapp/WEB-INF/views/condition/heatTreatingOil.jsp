@@ -92,7 +92,7 @@
 		.modal-content {
 		    background: white;
 		    width: 40%; /* 가로 길이를 50%로 설정 */
-		    max-width: 400px; /* 최대 너비를 설정하여 너무 커지지 않도록 */
+		    max-width: 584px; /* 최대 너비를 설정하여 너무 커지지 않도록 */
 		    max-height: 800px; /* 화면 높이에 맞게 제한 */
 		    overflow-y: auto;
 		    margin: 2% auto; /* 수평 중앙 정렬 */
@@ -103,6 +103,7 @@
 		    transform: scale(0.8);
 		    transition: transform 0.3s ease-in-out, opacity 0.3s ease-in-out;
 		    opacity: 0;
+		    top: 15%;
 		}
 		
 		.modal.show {
@@ -237,7 +238,62 @@
   font-weight: 700;
 }
 
-
+.header {
+    display: flex; /* 플렉스 박스 사용 */
+    justify-content: center; /* 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    margin-bottom: 10px; /* 상단 여백 */
+    background-color: #33363d; /* 배경색 */
+    height: 50px; /* 높이 */
+    color: white; /* 글자색 */
+    font-size: 20px; /* 글자 크기 */
+    text-align: center; /* 텍스트 정렬 */
+    position: relative;
+}
+.btnSaveClose {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.btnSaveClose #saveCorrStatus{
+	width: 100px;
+	height: 35px;
+	background-color: #FFD700; /* 기본 배경 - 노란색 */
+	color: black;
+	border: 2px solid #FFC107; /* 노란 테두리 */
+	border-radius: 5px;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+	line-height: 15px;
+	margin: 0 10px;
+	margin-top: 10px;
+	transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btnSaveClose #closeModal{
+	width: 100px;
+	height: 35px;
+	background-color: #A9A9A9;
+	color: black;
+	border: 2px solid #808080;
+	border-radius: 5px;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+	line-height: 15px;
+	margin: 0 10px;
+	margin-top: 10px;
+	transition: background-color 0.3s ease, transform 0.2s ease;
+}
+#closePdfModal{
+	position:absolute; 
+	top:8px; 
+	right:8px; 
+	z-index:10; 
+	padding:4px 8px;"
+}
     </style>
 </head>
 <body>
@@ -306,7 +362,7 @@
     </main>
 
 
-<div id="modalContainer" class="modal">
+<!-- <div id="modalContainer" class="modal">
     <div class="modal-content">
         <span class="close">&times;</span>
         <h2>열처리유 성상 분석</h2>
@@ -350,14 +406,92 @@
             <button type="button" id="closeModal">닫기</button>
         </form>
     </div>
+</div> -->
+
+<div id="modalContainer" class="modal">
+    <div class="modal-content">
+        <span class="close">&times;</span>
+        <div class="header">
+       		 열처리유 성상 분석
+        </div>
+        
+       <form id="corrForm" autocomplete="off" enctype="multipart/form-data">
+
+      <table class="insideTable">
+        <colgroup>
+          <col width="15%">
+          <col width="35%">
+          <col width="15%">
+          <col width="35%">
+        </colgroup>
+        <tbody>
+          <!-- 설비 / 일자 -->
+          <tr>
+            <th>채취일</th>
+            <td>
+				<input type="text"name="collection_date"  class="daySet" placeholder="일 선택" style="text-align: left;">
+            </td>
+            <th>설비</th>
+            <td>			
+            <select name="machine_name" class="daySet" style="text-align: left;">
+			    <option value="BCF-1">BCF-1</option>
+			    <option value="BCF-2">BCF-2</option>
+			    <option value="BCF-3">BCF-3</option>
+			    <option value="BCF-4">BCF-4</option>
+			    <option value="TF-1">TF-1</option>
+			    <option value="TF-2">TF-2</option>
+			</select>
+			</td>
+          </tr>
+
+          <tr>
+            <th>열분석<br>보고서</th>
+            <td>
+			<input type="file" name="heat_report_file" id="fileInput1" placeholder="열분석 보고서" accept="application/pdf">
+			<span id="box1FileName"></span>
+			<input type="hidden" name="original_heat_report" id="originalFile1" />
+			</td>
+            
+            <th>냉각시험<br>그래프</th>
+            <td>
+			<input type="file" name="cold_report_file" id="fileInput2" placeholder="냉각시험 그래프" accept="application/pdf">
+			<span id="box2FileName"></span>
+			<input type="hidden" name="original_cold_report" id="originalFile2" />
+			</td>
+          </tr>
+
+          <tr>
+            <th>기타 파일</th>
+            <td>
+			<input type="file" name="etc_report_file" id="fileInput3" placeholder="기타 파일" accept="application/pdf">
+			<span id="box3FileName"></span>
+			<input type="hidden" name="original_etc_report" id="originalFile3" />
+            </td>
+            
+            <th>비고</th>
+            <td>
+            <input type="text"  name="note" placeholder="비고 입력">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+	
+		<div class="btnSaveClose">
+            <button type="submit" id="saveCorrStatus">저장</button>
+            <button type="button" id="closeModal">닫기</button>
+        </div>
+        </form>
+    </div>
 </div>
 
 
 <div id="pdfViewerModal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; 
      background:rgba(0,0,0,0.7); z-index:1000; align-items:center; justify-content:center;">
   <div style="position:relative; width:80%; height:90%; background:#fff; border-radius:8px; overflow:hidden;">
-    <button id="closePdfModal" 
-            style="position:absolute; top:8px; right:8px; z-index:10; padding:4px 8px;">✕ 닫기</button>
+<div id="pdfModalHeader" style="padding: 10px 15px; border-bottom: 1px solid #eee; display: flex; justify-content: space-between; align-items: center;">
+            <h3 style="margin: 0;">PDF 문서 미리보기</h3>
+            <button id="closePdfModal" style="z-index: 10;">✕ 닫기</button>
+        </div>
     <iframe id="pdfFrame" 
             style="width:100%; height:100%; border:none;" 
             src=""></iframe>

@@ -252,7 +252,26 @@
             border-radius: 5px;
         }
 
-
+        .monthSet {
+        	width: 20%;
+      		text-align: center;
+            height: 17px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
+         .machine_select {
+        	width: 20%;
+      		text-align: center;
+            height: 35px;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 15px;
+        }
     </style>
 
 <body>
@@ -263,21 +282,37 @@
             <div class="button-container">
             
                <div class="box1">
-	
+               
+               	<label class="daylabel">설비명 :</label>
+	            <select id="fac_no" class="machine_select">
+	            <option value="" selected>전체</option>
+	            <option value="BCF1">BCF1</option>
+	            <option value="BCF2">BCF2</option>
+	            <option value="BCF3">BCF3</option>
+	            <option value="BCF4">BCF4</option>
+	            <option value="CM">CM</option>
+	            <option value="CM2">CM2</option>
+	            </select>
+	            
+	            <label class="daylabel">월 선택 :</label>
+	            <input type="text" id="lotno_date" class="dayselect monthSet"/>
+	            
 				</div>
+				
                 <button class="select-button">
-                    <img src="/mibogear/tabBar/search-icon.png" alt="select" class="button-image">조회
+                    <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">조회
                 </button>
-                <button class="insert-button">
+                
+<!--                 <button class="insert-button">
                     <img src="/mibogear/tabBar/add-outline.png" alt="insert" class="button-image">추가
                 </button>
                 <button class="delete-button">
 				    <img src="/mibogear/tabBar/xDel3.png" alt="delete" class="button-image"> 삭제
-				</button>
+				</button> -->
                 
                 
                 <button class="excel-download-button">
-                    <img src="/mibogear/tabBar/excel-icon.png" alt="excel" class="button-image">엑셀다운로드
+                    <img src="/mibogear/image/excel-icon.png" alt="excel" class="button-image">엑셀
                 </button>
                 
                 
@@ -294,10 +329,16 @@ let now_page_code = "b01";
 
 var dataTable;
 var selectedRowData = null;
+var fac_no;
+var lotno_date;
+var date = new Date();
 
 $(function() {
+	  var year = date.getFullYear();
+	  var month = ('0' + (date.getMonth() + 1)).slice(-2);
+	  var thisMonthFormatted = year + '-' + month;
+	  $('#lotno_date').val(thisMonthFormatted);
 	getList();
-
 });
 
 //이벤트
@@ -307,7 +348,7 @@ $(function() {
 
 //엑셀 다운로드
  $('.excel-download-button').click(function() {
-	    dataTable.download("xlsx", "스페어부품 관리.xlsx", {sheetName:"스페어부품 관리",
+	    dataTable.download("xlsx", "LOT보고서.xlsx", {sheetName:"LOT 보고서",
 	    	 visibleColumnsOnly: false //숨겨진 데이터도 출력
 	    	 });
 	});
@@ -357,37 +398,48 @@ function getList(){
 
   	    return wrapper;
   	  };
-	
-	
+
+//  	fac_no: $('#fac_no').val();
+//  	lotno_date: $('#lotno_date').val()
 	  dataTable = new Tabulator('#dataTable', {
-		    height: '700px',
+		    height: '720px',
 		    layout: 'fitDataFill',
 		    headerSort: false,
 		    reactiveData: true,
 		    columnHeaderVertAlign: "middle",
-		    rowVertAlign: "middle",
 		    headerHozAlign: 'center',
 		    ajaxConfig: { method: 'POST' },
-		    ajaxURL: "/mibogear/productionManagement/integrationProduction/list",
-		    ajaxProgressiveLoad:"scroll",
+		    ajaxURL: "/mibogear/productionManagement/lotReport/getLotList",
 		    ajaxParams: {
-		    },		    
+		            "fac_no": $('#fac_no').val(),
+		            "lotno_date": $('#lotno_date').val()
+		    },	    
 		    ajaxResponse:function(url, params, response){
 				$("#dataTable .tabulator-col.tabulator-sortable").css("height","55px");
 		        return response; //return the response data to tabulator
 		    },
 		    placeholder: "조회된 데이터가 없습니다.",
 		    columns: [
-		    	{ title: "LOT 번호", field: "m_pnum", width: 100, hozAlign: "center" },  
-		      { title: "품번", field: "m_pnum", width: 100, hozAlign: "center" },
-		      { title: "품명", field: "m_pname", width: 200, hozAlign: "center" },
-		      { title: "총 투입시간(분)", field: "m_intime", width: 300, hozAlign: "center" },
-		      { title: "총 생산통수(통)", field: "m_incnt",  width: 180, hozAlign: "center" },
-		      { title: "총 생산중량(kg)", field: "m_weight",width: 180, hozAlign: "center" },		      		      
-		      { title: "기준 장입량(kg)", field: "m_std_weight",width: 180, hozAlign: "center" },		      		      
-		      { title: "장입량 준수율(%)", field: "m_weight_percent",width: 180, hozAlign: "center",
-		    	  formatter: percentFormatter  
-		      },		      		      
+		    	{ title: "LOT 번호", field: "lot_no", width: 180, hozAlign: "center" },  
+		      { title: "LOT 생성 날짜", field: "lotno_date", width: 130, hozAlign: "center",
+		    	  formatter: function(cell) {
+		    	        var value = String(cell.getValue()); 
+		    	        
+		    	        if (value) {
+		    	            return value.substring(0, 4) + "-" + value.substring(4, 6) + "-" + value.substring(6, 8);
+		    	        }
+		    	        
+		    	        return value; // 형식이 맞지 않으면 원래 값 반환
+		    	    }
+	    	     },
+		      { title: "패턴 번호", field: "pattern", width: 130, hozAlign: "center" },
+		      { title: "설비", field: "fac_no", width: 110, hozAlign: "center" },
+		      { title: "승온 시간", field: "bcf_up",  width: 170, hozAlign: "center" },
+		      { title: "침탄 시간", field: "bcf_chim",width: 170, hozAlign: "center" },		      		      
+		      { title: "확산 시간", field: "bcf_diff",width: 170, hozAlign: "center" },		      		      
+		      { title: "강온 시간", field: "bcf_gang",width: 170, hozAlign: "center"},	
+		      { title: "퀜칭 시간", field: "bcf_quen",width: 170, hozAlign: "center"},	
+		      { title: "드레인 시간", field: "bcf_drain",width: 170, hozAlign: "center"}	      		      
 		    ],
 
 		    rowClick: function(e, row) {

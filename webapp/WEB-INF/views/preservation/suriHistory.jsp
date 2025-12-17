@@ -17,7 +17,7 @@
 }
 .container {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 }
 .suriHistoryModal {
     position: fixed; /* 화면에 고정 */

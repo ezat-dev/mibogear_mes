@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.mibogear.domain.Monitoring;
+import com.mibogear.domain.ProductManage;
 
 @Repository
 public class MonitoringDAOImpl implements MonitoringDAO{
@@ -30,5 +31,10 @@ public class MonitoringDAOImpl implements MonitoringDAO{
 	@Override
 	public List<Monitoring> getAlarm1(Monitoring monitoring) {
 		return sqlSession.selectList("monitoring.getAlarm1", monitoring);
+	}
+	
+	@Override
+	public List<ProductManage> getLotList(ProductManage productManage) {
+		return sqlSession.selectList("monitoring.getLotList", productManage);
 	}
 }

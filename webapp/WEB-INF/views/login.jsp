@@ -118,9 +118,10 @@
   <script>
 
 //이벤트
-$("*").on("keydown",function(e){
+$("#userForm").on("keydown",function(e){
 	//엔터키가 눌렸을 때
 	if(e.keyCode == 13){
+		e.preventDefault();
 		login();
 	}
 });

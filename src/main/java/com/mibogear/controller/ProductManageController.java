@@ -8,13 +8,14 @@ import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mibogear.domain.DroppedGoods;
+import com.mibogear.domain.ProductManage;
+import com.mibogear.service.MonitoringService;
 import com.mibogear.service.ProductManageService;
 
 
@@ -23,6 +24,9 @@ public class ProductManageController {
 	
 	@Autowired
 	private ProductManageService productManageService; 
+	
+	@Autowired
+	private MonitoringService monitoringService;
 	
 	
 	
@@ -101,5 +105,15 @@ public class ProductManageController {
     public String lotReport(Model model) {
         return "/productionManagement/lotReport.jsp";  
     } 
+    
+    //lot보고서 조회
+    @RequestMapping(value = "/productionManagement/lotReport/getLotList", method = RequestMethod.POST)
+    @ResponseBody
+    public List<ProductManage> getLotList(ProductManage productManage) {
+    	System.out.println("productManage.getFac_no(): " + productManage.getFac_no());
+    	String date = productManage.getLotno_date().replace("-", "");
+    	productManage.setLotno_date(date);
+        return monitoringService.getLotList(productManage);
+    }
 
 }
