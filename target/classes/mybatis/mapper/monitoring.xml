@@ -17,7 +17,8 @@ FROM (
             WHEN LEAD(a_value) OVER (PARTITION BY alarm_address ORDER BY regtime) = 0
             THEN LEAD(regtime) OVER (PARTITION BY alarm_address ORDER BY regtime)
             ELSE NULL
-        END AS clear_time
+        END AS clear_time,
+        LAG(a_value) OVER (PARTITION BY alarm_address ORDER BY regtime) AS prev_value
     FROM tb_alarmlist
 ) AS aa
 WHERE 1=1
@@ -25,6 +26,7 @@ WHERE 1=1
 AND DATE(regtime) between #{startDate} and #{endDate}
 </if>
     AND aa.a_value = 1
+    AND (aa.prev_value IS NULL OR aa.prev_value = 0)
 ORDER BY aa.regtime DESC;
 	</select>
 		<select id="getTempList" parameterType="Monitoring" resultType="Monitoring">
