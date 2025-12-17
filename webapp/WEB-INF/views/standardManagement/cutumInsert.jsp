@@ -17,7 +17,7 @@
 
 .container {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 }
 
 
@@ -460,7 +460,7 @@ $(function(){
 function getCutumList(){
 	
 	userTable = new Tabulator("#tab1", {
-	    height:"750px",
+	    height:"715px",
 	    layout:"fitColumns",
 	    selectable:true,	//로우 선택설정
 	    tooltips:true,

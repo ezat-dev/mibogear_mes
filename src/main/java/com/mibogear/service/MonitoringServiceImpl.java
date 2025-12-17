@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import com.mibogear.dao.MonitoringDAO;
 import com.mibogear.domain.Monitoring;
+import com.mibogear.domain.ProductManage;
 
 @Service
 public class MonitoringServiceImpl implements MonitoringService{
@@ -29,5 +30,10 @@ public class MonitoringServiceImpl implements MonitoringService{
     @Override
     public List<Monitoring> getAlarm1(Monitoring monitoring) {
         return monitoringDao.getAlarm1(monitoring);
+    }
+    
+    @Override
+    public List<ProductManage> getLotList(ProductManage productManage) {
+        return monitoringDao.getLotList(productManage);
     }
 }

@@ -45,9 +45,9 @@
         }
 	    .modal-content {
 	        background: white;
-	        width: 24%;
-	        max-width: 500px;
-	        height: 80vh; 
+	        width: 40%;
+	        max-width: 800px;
+	        height: 45vh; 
 	        overflow-y: auto; 
 	        margin: 6% auto 0;
 	        padding: 20px;
@@ -84,7 +84,7 @@
             margin: 10px 0 5px;
         }
         .modal-content input, .modal-content textarea {
-            width: 97%;
+            width: 93%;
             padding: 8px;
             margin-bottom: 10px;
             border: 1px solid #ccc;
@@ -169,6 +169,55 @@
   margin-bottom: 12px; /* 각 행 간 간격 */
 }
 
+.header {
+    display: flex; /* 플렉스 박스 사용 */
+    justify-content: center; /* 중앙 정렬 */
+    align-items: center; /* 수직 중앙 정렬 */
+    margin-bottom: 10px; /* 상단 여백 */
+    background-color: #33363d; /* 배경색 */
+    height: 50px; /* 높이 */
+    color: white; /* 글자색 */
+    font-size: 20px; /* 글자 크기 */
+    text-align: center; /* 텍스트 정렬 */
+    position: relative;
+}
+.btnSaveClose {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+.btnSaveClose #saveCorrStatus{
+	width: 100px;
+	height: 35px;
+	background-color: #FFD700; /* 기본 배경 - 노란색 */
+	color: black;
+	border: 2px solid #FFC107; /* 노란 테두리 */
+	border-radius: 5px;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+	line-height: 15px;
+	margin: 0 10px;
+	margin-top: 10px;
+	transition: background-color 0.3s ease, transform 0.2s ease;
+}
+.btnSaveClose #closeModal{
+	width: 100px;
+	height: 35px;
+	background-color: #A9A9A9;
+	color: black;
+	border: 2px solid #808080;
+	border-radius: 5px;
+	font-weight: bold;
+	text-align: center;
+	cursor: pointer;
+	line-height: 15px;
+	margin: 0 10px;
+	margin-top: 10px;
+	transition: background-color 0.3s ease, transform 0.2s ease;
+}
     </style>
 </head>
 
@@ -222,15 +271,14 @@
         </div>
     </main>
 	
-	   <div id="modalContainer" class="modal">
+<!-- 	   <div id="modalContainer" class="modal">
 	    <div class="modal-content">
 	        <span class="close">&times;</span>
 	        <h2>사용자 등록</h2>
 	        <form id="corrForm"autocomplete="off">
 	          
-		<!-- 	<input type="text" name="user_code" style="display:none;">
- -->
-	
+			<input type="text" name="user_code" style="display:none;">
+
 	            <label>ID</label>
 				<input type="text" name="user_id">
 	
@@ -244,36 +292,96 @@
 	            <label>입사일</label>
 	            <input type="text" name="st_day" class="daySet" style="text-align: left;">
 
-	            
 	              <label>전화번호</label>
 	            <input type="text" name="user_phone">
 	            
-	            
-	            
 	            <label>등급</label>
-	         
 	          	<select name="user_level" >
-	
 				    <option value="3">일반</option>
-				
 				</select>	
-	            	
-	            	
-	            	            	
+	            	         	
 	            <label>부서</label>
 	             <input type="text" name="user_busu">
 	           
 	            <label>직책</label>
 	             <input type="text" name="user_jick">
 	            
-	         
-	
 	            <button type="submit" id="saveCorrStatus">저장</button>
 	            <button type="button" id="closeModal">닫기</button>
 	        </form>
 	    </div>
-	</div>
+	</div> -->
 
+<div id="modalContainer" class="modal">
+    <div class="modal-content">
+        <div class="header">
+       		 사용자 등록
+        </div>
+        
+       <form id="corrForm" autocomplete="off" enctype="multipart/form-data">
+
+      <table class="insideTable">
+      
+        <tbody>
+
+          <tr>
+            <th>ID</th>
+            <td>
+				<input type="text" name="user_id">
+            </td>
+            <th>비밀번호</th>
+            <td>			
+	           <input type="text" name="user_pw">
+			</td>
+          </tr>
+
+          <tr>
+            <th>성명</th>
+            <td>
+	            <input type="text" name="user_name">
+			</td>
+            
+            <th>입사일</th>
+            <td>
+	            <input type="text" name="st_day" class="daySet" style="text-align: left;">
+			</td>
+          </tr>
+
+          <tr>
+            <th>전화번호</th>
+            <td>
+	            <input type="text" name="user_phone">
+            </td>
+            
+            <th>등급</th>
+            <td>
+	          	<select name="user_level" >
+				    <option value="3">일반</option>
+				</select>
+            </td>
+           </tr>
+           
+           <tr> 
+            <th>부서</th>
+            <td>
+	             <input type="text" name="user_busu">
+            </td>
+            
+            <th>직책</th>
+            <td>
+	             <input type="text" name="user_jick">
+            </td>
+          </tr>
+        </tbody>
+      </table>
+	
+		<div class="btnSaveClose">
+            <button type="submit" id="saveCorrStatus">저장</button>
+            <button type="button" id="closeModal">닫기</button>
+        </div>
+        </form>
+    </div>
+</div>
 
 <script>
 

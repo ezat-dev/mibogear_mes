@@ -29,6 +29,7 @@
   	<mapper resource="mybatis/mapper/droppedGoods.xml"/>
   	<mapper resource="mybatis/mapper/quality.xml"/>
   	<mapper resource="mybatis/mapper/monitoring.xml"/>
+  	<mapper resource="mybatis/mapper/productManage.xml"/>
 
   </mappers>
 </configuration>

@@ -17,7 +17,7 @@
 
 .container {
 	display: flex;
-	justify-content: space-between;
+	justify-content: center;
 }
 /* 📋 제품등록 테이블 폼 */
 .product-content-table {
@@ -491,7 +491,7 @@ let now_page_code = "f01";
 	//함수
 	function getProductList(){
 		userTable = new Tabulator("#tab1", {
-		    height:"750px",
+		    height:"715px",
 		    layout:"fitColumns",
 		    selectable:true,	//로우 선택설정
 		    tooltips:true,

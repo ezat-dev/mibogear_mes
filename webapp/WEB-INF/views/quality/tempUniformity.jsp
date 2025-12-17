@@ -455,7 +455,7 @@ $("#saveCorrStatus").click(function (event) {
 
   function getDataList() {
     dataTable = new Tabulator("#dataList", {
-        height: "760px",
+        height: "720px",
         layout: "fitColumns",
         headerHozAlign: "center",
         columnHeaderVertAlign: "middle",

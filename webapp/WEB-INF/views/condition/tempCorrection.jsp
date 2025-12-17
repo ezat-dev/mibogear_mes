@@ -185,10 +185,10 @@
 				<img src="/mibogear/css/tabBar/search-icon.png" alt="select"
 					class="button-image">조회
 			</button>
-			<button class="insert-button">
+<!-- 			<button class="insert-button">
 				<img src="/mibogear/css/tabBar/add-outline.png" alt="insert"
 					class="button-image">추가
-			</button>
+			</button> -->
 			<button class="delete-button">
 				<img src="/mibogear/css/tabBar/xDel3.png" alt="delete"
 					class="button-image">삭제

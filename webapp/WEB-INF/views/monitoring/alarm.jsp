@@ -17,7 +17,7 @@
 
 .container {
 	display: flex;
-    justify-content: center;
+    /*justify-content: center;*/
     gap: 14px;
 }
 #alarmTable1 {
@@ -359,6 +359,14 @@ let alarmTable4;
 	            alert("데이터를 불러오는데 실패했습니다.");
 	        }
 	    });
+
+		if(machine_name.includes('BCF')){
+			$('#alarmTable3').hide();
+			$('#alarmTable4').hide();
+		}else{
+			$('#alarmTable3').show();
+			$('#alarmTable4').show();
+			}
 	}
 
 

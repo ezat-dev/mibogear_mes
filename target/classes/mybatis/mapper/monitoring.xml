@@ -74,4 +74,20 @@ AND alarm_hogi = #{machine_name}
 LIMIT 50
 </if>
 	</select>
+	
+	    <!-- LOT 보고서 조회 -->
+	<select id="getLotList" parameterType="productManage" resultType="productManage">
+	SELECT l.lotno AS lot_no, l.lotno_date, l.pattern, l.fac_no, 
+	lt.bcf_up, lt.bcf_chim, lt.bcf_diff, lt.bcf_gang, lt.bcf_quen, lt.bcf_drain FROM tb_lot AS l
+	INNER JOIN tb_lot_tracking AS lt
+	ON l.lotno = lt.lotno
+	<where>
+		<if test="fac_no != '' and fac_no != null">
+		AND l.fac_no = #{fac_no}
+		</if>
+		<if test="lotno_date != '' and lotno_date != null">
+		AND lotno_date LIKE CONCAT(#{lotno_date}, '%')
+		</if>
+	</where>
+	</select>
 </mapper>

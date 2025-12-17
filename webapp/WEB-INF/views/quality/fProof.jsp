@@ -347,7 +347,7 @@ function getDailyCheckData(){
 
 function getDailyCheck(){
 	  dataTable = new Tabulator('#dataTable', {
-		    height: '750px',
+		    height: '720px',
 		    layout: 'fitDataFill',
 		    headerSort: false,
 		    reactiveData: true,
