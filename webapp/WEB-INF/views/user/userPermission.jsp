@@ -162,8 +162,14 @@ $(function(){
 
 
   $(document).on('click', '.allUpdate', function () {
-	
-	    $('select').each(function () {
+			
+			$('select').val('D');
+			$('#a01').val('R');
+			$('#a02').val('R');
+			$('#a03').val('R');
+			$('#a04').val('R');
+			$('#a05').val('R');
+/* 	    $('select').each(function () {
 	        if ($(this).find('option[value="D"]').length > 0) {
 	            $(this).val('D');
 	        } else if ($(this).find('option[value="R"]').length > 0) {
@@ -194,7 +200,7 @@ $(function(){
 	            console.error('❌ AJAX 오류:', status, error);
 	            console.error('응답 내용:', xhr.responseText);
 	        }
-	    });
+	    }); */
 	});
 
 

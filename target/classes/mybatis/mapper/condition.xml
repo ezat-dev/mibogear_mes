@@ -679,4 +679,21 @@ INSERT INTO tb_dailycheck (
         #{d_ym}
     )
 	</insert>
+	<!-- 로그인 후 열전대 교체 조회 -->
+	<select id="thermocoupleCheck" parameterType="Thermocouple" resultType="Thermocouple">
+	<![CDATA[
+SELECT t1.*
+FROM tb_thermocouple_change t1
+INNER JOIN (
+    /* 1. 설비별 가장 최신 행 */
+    SELECT machine_name, MAX(th_change_code) AS last_id
+    FROM tb_thermocouple_change
+    GROUP BY machine_name
+) t2 ON t1.th_change_code = t2.last_id
+WHERE t1.next_change_date IS NOT NULL
+  /* 2. 차기 교체 일자 한 달 이내 */
+  AND STR_TO_DATE(t1.next_change_date, '%Y-%m-%d') <= DATE_ADD(CURDATE(), INTERVAL 1 MONTH)
+ORDER BY t1.next_change_date ASC
+]]>
+	</select>
 </mapper>

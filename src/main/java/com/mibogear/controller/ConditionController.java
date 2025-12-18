@@ -1260,4 +1260,11 @@ public class ConditionController {
         public boolean dailyCheckInsert(Condition condition) {
         		return conditionService.dailyCheckInsert(condition);
         }
+        //로그인 후 열전대 교체 조회
+        @RequestMapping(value= "/condition/login/thermocoupleCheck", method = RequestMethod.POST)
+        @ResponseBody
+        public List<Thermocouple> thermocoupleCheck(Thermocouple thermocouple) {
+        	List<Thermocouple> datas = conditionService.thermocoupleCheck(thermocouple);
+            return datas;  
+        }
 }

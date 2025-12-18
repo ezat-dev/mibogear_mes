@@ -208,4 +208,8 @@ public class ConditionServiceImpl implements ConditionService {
   	public boolean dailyCheckInsert(Condition condition) {
   		return conditionDao.dailyCheckInsert(condition);
   	}
+  	@Override
+  	public List<Thermocouple> thermocoupleCheck(Thermocouple thermocouple) {
+  	    return conditionDao.thermocoupleCheck(thermocouple);
+  	}
 }
