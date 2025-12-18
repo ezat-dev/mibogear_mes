@@ -244,4 +244,8 @@ public class ConditionDaoImpl implements ConditionDao {
   		}
   		return true;
   	}
+  	@Override
+  	public List<Thermocouple> thermocoupleCheck(Thermocouple thermocouple) {
+  		return sqlSession.selectList("condition.thermocoupleCheck", thermocouple);
+  	}
 }

@@ -162,8 +162,9 @@ function login() {
             console.log(result); 
 
             if (result.data && result.data.user_id) {
-
-                location.href = "/mibogear/main";  
+            	thermocoupleCheck(function() {
+                    location.href = "/mibogear/main";
+                });
 
             } else {
             	 console.log(userData); 
@@ -176,6 +177,35 @@ function login() {
         }
     });
 }
+
+ function thermocoupleCheck(callback){
+	    $.ajax({
+	        url: "/mibogear/condition/login/thermocoupleCheck",
+	        type: "post",
+	        contentType: false,
+	        processData: false,
+	        dataType: "json",
+	        data:{} ,
+	        success: function(result) {
+	            console.log("열전대교체 조회 데이터", result); 
+	            if (result && result.length > 0) {
+		            console.log("열전대 교체 알림 조회 데이터: ", result);
+	            	var msg = "[열전대 교체 알림]\n";
+	                $.each(result, function(i, item) {
+	                    msg += "\n- " + item.machine_name + " 차기 교체 일자 : " + item.next_change_date;
+	                });
+	                alert(msg); 
+
+		            if (callback) callback(); 
+	            }
+	        },
+	        error: function(xhr, status, error) {
+	            alert("서버 오류가 발생했습니다. 다시 시도해주세요.");
+	            console.log(error); 
+	            if (callback) callback();
+	        }
+	    });
+	 }
 
 //모달
 

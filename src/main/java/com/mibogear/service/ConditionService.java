@@ -87,4 +87,7 @@ public interface ConditionService {
     boolean dailyCheckUpdate(Condition condition);
     boolean dailyCheckDelete(Condition condition);
     boolean dailyCheckInsert(Condition condition);
+    
+    //로그인 시 열전대 교체 체크
+    List<Thermocouple> thermocoupleCheck(Thermocouple thermocouple);
 }
