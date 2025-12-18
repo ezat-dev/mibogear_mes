@@ -235,10 +235,10 @@
      		<select id="machineSelect"
 			        style="font-size: 16px; margin: 5px; border-radius: 4px; border: 1px solid #ccc; 
 			        text-align: center; height: 30px; width: 75px">
-			        <option value="bcf1" selected>1호기</option>
-			        <option value="bcf2">2호기</option>
-     				<option value="bcf3">3호기</option>
-     				<option value="bcf4">4호기</option>
+			        <option value="bcf1" selected>BCF1</option>
+			        <option value="bcf2">BCF2</option>
+     				<option value="bcf3">BCF3</option>
+     				<option value="bcf4">BCF4</option>
      		</select>
      		</div>
         		<label class="daylabel">검색 날짜 :</label>
