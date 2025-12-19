@@ -36,4 +36,8 @@ public class MonitoringServiceImpl implements MonitoringService{
     public List<ProductManage> getLotList(ProductManage productManage) {
         return monitoringDao.getLotList(productManage);
     }
+    @Override
+    public boolean trendMemoInsert(Monitoring monitoring) {
+        return monitoringDao.trendMemoInsert(monitoring);
+    }
 }

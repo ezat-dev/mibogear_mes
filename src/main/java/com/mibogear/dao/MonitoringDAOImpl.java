@@ -37,4 +37,12 @@ public class MonitoringDAOImpl implements MonitoringDAO{
 	public List<ProductManage> getLotList(ProductManage productManage) {
 		return sqlSession.selectList("monitoring.getLotList", productManage);
 	}
+	@Override
+	public boolean trendMemoInsert(Monitoring monitoring) {
+		int result =  sqlSession.insert("monitoring.trendMemoInsert", monitoring);
+		if(result <= 0) {
+			return false;
+		}
+		return true;
+	}
 }

@@ -90,4 +90,7 @@ public interface ConditionService {
     
     //로그인 시 열전대 교체 체크
     List<Thermocouple> thermocoupleCheck(Thermocouple thermocouple);
+    
+    boolean tempCorrectionInsert(TempCorrectionQue tempCorrectionQue);
+    boolean tempCorrectionDelete(TempCorrectionQue tempCorrectionQue);
 }

@@ -212,4 +212,12 @@ public class ConditionServiceImpl implements ConditionService {
   	public List<Thermocouple> thermocoupleCheck(Thermocouple thermocouple) {
   	    return conditionDao.thermocoupleCheck(thermocouple);
   	}
+  	@Override
+  	public boolean tempCorrectionInsert(TempCorrectionQue tempCorrectionQue) {
+  		return conditionDao.tempCorrectionInsert(tempCorrectionQue);
+  	}
+  	@Override
+  	public boolean tempCorrectionDelete(TempCorrectionQue tempCorrectionQue) {
+  		return conditionDao.tempCorrectionDelete(tempCorrectionQue);
+  	}
 }
