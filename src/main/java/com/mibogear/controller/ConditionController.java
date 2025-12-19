@@ -1267,4 +1267,16 @@ public class ConditionController {
         	List<Thermocouple> datas = conditionService.thermocoupleCheck(thermocouple);
             return datas;  
         }
+        //온도조절계보정현황 추가
+        @RequestMapping(value= "/condition/tempCorrectionInsert", method = RequestMethod.POST)
+        @ResponseBody
+        public boolean tempCorrectionInsert(TempCorrectionQue tempCorrectionQue) {
+        	return conditionService.tempCorrectionInsert(tempCorrectionQue);
+        }
+        //온도조절계보정현황 삭제
+        @RequestMapping(value= "/condition/tempCorrectionDelete", method = RequestMethod.POST)
+        @ResponseBody
+        public boolean tempCorrectionDelete(TempCorrectionQue tempCorrectionQue) {
+        	return conditionService.tempCorrectionDelete(tempCorrectionQue);
+        }
 }

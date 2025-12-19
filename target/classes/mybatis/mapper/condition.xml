@@ -696,4 +696,30 @@ WHERE t1.next_change_date IS NOT NULL
 ORDER BY t1.next_change_date ASC
 ]]>
 	</select>
+		<!-- 온도조절계보정현황 추가 -->
+	<insert id="tempCorrectionInsert" parameterType="TempCorrectionQue">
+INSERT INTO tb_temp_correction (
+		temp_correction_id,
+        before_correction,
+        first_correction,
+        second_correction,
+        machine_name,
+        year
+    ) VALUES (
+CONCAT('TC', LPAD(IFNULL(
+                (SELECT MAX(CAST(SUBSTRING(temp_correction_id, 3) AS UNSIGNED)) 
+                 FROM tb_temp_correction AS t), 0) + 1, 3, '0'
+        )),
+        #{before_correction},
+        #{first_correction},
+        #{second_correction},
+        #{machine_name},
+        #{year}
+    )
+	</insert>
+			<!-- 온도조절계보정현황 삭제 -->
+	<insert id="tempCorrectionDelete" parameterType="TempCorrectionQue">
+DELETE FROM tb_temp_correction 
+WHERE temp_correction_id = #{temp_correction_id}
+	</insert>
 </mapper>

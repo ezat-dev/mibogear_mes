@@ -432,6 +432,33 @@
 	    background-color: #e0e0e0;
 	    color: #333;
 	  }
+	         .mchSelect {
+		    margin-right: 10px;
+		    margin-bottom: 13px;
+		    font-size: 20px;
+		    margin-left: -120px;
+		    margin-top: 3px;
+		}
+		#machineSelect{
+		font-size: 16px; 
+		margin: 5px; 
+		border-radius: 4px; 
+		border: 1px solid #ccc; 
+		text-align: center; 
+		height: 34px; 
+		width: 75px;
+		}
+		
+		#tableAlarm {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* 각 컬럼의 너비 지정 */
+#tableAlarm th:nth-child(1) { width: 100px; }
+#tableAlarm th:nth-child(2) { width: 300px; }
+#tableAlarm th:nth-child(3) { width: auto; }
+#tableAlarm th:nth-child(4) { width: 100px; }
     </style>
 
 <body>
@@ -442,7 +469,20 @@
             <div class="button-container">
             
                <div class="box1">
-	
+               
+	     		<div class="mchSelect">
+     		<label>호기 선택</label>
+     		<select id="machineSelect">
+			        <option value="" selected>전체</option>
+			        <option value="bcf1">BCF1</option>
+			        <option value="bcf2">BCF2</option>
+     				<option value="bcf3">BCF3</option>
+     				<option value="bcf4">BCF4</option>
+     				<option value="cm">CM</option>
+     				<option value="cm2">CM2</option>
+     		</select>
+     		</div>
+     		
 	            <label class="daylabel">조회일자 :</label>
 	            <input type="text" id="s_sdate" class="dayselect daySet"/>
 	            <label for="">~</label>
@@ -514,7 +554,8 @@ $(function() {
 	        method: "POST",
 	        data: {
 	            startDate: $("#s_sdate").val(),
-	            endDate: $("#s_edate").val()
+	            endDate: $("#s_edate").val(),
+	            machine_name: $("#machineSelect").val()
 	        },
 	        dataType: "json",
 	        success: function(resp){

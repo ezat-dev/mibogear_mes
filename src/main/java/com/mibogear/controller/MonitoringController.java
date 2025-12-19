@@ -71,5 +71,11 @@ public class MonitoringController {
     public List<Monitoring> getAlarm1(@RequestBody Monitoring monitoring) {
         return monitoringService.getAlarm1(monitoring);
     }
+    //트렌드 메모 추가
+    @RequestMapping(value = "/monitoring/trendMemoInsert", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean trendMemoInsert(Monitoring monitoring) {
+        return monitoringService.trendMemoInsert(monitoring);
+    }
 
 }

@@ -248,4 +248,20 @@ public class ConditionDaoImpl implements ConditionDao {
   	public List<Thermocouple> thermocoupleCheck(Thermocouple thermocouple) {
   		return sqlSession.selectList("condition.thermocoupleCheck", thermocouple);
   	}
+	@Override
+	public boolean tempCorrectionInsert(TempCorrectionQue tempCorrectionQue) {
+		int result =  sqlSession.insert("condition.tempCorrectionInsert", tempCorrectionQue);
+		if(result <= 0) {
+			return false;
+		}
+		return true;
+	}
+	@Override
+	public boolean tempCorrectionDelete(TempCorrectionQue tempCorrectionQue) {
+		int result =  sqlSession.delete("condition.tempCorrectionDelete", tempCorrectionQue);
+		if(result <= 0) {
+			return false;
+		}
+		return true;
+	}
 }

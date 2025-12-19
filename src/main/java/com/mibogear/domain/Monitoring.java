@@ -74,6 +74,10 @@ public class Monitoring {
     private String bcf4_chim;
     private String bcf4_oil;
     private String bcf4_cp;
+    private String memo;
+    private String writer;
+    private String note;
+    private String user_code;
     
     //알람현황
     private String alarm_hogi;
@@ -84,6 +88,30 @@ public class Monitoring {
     private String machine_name;
     
     
+	public String getUser_code() {
+		return user_code;
+	}
+	public void setUser_code(String user_code) {
+		this.user_code = user_code;
+	}
+	public String getWriter() {
+		return writer;
+	}
+	public void setWriter(String writer) {
+		this.writer = writer;
+	}
+	public String getNote() {
+		return note;
+	}
+	public void setNote(String note) {
+		this.note = note;
+	}
+	public String getMemo() {
+		return memo;
+	}
+	public void setMemo(String memo) {
+		this.memo = memo;
+	}
 	public String getMachine_name() {
 		return machine_name;
 	}

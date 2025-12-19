@@ -77,7 +77,7 @@
     <div class="section">
       <h3>설비보존관리</h3>
       <div class="control"><label for="d01">Spare부품관리</label><select id="d01" name="d01"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
-      <div class="control"><label for="d02">설비비가동등록</label><select id="d02" name="d02"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
+      <!-- <div class="control"><label for="d02">설비비가동등록</label><select id="d02" name="d02"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div> -->
       <div class="control"><label for="d03">설비수리이력관리</label><select id="d03" name="d03"><option value="N">없음</option><option value="R">조회</option><option value="C">저장</option><option value="U">수정</option><option value="D">삭제</option></select></div>
     </div>
     <div class="section">

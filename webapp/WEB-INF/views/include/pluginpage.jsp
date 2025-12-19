@@ -223,7 +223,7 @@ function pageObject(paramKey){
 			"c07":"",
 			//설비보존관리
 			"d01":["/mibogear/preservation/sparePart","Spare부품관리"],
-			"d02":["/mibogear/preservation/begaInsert","설비비가동등록"],
+			//"d02":["/mibogear/preservation/begaInsert","설비비가동등록"],
 			"d03":["/mibogear/preservation/suriHistory","설비수리이력관리"],
 			"d04":"",
 			"d05":"",

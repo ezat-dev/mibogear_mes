@@ -25,17 +25,22 @@ WHERE 1=1
 <if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
 AND DATE(regtime) between #{startDate} and #{endDate}
 </if>
+<if test="machine_name != null and machine_name != ''">
+AND alarm_address LIKE CONCAT('%', #{machine_name}, '%')
+</if>
     AND aa.a_value = 1
     AND (aa.prev_value IS NULL OR aa.prev_value = 0)
 ORDER BY aa.regtime DESC;
 	</select>
 		<select id="getTempList" parameterType="Monitoring" resultType="Monitoring">
-SELECT * FROM tb_trend_temp
+SELECT * FROM tb_trend_temp AS tt
+LEFT JOIN tb_trend_memo AS tm
+ON LEFT(tt.date, 16) = tm.date
 WHERE 1=1
 <if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
-AND date between #{startDate} and #{endDate}
+AND tt.date between #{startDate} and #{endDate}
 </if>
-ORDER BY date ASC;
+ORDER BY tt.date ASC;
 	</select>
 	<!-- 알람 랭킹 -->
 		<select id="getAlarmRankingList" parameterType="Monitoring" resultType="Monitoring">
@@ -58,6 +63,9 @@ FROM (
 WHERE 1=1
 <if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
 AND DATE(regtime) between #{startDate} and #{endDate}
+</if>
+<if test="machine_name != null and machine_name != ''">
+AND alarm_address LIKE CONCAT('%', #{machine_name}, '%')
 </if>
     AND aa.a_value = 1
     AND aa.clear_time IS NOT null
@@ -91,4 +99,10 @@ LIMIT 50
 		</if>
 	</where>
 	</select>
+	<!-- 트렌드 메모 추가 -->
+	<insert id="trendMemoInsert" parameterType="productManage">
+	INSERT INTO tb_trend_memo
+	(date, user_code, writer, memo, note)
+	VALUES(#{date}, #{user_code}, #{writer}, #{memo}, #{note})
+	</insert>
 </mapper>

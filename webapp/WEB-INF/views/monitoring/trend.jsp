@@ -97,7 +97,7 @@
 		.modal-content {
 		    background: white;
 		    width: 60%; /* 가로 길이를 50%로 설정 */
-		    max-width: 600px; /* 최대 너비를 설정하여 너무 커지지 않도록 */
+		    max-width: 360px; /* 최대 너비를 설정하여 너무 커지지 않도록 */
 		    max-height: 800px; /* 화면 높이에 맞게 제한 */
 		    overflow-y: auto;
 		    margin: 2% auto; /* 수평 중앙 정렬 */
@@ -141,7 +141,7 @@
 		}
 		
 		.modal-content input, .modal-content textarea {
-		    width: 60%;
+		    width: 93%;
 		    padding: 8px;
 		    margin-bottom: 10px;
 		    border: 1px solid #ccc;
@@ -221,6 +221,33 @@
     </head>
 <body>
 
+<!-- 트렌트 메모 추가 모달 -->
+<div id="modalContainer" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <!-- 추가, 수정 -->
+    <h2>트렌드 메모 등록</h2>
+    <form id="corrForm" autocomplete="off">
+      <label>작업자</label>
+      <input type="text" name="tc_cnt" value="0" style="display:none;">
+      <input type="text" name="user_code" style="display:none;">
+      <input type="text" name="writer" style="" readonly="readonly">
+
+      <label>등록시간</label>
+      <input type="text"  name="date" >
+
+      <label>등록내용</label>
+      <input type="text" name="memo">
+
+      <label>비고</label>
+	  <input type="text" name="note">
+		<hr />
+		
+      <button type="submit" id="saveCorrStatus">저장</button>
+      <button type="button" id="closeModal">닫기</button>
+    </form>
+  </div>
+</div>
 
      		<div class="button-container">
      		
@@ -254,10 +281,10 @@
 				<button class="select-button">
                     <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">조회
                 </button>
-<!--            <button class="insert-button">
+            <button class="insert-button">
 				<img src="/mibogear/css/tabBar/add-outline.png" alt="insert"
 					class="button-image">추가
-			</button> -->
+			</button> 
 				<button id="printBtn" 
 				        style="margin-left:10px; background-color:#ffffff; border:1px solid #000000; border-radius:4px; padding:5px 10px; cursor:pointer; width:72px; height:40px;">
 				    🖨️ 인쇄
@@ -420,6 +447,21 @@ function fetchData() {
             });
             categories = uniqueOrder.slice();
 
+            uniqueOrder.forEach(rt => {
+                const r = grouped[rt];
+                if (r.memo || r.note !== null) {
+                    const parts = [];
+                    if (r.memo && r.memo.trim() !== "") parts.push("메모: " + escapeHtml(r.memo));
+                    if (r.note && r.note.trim() !== "") parts.push("비고: " + escapeHtml(r.note));
+
+                    memoSeries.push({
+                        x: uniqueOrder.indexOf(rt),
+                        y: 950,
+                        desc: parts.join("<br/>") // 비어있으면 그냥 빈 문자열
+                    });
+                }
+            });
+
 
             // 시리즈 데이터 구성
             bcf1_chim=uniqueOrder.map(rt=>safeNum(grouped[rt].bcf1_chim));
@@ -443,14 +485,14 @@ function fetchData() {
             //	bcf3_chim,bcf3_oil,bcf3_cp,bcf3_tempering, bcf4_chim, bcf4_oil, bcf4_cp];
 
             if(!chart) getTrend(dynamicSeries);
-/*             else{
+             else{
                 chart.xAxis[0].setCategories(categories,false);
                 chart.series.forEach((s,i)=>s.setData(newSeriesData[i]||[],false));
                 // ✅ 메모 시리즈 갱신
                 const memoIdx = chart.series.length - 1;
                 chart.series[memoIdx].setData(memoSeries,false);
                 chart.redraw();
-            } */
+            } 
             chart.xAxis[0].setCategories(categories,false);
             
             while (chart.series.length > 0) {
@@ -507,7 +549,7 @@ function getTrend(initialSeries){
                     var labelHtml = signListObj[regtime] || "";
                     if (labelHtml) s += '<hr/>' + labelHtml;
                 } else {
-                    s += '데이터 없음';  // 옵션: 빈 툴팁 시 메시지 (제거 가능)
+                    s += '';  // 옵션: 빈 툴팁 시 메시지 (제거 가능)
                 }
                 return s;
             }
@@ -523,28 +565,124 @@ function createSeriesData(machine) {
             { name:'1호기 침탄', data: bcf1_chim, yAxis:0 },
             { name:'1호기 유조', data: bcf1_oil, yAxis:0 },
             { name:'1호기 CP', data: bcf1_cp, yAxis:0 },
-            { name:'1호기 소려', data: bcf1_tempering, yAxis:0 }
+            { name:'1호기 소려', data: bcf1_tempering, yAxis:0 },
+            {   // ✅ 메모 시리즈 추가
+                name:'메모',
+                type:'scatter',
+                data:memoSeries,
+                yAxis:0,
+                enableMouseTracking: false,
+                marker:{ symbol:'circle', radius:4 },
+                dataLabels:{
+                    enabled:true,
+                    useHTML:true,
+                    formatter:function(){ return this.point.desc || ""; }
+                },
+                tooltip:{
+                    pointFormatter:function(){ return this.desc ? `<span style="color:blue">${point.desc}</span>` : ""; }
+                }
+            }
         ],
         'bcf2': [
             { name:'2호기 침탄', data: bcf2_chim, yAxis:0 },
             { name:'2호기 유조', data: bcf2_oil, yAxis:0 },
-            { name:'2호기 CP', data: bcf2_cp, yAxis:0 }
+            { name:'2호기 CP', data: bcf2_cp, yAxis:0 },
+            {   // ✅ 메모 시리즈 추가
+                name:'메모',
+                type:'scatter',
+                data:memoSeries,
+                yAxis:0,
+                enableMouseTracking: false,
+                marker:{ symbol:'circle', radius:4 },
+                dataLabels:{
+                    enabled:true,
+                    useHTML:true,
+                    formatter:function(){ return this.point.desc || ""; }
+                },
+                tooltip:{
+                    pointFormatter:function(){ return this.desc ? `<span style="color:blue">${point.desc}</span>` : ""; }
+                }
+            }
         ],
         'bcf3': [
             { name:'3호기 침탄', data: bcf3_chim, yAxis:0 },
             { name:'3호기 유조', data: bcf3_oil, yAxis:0 },
             { name:'3호기 CP', data: bcf3_cp, yAxis:0 },
-            { name:'3호기 소려', data: bcf3_tempering, yAxis:0 }
+            { name:'3호기 소려', data: bcf3_tempering, yAxis:0 },
+            {   // ✅ 메모 시리즈 추가
+                name:'메모',
+                type:'scatter',
+                data:memoSeries,
+                yAxis:0,
+                enableMouseTracking: false,
+                marker:{ symbol:'circle', radius:4 },
+                dataLabels:{
+                    enabled:true,
+                    useHTML:true,
+                    formatter:function(){ return this.point.desc || ""; }
+                },
+                tooltip:{
+                    pointFormatter:function(){ return this.desc ? `<span style="color:blue">${point.desc}</span>` : ""; }
+                }
+            }
         ],
         'bcf4': [
             { name:'4호기 침탄', data: bcf4_chim, yAxis:0 },
             { name:'4호기 유조', data: bcf4_oil, yAxis:0 },
-            { name:'4호기 CP', data: bcf4_cp, yAxis:0 }
+            { name:'4호기 CP', data: bcf4_cp, yAxis:0 },
+            {   // ✅ 메모 시리즈 추가
+                name:'메모',
+                type:'scatter',
+                data:memoSeries,
+                yAxis:0,
+                enableMouseTracking: false,
+                marker:{ symbol:'circle', radius:4 },
+                dataLabels:{
+                    enabled:true,
+                    useHTML:true,
+                    formatter:function(){ return this.point.desc || ""; }
+                },
+                tooltip:{
+                    pointFormatter:function(){ return this.desc ? `<span style="color:blue">${point.desc}</span>` : ""; }
+                }
+            }
         ]
     };
     // 선택된 호기에 해당하는 시리즈 배열을 반환합니다.
     return seriesMap[machine] || []; 
 }
+
+//추가버튼 클릭 시
+$(".insert-button").on("click", function(){
+    $("input[name='user_code']").val("${loginUser.user_code}");
+    $("input[name='writer']").val("${loginUser.user_name}");
+    $("input[name='date']").val(trendEtime());
+    $('#modalContainer').show().addClass('show');
+});
+
+//저장버튼 클릭 시 
+$('#saveCorrStatus').click(function(event){
+    event.preventDefault();
+    var formData = new FormData($('#corrForm')[0]);
+    $.ajax({
+      url:"/mibogear/monitoring/trendMemoInsert",
+      type:"POST",
+      data: formData,
+      processData: false,
+      contentType: false,
+      success: function (result) {
+    	    if (result === true) {
+    	        alert("저장되었습니다!");
+    	        $('#modalContainer').hide();
+    	        $('#corrForm')[0].reset();
+    	        fetchData();
+    	    }else{
+				alert("저장 실패했습니다.");
+        	    }
+    	},
+      error:function(){ alert('저장 중 오류가 발생했습니다.'); }
+    });
+});
 </script>
 
 </body>

@@ -13,4 +13,5 @@ public interface MonitoringDAO {
 	List<Monitoring> getAlarm1(Monitoring monitoring);
 	
 	List<ProductManage> getLotList(ProductManage productManage);
+	boolean trendMemoInsert(Monitoring monitoring);
 }
