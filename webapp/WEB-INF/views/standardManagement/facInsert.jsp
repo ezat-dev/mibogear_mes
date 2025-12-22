@@ -500,6 +500,8 @@ textarea {
 			        	hozAlign:"center", headerFilter:"input"},
 			        {title:"용도", field:"fac_yong", sorter:"number", width:200,
 			        	hozAlign:"center", headerFilter:"input"},
+				        {title:"비고", field:"fac_bigo", sorter:"number", width:200,
+				        	hozAlign:"center", headerFilter:"input"},
 			    ],
 			    rowFormatter:function(row){
 				    var data = row.getData();
