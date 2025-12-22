@@ -210,6 +210,7 @@ public class StandardController {
 			rowMap.put("fac_cbuy", facList.get(i).getFac_cbuy());
 			rowMap.put("fac_code", facList.get(i).getFac_code());
 			rowMap.put("fac_file_name", facList.get(i).getFac_file_name());
+			rowMap.put("fac_bigo", facList.get(i).getFac_bigo());
 
 			rtnList.add(rowMap);
 		}
