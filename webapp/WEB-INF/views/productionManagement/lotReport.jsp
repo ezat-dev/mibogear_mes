@@ -342,11 +342,25 @@ document.getElementById('printBtn').addEventListener('click', function() {
     style.innerHTML = `
         @page {
             size: A4 landscape;
-            margin: 10mm;
+            margin: 0mm;
         }
         @media print {
             body { zoom: 67%; }
-            #container { width: 1700px !important; max-width: 1700px !important; height: 660px !important; }
+            #container {
+                /* 고정 px 대신 100% 사용 */
+                width: 100% !important;
+                max-width: none !important;
+                height: auto !important;
+                
+                /* zoom 대신 scale 사용 (더 표준적이고 정확함) */
+                transform: scale(0.95); /* 화면에 맞춰 비율 조절 */
+                transform-origin: top left;
+                
+                /* 가로 스크롤 방지 */
+                overflow: hidden !important; 
+            }
+            /* 인쇄에 불필요한 스크롤바 제거 */
+            ::-webkit-scrollbar { display: none; }
         }
     `;
     document.head.appendChild(style);
