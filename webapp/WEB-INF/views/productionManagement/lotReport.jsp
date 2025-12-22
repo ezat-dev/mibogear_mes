@@ -311,10 +311,14 @@
 				</button> -->
                 
                 
-                <button class="excel-download-button">
+<!--                 <button class="excel-download-button">
                     <img src="/mibogear/image/excel-icon.png" alt="excel" class="button-image">엑셀
-                </button>
+                </button> -->
                 
+                <button id="printBtn" 
+				        style="margin-left:10px; background-color:#ffffff; border:1px solid #000000; border-radius:4px; padding:5px 10px; cursor:pointer; width:72px; height:40px;">
+				    🖨️ 인쇄
+				</button> 
                 
             </div>
         </div>
@@ -332,6 +336,23 @@ var selectedRowData = null;
 var fac_no;
 var lotno_date;
 var date = new Date();
+
+document.getElementById('printBtn').addEventListener('click', function() {
+    const style = document.createElement('style');
+    style.innerHTML = `
+        @page {
+            size: A4 landscape;
+            margin: 10mm;
+        }
+        @media print {
+            body { zoom: 67%; }
+            #container { width: 1700px !important; max-width: 1700px !important; height: 660px !important; }
+        }
+    `;
+    document.head.appendChild(style);
+    window.print();
+    setTimeout(() => { document.head.removeChild(style); }, 1000);
+}); 
 
 $(function() {
 	  var year = date.getFullYear();
