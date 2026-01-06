@@ -14,4 +14,5 @@ public interface ProductManageService {
 	
 	List<ProductManage> getLotList(ProductManage productManage);
 
+	List<ProductManage> getLotListReport(ProductManage productManage);
 }

@@ -14,8 +14,22 @@ public class ProductManage {
 	private String bcf_drain;
 	
 	private String fac_no_save;
+	private String end_time;
+	private String regtime;
 	
 
+	public String getRegtime() {
+		return regtime;
+	}
+	public void setRegtime(String regtime) {
+		this.regtime = regtime;
+	}
+	public String getEnd_time() {
+		return end_time;
+	}
+	public void setEnd_time(String end_time) {
+		this.end_time = end_time;
+	}
 	public String getFac_no_save() {
 		return fac_no_save;
 	}

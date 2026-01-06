@@ -7,11 +7,22 @@
     
     <!-- LOT 보고서 조회 -->
 	<select id="getLotList" parameterType="productManage" resultType="productManage">
-	SELECT l.lotno AS lot_no, l.lotno_date, l.pattern, l.fac_no, 
-	lt.bcf_up, lt.bcf_chim, lt.bcf_diff, lt.bcf_gang, lt.bcf_quen, lt.bcf_drain FROM tb_lot AS l
+	SELECT l.regtime, l.lotno AS lot_no, l.lotno_date, l.pattern, l.fac_no, 
+	lt.bcf_up, lt.bcf_chim, lt.bcf_diff, lt.bcf_gang, lt.bcf_quen, lt.bcf_drain, lt.end_time
+	FROM tb_lot AS l
 	INNER JOIN tb_lot_tracking AS lt
 	ON l.lotno = lt.lotno
 	WHERE l.fac_no = #{fac_no_save}
+	</select>
+	
+	<!-- LOT 보고서 조회(리포트)-->
+	<select id="getLotListReport" parameterType="productManage" resultType="productManage">
+	SELECT l.regtime, l.lotno AS lot_no, l.lotno_date, l.pattern, l.fac_no, 
+	lt.bcf_up, lt.bcf_chim, lt.bcf_diff, lt.bcf_gang, lt.bcf_quen, lt.bcf_drain 
+	FROM tb_lot AS l
+	INNER JOIN tb_lot_tracking AS lt
+	ON l.lotno = #{lot_no}
+	WHERE lt.lotno = #{lot_no}
 	</select>
     
 </mapper>

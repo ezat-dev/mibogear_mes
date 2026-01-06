@@ -272,6 +272,18 @@
             border-radius: 5px;
             font-size: 15px;
         }
+        .btn-print {
+    background: none;      /* 배경색 제거 */
+    border: none;          /* 테두리 제거 */
+    padding: 0;            /* 내부 여백 제거 */
+    cursor: pointer;       /* 마우스 호버 시 손가락 모양 */
+    font-size: 1.2rem;     /* 이모지 크기 조절 (필요 시) */
+    outline: none;         /* 클릭 시 생기는 강조선 제거 */
+}
+
+.btn-print:hover {
+    opacity: 0.7;          /* 마우스를 올렸을 때 살짝 흐리게 효과 */
+}
     </style>
 
 <body>
@@ -455,8 +467,8 @@ function getList(){
 		    },
 		    placeholder: "조회된 데이터가 없습니다.",
 		    columns: [
-		    	{ title: "LOT 번호", field: "lot_no", width: 180, hozAlign: "center" },  
-		      { title: "LOT 생성 날짜", field: "lotno_date", width: 130, hozAlign: "center",
+		    	{ title: "LOT 번호", field: "lot_no", width: 230, hozAlign: "center" },  
+		      { title: "LOT 생성 날짜", field: "lotno_date", width: 180, hozAlign: "center",
 		    	  formatter: function(cell) {
 		    	        var value = String(cell.getValue()); 
 		    	        
@@ -469,20 +481,57 @@ function getList(){
 	    	     },
 		      { title: "패턴 번호", field: "pattern", width: 130, hozAlign: "center" },
 		      { title: "설비", field: "fac_no", width: 110, hozAlign: "center" },
-		      { title: "승온 시간", field: "bcf_up",  width: 170, hozAlign: "center" },
-		      { title: "침탄 시간", field: "bcf_chim",width: 170, hozAlign: "center" },		      		      
-		      { title: "확산 시간", field: "bcf_diff",width: 170, hozAlign: "center" },		      		      
-		      { title: "강온 시간", field: "bcf_gang",width: 170, hozAlign: "center"},	
-		      { title: "퀜칭 시간", field: "bcf_quen",width: 170, hozAlign: "center"},	
-		      { title: "드레인 시간", field: "bcf_drain",width: 170, hozAlign: "center"}	      		      
-		    ],
-
-		    rowClick: function(e, row) {
-		      $('#dataTable .tabulator-row').removeClass('row_select');
-		      row.getElement().classList.add('row_select');
-		      selectedRowData = row.getData();
-		    },
+		      { title: "시작 시간", field: "regtime",  width: 200, hozAlign: "center" },
+		      { title: "종료 시간", field: "end_time",width: 200, hozAlign: "center" },
+		      {
+		          title: "LOT보고서 저장",
+		          field: "print",
+		          width: 150,
+		          hozAlign: "center",
+		          headerSort: false,
+		          // 버튼 모양을 정의합니다.
+		          formatter: function(cell, formatterParams, onRendered) {
+		              return "<button class='btn-print'>💾</button>";
+		          },
+		          cellClick: function(e, cell) {
+		              var rowData = cell.getRow().getData(); // 해당 행의 데이터 가져오기
+		              printLotReport(rowData); // 인쇄 함수 호출
+		          }
+		      }      		      
+		    ]
 		  });
+
+	  function printLotReport(rowData){
+          if(rowData){
+              console.log("저장할 LOT:", rowData.lot_no);
+
+              $.ajax({
+                  url: "/mibogear/productionManagement/lot_report/lotPrint",
+                  type: "POST",
+                  contentType: "application/json",
+                  data: JSON.stringify({ lot_no: rowData.lot_no}), 
+                  xhrFields: {
+                      responseType: 'blob' // PDF 바이너리 처리
+                  },
+                  success: function(blob){
+                      // PDF 다운로드
+                      var link = document.createElement('a');
+                      link.href = window.URL.createObjectURL(blob);
+                      link.download = rowData.lot_no + ".pdf";
+                      document.body.appendChild(link);
+                      link.click();
+                      document.body.removeChild(link);
+                      window.URL.revokeObjectURL(link.href);
+                  },
+                  error: function(xhr, status, error){
+                      console.error("PDF 생성 실패:", error);
+                  }
+              });
+
+          } else {
+              console.log("rowData가 없습니다.");
+          }
+		  };
 }
 
 </script>

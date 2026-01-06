@@ -16,5 +16,7 @@ public interface ProductManageDAO {
 	void updateDroppedGoods(Map<String, Object> param);
 	
 	List<ProductManage> getLotList(ProductManage productManage);
+	
+	List<ProductManage> getLotListReport(ProductManage productManage);
 
 }

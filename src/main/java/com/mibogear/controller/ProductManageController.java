@@ -1,11 +1,21 @@
 package com.mibogear.controller;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.core.io.InputStreamResource;
+import org.springframework.core.io.Resource;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +28,25 @@ import com.mibogear.domain.ProductManage;
 import com.mibogear.service.MonitoringService;
 import com.mibogear.service.ProductManageService;
 
+//import net.sf.jasperreports.engine.JasperCompileManager;
+//import net.sf.jasperreports.engine.JasperFillManager;
+//import net.sf.jasperreports.engine.JasperPrint;
+//import net.sf.jasperreports.engine.JasperReport;
+//import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+//import net.sf.jasperreports.engine.export.JRPdfExporter;
+//import net.sf.jasperreports.export.SimpleExporterInput;
+//import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
+
+import net.sf.jasperreports.engine.JasperCompileManager;
+
+import net.sf.jasperreports.engine.JasperFillManager;
+import net.sf.jasperreports.engine.JasperPrint;
+import net.sf.jasperreports.engine.JasperReport;
+
+import net.sf.jasperreports.engine.data.JRBeanCollectionDataSource;
+import net.sf.jasperreports.engine.export.JRPdfExporter;
+import net.sf.jasperreports.export.SimpleExporterInput;
+import net.sf.jasperreports.export.SimpleOutputStreamExporterOutput;
 
 @Controller
 public class ProductManageController {
@@ -114,6 +143,100 @@ public class ProductManageController {
     	String date = productManage.getLotno_date().replace("-", "");
     	productManage.setLotno_date(date);
         return monitoringService.getLotList(productManage);
+    }
+    
+    //lotReort 생성(자스퍼리포트)
+    @RequestMapping(value = "/productionManagement/lot_report/lotPrint", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<Resource> lotPrint(@RequestBody ProductManage productManage,
+                                             HttpServletRequest request) {
+
+        System.out.println("===== lotPrint 진입 =====");
+
+        if (productManage.getLot_no() == null) {
+            System.out.println("▶ reportWorkJisi == null");
+            return ResponseEntity.badRequest().body(null);
+        }
+
+        System.out.println("▶ 요청 LOT = " + productManage.getLot_no());
+
+        if (productManage.getLot_no() == null) {
+            System.out.println("▶ w_ci_lot == null");
+            return ResponseEntity.badRequest().body(null);
+        }
+
+        String lotno = productManage.getLot_no();
+        String pdfFileName = lotno + ".pdf";
+        // "D:/제일_양식/lot보고서/" 로 추정됩니다.
+        String pdfPath = "D:/미보기아파일/lot보고서/" + pdfFileName;
+
+        try {
+            // 1) 데이터 조회
+            List<ProductManage> lotInfoList = productManageService.getLotListReport(productManage);
+
+            System.out.println("▶ lotInfoList size = " + (lotInfoList == null ? "null" : lotInfoList.size()));
+
+            if (lotInfoList != null && !lotInfoList.isEmpty()) {
+                for (ProductManage v : lotInfoList) {
+                    System.out.println("v.getRegtime()" + v.getRegtime());
+                }
+            } else {
+                System.out.println("▶ lotInfoList 비어있음");
+            }
+
+            Map<String, Object> reportMap = new HashMap<>();
+            reportMap.put("lotno", lotno);
+
+            List<JasperPrint> jasperPrints = new ArrayList<>();
+
+            // Report 1
+            if (lotInfoList != null && !lotInfoList.isEmpty()) {
+                String reportPath1 = request.getServletContext()
+                        .getRealPath("/WEB-INF/resources/reports/lotReport.jrxml");
+
+                System.out.println("▶ reportPath1 = " + reportPath1);
+
+                JasperReport report1 = JasperCompileManager.compileReport(reportPath1);
+                JasperPrint print1 = JasperFillManager.fillReport(
+                        report1,
+                        reportMap,
+                        new JRBeanCollectionDataSource(lotInfoList)
+                );
+
+                jasperPrints.add(print1);
+            }
+
+            System.out.println("▶ jasperPrints size = " + jasperPrints.size());
+
+            if (jasperPrints.isEmpty()) {
+                System.out.println("▶ JasperPrint 없음 -> 400 반환");
+                return ResponseEntity.badRequest().body(null);
+            }
+
+            // PDF 생성
+            JRPdfExporter exporter = new JRPdfExporter();
+            exporter.setExporterInput(SimpleExporterInput.getInstance(jasperPrints));
+            exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(pdfPath));
+            exporter.exportReport();
+
+            File file = new File(pdfPath);
+            System.out.println("▶ PDF 생성 완료 : " + file.exists());
+
+            InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION,
+                            "attachment; filename=\"" + pdfFileName + "\"")
+                    .contentLength(file.length())
+                    .contentType(MediaType.parseMediaType("application/pdf"))
+                    .body(resource);
+
+
+        } catch (Exception e) {
+            System.out.println("▶ 예외 발생");
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 
 }
