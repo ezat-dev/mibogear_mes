@@ -33,5 +33,10 @@ public class ProductManageDAOImpl implements ProductManageDAO {
 		System.out.println(productManage.getFac_no_save());
 		return sqlSession.selectList("productManage.getLotList", productManage);
 	}
+	
+	@Override
+	public List<ProductManage> getLotListReport(ProductManage productManage){
+		return sqlSession.selectList("productManage.getLotListReport", productManage);
+	}
 
 }

@@ -29,4 +29,9 @@ public class ProductManageServiceImpl implements ProductManageService{
   	public List<ProductManage> getLotList(ProductManage productManage){
   		return productManageDAO.getLotList(productManage);
   	}
+	
+	@Override
+  	public List<ProductManage> getLotListReport(ProductManage productManage){
+  		return productManageDAO.getLotListReport(productManage);
+  	}
 }
