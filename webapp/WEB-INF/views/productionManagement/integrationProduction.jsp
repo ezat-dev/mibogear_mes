@@ -106,8 +106,9 @@ body, html {
     #tableAlarm { } /* 테이블 element 자체는 사용 안함 */
     #tableAlarm tbody { } 
    #tableAlarmWrapper { 
-    height: 261px;  
-    overflow:auto; 
+    height: 260px;  
+    overflow:auto;
+    margin-bottom: 16px; 
 }
 
     /* 온도표는 한 줄이라 높이 조절 필요 없음 — 셀 패딩만 작게 */
@@ -266,7 +267,7 @@ body, html {
 
         </div>
         <div style="text-align:right;">
-            <div class="muted">최종 갱신: <span id="lastUpdated">--:--:--</span></div>
+            <!-- <div class="muted">최종 갱신: <span id="lastUpdated">--:--:--</span></div> -->
             <div style="margin-top:6px;">
                 <!-- <button class="btn work" id="openModal">작업스캔</button> -->
                 <button class="btn primary" id="btnRefresh">즉시갱신</button>
@@ -355,7 +356,7 @@ body, html {
                 <div>
        <!--              <input type="date" id="s_sdate" class="small-input">
                     <input type="date" id="s_edate" class="small-input"> -->
-                    <button class="btn ghost" id="btnLoadAlarm">조회</button>
+                   <!--  <button class="btn ghost" id="btnLoadAlarm">조회</button> -->
                 </div>
             </div>
 

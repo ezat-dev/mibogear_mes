@@ -17,8 +17,43 @@ public class ProductManage {
 	private String end_time;
 	private String regtime;
 	private String lotno;
+	private String count;
+	private String first_lot;
+	private String last_lot;
+	private String date;
+	private String no;
 	
-
+	
+	public String getNo() {
+		return no;
+	}
+	public void setNo(String no) {
+		this.no = no;
+	}
+	public String getDate() {
+		return date;
+	}
+	public void setDate(String date) {
+		this.date = date;
+	}
+	public String getCount() {
+		return count;
+	}
+	public void setCount(String count) {
+		this.count = count;
+	}
+	public String getFirst_lot() {
+		return first_lot;
+	}
+	public void setFirst_lot(String first_lot) {
+		this.first_lot = first_lot;
+	}
+	public String getLast_lot() {
+		return last_lot;
+	}
+	public void setLast_lot(String last_lot) {
+		this.last_lot = last_lot;
+	}
 	public String getLotno() {
 		return lotno;
 	}

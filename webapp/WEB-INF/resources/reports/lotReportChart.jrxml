@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.21.3.final using JasperReports Library version 6.21.3-4a3078d20785ebe464f18037d738d12fc98c13cf  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Treatment_Graph4" pageWidth="595" pageHeight="842" whenNoDataType="AllSectionsNoDetail" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="457a8e5b-687b-4747-a69a-ed069cbbd335">
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="One Empty Record"/>
+	<style name="row_tdate" mode="Opaque" pattern=""/>
+	<queryString>
+		<![CDATA[]]>
+	</queryString>
+	<field name="regtime" class="java.sql.Timestamp"/>
+	<field name="f_wash_pv" class="java.lang.Double"/>
+	<field name="in_wash_pv" class="java.lang.Double"/>
+	<field name="q_pv_1" class="java.lang.Double"/>
+	<field name="q_pv_2" class="java.lang.Double"/>
+	<field name="q_pv_3" class="java.lang.Double"/>
+	<field name="q_pv_4" class="java.lang.Double"/>
+	<field name="q_pv_5" class="java.lang.Double"/>
+	<field name="in_q_pv" class="java.lang.Double"/>
+	<field name="in_oil_pv" class="java.lang.Double"/>
+	<field name="in_data_pv" class="java.lang.Double"/>
+	<field name="oil_pv" class="java.lang.Double"/>
+	<field name="m_wash_pv" class="java.lang.Double"/>
+	<field name="in_m_wash_pv" class="java.lang.Double"/>
+	<field name="t_pv_1" class="java.lang.Double"/>
+	<field name="t_pv_2" class="java.lang.Double"/>
+	<field name="t_pv_3" class="java.lang.Double"/>
+	<field name="t_pv_4" class="java.lang.Double"/>
+	<field name="t_pv_5" class="java.lang.Double"/>
+	<field name="in_t_pv" class="java.lang.Double"/>
+	<field name="bc_pv" class="java.lang.Double"/>
+	<field name="cp_pv_1" class="java.lang.Double"/>
+	<field name="cp_pv_2" class="java.lang.Double"/>
+	<field name="regtime_10min" class="java.lang.String"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="725" splitType="Stretch">
+			<lineChart>
+				<chart isShowLegend="true" evaluationTime="Report">
+					<reportElement key="" isPrintRepeatedValues="false" mode="Transparent" x="2" y="30" width="550" height="680" isRemoveLineWhenBlank="true" backcolor="#F5F5F5" uuid="7ca55ce5-f84f-4235-8bff-d02bd912a291"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<categoryDataset>
+					<categorySeries>
+						<seriesExpression><![CDATA["전세정기"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{f_wash_pv}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["퀜칭1존"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{q_pv_1}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["퀜칭2존"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{q_pv_2}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["퀜칭3존"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{q_pv_3}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["퀜칭4존"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{q_pv_4}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["퀜칭5존"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{q_pv_5}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["CP"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{cp_pv_1}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["유조"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{oil_pv}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["중간세정기"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{m_wash_pv}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["템퍼링1존"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{t_pv_1}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["템퍼링2존"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{t_pv_2}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["템퍼링3존"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{t_pv_3}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["템퍼링4존"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{t_pv_4}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["템퍼링5존"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{t_pv_5}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["퀜칭 인버터"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{in_q_pv}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["템퍼링 인버터"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{in_t_pv}]]></valueExpression>
+					</categorySeries>
+					<categorySeries>
+						<seriesExpression><![CDATA["in_data_pv"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
+						<valueExpression><![CDATA[$F{in_data_pv}]]></valueExpression>
+					</categorySeries>
+				</categoryDataset>
+				<linePlot isShowLines="true" isShowShapes="false">
+					<plot orientation="Horizontal" foregroundAlpha="1.0" labelRotation="0.0">
+						<seriesColor seriesOrder="0" color="#FFBB00"/>
+						<seriesColor seriesOrder="1" color="#FF0000"/>
+						<seriesColor seriesOrder="2" color="#000000"/>
+						<seriesColor seriesOrder="3" color="#0000FF"/>
+						<seriesColor seriesOrder="4" color="#008000"/>
+						<seriesColor seriesOrder="5" color="#993300"/>
+						<seriesColor seriesOrder="6" color="#993300"/>
+						<seriesColor seriesOrder="7" color="#FF0000"/>
+						<seriesColor seriesOrder="8" color="#000000"/>
+						<seriesColor seriesOrder="9" color="#0000FF"/>
+						<seriesColor seriesOrder="10" color="#008000"/>
+						<seriesColor seriesOrder="11" color="#ABF200"/>
+						<seriesColor seriesOrder="12" color="#993300"/>
+						<seriesColor seriesOrder="13" color="#8E4EB2"/>
+						<seriesColor seriesOrder="14" color="#E51BCD"/>
+						<seriesColor seriesOrder="15" color="#5D5D5D"/>
+					</plot>
+					<categoryAxisFormat labelRotation="0.0">
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" verticalTickLabels="true" axisLineColor="#000000">
+							<tickLabelFont>
+								<font fontName="굴림" size="8"/>
+							</tickLabelFont>
+						</axisFormat>
+					</categoryAxisFormat>
+					<valueAxisFormat>
+						<axisFormat labelColor="#000000" tickLabelColor="#000000" axisLineColor="#000000">
+							<labelFont>
+								<font fontName="굴림" size="8" isBold="true"/>
+							</labelFont>
+							<tickLabelFont>
+								<font fontName="굴림"/>
+							</tickLabelFont>
+						</axisFormat>
+					</valueAxisFormat>
+					<rangeAxisMaxValueExpression><![CDATA[1200]]></rangeAxisMaxValueExpression>
+				</linePlot>
+			</lineChart>
+		</band>
+	</title>
+</jasperReport>

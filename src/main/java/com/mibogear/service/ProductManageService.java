@@ -18,4 +18,6 @@ public interface ProductManageService {
 	List<ProductManage> getLotListReport(ProductManage productManage);
 	List<ProductManage> integrationLotList(ProductManage productManage);
 	Monitoring integrationGetTemp(Monitoring monitoring);
+	List<ProductManage> workDailyList(ProductManage productManage);
+	List<ProductManage> workDailyListReport(ProductManage productManage);
 }

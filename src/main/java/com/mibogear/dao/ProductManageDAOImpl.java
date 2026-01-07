@@ -49,5 +49,14 @@ public class ProductManageDAOImpl implements ProductManageDAO {
 	public Monitoring integrationGetTemp(Monitoring monitoring){
 		return sqlSession.selectOne("productManage.integrationGetTemp", monitoring);
 	}
+	
+	@Override
+	public List<ProductManage> workDailyList(ProductManage productManage){
+		return sqlSession.selectList("productManage.workDailyList", productManage);
+	}
 
+	@Override
+	public List<ProductManage> workDailyListReport(ProductManage productManage){
+		return sqlSession.selectList("productManage.workDailyListReport", productManage);
+	}
 }

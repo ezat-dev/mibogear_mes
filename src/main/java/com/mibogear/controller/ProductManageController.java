@@ -168,7 +168,6 @@ public class ProductManageController {
 
         String lotno = productManage.getLot_no();
         String pdfFileName = lotno + ".pdf";
-        // "D:/제일_양식/lot보고서/" 로 추정됩니다.
         String pdfPath = "D:/미보기아파일/lot보고서/" + pdfFileName;
 
         try {
@@ -248,10 +247,117 @@ public class ProductManageController {
     }
 
     //종합생산현황 페이지 온도 조회
-    //lot 정보 조회
     @RequestMapping(value = "/productionManagement/integrationGetTempList", method = RequestMethod.POST)
     @ResponseBody
     public Monitoring getTempList(Monitoring monitoring) {
         return productManageService.integrationGetTemp(monitoring);
+    }
+    
+    //작업일보 페이지 이동
+    @RequestMapping(value= "/productionManagement/workDailyReport", method = RequestMethod.GET)
+    public String workDailyReport(Model model) {
+        return "/productionManagement/workDailyReport.jsp";  
+    }
+    
+    //작업일보 조회
+    @RequestMapping(value = "/productionManagement/workDailyList", method = RequestMethod.POST)
+    @ResponseBody
+    public List<ProductManage> workDailyList(ProductManage productManage) {
+        return productManageService.workDailyList(productManage);
+    }
+    
+    //작업일보 리포트 생성(자스퍼리포트)
+    @RequestMapping(value = "/productionManagement/workDailyList/report", method = RequestMethod.POST)
+    @ResponseBody
+    public ResponseEntity<Resource> workDailyListReport(@RequestBody ProductManage productManage,
+                                             HttpServletRequest request) {
+
+        System.out.println("===== workDailyListReport 진입 =====");
+
+        if (productManage.getRegtime() == null) {
+            System.out.println("▶ regtime == null");
+            return ResponseEntity.badRequest().body(null);
+        }
+
+        System.out.println("▶ 요청 LOT = " + productManage.getLot_no());
+        
+        String reportDate = productManage.getRegtime();
+        String pdfFileName = reportDate + ".pdf";
+        String pdfPath = "D:/미보기아파일/작업일보 보고서/" + pdfFileName;
+
+        try {
+            // 1) 데이터 조회
+            List<ProductManage> workDailyList = productManageService.workDailyListReport(productManage);
+            
+            for(int i=0; i<workDailyList.size(); i++) {
+            	ProductManage item = workDailyList.get(i);
+            	item.setNo(String.valueOf(i + 1));
+            	item.setRegtime(item.getRegtime().substring(11, 19));
+            }
+
+            System.out.println("▶ lotInfoList size = " + (workDailyList == null ? "null" : workDailyList.size()));
+
+            if (workDailyList != null && !workDailyList.isEmpty()) {
+                for (ProductManage v : workDailyList) {
+                    System.out.println("v.getRegtime()" + v.getRegtime());
+                }
+            } else {
+                System.out.println("▶ lotInfoList 비어있음");
+            }
+
+            Map<String, Object> reportMap = new HashMap<>();
+            String lotno = productManage.getLotno();
+            reportMap.put("lotno", lotno);
+
+            List<JasperPrint> jasperPrints = new ArrayList<>();
+
+            // Report 1
+            if (workDailyList != null && !workDailyList.isEmpty()) {
+                String reportPath1 = request.getServletContext()
+                        .getRealPath("/WEB-INF/resources/reports/workDailyReport.jrxml");
+
+                System.out.println("▶ reportPath1 = " + reportPath1);
+
+                JasperReport report1 = JasperCompileManager.compileReport(reportPath1);
+                JasperPrint print1 = JasperFillManager.fillReport(
+                        report1,
+                        reportMap,
+                        new JRBeanCollectionDataSource(workDailyList)
+                );
+
+                jasperPrints.add(print1);
+            }
+
+            System.out.println("▶ jasperPrints size = " + jasperPrints.size());
+
+            if (jasperPrints.isEmpty()) {
+                System.out.println("▶ JasperPrint 없음 -> 400 반환");
+                return ResponseEntity.badRequest().body(null);
+            }
+
+            // PDF 생성
+            JRPdfExporter exporter = new JRPdfExporter();
+            exporter.setExporterInput(SimpleExporterInput.getInstance(jasperPrints));
+            exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(pdfPath));
+            exporter.exportReport();
+
+            File file = new File(pdfPath);
+            System.out.println("▶ PDF 생성 완료 : " + file.exists());
+
+            InputStreamResource resource = new InputStreamResource(new FileInputStream(file));
+
+            return ResponseEntity.ok()
+                    .header(HttpHeaders.CONTENT_DISPOSITION,
+                            "attachment; filename=\"" + pdfFileName + "\"")
+                    .contentLength(file.length())
+                    .contentType(MediaType.parseMediaType("application/pdf"))
+                    .body(resource);
+
+
+        } catch (Exception e) {
+            System.out.println("▶ 예외 발생");
+            e.printStackTrace();
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+        }
     }
 }
