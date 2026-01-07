@@ -277,7 +277,7 @@ body, html {
 
     <!-- 상단: 요약(왼) + 알람(오) (위치 변경: 알람을 상단 오른쪽에 배치) -->
     <div class="grid">
-        <div class="card card" style="flex:0.45; fon">
+        <div class="card card" style="flex:0.5; fon">
             <div class="card-header">
                 <div>
                     <div class="card-title">작업 진행</div>
@@ -346,7 +346,7 @@ body, html {
         </div>
 
         <!-- 오른쪽 상단: 알람 카드로 변경 (위치 변경 적용) -->
-        <div class="card card" style="flex:0.55;">
+        <div class="card card" style="flex:0.5;">
             <div class="card-header">
                 <div>
                     <div class="card-title">최신 알람 이력</div>
@@ -665,10 +665,11 @@ function initLotData() {
 		    },
 		    placeholder: "조회된 데이터가 없습니다.",
 		    columns: [
-		    	{ title: "LOT 번호", field: "lotno", width: 250, hozAlign: "center" },  
-		      { title: "LOT 생성 날짜", field: "regtime", width: 250, hozAlign: "center"},
-		      { title: "패턴 번호", field: "pattern", width: 90, hozAlign: "center" },
-		      { title: "설비", field: "fac_no", width: 112, hozAlign: "center" }    		      
+		    	{ title: "LOT 번호", field: "lotno", width: 210, hozAlign: "center" }, 
+		      { title: "패턴 번호", field: "pattern", width: 80, hozAlign: "center" },
+		      { title: "설비", field: "fac_no", width: 60, hozAlign: "center" }, 
+		      { title: "LOT 시작 시간", field: "regtime", width: 215, hozAlign: "center"}, 
+		      { title: "LOT 종료 시간", field: "end_time", width: 215, hozAlign: "center"}   		      
 		    ]
 		  });
 	}

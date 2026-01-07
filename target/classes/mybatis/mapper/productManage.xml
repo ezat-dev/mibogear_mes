@@ -27,8 +27,10 @@
 	
 	    <!-- 종합생산현황 페이지 lot 조회 -->
 	<select id="integrationLotList" parameterType="productManage" resultType="productManage">
-	SELECT * FROM tb_lot
-	ORDER BY regtime DESC LIMIT 7
+	SELECT *, lt.end_time FROM tb_lot AS l
+	INNER JOIN tb_lot_tracking AS lt
+	ON l.lotno = lt.lotno
+	ORDER BY l.regtime DESC LIMIT 7
 	</select>
 	
 	<!-- 종합생산현황 페이지 온도 조회 -->
