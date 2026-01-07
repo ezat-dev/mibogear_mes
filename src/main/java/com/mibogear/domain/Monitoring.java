@@ -78,6 +78,20 @@ public class Monitoring {
     private String writer;
     private String note;
     private String user_code;
+    private String bcf1_chim_setting;
+    private String bcf1_oil_setting;
+    private String bcf1_cp_setting;
+    private String bcf1_tempering_setting;
+    private String bcf2_chim_setting;
+    private String bcf2_oil_setting;
+    private String bcf2_cp_setting;
+    private String bcf3_chim_setting;
+    private String bcf3_oil_setting;
+    private String bcf3_cp_setting;
+    private String bcf3_tempering_setting;
+    private String bcf4_chim_setting;
+    private String bcf4_oil_setting;
+    private String bcf4_cp_setting;
     
     //알람현황
     private String alarm_hogi;
@@ -88,6 +102,90 @@ public class Monitoring {
     private String machine_name;
     
     
+	public String getBcf1_chim_setting() {
+		return bcf1_chim_setting;
+	}
+	public void setBcf1_chim_setting(String bcf1_chim_setting) {
+		this.bcf1_chim_setting = bcf1_chim_setting;
+	}
+	public String getBcf1_oil_setting() {
+		return bcf1_oil_setting;
+	}
+	public void setBcf1_oil_setting(String bcf1_oil_setting) {
+		this.bcf1_oil_setting = bcf1_oil_setting;
+	}
+	public String getBcf1_cp_setting() {
+		return bcf1_cp_setting;
+	}
+	public void setBcf1_cp_setting(String bcf1_cp_setting) {
+		this.bcf1_cp_setting = bcf1_cp_setting;
+	}
+	public String getBcf1_tempering_setting() {
+		return bcf1_tempering_setting;
+	}
+	public void setBcf1_tempering_setting(String bcf1_tempering_setting) {
+		this.bcf1_tempering_setting = bcf1_tempering_setting;
+	}
+	public String getBcf2_chim_setting() {
+		return bcf2_chim_setting;
+	}
+	public void setBcf2_chim_setting(String bcf2_chim_setting) {
+		this.bcf2_chim_setting = bcf2_chim_setting;
+	}
+	public String getBcf2_oil_setting() {
+		return bcf2_oil_setting;
+	}
+	public void setBcf2_oil_setting(String bcf2_oil_setting) {
+		this.bcf2_oil_setting = bcf2_oil_setting;
+	}
+	public String getBcf2_cp_setting() {
+		return bcf2_cp_setting;
+	}
+	public void setBcf2_cp_setting(String bcf2_cp_setting) {
+		this.bcf2_cp_setting = bcf2_cp_setting;
+	}
+	public String getBcf3_chim_setting() {
+		return bcf3_chim_setting;
+	}
+	public void setBcf3_chim_setting(String bcf3_chim_setting) {
+		this.bcf3_chim_setting = bcf3_chim_setting;
+	}
+	public String getBcf3_oil_setting() {
+		return bcf3_oil_setting;
+	}
+	public void setBcf3_oil_setting(String bcf3_oil_setting) {
+		this.bcf3_oil_setting = bcf3_oil_setting;
+	}
+	public String getBcf3_cp_setting() {
+		return bcf3_cp_setting;
+	}
+	public void setBcf3_cp_setting(String bcf3_cp_setting) {
+		this.bcf3_cp_setting = bcf3_cp_setting;
+	}
+	public String getBcf3_tempering_setting() {
+		return bcf3_tempering_setting;
+	}
+	public void setBcf3_tempering_setting(String bcf3_tempering_setting) {
+		this.bcf3_tempering_setting = bcf3_tempering_setting;
+	}
+	public String getBcf4_chim_setting() {
+		return bcf4_chim_setting;
+	}
+	public void setBcf4_chim_setting(String bcf4_chim_setting) {
+		this.bcf4_chim_setting = bcf4_chim_setting;
+	}
+	public String getBcf4_oil_setting() {
+		return bcf4_oil_setting;
+	}
+	public void setBcf4_oil_setting(String bcf4_oil_setting) {
+		this.bcf4_oil_setting = bcf4_oil_setting;
+	}
+	public String getBcf4_cp_setting() {
+		return bcf4_cp_setting;
+	}
+	public void setBcf4_cp_setting(String bcf4_cp_setting) {
+		this.bcf4_cp_setting = bcf4_cp_setting;
+	}
 	public String getUser_code() {
 		return user_code;
 	}
