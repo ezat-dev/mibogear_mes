@@ -786,7 +786,7 @@ $(document).ready(function () {
         data: { },
         dataType: "json",
         success: function(response){
-            
+            console.log("response: " + response);
         	if (response) {
                 // Object의 모든 키(필드명)를 순회하며 ID와 매칭
                 Object.keys(response).forEach(function(key) {
