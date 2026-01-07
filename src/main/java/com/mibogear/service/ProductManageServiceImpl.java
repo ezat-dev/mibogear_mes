@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.mibogear.dao.ProductManageDAO;
 import com.mibogear.domain.DroppedGoods;
+import com.mibogear.domain.Monitoring;
 import com.mibogear.domain.ProductManage;
 
 @Service
@@ -33,5 +34,15 @@ public class ProductManageServiceImpl implements ProductManageService{
 	@Override
   	public List<ProductManage> getLotListReport(ProductManage productManage){
   		return productManageDAO.getLotListReport(productManage);
+  	}
+	
+	@Override
+  	public List<ProductManage> integrationLotList(ProductManage productManage){
+  		return productManageDAO.integrationLotList(productManage);
+  	}
+	
+	@Override
+  	public Monitoring integrationGetTemp(Monitoring monitoring){
+  		return productManageDAO.integrationGetTemp(monitoring);
   	}
 }

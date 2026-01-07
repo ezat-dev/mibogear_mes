@@ -24,6 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.mibogear.domain.DroppedGoods;
+import com.mibogear.domain.Monitoring;
 import com.mibogear.domain.ProductManage;
 import com.mibogear.service.MonitoringService;
 import com.mibogear.service.ProductManageService;
@@ -238,5 +239,19 @@ public class ProductManageController {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
+    
+    //종합생산현황 페이지 lot 정보 조회
+    @RequestMapping(value = "/productionManagement/integrationLotList", method = RequestMethod.POST)
+    @ResponseBody
+    public List<ProductManage> integrationLotList(ProductManage productManage) {
+        return productManageService.integrationLotList(productManage);
+    }
 
+    //종합생산현황 페이지 온도 조회
+    //lot 정보 조회
+    @RequestMapping(value = "/productionManagement/integrationGetTempList", method = RequestMethod.POST)
+    @ResponseBody
+    public Monitoring getTempList(Monitoring monitoring) {
+        return productManageService.integrationGetTemp(monitoring);
+    }
 }

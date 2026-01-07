@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.Map;
 
 import com.mibogear.domain.DroppedGoods;
+import com.mibogear.domain.Monitoring;
 import com.mibogear.domain.ProductManage;
 
 public interface ProductManageService {
@@ -15,4 +16,6 @@ public interface ProductManageService {
 	List<ProductManage> getLotList(ProductManage productManage);
 
 	List<ProductManage> getLotListReport(ProductManage productManage);
+	List<ProductManage> integrationLotList(ProductManage productManage);
+	Monitoring integrationGetTemp(Monitoring monitoring);
 }

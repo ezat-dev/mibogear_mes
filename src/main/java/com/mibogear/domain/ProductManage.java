@@ -16,8 +16,15 @@ public class ProductManage {
 	private String fac_no_save;
 	private String end_time;
 	private String regtime;
+	private String lotno;
 	
 
+	public String getLotno() {
+		return lotno;
+	}
+	public void setLotno(String lotno) {
+		this.lotno = lotno;
+	}
 	public String getRegtime() {
 		return regtime;
 	}

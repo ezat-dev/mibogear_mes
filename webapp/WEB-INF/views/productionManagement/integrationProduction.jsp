@@ -106,7 +106,7 @@ body, html {
     #tableAlarm { } /* 테이블 element 자체는 사용 안함 */
     #tableAlarm tbody { } 
    #tableAlarmWrapper { 
-    height: 600px;  
+    height: 261px;  
     overflow:auto; 
 }
 
@@ -192,6 +192,69 @@ body, html {
     background-color: #e0e0e0;
     color: #333;
   }
+  .monitor-container {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        background-color: #99ccff; /* 하늘색 배경 */
+        padding: 10px;
+        font-family: 'Malgun Gothic', sans-serif;
+        font-weight: bold;
+    }
+
+    .machine-group {
+        display: flex;
+        border: 2px solid white;
+    }
+
+    .machine-label {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        writing-mode: vertical-lr; /* 세로 쓰기 */
+        text-align: center;
+        font-size: 1.2rem;
+        border-right: 2px solid white;
+        text-orientation: upright;
+    }
+
+    .data-table {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+    }
+
+    .row {
+        display: flex;
+        flex-grow: 1;
+    }
+
+    .cell {
+        flex: 1;
+        height: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid #ddd;
+        text-align: center;
+    }
+
+    /* 색상 정의 */
+    .orange { background-color: #ff6600; color: black; }
+    .brown  { background-color: #a52a2a; color: white; }
+    .gray   { background-color: #d3d3d3; color: black; }
+    .yellow { background-color: #ffff00; color: black; }
+    .green  { background-color: #00ff00; color: black; }
+    .black  { background-color: #000000; }
+
+    /* 텍스트 색상 */
+    .yellow-text { color: #ffff00; }
+    .green-text  { color: #00ff00; }
+    
+    #lotTable{
+    height: 304px;
+    }
 </style>
 
 </head>
@@ -205,9 +268,9 @@ body, html {
         <div style="text-align:right;">
             <div class="muted">최종 갱신: <span id="lastUpdated">--:--:--</span></div>
             <div style="margin-top:6px;">
-                <button class="btn work" id="openModal">작업스캔</button>
+                <!-- <button class="btn work" id="openModal">작업스캔</button> -->
                 <button class="btn primary" id="btnRefresh">즉시갱신</button>
-                <button class="btn ghost" id="btnRefreshAll">전체갱신</button>
+                <!-- <button class="btn ghost" id="btnRefreshAll">전체갱신</button> -->
             </div>
         </div>
     </div>
@@ -223,108 +286,62 @@ body, html {
                
             </div>
 
-            <div class="kpi" style="margin-bottom:10px;">
-                <div class="item">
-                    <div class="label">작업LOT</div>
-                    <div id="kpi_lot" class="value">-</div>
-                </div>
-                <div class="item">
-                    <div class="label">현재  작업 진행 시간</div>
-                    <div id="kpi_time" class="value kpi_time">-</div>
-                </div>
-                <div class="item">
-                    <div class="label">전체 통 수</div>
-                    <div id="tong_count" class="value tong_count">-</div>
-                </div>
-            </div>
-            
-            <div id="tableHeatTopWrapper">
-                <table id="tableHeatTop">
-                    <thead>
-                        <tr>
-                            <th>작업 시작 시간</th>
-                            <th>품명</th>
-                            <th>품번</th>
-                            <th>소입온도(℃)</th>
-                            <th>CP(%)</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
-            
-               <div id="tableHeatTopWrapper">
-                <table id="tableHeatTop2">
-                    <thead>
-                        <tr>
-                            <th>다음 작업 시간</th>
-                            <th>품명</th>
-                            <th>품번</th>
-                            <th>소입온도(℃)</th>
-                            <th>CP(%)</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
-            </div>
+            	<div id="lotTable"></div>
             
             <div class="card card fixed-height"">
-            <div class="card-header">
-                <div>
-                    <div class="card-title">온도별 현재 PV</div>
-                    <div class="card-sub"></div>
-                </div>
-                <div>
-                    <button class="btn ghost" id="btnToggleAuto">자동(10s)</button>
-                </div>
+    <div class="card-title">현재 온도</div>
+<div class="monitor-container">
+    <div class="machine-group">
+        <div class="machine-label orange">1호기</div>
+        <div class="data-table">
+            <div class="row header">
+                <div class="cell brown">온도(℃)</div>
+                <div class="cell gray">침탄</div>
+                <div class="cell gray">유조</div>
+                <div class="cell gray">CP</div>
+                <div class="cell gray">소려</div>
             </div>
+            <div class="row">
+                <div class="cell yellow">설정값</div>
+                <div class="cell black yellow-text" id="bcf1_chim_setting"></div>
+                <div class="cell black yellow-text" id="bcf1_oil_setting"></div>
+                <div class="cell black yellow-text" id="bcf1_cp_setting"></div>
+                <div class="cell black yellow-text" id="bcf1_tempering_setting"></div>
+            </div>
+            <div class="row">
+                <div class="cell green">현재값</div>
+                <div class="cell black green-text" id="bcf1_chim"></div>
+                <div class="cell black green-text" id="bcf1_oil"></div>
+                <div class="cell black green-text" id="bcf1_cp"></div>
+                <div class="cell black green-text" id="bcf1_tempering"></div>
+            </div>
+        </div>
+    </div>
 
-<div style="min-height:200px; overflow:auto; padding:8px;">
-    <table id="tableTempCurrent" style="width:100%; text-align:center; border-collapse: collapse; font-size:15px;">
-
-        <!-- 첫 번째 줄: 7개 컬럼 -->
-        <thead>
-            <tr>
-                <th>F_WASH</th><th>IN_WASH</th><th>M_WASH</th><th>IN_M_WASH</th><th>OIL</th>
-                <th>QF1</th><th>QF2</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="temp">-</td><td class="temp">-</td><td class="temp">-</td><td class="temp">-</td><td class="temp">-</td>
-                <td class="temp">-</td><td class="temp">-</td>
-            </tr>
-        </tbody>
-
-        <!-- 두 번째 줄: 7개 컬럼 -->
-        <thead>
-            <tr>
-                <th>QF3</th><th>QF4</th><th>QF5</th><th>IN_Q</th><th>IN_OIL</th>
-                <th>IN_DATA</th><th>IN_T</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="temp">-</td><td class="temp">-</td><td class="temp">-</td><td class="temp">-</td><td class="temp">-</td>
-                <td class="temp">-</td><td class="temp">-</td>
-            </tr>
-        </tbody>
-
-        <!-- 세 번째 줄: 나머지 컬럼 (T1~T5 + CP A, CP B) -->
-        <thead>
-            <tr>
-                <th>T1</th><th>T2</th><th>T3</th><th>T4</th><th>T5</th><th>CP A</th><th>CP B</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td class="temp">-</td><td class="temp">-</td><td class="temp">-</td><td class="temp">-</td><td class="temp">-</td>
-                <td class="cp">-</td><td class="cp">-</td>
-            </tr>
-        </tbody>
-    </table>
+    <div class="machine-group">
+        <div class="machine-label orange">2호기</div>
+        <div class="data-table">
+            <div class="row header">
+                <div class="cell brown">온도(℃)</div>
+                <div class="cell gray">침탄</div>
+                <div class="cell gray">유조</div>
+                <div class="cell gray">CP</div>
+            </div>
+            <div class="row">
+                <div class="cell yellow">설정값</div>
+                <div class="cell black yellow-text" id="bcf2_chim_setting"></div>
+                <div class="cell black yellow-text" id="bcf2_oil_setting"></div>
+                <div class="cell black yellow-text" id="bcf2_cp_setting"></div>
+            </div>
+            <div class="row">
+                <div class="cell green">현재값</div>
+                <div class="cell black green-text" id="bcf2_chim"></div>
+                <div class="cell black green-text" id="bcf2_oil"></div>
+                <div class="cell black green-text" id="bcf2_cp"></div>
+            </div>
+        </div>
+    </div>
 </div>
-
         </div>
         </div>
 
@@ -357,46 +374,62 @@ body, html {
                     <tbody></tbody>
                 </table>
             </div>
-        </div>
-    </div>
-
-    <!-- 하단: 최신 작업 목록 (전체 너비로 이동) -->
-    <div class="grid">
-        <div class="card" style="flex:1;">
-            <div class="card-header">
-                <div>
-                    <div class="card-title">최신 작업 목록</div>
-   
-                </div>
-                <div>
-                
-                </div>
+            <div class="card-title">현재 온도</div>
+            <div class="monitor-container">
+    <div class="machine-group">
+        <div class="machine-label orange">3호기</div>
+        <div class="data-table">
+            <div class="row header">
+                <div class="cell brown">온도(℃)</div>
+                <div class="cell gray">침탄</div>
+                <div class="cell gray">유조</div>
+                <div class="cell gray">CP</div>
+                <div class="cell gray">소려</div>
             </div>
-
-            <div id="tableHeatWrapper" style="max-height:320px; overflow:auto;">
-                <table id="tableHeat">
-                    <thead>
-                        <tr>
-                            <th>작업일자</th>
-                            <th>작업LOT</th>
-                             <th>회사명</th>
-                            <th>품번</th>
-                            <th>품명</th>
-                            <th>투입시작시간</th>
-                            <th>투입종료시간</th>
-                            <th>투입시간(분)</th>
-                            <th>소입온도(℃)</th>
-                            <th>소려온도(℃)</th>
-                            <th>CP(%)</th>
-                            <th>작업완료시간</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+            <div class="row">
+                <div class="cell yellow">설정값</div>
+                <div class="cell black yellow-text" id="bcf3_chim_setting"></div>
+                <div class="cell black yellow-text" id="bcf3_oil_setting"></div>
+                <div class="cell black yellow-text" id="bcf3_cp_setting"></div>
+                <div class="cell black yellow-text" id="bcf3_tempering_setting"></div>
+            </div>
+            <div class="row">
+                <div class="cell green">현재값</div>
+                <div class="cell black green-text" id="bcf3_chim"></div>
+                <div class="cell black green-text" id="bcf3_oil"></div>
+                <div class="cell black green-text" id="bcf3_cp"></div>
+                <div class="cell black green-text" id="bcf3_tempering"></div>
             </div>
         </div>
     </div>
 
+    <div class="machine-group">
+        <div class="machine-label orange">4호기</div>
+        <div class="data-table">
+            <div class="row header">
+                <div class="cell brown">온도(℃)</div>
+                <div class="cell gray">침탄</div>
+                <div class="cell gray">유조</div>
+                <div class="cell gray">CP</div>
+            </div>
+            <div class="row">
+                <div class="cell yellow">설정값</div>
+                <div class="cell black yellow-text" id="bcf4_chim_setting"></div>
+                <div class="cell black yellow-text" id="bcf4_oil_setting"></div>
+                <div class="cell black yellow-text" id="bcf4_cp_setting"></div>
+            </div>
+            <div class="row">
+                <div class="cell green">현재값</div>
+                <div class="cell black green-text" id="bcf4_chim"></div>
+                <div class="cell black green-text" id="bcf4_oil"></div>
+                <div class="cell black green-text" id="bcf4_cp"></div>
+            </div>
+        </div>
+    </div>
+</div>
+        </div>
+    </div>
+    
 <!-- 스캔한 바코드의 정보 표현할 모달 -->
 <div id="lotModal" title="레시피 입력" style="display:none;">
 
@@ -505,17 +538,16 @@ var selectedRowData = null;
 var tempAuto = true;
 var tempTimer = null;
 var dataTable;
+var lotTable;
 
 
 /*바코드스캔 모달*/
 $(function() {
 
     // 초기 로드
-    fetchHeatTop();
-    fetchHeatTop2();
-    fetchHeatList();
     fetchAlarm();
     fetchTempCurrent();
+    initLotData();
 
     // 자동 갱신 설정
     tempTimer = setInterval(function(){
@@ -523,10 +555,9 @@ $(function() {
     }, 10000); // 10s
 
     setInterval(fetchAlarm, 30000); // 알람 30s
-    setInterval(fetchHeatList, 60000); // 작업목록 60s
 
     // 버튼 이벤트
-    $("#btnRefresh").on("click", function(){ fetchHeatTop(); fetchTempCurrent(); updateLastUpdated(); });
+    $("#btnRefresh").on("click", function(){ initLotData(); fetchTempCurrent(); fetchAlarm(); });
     $("#btnRefreshAll").on("click", function(){ refreshAll(); });
     $("#btnLoadAlarm").on("click", function(){ fetchAlarm(); });
     $("#btnToggleAuto").on("click", function(){
@@ -558,77 +589,14 @@ $(function() {
 	    height: "auto",
 	    resizable: false
   });
-  
-});
 
-/*바코드 스캔모달 이벤트*/
-$("#openModal").click(function() {
-  $("#lotModal").dialog("open");
-  $("#lotNumber").focus();
+  initLotData();
   
 });
 
 $("#cancelBtn, #closeBtn").click(function() {
   $("#lotModal").dialog("close");
 });
-
-$("#applyBtn").click(function() {
-    let allData = heatListTable.getData();
-    let incomplete = allData.some(row => row.wd_state !== 1);
-    let w_msg = ""; // 사용자가 입력한 메세지
-
-    if (incomplete) {
-        if (!confirm("스캔 완료되지 않은 항목이 있습니다. 계속 진행하시겠습니까?")) {
-            return;
-        }
-
-        // ✅ 메세지 입력 받기
-        w_msg = prompt("스캔 미완료 사유 또는 메모를 입력해주세요.", "");
-        if (w_msg === null) {
-            return;
-        }
-    }
-
-    // wd_state == 0 또는 99 인 항목만 업데이트 대상
-    let toUpdate = allData.filter(row => row.wd_state === 0 || row.wd_state === 99);
-
-    // Ajax 요청
-    let ajaxCalls = toUpdate.map(row => {
-        return $.ajax({
-            url: "/chunil/productionManagement/heatTreatment/barcodeScan",
-            type: "post",
-            dataType: "json",
-            data: {
-                w_ci_lot: row.w_ci_lot,
-                tong_num: row.wd_tong_num,
-                wd_state: 2,
-                w_msg: w_msg   // ✅ 이 부분 이름 변경됨
-            }
-        });
-    });
-
-    // 모든 Ajax 완료 후 처리
-    $.when.apply($, ajaxCalls).done(function() {
-        alert("레시피 적용 로직 실행 및 대기중(2) 상태 업데이트 완료");
-        heatListTable.replaceData(allData); 
-        tongListInit();
-
-        // ✅ 마지막 D500 호출
-        $.ajax({
-            url: "/chunil/productionManagement/heatTreatment/barcodeScanD500",
-            type: "post",
-            dataType: "json",
-            success: function(res) {
-                console.log("D500 btSet 호출 완료:", res);
-            },
-            error: function(err) {
-                console.error("D500 호출 실패:", err);
-            }
-        });
-    });
-});
-
-
 
 
 let heatListTable; 
@@ -680,72 +648,35 @@ function tongListInit() {
   });
 }
 
-
-// 🔹 테이블 데이터 새로 불러오기 (w_ci_lot 포함)
-function refreshTongList(w_ci_lot) {
-  console.log("테이블 갱신 요청:", w_ci_lot);
-  heatListTable.setData("/chunil/productionManagement/heatTreatment/tongList", { w_ci_lot: w_ci_lot });
-}
-
-// 🔹 바코드 입력 이벤트
-$("#lotNumber").on("input", function () {
-  clearTimeout(scanTimer);
-  let self = this;
-
-  scanTimer = setTimeout(function () {
-    if (self.value) {
-      let lotValue = self.value.trim();
-
-      console.log("w_ci_lot보내는 값:", { "w_ci_lot": lotValue });
-      console.log("tong_num보내는 값:", { "tong_num": lotValue });
-
-      $.ajax({
-        url: "/chunil/productionManagement/heatTreatment/barcodeScan",
-        type: "post",
-        dataType: "json",
-        data: {
-          "w_ci_lot": lotValue,
-          "tong_num": lotValue
-        },
-        success: function (result) {
-          console.log("응답 결과:", result);
-
-          if (result.gb == 1) {
-            var data = result.data;
-            for (var d in data) {
-              $("." + d).val(data[d]);
-            }
-
-            // ✅ barcodeScan 성공 후 테이블 갱신 (w_ci_lot 포함)
-            refreshTongList(lotValue);
-
-            $("#lotNumber").val("");
-            $("#lotNumber").focus();
-
-          } else if (result.gb == 2) {
-            alert(result.data);
-            $("#lotNumber").val("").focus();
-            refreshTongList(lotValue);
-          } else {
-            alert(result.data);
-            $("#lotNumber").val("").focus();
-            refreshTongList(lotValue);
-          }
-        },
-        error: function (xhr, status, error) {
-          console.error("barcodeScan 요청 실패:", error);
-        }
-      });
-    }
-  }, 1000);
-});
+function initLotData() {
+	  lotTable = new Tabulator('#lotTable', {
+		    height: '260px',
+		    layout: 'fitDataFill',
+		    headerSort: false,
+		    reactiveData: true,
+		    columnHeaderVertAlign: "middle",
+		    headerHozAlign: 'center',
+		    ajaxConfig: { method: 'POST' },
+		    ajaxURL: "/mibogear/productionManagement/integrationLotList",
+		    ajaxParams: { },	    
+		    ajaxResponse:function(url, params, response){
+				$("#dataTable .tabulator-col.tabulator-sortable").css("height","55px");
+		        return response; //return the response data to tabulator
+		    },
+		    placeholder: "조회된 데이터가 없습니다.",
+		    columns: [
+		    	{ title: "LOT 번호", field: "lotno", width: 250, hozAlign: "center" },  
+		      { title: "LOT 생성 날짜", field: "regtime", width: 250, hozAlign: "center"},
+		      { title: "패턴 번호", field: "pattern", width: 90, hozAlign: "center" },
+		      { title: "설비", field: "fac_no", width: 112, hozAlign: "center" }    		      
+		    ]
+		  });
+	}
 
 // 🔹 페이지 로드 시 테이블 초기화
 $(document).ready(function () {
   tongListInit();
 });
-
-
 
 
 
@@ -764,126 +695,10 @@ $(document).ready(function () {
         }
 
         function refreshAll(){
-            fetchHeatTop();
-            fetchHeatList();
             fetchAlarm();
             fetchTempCurrent();
             updateLastUpdated();
         }
-
-        /* ---------- getHeatList_1 (요약) ---------- */
-        function fetchHeatTop(){
-        	   // 오늘 날짜 yyyy-MM-dd 형식
-            var today = new Date();
-            var yyyy = today.getFullYear();
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0~11이므로 +1
-            var dd = String(today.getDate()).padStart(2, '0');
-            var todayStr = yyyy + '-' + mm + '-' + dd;
-            $.ajax({
-                url: "/chunil/productionManagement/heatTreatment/list_1",
-                method: "POST",
-                data: { w_date: todayStr },
-                dataType: "json",
-                success: function(resp){
-                    updateLastUpdated();
-                    // resp가 배열인지 객체인지 유연하게 처리
-                    var arr = Array.isArray(resp) ? resp : (resp.data || resp.rows || (resp ? [resp] : []));
-                    var $tbody = $("#tableHeatTop tbody").empty();
-                    if(!arr || arr.length===0){
-                        $tbody.append('<tr><td colspan="5">조회된 데이터가 없습니다.</td></tr>');
-                        $("#kpi_lot").text("-");
-                        $("#kpi_qf").text("-");
-                        $("#tong_count").text("-");
-                        return;
-                    }
-                    arr.forEach(function(r, idx){
-                        var tr = $("<tr></tr>");
-                        tr.append("<td>"+(r.w_sdatetime || "")+"</td>");
-                        tr.append("<td>"+(r.item_name || "")+"</td>");
-                        tr.append("<td>"+(r.item_no || "")+"</td>");
-                        tr.append("<td class='temp'>"+(r.t1_zone != null ? r.t1_zone : "")+"</td>");
-                        tr.append("<td class='cp'>"+(r.cp != null ? r.cp : "")+"</td>");
-                        tr.data("rowdata", r);
-                        $tbody.append(tr);
-                    });
-                    // KPI에는 첫 행 표시
-                 // KPI 표시
-                    var first = arr[0];
-                    $("#kpi_lot").text(first.w_ci_lot || "-");
-                    $("#kpi_qf").text(first.t1_zone != null ? first.t1_zone : "-");
-                    $("#kpi_cp").text(first.cp != null ? first.cp : "-");
-                    $("#tong_count").text(first.tong_count != null ? first.tong_count : "-");
-
-                    // 실시간 KPI 시간 시작
-                    startKpiTimer(first.w_sdatetime);
-
-
-                    
-                },
-                error: function(xhr){
-                    console.error("getHeatList_1 error", xhr);
-                }
-            });
-        }
-
-
-
-
-
-
-
-        /* ---------- getHeatList_2 (다음 작업) ---------- */
-        function fetchHeatTop2(){
-            // 오늘 날짜 yyyy-MM-dd 형식
-            var today = new Date();
-            var yyyy = today.getFullYear();
-            var mm = String(today.getMonth() + 1).padStart(2, '0');
-            var dd = String(today.getDate()).padStart(2, '0');
-            var todayStr = yyyy + '-' + mm + '-' + dd;
-
-            $.ajax({
-                url: "/chunil/productionManagement/heatTreatment/list_next",
-                method: "POST",
-                data: { w_date: todayStr },
-                dataType: "json",
-                success: function(resp){
-                    updateLastUpdated();
-                    var arr = Array.isArray(resp) ? resp : (resp.data || resp.rows || (resp ? [resp] : []));
-                    var $tbody = $("#tableHeatTop2 tbody").empty();
-
-                    if(!arr || arr.length === 0){
-                        $tbody.append('<tr><td colspan="5">조회된 데이터가 없습니다.</td></tr>');
-                        return;
-                    }
-
-                    arr.forEach(function(r){
-                        var tr = $("<tr></tr>");
-                        tr.append("<td>"+(r.w_sdatetime || "")+"</td>");
-                        tr.append("<td>"+(r.item_name || "")+"</td>");
-                        tr.append("<td>"+(r.item_no || "")+"</td>");
-                        tr.append("<td class='temp'>"+(r.t1_zone != null ? r.t1_zone : "")+"</td>");
-                        tr.append("<td class='cp'>"+(r.cp != null ? r.cp : "")+"</td>");
-                        tr.data("rowdata", r);
-                        $tbody.append(tr);
-                    });
-                },
-                error: function(xhr){
-                    console.error("getHeatList_2 (list_next) error", xhr);
-                }
-            });
-        }
-
-
-
-
-
-
-
-
-
-
-
-
         
 
 
@@ -916,66 +731,6 @@ $(document).ready(function () {
                 $("#kpi_time").text(timeStr);
             }, 1000);
         }
-
-
-
-
-
-
-
-
-
-        
-
-        /* ---------- getHeatList (상세 목록) ---------- */
-        function fetchHeatList(){
-            // 오늘 날짜 yyyy-MM-dd 형식
-            var today = new Date();
-            var yyyy = today.getFullYear();
-            var mm = String(today.getMonth() + 1).padStart(2, '0'); // 월은 0~11이므로 +1
-            var dd = String(today.getDate()).padStart(2, '0');
-            var todayStr = yyyy + '-' + mm + '-' + dd;
-
-            $.ajax({
-                url: "/chunil/productionManagement/heatTreatment/list_10",
-                method: "POST",
-                data: { w_date: todayStr },
-                dataType: "json",
-                success: function(resp){
-                   // console.log("fetchHeatList resp:", resp);
-
-                    updateLastUpdated();
-                    var arr = Array.isArray(resp) ? resp : (resp.data || resp.rows || (resp ? [resp] : []));
-                    var $tbody = $("#tableHeat tbody").empty();
-                    if(!arr || arr.length===0){
-                        $tbody.append('<tr><td colspan="12">조회된 데이터가 없습니다.</td></tr>');
-                        return;
-                    }
-                    arr.forEach(function(r){
-                        var tr = $("<tr></tr>");
-                        tr.append("<td>"+(r.w_date || "")+"</td>");
-                        tr.append("<td>"+(r.w_ci_lot  || "")+"</td>");
-                        tr.append("<td>"+(r.cust_name || "")+"</td>");
-                        tr.append("<td>"+(r.item_no || "")+"</td>");
-                        tr.append("<td>"+(r.item_name || "")+"</td>");
-                        tr.append("<td>"+(r.regtime  || "")+"</td>");
-                        tr.append("<td>"+(r.w_in_edatetime || "")+"</td>");
-                        tr.append("<td>"+(r.w_intime!=null?r.w_intime:"")+"</td>");
-                        tr.append("<td class='temp'>"+(r.q1_zone != null ? r.q1_zone : "")+"</td>");
-                        tr.append("<td class='temp'>"+(r.t1_zone != null ? r.t1_zone : "")+"</td>");
-                        tr.append("<td class='cp'>"+(r.cp != null ? r.cp : "")+"</td>");
-
-                        tr.append("<td>"+(r.w_edatetime || "")+"</td>");
-                        tr.data("rowdata", r);
-                        $tbody.append(tr);
-                    });
-                },
-                error: function(xhr){
-                    console.error("getHeatList error", xhr);
-                }
-            });
-        }
-
 
         /* ---------- Alarm ---------- */
         function fetchAlarm(){
@@ -1023,68 +778,79 @@ $(document).ready(function () {
         }
 
 
-
-
-
-
-
-
-        /* ---------- Temp Current (getLatestTrend but 온도값 표시) ---------- */
-      function fetchTempCurrent(){
-    var today = new Date();
-    var yyyy = today.getFullYear();
-    var mm = String(today.getMonth() + 1).padStart(2,'0');
-    var dd = String(today.getDate()).padStart(2,'0');
-    var todayStr = yyyy + '-' + mm + '-' + dd;
-
+        //온도 조회
+    function fetchTempCurrent(){
     $.ajax({
-        url: "/chunil/monitoring/trend/getLatestTrend",
+        url: "/mibogear/productionManagement/integrationGetTempList",
         method: "POST",
-        data: { w_date: todayStr },
+        data: { },
         dataType: "json",
-        success: function(resp){
-            updateLastUpdated();
-
-            var obj = Array.isArray(resp) ? (resp[0] || null) : resp || null;
-
-            if(!obj){
-                $("#tableTempCurrent td").text("-");
-                return;
+        success: function(response){
+            
+        	if (response) {
+                // Object의 모든 키(필드명)를 순회하며 ID와 매칭
+                Object.keys(response).forEach(function(key) {
+                    // # 접두사와 key 값을 문자열 결합으로 연결
+                    var targetId = '#' + key;
+                    
+                    // 해당 ID를 가진 요소가 페이지에 존재할 때만 데이터 삽입
+                    if ($(targetId).length > 0) {
+                        $(targetId).text(response[key]);
+                    }
+                });
             }
-
-            // === 첫 번째 줄: F_WASH, IN_WASH, M_WASH, IN_M_WASH, OIL + QF1, QF2 ===
-            $("#tableTempCurrent tbody tr").eq(0).find("td").eq(0).text(obj.f_wash_pv != null ? obj.f_wash_pv : "-");
-            $("#tableTempCurrent tbody tr").eq(0).find("td").eq(1).text(obj.in_wash_pv != null ? obj.in_wash_pv : "-");
-            $("#tableTempCurrent tbody tr").eq(0).find("td").eq(2).text(obj.m_wash_pv != null ? obj.m_wash_pv : "-");
-            $("#tableTempCurrent tbody tr").eq(0).find("td").eq(3).text(obj.in_m_wash_pv != null ? obj.in_m_wash_pv : "-");
-            $("#tableTempCurrent tbody tr").eq(0).find("td").eq(4).text(obj.oil_pv != null ? obj.oil_pv : "-");
-            $("#tableTempCurrent tbody tr").eq(0).find("td").eq(5).text(obj.q_pv_1 != null ? obj.q_pv_1 : "-");
-            $("#tableTempCurrent tbody tr").eq(0).find("td").eq(6).text(obj.q_pv_2 != null ? obj.q_pv_2 : "-");
-
-            // === 두 번째 줄: QF3~QF5, IN_Q, IN_OIL, IN_DATA, IN_T ===
-            $("#tableTempCurrent tbody tr").eq(1).find("td").eq(0).text(obj.q_pv_3 != null ? obj.q_pv_3 : "-");
-            $("#tableTempCurrent tbody tr").eq(1).find("td").eq(1).text(obj.q_pv_4 != null ? obj.q_pv_4 : "-");
-            $("#tableTempCurrent tbody tr").eq(1).find("td").eq(2).text(obj.q_pv_5 != null ? obj.q_pv_5 : "-");
-            $("#tableTempCurrent tbody tr").eq(1).find("td").eq(3).text(obj.in_q_pv != null ? obj.in_q_pv : "-");
-            $("#tableTempCurrent tbody tr").eq(1).find("td").eq(4).text(obj.in_oil_pv != null ? obj.in_oil_pv : "-");
-            $("#tableTempCurrent tbody tr").eq(1).find("td").eq(5).text(obj.in_data_pv != null ? obj.in_data_pv : "-");
-            $("#tableTempCurrent tbody tr").eq(1).find("td").eq(6).text(obj.in_t_pv != null ? obj.in_t_pv : "-");
-
-            // === 세 번째 줄: T1~T5, CP A/B ===
-            $("#tableTempCurrent tbody tr").eq(2).find("td").eq(0).text(obj.t_pv_1 != null ? obj.t_pv_1 : "-");
-            $("#tableTempCurrent tbody tr").eq(2).find("td").eq(1).text(obj.t_pv_2 != null ? obj.t_pv_2 : "-");
-            $("#tableTempCurrent tbody tr").eq(2).find("td").eq(2).text(obj.t_pv_3 != null ? obj.t_pv_3 : "-");
-            $("#tableTempCurrent tbody tr").eq(2).find("td").eq(3).text(obj.t_pv_4 != null ? obj.t_pv_4 : "-");
-            $("#tableTempCurrent tbody tr").eq(2).find("td").eq(4).text(obj.t_pv_5 != null ? obj.t_pv_5 : "-");
-            $("#tableTempCurrent tbody tr").eq(2).find("td").eq(5).text(obj.cp_pv_1 != null ? obj.cp_pv_1 : "-");
-            $("#tableTempCurrent tbody tr").eq(2).find("td").eq(6).text(obj.cp_pv_2 != null ? obj.cp_pv_2 : "-");
+            
         },
         error: function(xhr){
             console.error("fetchTempCurrent error", xhr);
         }
     });
 }
+	//알람 조회
+      function fetchAlarm(){
+  	    $.ajax({
+  	        url: "/mibogear/monitoring/getAlarmList",
+  	        method: "POST",
+  	        data: { },
+  	        dataType: "json",
+  	        success: function(resp){
+  	 
+  	            var arr = Array.isArray(resp) ? resp : (resp.data || resp.rows || (resp ? [resp] : []));
+  	            var $tbody = $("#tableAlarm tbody").empty();
+  	            if(!arr || arr.length === 0){
+  	                $tbody.append('<tr><td colspan="6">조회된 데이터가 없습니다.</td></tr>');
+  	                return;
+  	            }
 
+  	            arr.forEach(function(r, idx){
+  	                var tr = $("<tr></tr>");
+  	                tr.append("<td>"+(idx + 1)+"</td>");
+  	                tr.append("<td>"+(r.alarm_address || "")+"</td>");
+  	                tr.append("<td padding-left:12px;'>"+(r.comment || "")+"</td>");
+  	                tr.append("<td>"+(r.occur_time || "")+"</td>");
+  	                tr.append("<td>"+(r.clear_time || "")+"</td>");
+  	                tr.data("rowdata", r);
+
+  	                // ✅ 진행 중인 알람 시각적 강조
+  	                if(!r.clear_time || r.clear_time === ""){
+  	                    tr.css({
+  	                        "background": "linear-gradient(90deg, rgba(255,230,0,0.2), rgba(255,255,255,0))",
+  	                        "font-weight": "bold",
+  	                        "color": "#b30000"
+  	                    });
+  	                    tr.append("<td style='color:#b30000; font-weight:bold;'>진행 중</td>");
+  	                } else {
+  	                    tr.append("<td>-</td>");
+  	                }
+
+  	                $tbody.append(tr);
+  	            });
+  	        },
+  	        error: function(xhr){
+  	            console.error("fetchAlarm error", xhr);
+  	        }
+  	    });
+  	}
 
 
 </script>
