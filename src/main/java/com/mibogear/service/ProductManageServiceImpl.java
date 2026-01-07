@@ -45,4 +45,14 @@ public class ProductManageServiceImpl implements ProductManageService{
   	public Monitoring integrationGetTemp(Monitoring monitoring){
   		return productManageDAO.integrationGetTemp(monitoring);
   	}
+	
+	@Override
+  	public List<ProductManage> workDailyList(ProductManage productManage){
+  		return productManageDAO.workDailyList(productManage);
+  	}
+	
+	@Override
+  	public List<ProductManage> workDailyListReport(ProductManage productManage){
+  		return productManageDAO.workDailyListReport(productManage);
+  	}
 }

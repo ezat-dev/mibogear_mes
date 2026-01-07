@@ -40,4 +40,40 @@ LEFT JOIN tb_trend_memo AS tm
 ON LEFT(tt.date, 16) = tm.date
 ORDER BY tt.date DESC LIMIT 1;
 	</select>
+	
+	<!-- 작업일보 조회 -->
+	<select id="workDailyList" parameterType="productManage" resultType="productManage">
+	SELECT 
+	    DATE(s.first_time) AS regtime,
+	    s.total_count AS count,
+	    s.first_time AS first_lot_time,
+	    l2.lotno AS first_lot,
+	    s.last_time AS last_lot_time,
+	    l3.lotno AS last_lot
+	FROM (
+	    SELECT 
+	        DATE(regtime) AS d,
+	        COUNT(*) AS total_count,
+	        MIN(regtime) AS first_time,
+	        MAX(regtime) AS last_time
+	    FROM tb_lot
+	    GROUP BY DATE(regtime)
+	) AS s
+	JOIN tb_lot AS l2 ON s.first_time = l2.regtime
+	JOIN tb_lot AS l3 ON s.last_time = l3.regtime
+	<where>
+		<if test="date != null and date != ''">
+		AND d LIKE CONCAT(#{date}, '%')
+		</if>
+	</where>
+	ORDER BY regtime ASC
+	</select>
+	
+	<!-- 작업일보 리포트 생성 -->
+		<select id="workDailyListReport" parameterType="productManage" resultType="productManage">
+SELECT l.lotno, l.regtime, lt.end_time, DATE(l.regtime) AS date
+FROM tb_lot AS l
+INNER JOIN tb_lot_tracking AS lt ON l.lotno = lt.lotno
+WHERE l.regtime LIKE CONCAT(#{regtime}, '%')
+	</select>
 </mapper>

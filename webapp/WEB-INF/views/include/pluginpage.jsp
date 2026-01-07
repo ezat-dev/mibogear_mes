@@ -208,7 +208,7 @@ function pageObject(paramKey){
 			//생산관리
 			"b01":["/mibogear/productionManagement/lotReport","LOT보고서"],
 			"b02":["/mibogear/productionManagement/integrationProduction","종합생산현황"],
-			"b03":["/mibogear/productionManagement/integrationProduction","작업일보"],
+			"b03":["/mibogear/productionManagement/workDailyReport","작업일보"],
 			"b04":"",
 			"b05":"",
 			"b06":"",

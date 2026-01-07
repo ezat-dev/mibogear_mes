@@ -487,7 +487,7 @@ function fetchData() {
             if(!chart) getTrend(dynamicSeries);
              else{
                 chart.xAxis[0].setCategories(categories,false);
-                chart.series.forEach((s,i)=>s.setData(newSeriesData[i]||[],false));
+                //chart.series.forEach((s,i)=>s.setData(newSeriesData[i]||[],false));
                 // ✅ 메모 시리즈 갱신
                 const memoIdx = chart.series.length - 1;
                 chart.series[memoIdx].setData(memoSeries,false);
