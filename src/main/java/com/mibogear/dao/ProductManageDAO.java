@@ -6,6 +6,7 @@ import java.util.Map;
 import org.springframework.stereotype.Repository;
 
 import com.mibogear.domain.DroppedGoods;
+import com.mibogear.domain.Monitoring;
 import com.mibogear.domain.ProductManage;
 
 @Repository
@@ -18,5 +19,7 @@ public interface ProductManageDAO {
 	List<ProductManage> getLotList(ProductManage productManage);
 	
 	List<ProductManage> getLotListReport(ProductManage productManage);
+	List<ProductManage> integrationLotList(ProductManage productManage);
+	Monitoring integrationGetTemp(Monitoring monitoring);
 
 }

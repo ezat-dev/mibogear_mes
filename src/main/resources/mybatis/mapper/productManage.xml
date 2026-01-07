@@ -24,5 +24,18 @@
 	ON l.lotno = #{lot_no}
 	WHERE lt.lotno = #{lot_no}
 	</select>
-    
+	
+	    <!-- 종합생산현황 페이지 lot 조회 -->
+	<select id="integrationLotList" parameterType="productManage" resultType="productManage">
+	SELECT * FROM tb_lot
+	ORDER BY regtime DESC LIMIT 7
+	</select>
+	
+	<!-- 종합생산현황 페이지 온도 조회 -->
+    	<select id="integrationGetTemp" parameterType="monitoring" resultType="monitoring">
+	SELECT * FROM tb_trend_temp AS tt
+LEFT JOIN tb_trend_memo AS tm
+ON LEFT(tt.date, 16) = tm.date
+ORDER BY tt.date DESC LIMIT 1;
+	</select>
 </mapper>

@@ -9,6 +9,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 import com.mibogear.domain.DroppedGoods;
+import com.mibogear.domain.Monitoring;
 import com.mibogear.domain.ProductManage;
 
 @Repository
@@ -37,6 +38,16 @@ public class ProductManageDAOImpl implements ProductManageDAO {
 	@Override
 	public List<ProductManage> getLotListReport(ProductManage productManage){
 		return sqlSession.selectList("productManage.getLotListReport", productManage);
+	}
+	
+	@Override
+	public List<ProductManage> integrationLotList(ProductManage productManage){
+		return sqlSession.selectList("productManage.integrationLotList", productManage);
+	}
+	
+	@Override
+	public Monitoring integrationGetTemp(Monitoring monitoring){
+		return sqlSession.selectOne("productManage.integrationGetTemp", monitoring);
 	}
 
 }
