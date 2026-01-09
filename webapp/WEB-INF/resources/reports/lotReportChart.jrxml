@@ -6,30 +6,22 @@
 	<queryString>
 		<![CDATA[]]>
 	</queryString>
-	<field name="regtime" class="java.sql.Timestamp"/>
-	<field name="f_wash_pv" class="java.lang.Double"/>
-	<field name="in_wash_pv" class="java.lang.Double"/>
-	<field name="q_pv_1" class="java.lang.Double"/>
-	<field name="q_pv_2" class="java.lang.Double"/>
-	<field name="q_pv_3" class="java.lang.Double"/>
-	<field name="q_pv_4" class="java.lang.Double"/>
-	<field name="q_pv_5" class="java.lang.Double"/>
-	<field name="in_q_pv" class="java.lang.Double"/>
-	<field name="in_oil_pv" class="java.lang.Double"/>
-	<field name="in_data_pv" class="java.lang.Double"/>
-	<field name="oil_pv" class="java.lang.Double"/>
-	<field name="m_wash_pv" class="java.lang.Double"/>
-	<field name="in_m_wash_pv" class="java.lang.Double"/>
-	<field name="t_pv_1" class="java.lang.Double"/>
-	<field name="t_pv_2" class="java.lang.Double"/>
-	<field name="t_pv_3" class="java.lang.Double"/>
-	<field name="t_pv_4" class="java.lang.Double"/>
-	<field name="t_pv_5" class="java.lang.Double"/>
-	<field name="in_t_pv" class="java.lang.Double"/>
-	<field name="bc_pv" class="java.lang.Double"/>
-	<field name="cp_pv_1" class="java.lang.Double"/>
-	<field name="cp_pv_2" class="java.lang.Double"/>
-	<field name="regtime_10min" class="java.lang.String"/>
+	<field name="date" class="java.lang.String"/>
+	<field name="bcf1_chim" class="java.lang.String"/>
+	<field name="bcf1_oil" class="java.lang.String"/>
+	<field name="bcf1_cp" class="java.lang.String"/>
+	<field name="bcf1_tempering" class="java.lang.String"/>
+	<field name="bcf2_chim" class="java.lang.String"/>
+	<field name="bcf2_oil" class="java.lang.String"/>
+	<field name="bcf2_cp" class="java.lang.String"/>
+	<field name="bcf3_chim" class="java.lang.String"/>
+	<field name="bcf3_oil" class="java.lang.String"/>
+	<field name="bcf3_tempering" class="java.lang.String"/>
+	<field name="bcf3_cp" class="java.lang.String"/>
+	<field name="bcf4_chim" class="java.lang.String"/>
+	<field name="bcf4_oil" class="java.lang.String"/>
+	<field name="bcf4_cp" class="java.lang.String"/>
+	<field name="fac_no" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -44,89 +36,74 @@
 				</chart>
 				<categoryDataset>
 					<categorySeries>
-						<seriesExpression><![CDATA["전세정기"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{f_wash_pv}]]></valueExpression>
+						<seriesExpression><![CDATA["1호기 침탄"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf1".equalsIgnoreCase($F{fac_no}) ? ($F{bcf1_chim} == null || $F{bcf1_chim}.isEmpty() ? null: Double.valueOf($F{bcf1_chim})): null]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["퀜칭1존"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{q_pv_1}]]></valueExpression>
+						<seriesExpression><![CDATA["1호기 유조"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf1".equalsIgnoreCase($F{fac_no}) ? ($F{bcf1_oil} == null || $F{bcf1_oil}.isEmpty() ? null: Double.valueOf($F{bcf1_oil})): null]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["퀜칭2존"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{q_pv_2}]]></valueExpression>
+						<seriesExpression><![CDATA["1호기 CP"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf1".equalsIgnoreCase($F{fac_no}) ? ($F{bcf1_cp} == null || $F{bcf1_cp}.isEmpty() ? null: Double.valueOf($F{bcf1_cp})): null]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["퀜칭3존"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{q_pv_3}]]></valueExpression>
+						<seriesExpression><![CDATA["1호기 소려"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf1".equalsIgnoreCase($F{fac_no}) ? ($F{bcf1_tempering} == null || $F{bcf1_tempering}.isEmpty() ? null: Double.valueOf($F{bcf1_tempering})): null]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["퀜칭4존"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{q_pv_4}]]></valueExpression>
+						<seriesExpression><![CDATA["2호기 침탄"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf2".equalsIgnoreCase($F{fac_no}) ? ($F{bcf2_chim} == null || $F{bcf2_chim}.isEmpty() ? null: Double.valueOf($F{bcf2_chim})): null]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["퀜칭5존"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{q_pv_5}]]></valueExpression>
+						<seriesExpression><![CDATA["2호기 유조"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf2".equalsIgnoreCase($F{fac_no}) ? ($F{bcf2_oil} == null || $F{bcf2_oil}.isEmpty() ? null: Double.valueOf($F{bcf2_oil})): null]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["CP"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{cp_pv_1}]]></valueExpression>
+						<seriesExpression><![CDATA["2호기 CP"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf2".equalsIgnoreCase($F{fac_no}) ? ($F{bcf2_cp} == null || $F{bcf2_cp}.isEmpty() ? null: Double.valueOf($F{bcf2_cp})): null]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["유조"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{oil_pv}]]></valueExpression>
+						<seriesExpression><![CDATA["3호기 침탄"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf3".equalsIgnoreCase($F{fac_no}) ? ($F{bcf3_chim} == null || $F{bcf3_chim}.isEmpty() ? null: Double.valueOf($F{bcf3_chim})): null]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["중간세정기"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{m_wash_pv}]]></valueExpression>
+						<seriesExpression><![CDATA["3호기 유조"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf3".equalsIgnoreCase($F{fac_no}) ? ($F{bcf3_oil} == null || $F{bcf3_oil}.isEmpty() ? null: Double.valueOf($F{bcf3_oil})): null]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["템퍼링1존"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{t_pv_1}]]></valueExpression>
+						<seriesExpression><![CDATA["3호기 CP"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf3".equalsIgnoreCase($F{fac_no}) ? ($F{bcf3_cp} == null || $F{bcf3_cp}.isEmpty() ? null: Double.valueOf($F{bcf3_cp})): null]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["템퍼링2존"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{t_pv_2}]]></valueExpression>
+						<seriesExpression><![CDATA["3호기 소려"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf3".equalsIgnoreCase($F{fac_no}) ? ($F{bcf3_tempering} == null || $F{bcf3_tempering}.isEmpty() ? null: Double.valueOf($F{bcf3_tempering})): null]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["템퍼링3존"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{t_pv_3}]]></valueExpression>
+						<seriesExpression><![CDATA["4호기 침탄"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf4".equalsIgnoreCase($F{fac_no}) ? ($F{bcf4_chim} == null || $F{bcf4_chim}.isEmpty() ? null: Double.valueOf($F{bcf4_chim})): null]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["템퍼링4존"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{t_pv_4}]]></valueExpression>
+						<seriesExpression><![CDATA["4호기 유조"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf4".equalsIgnoreCase($F{fac_no}) ? ($F{bcf4_oil} == null || $F{bcf4_oil}.isEmpty() ? null: Double.valueOf($F{bcf4_oil})): null]]></valueExpression>
 					</categorySeries>
 					<categorySeries>
-						<seriesExpression><![CDATA["템퍼링5존"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{t_pv_5}]]></valueExpression>
-					</categorySeries>
-					<categorySeries>
-						<seriesExpression><![CDATA["퀜칭 인버터"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{in_q_pv}]]></valueExpression>
-					</categorySeries>
-					<categorySeries>
-						<seriesExpression><![CDATA["템퍼링 인버터"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{in_t_pv}]]></valueExpression>
-					</categorySeries>
-					<categorySeries>
-						<seriesExpression><![CDATA["in_data_pv"]]></seriesExpression>
-						<categoryExpression><![CDATA[$F{regtime_10min}]]></categoryExpression>
-						<valueExpression><![CDATA[$F{in_data_pv}]]></valueExpression>
+						<seriesExpression><![CDATA["4호기 CP"]]></seriesExpression>
+						<categoryExpression><![CDATA[$F{date}]]></categoryExpression>
+						<valueExpression><![CDATA["bcf4".equalsIgnoreCase($F{fac_no}) ? ($F{bcf4_cp} == null || $F{bcf4_cp}.isEmpty() ? null: Double.valueOf($F{bcf4_cp})): null]]></valueExpression>
 					</categorySeries>
 				</categoryDataset>
 				<linePlot isShowLines="true" isShowShapes="false">
