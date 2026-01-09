@@ -13,6 +13,22 @@
 	<field name="bcf_quen" class="java.lang.String"/>
 	<field name="bcf_drain" class="java.lang.String"/>
 	<field name="end_time" class="java.lang.String"/>
+	<field name="ptrn_d901" class="java.lang.String"/>
+	<field name="ptrn_d911" class="java.lang.String"/>
+	<field name="ptrn_d921" class="java.lang.String"/>
+	<field name="ptrn_d904" class="java.lang.String"/>
+	<field name="ptrn_d914" class="java.lang.String"/>
+	<field name="ptrn_d924" class="java.lang.String"/>
+	<field name="ptrn_d905" class="java.lang.String"/>
+	<field name="ptrn_d915" class="java.lang.String"/>
+	<field name="ptrn_d925" class="java.lang.String"/>
+	<field name="ptrn_d906" class="java.lang.String"/>
+	<field name="ptrn_d916" class="java.lang.String"/>
+	<field name="ptrn_d926" class="java.lang.String"/>
+	<field name="ptrn_d908" class="java.lang.String"/>
+	<field name="ptrn_d918" class="java.lang.String"/>
+	<field name="ptrn_d909" class="java.lang.String"/>
+	<field name="ptrn_d919" class="java.lang.String"/>
 	<background>
 		<band splitType="Stretch"/>
 	</background>
@@ -71,33 +87,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
-				<text><![CDATA[품명]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="0" y="152" width="61" height="20" backcolor="#F0EBEB" uuid="f856b876-5317-4d3a-ba98-6c18f030985b"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-				<text><![CDATA[품번]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="0" y="172" width="61" height="20" backcolor="#F0EBEB" uuid="2a5ff793-9fb6-4a62-b1dd-cca8144a2e7d"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-				<text><![CDATA[회사명]]></text>
+				<text><![CDATA[재질]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement x="61" y="92" width="125" height="20" uuid="5e8916e7-d47e-4b17-bd29-a317bf0a2222"/>
@@ -123,7 +113,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
-				<text><![CDATA[투입 시작]]></text>
+				<text><![CDATA[품번]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement x="61" y="132" width="125" height="20" uuid="1c9e0931-9689-4486-b297-f2c6df6beb24"/>
@@ -136,45 +126,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
-				<textFieldExpression><![CDATA[$F{fac_no}]]></textFieldExpression>
 			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="61" y="152" width="125" height="20" uuid="edeb0582-dd4b-48d5-bd81-18f813b02a7e"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="61" y="172" width="125" height="20" uuid="a46e5261-baf3-42f9-b417-fc1d2c9cca23"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-			</textField>
-			<staticText>
-				<reportElement mode="Transparent" x="358" y="152" width="72" height="20" backcolor="#F0EBEB" uuid="cd55eeef-40b8-4c4a-b7ef-4c3a10ea17e7"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-				<text><![CDATA[장입 시간]]></text>
-			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="186" y="132" width="52" height="20" backcolor="#F0EBEB" uuid="e9ef53e4-bf86-4cce-9894-978bd613f3dc"/>
 				<box>
@@ -186,20 +138,8 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
-				<text><![CDATA[장입량]]></text>
+				<text><![CDATA[규격]]></text>
 			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement x="430" y="152" width="125" height="20" uuid="d6a33429-771f-4269-afbb-39d4b806f8eb"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement x="238" y="132" width="120" height="20" uuid="8d407aaf-3e15-4cf4-a533-b1086bb9f451"/>
 				<box>
@@ -211,32 +151,6 @@
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
 			</textField>
-			<staticText>
-				<reportElement mode="Transparent" x="358" y="132" width="72" height="20" backcolor="#F0EBEB" uuid="2d5086c9-2ced-4f0d-b346-289b6c7696f2"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-				<text><![CDATA[투입 종료]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="358" y="172" width="72" height="20" backcolor="#F0EBEB" uuid="08747317-4822-40c3-ab6a-b1ffcbc16e0d"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-				<text><![CDATA[작업 종료]]></text>
-			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement x="430" y="112" width="125" height="20" uuid="8a86ad16-8645-47ed-8c8a-d18e72f126ed">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
@@ -252,19 +166,7 @@
 				</textElement>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="430" y="132" width="125" height="20" uuid="1b3bee0f-4b20-4c3a-8ab3-114af06b000d"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-			</textField>
-			<textField isBlankWhenNull="true">
-				<reportElement x="430" y="172" width="125" height="20" uuid="9024aa18-17de-4d3c-b8b2-779074da358a">
+				<reportElement x="430" y="92" width="125" height="20" uuid="9024aa18-17de-4d3c-b8b2-779074da358a">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
@@ -294,7 +196,7 @@
 				<text><![CDATA[  LOT 설정값]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="-1" y="314" width="555" height="20" backcolor="#F0EBEB" uuid="34fd920d-6542-4f83-b311-32710af12f1d"/>
+				<reportElement mode="Transparent" x="0" y="314" width="554" height="20" backcolor="#F0EBEB" uuid="34fd920d-6542-4f83-b311-32710af12f1d"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -307,7 +209,7 @@
 				<text><![CDATA[  존 투입 시간]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="-1" y="354" width="75" height="20" backcolor="#F0EBEB" uuid="f90b7f7e-4139-46f6-bee4-c1dd37565cc6"/>
+				<reportElement mode="Transparent" x="0" y="354" width="74" height="20" backcolor="#F0EBEB" uuid="f90b7f7e-4139-46f6-bee4-c1dd37565cc6"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -371,6 +273,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d901}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="150" y="240" width="80" height="20" backcolor="#F5F5F5" uuid="d99446b1-ae6e-4a5a-9870-70484e4ec2a6"/>
@@ -383,6 +286,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d904}]]></textFieldExpression>
 			</textField>
 			<textField>
 				<reportElement x="243" y="12" width="236" height="27" uuid="31e29f74-56d7-42fa-b198-fbce470590a1"/>
@@ -392,7 +296,7 @@
 				<textFieldExpression><![CDATA[$F{lot_no}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="-1" y="390" width="555" height="20" backcolor="#F0EBEB" uuid="b2678314-562a-466c-9d87-3d694bbd0d68">
+				<reportElement mode="Transparent" x="0" y="390" width="554" height="20" backcolor="#F0EBEB" uuid="b2678314-562a-466c-9d87-3d694bbd0d68">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
@@ -434,7 +338,7 @@
 				</textElement>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="-1" y="430" width="45" height="20" backcolor="#F0EBEB" uuid="f537dd5f-5dfb-4f50-b999-c051d3aa3d80"/>
+				<reportElement mode="Transparent" x="0" y="430" width="44" height="20" backcolor="#F0EBEB" uuid="f537dd5f-5dfb-4f50-b999-c051d3aa3d80"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -447,7 +351,7 @@
 				<text><![CDATA[심부]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="-1" y="450" width="45" height="20" backcolor="#F0EBEB" uuid="b6b5827a-8ec9-4fdc-97a2-1a4aa4d2209c">
+				<reportElement mode="Transparent" x="0" y="450" width="44" height="20" backcolor="#F0EBEB" uuid="b6b5827a-8ec9-4fdc-97a2-1a4aa4d2209c">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
@@ -596,31 +500,7 @@
 				</textElement>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="338" y="112" width="20" height="20" backcolor="#F0EBEB" uuid="f71f34cc-25b3-4253-9499-0b4b46cf6089"/>
-				<box>
-					<topPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-				<text><![CDATA[kg]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="338" y="132" width="20" height="20" backcolor="#F0EBEB" uuid="f4f1c1b8-6fd3-4442-8754-8f81e31750f8"/>
-				<box>
-					<topPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-					<rightPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-				<text><![CDATA[EA]]></text>
-			</staticText>
-			<staticText>
-				<reportElement mode="Transparent" x="-1" y="334" width="75" height="20" backcolor="#F0EBEB" uuid="c848b006-4ccc-4484-9799-46980a08c6c8"/>
+				<reportElement mode="Transparent" x="0" y="334" width="74" height="20" backcolor="#F0EBEB" uuid="c848b006-4ccc-4484-9799-46980a08c6c8"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -633,7 +513,7 @@
 				<text><![CDATA[위치]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="-1" y="410" width="45" height="20" backcolor="#F0EBEB" uuid="2fbb15b7-d4c8-4005-9071-8400a2db552e">
+				<reportElement mode="Transparent" x="0" y="410" width="44" height="20" backcolor="#F0EBEB" uuid="2fbb15b7-d4c8-4005-9071-8400a2db552e">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
@@ -758,6 +638,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d905}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="70" y="220" width="80" height="20" backcolor="#F0EBEB" uuid="9c7a4a50-c8ba-4b29-b420-c5bc2c98db4e">
@@ -787,6 +668,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d906}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement mode="Transparent" x="186" y="92" width="52" height="20" backcolor="#F0EBEB" uuid="2f6fcd0c-d36e-4722-a3d3-096c2636784b"/>
@@ -799,7 +681,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
-				<text><![CDATA[투입 통수]]></text>
+				<text><![CDATA[작업시작]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement x="238" y="92" width="120" height="20" uuid="9edecee8-90b3-46e6-9de1-04a67400103f"/>
@@ -824,7 +706,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
-				<text><![CDATA[중량]]></text>
+				<text><![CDATA[품명]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
 				<reportElement x="238" y="112" width="120" height="20" uuid="228e8b3d-dd7b-4b5d-a012-cb842fbab3a4"/>
@@ -849,10 +731,10 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
-				<text><![CDATA[작업시작]]></text>
+				<text><![CDATA[작업종료]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="430" y="92" width="125" height="20" uuid="5e6a9580-cf7f-451a-a296-b5a69fb67fbf">
+				<reportElement x="238" y="92" width="120" height="20" uuid="5e6a9580-cf7f-451a-a296-b5a69fb67fbf">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
@@ -1023,7 +905,7 @@
 				</textElement>
 			</textField>
 			<staticText>
-				<reportElement mode="Transparent" x="-1" y="510" width="45" height="20" backcolor="#F0EBEB" uuid="22bc0906-9cb5-434d-9b9f-405cf64e5e83">
+				<reportElement mode="Transparent" x="0" y="510" width="44" height="20" backcolor="#F0EBEB" uuid="22bc0906-9cb5-434d-9b9f-405cf64e5e83">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
@@ -1038,7 +920,7 @@
 				<text><![CDATA[표면]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="-1" y="470" width="45" height="20" backcolor="#F0EBEB" uuid="20957763-814a-482f-b74c-3dd1f9f850b9">
+				<reportElement mode="Transparent" x="0" y="470" width="44" height="20" backcolor="#F0EBEB" uuid="20957763-814a-482f-b74c-3dd1f9f850b9">
 					<property name="com.jaspersoft.studio.unit.width" value="px"/>
 				</reportElement>
 				<box>
@@ -1053,7 +935,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement mode="Transparent" x="-1" y="490" width="45" height="20" backcolor="#F0EBEB" uuid="4e881017-b202-4b9b-a4ea-4eeea2036c34"/>
+				<reportElement mode="Transparent" x="0" y="490" width="44" height="20" backcolor="#F0EBEB" uuid="4e881017-b202-4b9b-a4ea-4eeea2036c34"/>
 				<box>
 					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
 					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
@@ -1213,55 +1095,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
-				<text><![CDATA[작지번호]]></text>
-			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement x="238" y="152" width="120" height="20" uuid="15480e26-e22d-49b0-9b4a-d65dee981706"/>
-				<box>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-			</textField>
-			<staticText>
-				<reportElement mode="Transparent" x="186" y="152" width="52" height="20" backcolor="#F0EBEB" uuid="adea8270-27fa-4acb-89d5-bcf9f9d78c07"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-				<text><![CDATA[SPEC]]></text>
-			</staticText>
-			<textField isBlankWhenNull="true">
-				<reportElement x="238" y="172" width="120" height="20" uuid="a0eb9d16-217f-4d77-b919-40be71404e3f"/>
-				<box>
-					<topPen lineWidth="1.0"/>
-					<leftPen lineWidth="1.0"/>
-					<bottomPen lineWidth="1.0"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-			</textField>
-			<staticText>
-				<reportElement mode="Transparent" x="186" y="172" width="52" height="20" backcolor="#F0EBEB" uuid="4b991d67-e154-4991-9e59-229f30ce6be2"/>
-				<box>
-					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
-				</box>
-				<textElement textAlignment="Center" verticalAlignment="Middle">
-					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-				</textElement>
-				<text><![CDATA[재질]]></text>
+				<text><![CDATA[업체명]]></text>
 			</staticText>
 			<staticText>
 				<reportElement mode="Transparent" x="0" y="260" width="70" height="20" backcolor="#F0EBEB" uuid="53b443da-108b-436f-a8fa-ed45399b8c38">
@@ -1381,6 +1215,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d908}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="473" y="240" width="81" height="20" backcolor="#F5F5F5" uuid="569dea59-d8ba-4c31-b44a-2233f2ec1ce2">
@@ -1395,6 +1230,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d909}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="70" y="260" width="80" height="20" backcolor="#F5F5F5" uuid="eea15a42-9746-400f-bb88-240c3ee868df">
@@ -1409,6 +1245,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d911}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="150" y="260" width="80" height="20" backcolor="#F5F5F5" uuid="5a1c527a-28c9-46e3-9393-aee3006f6069"/>
@@ -1421,6 +1258,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d914}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="230" y="260" width="81" height="20" backcolor="#F5F5F5" uuid="fd49b9a3-b76c-413e-b584-802ecc6992bc">
@@ -1435,6 +1273,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d915}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="311" y="260" width="81" height="20" backcolor="#F5F5F5" uuid="a6984879-6b20-4433-a2bd-1d8f61403f28">
@@ -1449,6 +1288,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d916}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="392" y="260" width="81" height="20" backcolor="#F5F5F5" uuid="84795706-3840-4897-98d0-44ad19d0e2a3">
@@ -1463,6 +1303,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d918}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="473" y="260" width="81" height="20" backcolor="#F5F5F5" uuid="763530c8-2e4f-4184-ae18-9dcff114a8ea">
@@ -1477,6 +1318,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d919}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="70" y="280" width="80" height="20" backcolor="#F5F5F5" uuid="0e7c4972-5c14-4575-b436-7b4d4a0d8e98">
@@ -1491,6 +1333,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d921}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="150" y="280" width="80" height="20" backcolor="#F5F5F5" uuid="5c30c74c-1a29-4dde-b29d-09ef4131f4c5"/>
@@ -1503,6 +1346,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d924}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="230" y="280" width="81" height="20" backcolor="#F5F5F5" uuid="cac196e4-9fee-4848-9512-8ff61045c218">
@@ -1517,6 +1361,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d925}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="311" y="280" width="81" height="20" backcolor="#F5F5F5" uuid="0d5d50e1-13d4-4686-b4be-71d2d02c051b">
@@ -1531,6 +1376,7 @@
 				<textElement textAlignment="Center" verticalAlignment="Middle">
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
+				<textFieldExpression><![CDATA[$F{ptrn_d926}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
 				<reportElement mode="Transparent" x="392" y="280" width="81" height="20" backcolor="#F5F5F5" uuid="d348e79e-a15c-469c-ba69-26085feeb98f">
@@ -1737,6 +1583,32 @@
 					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
 				</textElement>
 				<textFieldExpression><![CDATA[$F{bcf_drain}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement mode="Transparent" x="358" y="132" width="72" height="20" backcolor="#F0EBEB" uuid="195fabb7-0f27-4d6f-b51d-cd8f432d4909"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[설비명]]></text>
+			</staticText>
+			<textField isBlankWhenNull="true">
+				<reportElement x="430" y="132" width="125" height="20" uuid="6814312c-662b-4432-8530-ff14c090d5b1"/>
+				<box>
+					<topPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<leftPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<bottomPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+					<rightPen lineWidth="1.0" lineStyle="Solid" lineColor="#000000"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$F{fac_no}]]></textFieldExpression>
 			</textField>
 		</band>
 	</title>
