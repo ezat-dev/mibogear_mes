@@ -509,7 +509,9 @@ function getList(){
                   url: "/mibogear/productionManagement/lot_report/lotPrint",
                   type: "POST",
                   contentType: "application/json",
-                  data: JSON.stringify({ lot_no: rowData.lot_no}), 
+                  data: JSON.stringify({ 
+                      lot_no: rowData.lot_no,
+                      regtime: rowData.regtime }), 
                   xhrFields: {
                       responseType: 'blob' // PDF 바이너리 처리
                   },

@@ -101,7 +101,15 @@ public class Monitoring {
     private String idx;
     private String machine_name;
     
+    private String fac_no;
     
+    
+	public String getFac_no() {
+		return fac_no;
+	}
+	public void setFac_no(String fac_no) {
+		this.fac_no = fac_no;
+	}
 	public String getBcf1_chim_setting() {
 		return bcf1_chim_setting;
 	}
