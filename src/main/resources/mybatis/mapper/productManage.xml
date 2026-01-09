@@ -18,10 +18,30 @@
 	<!-- LOT 보고서 조회(리포트)-->
 	<select id="getLotListReport" parameterType="productManage" resultType="productManage">
 	SELECT l.regtime, l.lotno AS lot_no, l.lotno_date, l.pattern, l.fac_no, 
-	lt.bcf_up, lt.bcf_chim, lt.bcf_diff, lt.bcf_gang, lt.bcf_quen, lt.bcf_drain 
+	lt.bcf_up, lt.bcf_chim, lt.bcf_diff, lt.bcf_gang, lt.bcf_quen, lt.bcf_drain,
+	CAST(p.ptrn_hogi AS CHAR) AS ptrn_hogi, 
+    CAST(p.ptrn_d1000 AS CHAR) AS ptrn_d1000, 
+    CAST(p.ptrn_d901 AS CHAR) AS ptrn_d901, 
+    CAST(p.ptrn_d911 AS CHAR) AS ptrn_d911, 
+    CAST(p.ptrn_d921 AS CHAR) AS ptrn_d921, 
+    CAST(p.ptrn_d904 AS CHAR) AS ptrn_d904, 
+    CAST(p.ptrn_d914 AS CHAR) AS ptrn_d914, 
+    CAST(p.ptrn_d924 AS CHAR) AS ptrn_d924,
+    CAST(p.ptrn_d905 AS CHAR) AS ptrn_d905, 
+    CAST(p.ptrn_d915 AS CHAR) AS ptrn_d915, 
+    CAST(p.ptrn_d925 AS CHAR) AS ptrn_d925, 
+    CAST(p.ptrn_d906 AS CHAR) AS ptrn_d906, 
+    CAST(p.ptrn_d916 AS CHAR) AS ptrn_d916, 
+    CAST(p.ptrn_d926 AS CHAR) AS ptrn_d926, 
+    CAST(p.ptrn_d908 AS CHAR) AS ptrn_d908, 
+    CAST(p.ptrn_d918 AS CHAR) AS ptrn_d918,
+    CAST(p.ptrn_d909 AS CHAR) AS ptrn_d909, 
+    CAST(p.ptrn_d919 AS CHAR) AS ptrn_d919
 	FROM tb_lot AS l
 	INNER JOIN tb_lot_tracking AS lt
 	ON l.lotno = #{lot_no}
+	LEFT JOIN tb_pattern as p
+	ON l.pattern = CAST(p.ptrn_d1000 AS char)
 	WHERE lt.lotno = #{lot_no}
 	</select>
 	

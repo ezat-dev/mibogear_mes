@@ -511,7 +511,8 @@ function getList(){
                   contentType: "application/json",
                   data: JSON.stringify({ 
                       lot_no: rowData.lot_no,
-                      regtime: rowData.regtime }), 
+                      regtime: rowData.regtime,
+                      fac_no: rowData.fac_no }), 
                   xhrFields: {
                       responseType: 'blob' // PDF 바이너리 처리
                   },

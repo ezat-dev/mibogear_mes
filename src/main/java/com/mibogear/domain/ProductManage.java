@@ -23,7 +23,128 @@ public class ProductManage {
 	private String date;
 	private String no;
 	
+	private String ptrn_d1000;
+	private String ptrn_d901;
+	private String ptrn_d911;
+	private String ptrn_d921;
+	private String ptrn_d904;
+	private String ptrn_d914;
+	private String ptrn_d924;
+	private String ptrn_d905;
+	private String ptrn_d915;
+	private String ptrn_d925;
+	private String ptrn_d906;
+	private String ptrn_d916;
+	private String ptrn_d926;
+	private String ptrn_d908;
+	private String ptrn_d918;
+	private String ptrn_d909;
+	private String ptrn_d919;
 	
+	
+	
+	public String getPtrn_d1000() {
+		return ptrn_d1000;
+	}
+	public void setPtrn_d1000(String ptrn_d1000) {
+		this.ptrn_d1000 = ptrn_d1000;
+	}
+	public String getPtrn_d901() {
+		return ptrn_d901;
+	}
+	public void setPtrn_d901(String ptrn_d901) {
+		this.ptrn_d901 = ptrn_d901;
+	}
+	public String getPtrn_d911() {
+		return ptrn_d911;
+	}
+	public void setPtrn_d911(String ptrn_d911) {
+		this.ptrn_d911 = ptrn_d911;
+	}
+	public String getPtrn_d921() {
+		return ptrn_d921;
+	}
+	public void setPtrn_d921(String ptrn_d921) {
+		this.ptrn_d921 = ptrn_d921;
+	}
+	public String getPtrn_d904() {
+		return ptrn_d904;
+	}
+	public void setPtrn_d904(String ptrn_d904) {
+		this.ptrn_d904 = ptrn_d904;
+	}
+	public String getPtrn_d914() {
+		return ptrn_d914;
+	}
+	public void setPtrn_d914(String ptrn_d914) {
+		this.ptrn_d914 = ptrn_d914;
+	}
+	public String getPtrn_d924() {
+		return ptrn_d924;
+	}
+	public void setPtrn_d924(String ptrn_d924) {
+		this.ptrn_d924 = ptrn_d924;
+	}
+	public String getPtrn_d905() {
+		return ptrn_d905;
+	}
+	public void setPtrn_d905(String ptrn_d905) {
+		this.ptrn_d905 = ptrn_d905;
+	}
+	public String getPtrn_d915() {
+		return ptrn_d915;
+	}
+	public void setPtrn_d915(String ptrn_d915) {
+		this.ptrn_d915 = ptrn_d915;
+	}
+	public String getPtrn_d925() {
+		return ptrn_d925;
+	}
+	public void setPtrn_d925(String ptrn_d925) {
+		this.ptrn_d925 = ptrn_d925;
+	}
+	public String getPtrn_d906() {
+		return ptrn_d906;
+	}
+	public void setPtrn_d906(String ptrn_d906) {
+		this.ptrn_d906 = ptrn_d906;
+	}
+	public String getPtrn_d916() {
+		return ptrn_d916;
+	}
+	public void setPtrn_d916(String ptrn_d916) {
+		this.ptrn_d916 = ptrn_d916;
+	}
+	public String getPtrn_d926() {
+		return ptrn_d926;
+	}
+	public void setPtrn_d926(String ptrn_d926) {
+		this.ptrn_d926 = ptrn_d926;
+	}
+	public String getPtrn_d908() {
+		return ptrn_d908;
+	}
+	public void setPtrn_d908(String ptrn_d908) {
+		this.ptrn_d908 = ptrn_d908;
+	}
+	public String getPtrn_d918() {
+		return ptrn_d918;
+	}
+	public void setPtrn_d918(String ptrn_d918) {
+		this.ptrn_d918 = ptrn_d918;
+	}
+	public String getPtrn_d909() {
+		return ptrn_d909;
+	}
+	public void setPtrn_d909(String ptrn_d909) {
+		this.ptrn_d909 = ptrn_d909;
+	}
+	public String getPtrn_d919() {
+		return ptrn_d919;
+	}
+	public void setPtrn_d919(String ptrn_d919) {
+		this.ptrn_d919 = ptrn_d919;
+	}
 	public String getNo() {
 		return no;
 	}
