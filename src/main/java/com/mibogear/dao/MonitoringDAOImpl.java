@@ -1,6 +1,7 @@
 package com.mibogear.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
@@ -44,5 +45,10 @@ public class MonitoringDAOImpl implements MonitoringDAO{
 			return false;
 		}
 		return true;
+	}
+	
+	@Override
+	public Map<String, Object> getOverviewData() {
+		return sqlSession.selectOne("monitoring.getOverviewData");
 	}
 }

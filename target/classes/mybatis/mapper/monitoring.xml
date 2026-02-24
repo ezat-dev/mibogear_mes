@@ -105,4 +105,105 @@ LIMIT 50
 	(date, user_code, writer, memo, note)
 	VALUES(#{date}, #{user_code}, #{writer}, #{memo}, #{note})
 	</insert>
+	
+	
+	
+	<select id="getOverviewData" resultType="java.util.HashMap">
+    SELECT 
+        -- CART (26개)
+        cart_1, cart_2, cart_3, cart_4, cart_5, cart_6, cart_7, cart_8, cart_9, cart_10,
+        cart_11, cart_12, cart_13, cart_14, cart_15, cart_16, cart_17, cart_18, cart_19, cart_20,
+        cart_21, cart_22, cart_23, cart_24, cart_25, cart_26,
+        
+        -- TONG (70개)
+        tong_1, tong_2, tong_3, tong_4, tong_5, tong_6, tong_7, tong_8, tong_9, tong_10,
+        tong_11, tong_12, tong_13, tong_14, tong_15, tong_16, tong_17, tong_18, tong_19, tong_20,
+        tong_21, tong_22, tong_23, tong_24, tong_25, tong_26, tong_27, tong_28, tong_29, tong_30,
+        tong_31, tong_32, tong_33, tong_34, tong_35, tong_36, tong_37, tong_38, tong_39, tong_40,
+        tong_41, tong_42, tong_43, tong_44, tong_45, tong_46, tong_47, tong_48, tong_49, tong_50,
+        tong_51, tong_52, tong_53, tong_54, tong_55, tong_56, tong_57, tong_58, tong_59, tong_60,
+        tong_61, tong_62, tong_63, tong_64, tong_65, tong_66, tong_67, tong_68, tong_69, tong_70,
+        
+        -- DOOR (4개)
+        door_1, door_2, door_3, door_4,
+        
+        -- BODY_PEN / ONPEN (8개)
+        body_pen_1, body_pen_2, body_pen_3, body_pen_4,
+        onpen_1, onpen_2, onpen_3, onpen_4,
+        
+        -- GREENPEN (6개)
+        greenpen_1, greenpen_2, greenpen_3, greenpen_4, greenpen_5, greenpen_6,
+        
+        -- LONGON (8개)
+        longon_1, longon_2, longon_3, longon_4, longon_5, longon_6, longon_7, longon_8,
+        
+        -- BLUEPEN (8개)
+        bluepen_1, bluepen_2, bluepen_3, bluepen_4, bluepen_5, bluepen_6, bluepen_7, bluepen_8,
+        
+        -- UP / DOWN (8개)
+        up_1, up_2, up_3, up_4,
+        down_1, down_2, down_3, down_4,
+        
+        -- DOOROPEN / DOORCLOSE (24개)
+        doorOpen_1, doorOpen_2, doorOpen_3, doorOpen_4, doorOpen_5, doorOpen_6,
+        doorOpen_7, doorOpen_8, doorOpen_9, doorOpen_10, doorOpen_11, doorOpen_12,
+        doorClose_1, doorClose_2, doorClose_3, doorClose_4, doorClose_5, doorClose_6,
+        doorClose_7, doorClose_8, doorClose_9, doorClose_10, doorClose_11, doorClose_12,
+        
+        -- REDBOX (16개)
+        redBox_1, redBox_2, redBox_3, redBox_4, redBox_5, redBox_6, redBox_7, redBox_8,
+        redBox_9, redBox_10, redBox_11, redBox_12, redBox_13, redBox_14, redBox_15, redBox_16,
+        
+        -- 존 구간 비트 (30개)
+        bcf1_seong_bit, bcf1_chim_bit, bcf1_diff_bit, bcf1_gang_bit, bcf1_que_bit, bcf1_drain_bit,
+        bcf2_seong_bit, bcf2_chim_bit, bcf2_diff_bit, bcf2_gang_bit, bcf2_que_bit, bcf2_drain_bit,
+        bcf3_seong_bit, bcf3_chim_bit, bcf3_diff_bit, bcf3_gang_bit, bcf3_que_bit, bcf3_drain_bit,
+        bcf4_seong_bit, bcf4_chim_bit, bcf4_diff_bit, bcf4_gang_bit, bcf4_que_bit, bcf4_drain_bit,
+        cm_gun_bit, cm_tem_bit, cm_cool_bit,
+        cm2_gun_bit, cm2_tem_bit, cm2_cool_bit,
+        
+        -- 패턴 번호 (4개)
+        bcf1_pattern_number, bcf2_pattern_number, bcf3_pattern_number, bcf4_pattern_number,
+        
+        -- 통 번호 (6개)
+        cm2_tong_number, bcf4_tong_number, bcf3_tong_number, bcf2_tong_number, bcf1_tong_number, cm_tong_number,
+        
+        -- BCF1 아날로그값 (26개)
+        bcf1_chim, bcf1_oil, bcf1_cp, bcf1_tempering,
+        bcf1_seong_sv, bcf1_seong_pv, bcf1_chim_sv, bcf1_chim_pv,
+        bcf1_diff_sv, bcf1_diff_pv, bcf1_gang_sv, bcf1_gang_pv,
+        bcf1_que_sv, bcf1_que_pv, bcf1_drain_sv, bcf1_drain_pv,
+        bcf1_cool1_sv, bcf1_cool1_pv, bcf1_tem_sv, bcf1_tem_pv,
+        bcf1_cool2_sv, bcf1_cool2_pv,
+        bcf1_chim_setting, bcf1_oil_setting, bcf1_cp_setting, bcf1_tempering_setting,
+        
+        -- BCF2 아날로그값 (18개)
+        bcf2_chim, bcf2_oil, bcf2_cp,
+        bcf2_seong_sv, bcf2_seong_pv, bcf2_chim_sv, bcf2_chim_pv,
+        bcf2_diff_sv, bcf2_diff_pv, bcf2_gang_sv, bcf2_gang_pv,
+        bcf2_que_sv, bcf2_que_pv, bcf2_drain_sv, bcf2_drain_pv,
+        bcf2_chim_setting, bcf2_oil_setting, bcf2_cp_setting,
+        
+        -- BCF3 아날로그값 (26개)
+        bcf3_chim, bcf3_oil, bcf3_cp, bcf3_tempering,
+        bcf3_seong_sv, bcf3_seong_pv, bcf3_chim_sv, bcf3_chim_pv,
+        bcf3_diff_sv, bcf3_diff_pv, bcf3_gang_sv, bcf3_gang_pv,
+        bcf3_que_sv, bcf3_que_pv, bcf3_drain_sv, bcf3_drain_pv,
+        bcf3_cool1_sv, bcf3_cool1_pv, bcf3_tem_sv, bcf3_tem_pv,
+        bcf3_cool2_sv, bcf3_cool2_pv,
+        bcf3_chim_setting, bcf3_oil_setting, bcf3_cp_setting, bcf3_tempering_setting,
+        
+        -- BCF4 아날로그값 (18개)
+        bcf4_chim, bcf4_oil, bcf4_cp,
+        bcf4_seong_sv, bcf4_seong_pv, bcf4_chim_sv, bcf4_chim_pv,
+        bcf4_diff_sv, bcf4_diff_pv, bcf4_gang_sv, bcf4_gang_pv,
+        bcf4_que_sv, bcf4_que_pv, bcf4_drain_sv, bcf4_drain_pv,
+        bcf4_chim_setting, bcf4_oil_setting, bcf4_cp_setting
+        
+    FROM tb_overview
+    WHERE id = 1
+</select>
+
+
+
 </mapper>

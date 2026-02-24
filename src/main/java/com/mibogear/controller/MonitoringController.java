@@ -1,6 +1,7 @@
 package com.mibogear.controller;
 
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -77,5 +78,10 @@ public class MonitoringController {
     public boolean trendMemoInsert(Monitoring monitoring) {
         return monitoringService.trendMemoInsert(monitoring);
     }
-
+    
+    @RequestMapping(value = "/monitoring/getOverviewData", method = RequestMethod.POST)
+    @ResponseBody
+    public Map<String, Object> getOverviewData() {
+        return monitoringService.getOverviewData();
+    }
 }

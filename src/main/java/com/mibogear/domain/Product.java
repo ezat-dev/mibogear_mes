@@ -20,6 +20,8 @@ public class Product {
 	private String prod_model;
 	private String prod_gubn;
 	
+	
+	
 
 	//TECH 테이블
 	private String tech_no;					//공정

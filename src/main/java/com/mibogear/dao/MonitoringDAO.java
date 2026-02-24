@@ -1,6 +1,7 @@
 package com.mibogear.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import com.mibogear.domain.Monitoring;
 import com.mibogear.domain.ProductManage;
@@ -14,4 +15,6 @@ public interface MonitoringDAO {
 	
 	List<ProductManage> getLotList(ProductManage productManage);
 	boolean trendMemoInsert(Monitoring monitoring);
+	
+	Map<String, Object> getOverviewData();
 }
