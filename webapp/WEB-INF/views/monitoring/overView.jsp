@@ -13,6 +13,9 @@
 <%@include file="../include/pluginpage.jsp" %>     
     
     <style>
+    body{
+    	overflow :hidden;
+    }
     .main {
     position: relative;
 }
@@ -42,7 +45,7 @@
 	    background: #fff;
 	    border: 1px solid #ddd;
 	    overflow: hidden;
-	    flex: 0.6;
+	    flex: 1;
 	}
 	
 	.bcf-header {
@@ -84,6 +87,22 @@
 	    background: #f5f5f5;
 	    font-weight: bold;
 	}
+	
+	
+	.bcf-table-common {
+    background: #fff;
+    border: 1px solid #ddd;
+    overflow: hidden;
+    flex: 0.4;
+}
+
+.bcf-table-common .bcf-header {
+    background: #6a5acd; /* 구분을 위해 보라색 */
+}
+	
+	
+	
+	
 	
 .cart_1, .cart_2, .cart_3, .cart_4, .cart_5, .cart_6, .cart_7, .cart_8, .cart_9, .cart_10,
 .cart_11, .cart_12, .cart_13, .cart_14, .cart_15, .cart_16, .cart_17, .cart_18, .cart_19, .cart_20,
@@ -500,243 +519,277 @@
   </div>
   
   
-		  <div class="bcf-container">
-		        <!-- 1행: 1호기 + 2호기 -->
-		        <div class="bcf-row">
-		            <!-- 1호기 (전체) -->
-		            <div class="bcf-table-full">
-		                <div class="bcf-header">1호기</div>
-		                <table>
-		                    <thead>
-		                        <tr>
-		                            <th>온도(℃)</th>
-		                            <th>침탄</th>
-		                            <th>유조</th>
-		                            <th>CP</th>
-		                            <th>소려</th>
-		                            <th>시간(분)</th>
-		                            <th class="bcf1_seong_bit">승온</th>
-		                            <th class="bcf1_chim_bit">침탄</th>
-		                            <th class="bcf1_diff_bit">확산</th>
-		                            <th class="bcf1_gang_bit">강온</th>
-		                            <th class="bcf1_que_bit">소입</th>
-		                            <th class="bcf1_drain_bit">드레인</th>
-		                            <th>시간(분)</th>
-		                            <th class="cm_gun_bit">건조</th>
-		                            <th class="cm_tem_bit">소려</th>
-		                            <th class="cm_cool_bit">냉각</th>
-		                        </tr>
-		                    </thead>
-		                    <tbody>
-		                        <tr>
-		                            <td class="label-cell">설정값</td>
-		                            <td class="bcf1_chim_setting"></td>
-		                            <td class="bcf1_oil_setting"></td>
-		                            <td class="bcf1_cp_setting"></td>
-		                            <td class="bcf1_tempering_setting"></td>
-		                            <td class="label-cell">설정값</td>
-		                            <td class="bcf1_seong_sv"></td>
-		                            <td class="bcf1_chim_sv"></td>
-		                            <td class="bcf1_diff_sv"></td>
-		                            <td class="bcf1_gang_sv"></td>
-		                            <td class="bcf1_que_sv"></td>
-		                            <td class="bcf1_drain_sv"></td>
-		                            <td class="label-cell">설정값</td>
-		                            <td class="bcf1_cool1_sv"></td>
-		                            <td class="bcf1_tem_sv"></td>
-		                            <td class="bcf1_cool2_sv"></td>
-		                        </tr>
-		                        <tr>
-		                            <td class="label-cell">현재값</td>
-		                            <td class="bcf1_chim"></td>
-		                            <td class="bcf1_oil"></td>
-		                            <td class="bcf1_cp"></td>
-		                            <td class="bcf1_tempering"></td>
-		                            <td class="label-cell">현재값</td>
-		                            <td class="bcf1_seong_pv"></td>
-		                            <td class="bcf1_chim_pv"></td>
-		                            <td class="bcf1_diff_pv"></td>
-		                            <td class="bcf1_gang_pv"></td>
-		                            <td class="bcf1_que_pv"></td>
-		                            <td class="bcf1_drain_pv"></td>
-		                            <td class="label-cell">현재값</td>
-		                            <td class="bcf1_cool1_pv"></td>
-		                            <td class="bcf1_tem_pv"></td>
-		                            <td class="bcf1_cool2_pv"></td>
-		                        </tr>
-		                    </tbody>
-		                </table>
-		            </div>
-		            
-		            <!-- 2호기 (절반) -->
-		            <div class="bcf-table-half">
-		                <div class="bcf-header">2호기</div>
-		                <table>
-		                    <thead>
-		                        <tr>
-		                            <th>온도(℃)</th>
-		                            <th>침탄</th>
-		                            <th>유조</th>
-		                            <th>CP</th>
-		                            <th>시간(분)</th>
-		                            <th class="bcf2_seong_bit">승온</th>
-		                            <th class="bcf2_chim_bit">침탄</th>
-		                            <th class="bcf2_diff_bit">확산</th>
-		                            <th class="bcf2_gang_bit">강온</th>
-		                            <th class="bcf2_que_bit">소입</th>
-		                            <th class="bcf2_drain_bit">드레인</th>
-		                        </tr>
-		                    </thead>
-		                    <tbody>
-		                        <tr>
-		                            <td class="label-cell">설정값</td>
-		                            <td class="bcf2_chim_setting"></td>
-		                            <td class="bcf2_oil_setting"></td>
-		                            <td class="bcf2_cp_setting"></td>
-		                            <td class="label-cell">설정값</td>
-		                            <td class="bcf2_seong_sv"></td>
-		                            <td class="bcf2_chim_sv"></td>
-		                            <td class="bcf2_diff_sv"></td>
-		                            <td class="bcf2_gang_sv"></td>
-		                            <td class="bcf2_que_sv"></td>
-		                            <td class="bcf2_drain_sv"></td>
-		                        </tr>
-		                        <tr>
-		                            <td class="label-cell">현재값</td>
-		                            <td class="bcf2_chim"></td>
-		                            <td class="bcf2_oil"></td>
-		                            <td class="bcf2_cp"></td>
-		                            <td class="label-cell">현재값</td>
-		                            <td class="bcf2_seong_pv"></td>
-		                            <td class="bcf2_chim_pv"></td>
-		                            <td class="bcf2_diff_pv"></td>
-		                            <td class="bcf2_gang_pv"></td>
-		                            <td class="bcf2_que_pv"></td>
-		                            <td class="bcf2_drain_pv"></td>
-		                        </tr>
-		                    </tbody>
-		                </table>
-		            </div>
-		        </div>
-		        
-		        <!-- 2행: 3호기 + 4호기 -->
-		        <div class="bcf-row">
-		            <!-- 3호기 (전체) -->
-		            <div class="bcf-table-full">
-		                <div class="bcf-header">3호기</div>
-		                <table>
-		                    <thead>
-		                        <tr>
-		                            <th>온도(℃)</th>
-		                            <th>침탄</th>
-		                            <th>유조</th>
-		                            <th>CP</th>
-		                            <th>소려</th>
-		                            <th>시간(분)</th>
-		                            <th class="bcf3_seong_bit">승온</th>
-		                            <th class="bcf3_chim_bit">침탄</th>
-		                            <th class="bcf3_diff_bit">확산</th>
-		                            <th class="bcf3_gang_bit">강온</th>
-		                            <th class="bcf3_que_bit">소입</th>
-		                            <th class="bcf3_drain_bit">드레인</th>
-		                            <th>시간(분)</th>
-		                            <th class="cm2_gun_bit">건조</th>
-		                            <th class="cm2_tem_bit">소려</th>
-		                            <th class="cm2_cool_bit">냉각</th>
-		                        </tr>
-		                    </thead>
-		                    <tbody>
-		                        <tr>
-		                            <td class="label-cell">설정값</td>
-		                            <td class="bcf3_chim_setting"></td>
-		                            <td class="bcf3_oil_setting"></td>
-		                            <td class="bcf3_cp_setting"></td>
-		                            <td class="bcf3_tempering_setting"></td>
-		                            <td class="label-cell">설정값</td>
-		                            <td class="bcf3_seong_sv"></td>
-		                            <td class="bcf3_chim_sv"></td>
-		                            <td class="bcf3_diff_sv"></td>
-		                            <td class="bcf3_gang_sv"></td>
-		                            <td class="bcf3_que_sv"></td>
-		                            <td class="bcf3_drain_sv"></td>
-		                            <td class="label-cell">설정값</td>
-		                            <td class="bcf3_cool1_sv"></td>
-		                            <td class="bcf3_tem_sv"></td>
-		                            <td class="bcf3_cool2_sv"></td>
-		                        </tr>
-		                        <tr>
-		                            <td class="label-cell">현재값</td>
-		                            <td class="bcf3_chim"></td>
-		                            <td class="bcf3_oil"></td>
-		                            <td class="bcf3_cp"></td>
-		                            <td class="bcf3_tempering"></td>
-		                            <td class="label-cell">현재값</td>
-		                            <td class="bcf3_seong_pv"></td>
-		                            <td class="bcf3_chim_pv"></td>
-		                            <td class="bcf3_diff_pv"></td>
-		                            <td class="bcf3_gang_pv"></td>
-		                            <td class="bcf3_que_pv"></td>
-		                            <td class="bcf3_drain_pv"></td>
-		                            <td class="label-cell">현재값</td>
-		                            <td class="bcf3_cool1_pv"></td>
-		                            <td class="bcf3_tem_pv"></td>
-		                            <td class="bcf3_cool2_pv"></td>
-		                        </tr>
-		                    </tbody>
-		                </table>
-		            </div>
-		            
-		            <!-- 4호기 (절반) -->
-		            <div class="bcf-table-half">
-		                <div class="bcf-header">4호기</div>
-		                <table>
-		                    <thead>
-		                        <tr>
-		                            <th>온도(℃)</th>
-		                            <th>침탄</th>
-		                            <th>유조</th>
-		                            <th>CP</th>
-		                            <th>시간(분)</th>
-		                            <th class="bcf4_seong_bit">승온</th>
-		                            <th class="bcf4_chim_bit">침탄</th>
-		                            <th class="bcf4_diff_bit">확산</th>
-		                            <th class="bcf4_gang_bit">강온</th>
-		                            <th class="bcf4_que_bit">소입</th>
-		                            <th class="bcf4_drain_bit">드레인</th>
-		                        </tr>
-		                    </thead>
-		                    <tbody>
-		                        <tr>
-		                            <td class="label-cell">설정값</td>
-		                            <td class="bcf4_chim_setting"></td>
-		                            <td class="bcf4_oil_setting"></td>
-		                            <td class="bcf4_cp_setting"></td>
-		                            <td class="label-cell">설정값</td>
-		                            <td class="bcf4_seong_sv"></td>
-		                            <td class="bcf4_chim_sv"></td>
-		                            <td class="bcf4_diff_sv"></td>
-		                            <td class="bcf4_gang_sv"></td>
-		                            <td class="bcf4_que_sv"></td>
-		                            <td class="bcf4_drain_sv"></td>
-		                        </tr>
-		                        <tr>
-		                            <td class="label-cell">현재값</td>
-		                            <td class="bcf4_chim"></td>
-		                            <td class="bcf4_oil"></td>
-		                            <td class="bcf4_cp"></td>
-		                            <td class="label-cell">현재값</td>
-		                            <td class="bcf4_seong_pv"></td>
-		                            <td class="bcf4_chim_pv"></td>
-		                            <td class="bcf4_diff_pv"></td>
-		                            <td class="bcf4_gang_pv"></td>
-		                            <td class="bcf4_que_pv"></td>
-		                            <td class="bcf4_drain_pv"></td>
-		                        </tr>
-		                    </tbody>
-		                </table>
-		            </div>
-		        </div>
-		    </div>
+		 <div class="bcf-container">
+    <!-- 1행: 1호기 + 2호기 + 공통1호기 -->
+    <div class="bcf-row">
+        <!-- 1호기 -->
+        <div class="bcf-table-full">
+            <div class="bcf-header">1호기</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>온도(℃)</th>
+                        <th>침탄</th>
+                        <th>유조</th>
+                        <th>CP</th>
+                        <th>소려</th>
+                        <th>시간(분)</th>
+                        <th class="bcf1_seong_bit">승온</th>
+                        <th class="bcf1_chim_bit">침탄</th>
+                        <th class="bcf1_diff_bit">확산</th>
+                        <th class="bcf1_gang_bit">강온</th>
+                        <th class="bcf1_que_bit">소입</th>
+                        <th class="bcf1_drain_bit">드레인</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="label-cell">설정값</td>
+                        <td class="bcf1_chim_setting"></td>
+                        <td class="bcf1_oil_setting"></td>
+                        <td class="bcf1_cp_setting"></td>
+                        <td class="bcf1_tempering_setting"></td>
+                        <td class="label-cell">설정값</td>
+                        <td class="bcf1_seong_sv"></td>
+                        <td class="bcf1_chim_sv"></td>
+                        <td class="bcf1_diff_sv"></td>
+                        <td class="bcf1_gang_sv"></td>
+                        <td class="bcf1_que_sv"></td>
+                        <td class="bcf1_drain_sv"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">현재값</td>
+                        <td class="bcf1_chim"></td>
+                        <td class="bcf1_oil"></td>
+                        <td class="bcf1_cp"></td>
+                        <td class="bcf1_tempering"></td>
+                        <td class="label-cell">현재값</td>
+                        <td class="bcf1_seong_pv"></td>
+                        <td class="bcf1_chim_pv"></td>
+                        <td class="bcf1_diff_pv"></td>
+                        <td class="bcf1_gang_pv"></td>
+                        <td class="bcf1_que_pv"></td>
+                        <td class="bcf1_drain_pv"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 2호기 -->
+        <div class="bcf-table-half">
+            <div class="bcf-header">2호기</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>온도(℃)</th>
+                        <th>침탄</th>
+                        <th>유조</th>
+                        <th>CP</th>
+                        <th>시간(분)</th>
+                        <th class="bcf2_seong_bit">승온</th>
+                        <th class="bcf2_chim_bit">침탄</th>
+                        <th class="bcf2_diff_bit">확산</th>
+                        <th class="bcf2_gang_bit">강온</th>
+                        <th class="bcf2_que_bit">소입</th>
+                        <th class="bcf2_drain_bit">드레인</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="label-cell">설정값</td>
+                        <td class="bcf2_chim_setting"></td>
+                        <td class="bcf2_oil_setting"></td>
+                        <td class="bcf2_cp_setting"></td>
+                        <td class="label-cell">설정값</td>
+                        <td class="bcf2_seong_sv"></td>
+                        <td class="bcf2_chim_sv"></td>
+                        <td class="bcf2_diff_sv"></td>
+                        <td class="bcf2_gang_sv"></td>
+                        <td class="bcf2_que_sv"></td>
+                        <td class="bcf2_drain_sv"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">현재값</td>
+                        <td class="bcf2_chim"></td>
+                        <td class="bcf2_oil"></td>
+                        <td class="bcf2_cp"></td>
+                        <td class="label-cell">현재값</td>
+                        <td class="bcf2_seong_pv"></td>
+                        <td class="bcf2_chim_pv"></td>
+                        <td class="bcf2_diff_pv"></td>
+                        <td class="bcf2_gang_pv"></td>
+                        <td class="bcf2_que_pv"></td>
+                        <td class="bcf2_drain_pv"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 공통 1호기 (건조/소려/냉각) -->
+        <div class="bcf-table-common">
+            <div class="bcf-header">공통 1호기</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>시간(분)</th>
+                        <th class="cm_gun_bit">건조</th>
+                        <th class="cm_tem_bit">소려</th>
+                        <th class="cm_cool_bit">냉각</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="label-cell">설정값</td>
+                        <td class="bcf1_cool1_sv"></td>
+                        <td class="bcf1_tem_sv"></td>
+                        <td class="bcf1_cool2_sv"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">현재값</td>
+                        <td class="bcf1_cool1_pv"></td>
+                        <td class="bcf1_tem_pv"></td>
+                        <td class="bcf1_cool2_pv"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- 2행: 3호기 + 4호기 + 공통2호기 -->
+    <div class="bcf-row">
+        <!-- 3호기 -->
+        <div class="bcf-table-full">
+            <div class="bcf-header">3호기</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>온도(℃)</th>
+                        <th>침탄</th>
+                        <th>유조</th>
+                        <th>CP</th>
+                        <th>소려</th>
+                        <th>시간(분)</th>
+                        <th class="bcf3_seong_bit">승온</th>
+                        <th class="bcf3_chim_bit">침탄</th>
+                        <th class="bcf3_diff_bit">확산</th>
+                        <th class="bcf3_gang_bit">강온</th>
+                        <th class="bcf3_que_bit">소입</th>
+                        <th class="bcf3_drain_bit">드레인</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="label-cell">설정값</td>
+                        <td class="bcf3_chim_setting"></td>
+                        <td class="bcf3_oil_setting"></td>
+                        <td class="bcf3_cp_setting"></td>
+                        <td class="bcf3_tempering_setting"></td>
+                        <td class="label-cell">설정값</td>
+                        <td class="bcf3_seong_sv"></td>
+                        <td class="bcf3_chim_sv"></td>
+                        <td class="bcf3_diff_sv"></td>
+                        <td class="bcf3_gang_sv"></td>
+                        <td class="bcf3_que_sv"></td>
+                        <td class="bcf3_drain_sv"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">현재값</td>
+                        <td class="bcf3_chim"></td>
+                        <td class="bcf3_oil"></td>
+                        <td class="bcf3_cp"></td>
+                        <td class="bcf3_tempering"></td>
+                        <td class="label-cell">현재값</td>
+                        <td class="bcf3_seong_pv"></td>
+                        <td class="bcf3_chim_pv"></td>
+                        <td class="bcf3_diff_pv"></td>
+                        <td class="bcf3_gang_pv"></td>
+                        <td class="bcf3_que_pv"></td>
+                        <td class="bcf3_drain_pv"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 4호기 -->
+        <div class="bcf-table-half">
+            <div class="bcf-header">4호기</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>온도(℃)</th>
+                        <th>침탄</th>
+                        <th>유조</th>
+                        <th>CP</th>
+                        <th>시간(분)</th>
+                        <th class="bcf4_seong_bit">승온</th>
+                        <th class="bcf4_chim_bit">침탄</th>
+                        <th class="bcf4_diff_bit">확산</th>
+                        <th class="bcf4_gang_bit">강온</th>
+                        <th class="bcf4_que_bit">소입</th>
+                        <th class="bcf4_drain_bit">드레인</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="label-cell">설정값</td>
+                        <td class="bcf4_chim_setting"></td>
+                        <td class="bcf4_oil_setting"></td>
+                        <td class="bcf4_cp_setting"></td>
+                        <td class="label-cell">설정값</td>
+                        <td class="bcf4_seong_sv"></td>
+                        <td class="bcf4_chim_sv"></td>
+                        <td class="bcf4_diff_sv"></td>
+                        <td class="bcf4_gang_sv"></td>
+                        <td class="bcf4_que_sv"></td>
+                        <td class="bcf4_drain_sv"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">현재값</td>
+                        <td class="bcf4_chim"></td>
+                        <td class="bcf4_oil"></td>
+                        <td class="bcf4_cp"></td>
+                        <td class="label-cell">현재값</td>
+                        <td class="bcf4_seong_pv"></td>
+                        <td class="bcf4_chim_pv"></td>
+                        <td class="bcf4_diff_pv"></td>
+                        <td class="bcf4_gang_pv"></td>
+                        <td class="bcf4_que_pv"></td>
+                        <td class="bcf4_drain_pv"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- 공통 2호기 (건조/소려/냉각) -->
+        <div class="bcf-table-common">
+            <div class="bcf-header">공통 2호기</div>
+            <table>
+                <thead>
+                    <tr>
+                        <th>시간(분)</th>
+                        <th class="cm2_gun_bit">건조</th>
+                        <th class="cm2_tem_bit">소려</th>
+                        <th class="cm2_cool_bit">냉각</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="label-cell">설정값</td>
+                        <td class="bcf3_cool1_sv"></td>
+                        <td class="bcf3_tem_sv"></td>
+                        <td class="bcf3_cool2_sv"></td>
+                    </tr>
+                    <tr>
+                        <td class="label-cell">현재값</td>
+                        <td class="bcf3_cool1_pv"></td>
+                        <td class="bcf3_tem_pv"></td>
+                        <td class="bcf3_cool2_pv"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
   
 	</main>
 

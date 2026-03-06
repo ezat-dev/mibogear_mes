@@ -492,7 +492,10 @@
                 <button class="select-button">
                     <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">조회
                 </button>
-
+				<button id="resetHiddenBtn" style="height:40px; padding:0 11px; border:1px solid #dc3545; border-radius:4px; background:#fff0f0; color:#dc3545; cursor:pointer; font-weight:bold; margin-left:8px;">
+				    🔄 숨김 해제
+				</button>
+				<span id="hiddenCount" style="margin-left:10px; font-size:13px; color:#888;"></span>
                 
                 
             </div>
@@ -530,76 +533,112 @@
 <script>
 let now_page_code = "a03";
 
-var dataTable;
 var selectedRowData = null;
 
+// ✅ 숨김 처리된 주소 목록 (localStorage 유지)
+let hiddenAlarmHistory = JSON.parse(localStorage.getItem('hiddenAlarmHistory') || '[]');
 
-$(function() {
-	var yesterD = yesterDate();
-	
-	$("#s_sdate").val(yesterD);
-	$("#s_edate").val(todayDate());
-	fetchAlarm();
+// ✅ 숨김 카운트 표시
+function updateHiddenCount() {
+    const count = hiddenAlarmHistory.length;
+    $("#hiddenCount").text(count > 0 ? "숨김: " + count + "개" : "");
+}
 
+// ✅ 숨김 해제
+$("#resetHiddenBtn").on("click", function() {
+    if (hiddenAlarmHistory.length === 0) {
+        alert("숨겨진 알람이 없습니다.");
+        return;
+    }
+    if (confirm("숨긴 알람 " + hiddenAlarmHistory.length + "개를 모두 다시 표시하겠습니까?")) {
+        hiddenAlarmHistory = [];
+        localStorage.removeItem('hiddenAlarmHistory');
+        updateHiddenCount();
+        fetchAlarm();
+    }
 });
 
-//이벤트
-  $('.select-button').click(function() {
-	  fetchAlarm();
-  });
+// ✅ tbody 더블클릭 이벤트 (동적 행에 위임)
+$(document).on("dblclick", "#tableAlarm tbody tr", function() {
+    var rowData = $(this).data("rowdata");
+    if (!rowData) return;
 
+    var addr    = rowData.alarm_address;
+    var comment = rowData.comment || addr;
 
+    if (hiddenAlarmHistory.includes(addr)) return;
 
+    if (confirm("'" + comment + "' 알람을 숨기겠습니까?")) {
+        hiddenAlarmHistory.push(addr);
+        localStorage.setItem('hiddenAlarmHistory', JSON.stringify(hiddenAlarmHistory));
+        $(this).hide();
+        updateHiddenCount();
+    }
+});
 
-  function fetchAlarm(){
-	    $.ajax({
-	        url: "/mibogear/monitoring/getAlarmList",
-	        method: "POST",
-	        data: {
-	            startDate: $("#s_sdate").val(),
-	            endDate: $("#s_edate").val(),
-	            machine_name: $("#machineSelect").val()
-	        },
-	        dataType: "json",
-	        success: function(resp){
-	 
-	            var arr = Array.isArray(resp) ? resp : (resp.data || resp.rows || (resp ? [resp] : []));
-	            var $tbody = $("#tableAlarm tbody").empty();
-	            if(!arr || arr.length === 0){
-	                $tbody.append('<tr><td colspan="6">조회된 데이터가 없습니다.</td></tr>');
-	                return;
-	            }
+$(function() {
+    $("#s_sdate").val(yesterDate());
+    $("#s_edate").val(todayDate());
+    updateHiddenCount();
+    fetchAlarm();
+});
 
-	            arr.forEach(function(r, idx){
-	                var tr = $("<tr></tr>");
-	                tr.append("<td>"+(idx + 1)+"</td>");
-	                tr.append("<td>"+(r.alarm_address || "")+"</td>");
-	                tr.append("<td padding-left:12px;'>"+(r.comment || "")+"</td>");
-	                tr.append("<td>"+(r.occur_time || "")+"</td>");
-	                tr.append("<td>"+(r.clear_time || "")+"</td>");
-	                tr.data("rowdata", r);
+$('.select-button').click(function() {
+    fetchAlarm();
+});
 
-	                // ✅ 진행 중인 알람 시각적 강조
-	                if(!r.clear_time || r.clear_time === ""){
-	                    tr.css({
-	                        "background": "linear-gradient(90deg, rgba(255,230,0,0.2), rgba(255,255,255,0))",
-	                        "font-weight": "bold",
-	                        "color": "#b30000"
-	                    });
-	                    tr.append("<td style='color:#b30000; font-weight:bold;'>진행 중</td>");
-	                } else {
-	                    tr.append("<td>-</td>");
-	                }
+function fetchAlarm(){
+    $.ajax({
+        url: "/mibogear/monitoring/getAlarmList",
+        method: "POST",
+        data: {
+            startDate:    $("#s_sdate").val(),
+            endDate:      $("#s_edate").val(),
+            machine_name: $("#machineSelect").val()
+        },
+        dataType: "json",
+        success: function(resp){
+            var arr = Array.isArray(resp) ? resp : (resp.data || resp.rows || (resp ? [resp] : []));
+            var $tbody = $("#tableAlarm tbody").empty();
 
-	                $tbody.append(tr);
-	            });
-	        },
-	        error: function(xhr){
-	            console.error("fetchAlarm error", xhr);
-	        }
-	    });
-	}
+            if(!arr || arr.length === 0){
+                $tbody.append('<tr><td colspan="6">조회된 데이터가 없습니다.</td></tr>');
+                return;
+            }
 
+            arr.forEach(function(r, idx){
+                var tr = $("<tr></tr>");
+                tr.append("<td>"+(idx + 1)+"</td>");
+                tr.append("<td>"+(r.alarm_address || "")+"</td>");
+                tr.append("<td>"+(r.comment || "")+"</td>");
+                tr.append("<td>"+(r.occur_time || "")+"</td>");
+                tr.append("<td>"+(r.clear_time || "")+"</td>");
+                tr.data("rowdata", r);
+
+                if(!r.clear_time || r.clear_time === ""){
+                    tr.css({
+                        "background": "linear-gradient(90deg, rgba(255,230,0,0.2), rgba(255,255,255,0))",
+                        "font-weight": "bold",
+                        "color": "#b30000"
+                    });
+                    tr.append("<td style='color:#b30000; font-weight:bold;'>진행 중</td>");
+                } else {
+                    tr.append("<td>-</td>");
+                }
+
+                // ✅ 숨김 처리된 주소면 hide
+                if(hiddenAlarmHistory.includes(r.alarm_address)){
+                    tr.hide();
+                }
+
+                $tbody.append(tr);
+            });
+        },
+        error: function(xhr){
+            console.error("fetchAlarm error", xhr);
+        }
+    });
+}
 </script>
 
 </body>

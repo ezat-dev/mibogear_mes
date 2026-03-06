@@ -162,7 +162,6 @@
         margin-right: 9px;
 	    font-size: 20px;
 	    font-weight: bold;
-	
 	    height: 42px;
 	    margin-left: 9px;
         }
@@ -173,21 +172,36 @@
 		.excel-upload-button {
   		  height: 40px;
   		  background-color: white; 
-   		 border: 1px solid black; 
-   		 border-radius: 4px;
-   		 padding: 4px 10px; 
-   		 display: flex;
+   		  border: 1px solid black; 
+   		  border-radius: 4px;
+   		  padding: 4px 10px; 
+   		  display: flex;
   		  align-items: center;
   		  gap: 5px;
   		  cursor: pointer;
-}
+        }
 
-.button-image {
-    width: 16px; 
-    height: 16px;
-}
+        /* ✅ 숨김 해제 버튼 */
+        .reset-button {
+            height: 40px;
+            padding: 0 11px;
+            border: 1px solid #dc3545;
+            border-radius: 4px;
+            background-color: #fff0f0;
+            color: #dc3545;
+            cursor: pointer;
+            font-weight: bold;
+        }
+        .reset-button:hover {
+            background-color: #dc3545;
+            color: white;
+        }
 
-/*품번모달*/
+        .button-image {
+            width: 16px; 
+            height: 16px;
+        }
+
         .pumbunModal {
             display: none;
             position: fixed;
@@ -221,8 +235,6 @@
             transform: scale(1);
             opacity: 1;
         }
-
-
         .pumbun-modal-content button {
             background-color: #d3d3d3;
             color: black;
@@ -252,269 +264,156 @@
             border-radius: 5px;
         }
 
-
-    /* 기본 레이아웃 (테이블 높이/패딩 축소 적용) */
     body{ background:#fff; font-family:"Noto Sans KR", "맑은 고딕", sans-serif; color:#222; margin:0; padding:0; overflow: hidden; }
-   .main {
-    max-width:1800px;
-    margin:18px auto;
-    padding:16px;
-    height: 100%;
-    overflow: hidden; /* 내부 카드 스크롤만 허용 */
-	}
+    .main {
+        max-width:1800px;
+        margin:18px auto;
+        padding:16px;
+        height: 100%;
+        overflow: hidden;
+    }
+    .card.fixed-height #tableHeatTopWrapper,
+    .card.fixed-height #tableAlarmWrapper,
+    .card.fixed-height #tableHeatWrapper {
+        flex: 1;
+        overflow-y: auto;
+        height: 100px;
+    }
+    body, html {
+        height: 100%;
+        overflow: hidden;
+    }
+    .header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
+    .title{ font-size:20px; font-weight:700; }
+    .subtitle{ font-size:13px; color:#6b7280; }
+    .grid{ display:flex; gap:18px; margin-bottom:18px; }
+    .card{
+        background:#fff;
+        border-radius:10px;
+        padding:16px;
+        box-shadow:0 6px 18px rgba(2,6,23,0.06);
+        border:1px solid rgba(2,6,23,0.04);
+        flex:1;
+        min-width:330px;
+    }
+    .card .card-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
+    .card-title{ font-weight:700; font-size:14px; }
+    .card-sub{ font-size:12px; color:#6b7280; }
+    table { width:100%; border-collapse:collapse; font-size:13px; }
+    thead th {
+        text-align:center;
+        padding:6px 6px;
+        background:#f3f6fb;
+        border-bottom:1px solid #e6eefc;
+        font-weight:700;
+        height:34px;
+    }
+    tbody td {
+        padding:6px 6px;
+        border-bottom:1px solid #f1f5f9;
+        text-align:center;
+        height:36px;
+        line-height:18px;
+        white-space:nowrap;
+        overflow:hidden;
+        text-overflow:ellipsis;
+    }
+    tbody tr:hover { background:#fbfdff; cursor:pointer; }
+    tbody tr.selected { background: linear-gradient(90deg, rgba(11,99,206,0.06), rgba(11,99,206,0.02)); font-weight:700; }
+    .kpi { display:flex; gap:8px; }
+    .kpi .item{ flex:1; background:#fbfcff; padding:6px; border-radius:8px; text-align:center; }
+    .kpi .label{ font-size:12px; color:#6b7280; }
+    .kpi .value{ font-size:16px; font-weight:800; color:#111827; }
+    .btn{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:8px; border:0; cursor:pointer; font-weight:700; }
+    .btn.primary{ background:#0b63ce; color:#fff; }
+    .btn.work{ background:#A566FF; color:#fff; }
+    .btn.ghost{ background:#fff; color:#111; border:1px solid rgba(2,6,23,0.06); }
+    .small-input{ padding:6px 8px; border-radius:6px; border:1px solid #e6eefc; }
+    .muted{ color:#6b7280; font-size:12px; }
+    .temp { color:#e63946; font-weight:800; }
+    .cp { color:#0b63ce; font-weight:800; }
+    #tableHeatTopWrapper { height:150px; overflow:auto; }
+    #tableHeatWrapper { height:420px; overflow:auto; }
+    #tableAlarm { }
+    #tableAlarm tbody { }
+    #tableAlarmWrapper { height:1380px; overflow:auto; }
+    .temp-table thead th{ padding:6px 6px; font-size:12px; color:#6b7280; }
+    .temp-table tbody td{ padding:8px 6px; font-size:16px; height:36px; }
+    @media (max-width:1100px){ .grid{ flex-direction:column; } }
 
-	/* 카드 내부 테이블 래퍼 스크롤 */
-	.card.fixed-height #tableHeatTopWrapper,
-	.card.fixed-height #tableAlarmWrapper,
-	.card.fixed-height #tableHeatWrapper {
-	    flex: 1; /* 남은 공간 모두 차지 */
-	    overflow-y: auto;
-	    height: 100px;
-	}
-	body, html {
-	    height: 100%;
-	    overflow: hidden; /* 화면 전체 스크롤 제거 */
-	}
-	    .header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:14px; }
-	    .title{ font-size:20px; font-weight:700; }
-	    .subtitle{ font-size:13px; color:#6b7280; }
-	
-	    .grid{ display:flex; gap:18px; margin-bottom:18px; }
-	    .card{
-	        background:#fff;
-	        border-radius:10px;
-	        padding:16px; /* 기존 12 -> 10 */
-	        box-shadow:0 6px 18px rgba(2,6,23,0.06);
-	        border:1px solid rgba(2,6,23,0.04);
-	        flex:1;
-	        min-width:330px;
-	    }
-	    .card .card-header{ display:flex; justify-content:space-between; align-items:center; margin-bottom:8px; }
-	    .card-title{ font-weight:700; font-size:14px; }
-	    .card-sub{ font-size:12px; color:#6b7280; }
-	
-	    /* 테이블 공통: 패딩/행높이 축소 */
-	    table { width:100%; border-collapse:collapse; font-size:13px; }
-	    thead th {
-	        text-align:center;
-	        padding:6px 6px; /* 기존 10px -> 6px */
-	        background:#f3f6fb;
-	        border-bottom:1px solid #e6eefc;
-	        font-weight:700;
-	        height:34px; /* 헤더 높이 약간 축소 */
-	    }
-	    tbody td {
-	        padding:6px 6px; /* 기존 10px -> 6px */
-	        border-bottom:1px solid #f1f5f9;
-	        text-align:center;
-	        height:36px; /* 각 행 높이 고정 */
-	        line-height:18px;
-	        white-space:nowrap;
-	        overflow:hidden;
-	        text-overflow:ellipsis;
-	    }
-	    tbody tr:hover { background:#fbfdff; cursor:pointer; }
-	    tbody tr.selected { background: linear-gradient(90deg, rgba(11,99,206,0.06), rgba(11,99,206,0.02)); font-weight:700; }
-	
-	    .kpi { display:flex; gap:8px; }
-	    .kpi .item{ flex:1; background:#fbfcff; padding:6px; border-radius:8px; text-align:center; } /* padding 축소 */
-	    .kpi .label{ font-size:12px; color:#6b7280; }
-	    .kpi .value{ font-size:16px; font-weight:800; color:#111827; } /* 숫자 크기 약간 축소 */
-	
-	    .btn{ display:inline-flex; align-items:center; gap:8px; padding:8px 12px; border-radius:8px; border:0; cursor:pointer; font-weight:700; }
-	    .btn.primary{ background:#0b63ce; color:#fff; }
-	    .btn.work{ background:#A566FF; color:#fff; }
-	    .btn.ghost{ background:#fff; color:#111; border:1px solid rgba(2,6,23,0.06); }
-	
-	
-	
-	    .small-input{ padding:6px 8px; border-radius:6px; border:1px solid #e6eefc; }
-	
-	    .muted{ color:#6b7280; font-size:12px; }
-	
-	    /* 강조 셀 (온도, CP) */
-	    .temp { color:#e63946; font-weight:800; }
-	    .cp { color:#0b63ce; font-weight:800; }
-	
-	    /* 개별 테이블 최대 높이 — 줄여서 스크롤 생기도록 설정 */
-	    #tableHeatTopWrapper { height:150px; overflow:auto; }   /* 요약 상단 테이블 (작게) */
-	   #tableHeatWrapper { 
-	    height: 420px;  /* 기존 330px → 250px */
-	    overflow:auto; 
-	}
-	
-	    #tableAlarm { } /* 테이블 element 자체는 사용 안함 */
-	    #tableAlarm tbody { } 
-	   #tableAlarmWrapper { 
-	    height: 1380px;  
-	    overflow:auto; 
-	}
-	
-	    /* 온도표는 한 줄이라 높이 조절 필요 없음 — 셀 패딩만 작게 */
-	    .temp-table thead th{ padding:6px 6px; font-size:12px; color:#6b7280; }
-	    .temp-table tbody td{ padding:8px 6px; font-size:16px; height:36px; }
-	
-	    @media (max-width:1100px){
-	        .grid{ flex-direction:column; }
-	    }
-	    
-	/*바코드스캔 모달용 css*/
-	  #lotModal .form-section {
-	    margin-bottom: 15px;
-	    padding: 10px;
-	    border-radius: 10px;
-	    background: #f9fafb;
-	    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
-	  }
-	
-	  #lotModal .form-section h3 {
-	    margin-bottom: 8px;
-	    font-size: 14px;
-	    color: #333;
-	    border-left: 4px solid #007bff;
-	    padding-left: 6px;
-	  }
-	
-	  #lotModal .grid {
-	    display: grid;
-	    gap: 8px;
-	  }
-	
-	  #lotModal .grid-3 { grid-template-columns: repeat(3, 1fr); }
-	  #lotModal .grid-7 { grid-template-columns: repeat(7, 1fr); }
-	  #lotModal .grid-6 { grid-template-columns: repeat(6, 1fr); }
-	
-	  #lotModal .form-group {
-	    display: flex;
-	    flex-direction: column;
-	  }
-	
-	  #lotModal .form-group label {
-	    font-size: 12px;
-	    margin-bottom: 3px;
-	    color: #555;
-	  }
-	
-	  #lotModal .form-group input {
-	    padding: 4px 6px;
-	    border: 1px solid #ccc;
-	    border-radius: 6px;
-	    outline: none;
-	    font-size: 12px;
-	  }
-	
-	  #lotModal .form-group input:focus {
-	    border-color: #007bff;
-	    background: #f0f7ff;
-	  }
-	
-	  #lotModal .modal-footer {
-	    display: flex;
-	    justify-content: flex-end;
-	    gap: 8px;
-	    margin-top: 10px;
-	  }
-	
-	  #lotModal .btn {
-	    padding: 6px 12px;
-	    border: none;
-	    border-radius: 6px;
-	    cursor: pointer;
-	    font-size: 13px;
-	  }
-	
-	  #lotModal .btn-primary {
-	    background-color: #007bff;
-	    color: white;
-	  }
-	
-	  #lotModal .btn-secondary {
-	    background-color: #e0e0e0;
-	    color: #333;
-	  }
-	         .mchSelect {
-		    margin-right: 10px;
-		    margin-bottom: 13px;
-		    font-size: 20px;
-		    margin-left: -120px;
-		    margin-top: 3px;
-		}
-		#machineSelect{
-		font-size: 16px; 
-		margin: 5px; 
-		border-radius: 4px; 
-		border: 1px solid #ccc; 
-		text-align: center; 
-		height: 34px; 
-		width: 75px;
-		}
-		
-		#tableAlarm {
-    width: 100%;
-    border-collapse: collapse;
-}
-
-/* 각 컬럼의 너비 지정 */
-#tableAlarm th:nth-child(1) { width: 100px; }
-#tableAlarm th:nth-child(2) { width: 300px; }
-#tableAlarm th:nth-child(3) { width: auto; }
-#tableAlarm th:nth-child(4) { width: 100px; }
+    .mchSelect {
+        margin-right: 10px;
+        margin-bottom: 13px;
+        font-size: 20px;
+        margin-left: -120px;
+        margin-top: 3px;
+    }
+    #machineSelect{
+        font-size: 16px; 
+        margin: 5px; 
+        border-radius: 4px; 
+        border: 1px solid #ccc; 
+        text-align: center; 
+        height: 34px; 
+        width: 75px;
+    }
+    #tableAlarm {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    #tableAlarm th:nth-child(1) { width: 100px; }
+    #tableAlarm th:nth-child(2) { width: 300px; }
+    #tableAlarm th:nth-child(3) { width: auto; }
+    #tableAlarm th:nth-child(4) { width: 100px; }
     </style>
 
 <body>
     <main class="main">
         <div class="tab">
-        
-
             <div class="button-container">
-            
                <div class="box1">
-               
-	     		<div class="mchSelect">
-     		<label>호기 선택</label>
-     		<select id="machineSelect">
-			        <option value="" selected>전체</option>
-			        <option value="bcf1">BCF1</option>
-			        <option value="bcf2">BCF2</option>
-     				<option value="bcf3">BCF3</option>
-     				<option value="bcf4">BCF4</option>
-     				<option value="cm">CM</option>
-     				<option value="cm2">CM2</option>
-     		</select>
-     		</div>
-     		
-	            <label class="daylabel">조회일자 :</label>
-	            <input type="text" id="s_sdate" class="dayselect daySet"/>
-	            <label for="">~</label>
-	            <input type="text" id="s_edate" class="dayselect daySet"/>
-			</div>
+                    <div class="mchSelect">
+                        <label>호기 선택</label>
+                        <select id="machineSelect">
+                            <option value="" selected>전체</option>
+                            <option value="bcf1">BCF1</option>
+                            <option value="bcf2">BCF2</option>
+                            <option value="bcf3">BCF3</option>
+                            <option value="bcf4">BCF4</option>
+                            <option value="cm">CM</option>
+                            <option value="cm2">CM2</option>
+                        </select>
+                    </div>
+                    <label class="daylabel">조회일자 :</label>
+                    <input type="text" id="s_sdate" class="dayselect daySet"/>
+                    <label for="">~</label>
+                    <input type="text" id="s_edate" class="dayselect daySet"/>
+                </div>
                 <button class="select-button">
                     <img src="/mibogear/image/search-icon.png" alt="select" class="button-image">조회
                 </button>
-
-                
-                
+                <!-- ✅ 숨김 해제 버튼 -->
+                <button id="resetHiddenBtn" class="reset-button">
+                    🔄 숨김 해제
+                </button>
+                <span id="hiddenCount" style="margin-left:10px; font-size:13px; color:#888;"></span>
             </div>
         </div>
 
-         <div class="card card" style="flex:0.55;">
+        <div class="card card" style="flex:0.55;">
             <div class="card-header">
                 <div>
                     <div class="card-title"></div>
                     <div class="card-sub"></div>
                 </div>
-                <div>
-
-                </div>
             </div>
-
             <div id="tableAlarmWrapper" style="max-height:860px; overflow:auto;">
                 <table id="tableAlarm">
                     <thead>
                         <tr>
                             <th>No</th>
                             <th>PLC주소</th>
-                            <th>알람내용</th>          
+                            <th>알람내용</th>
                             <th>발생 수</th>
                         </tr>
                     </thead>
@@ -527,64 +426,100 @@
 <script>
 let now_page_code = "a04";
 
-var dataTable;
 var selectedRowData = null;
 
+// ✅ 숨김 처리된 주소 목록 (localStorage 유지)
+let hiddenAlarmRanking = JSON.parse(localStorage.getItem('hiddenAlarmRanking') || '[]');
 
-$(function() {
-	var yesterD = yesterDate();
-	
-	$("#s_sdate").val(yesterD);
-	$("#s_edate").val(todayDate());
-	fetchAlarm();
+// ✅ 숨김 카운트 표시
+function updateHiddenCount() {
+    const count = hiddenAlarmRanking.length;
+    $("#hiddenCount").text(count > 0 ? "숨김: " + count + "개" : "");
+}
 
+// ✅ 숨김 해제
+$("#resetHiddenBtn").on("click", function() {
+    if (hiddenAlarmRanking.length === 0) {
+        alert("숨겨진 알람이 없습니다.");
+        return;
+    }
+    if (confirm("숨긴 알람 " + hiddenAlarmRanking.length + "개를 모두 다시 표시하겠습니까?")) {
+        hiddenAlarmRanking = [];
+        localStorage.removeItem('hiddenAlarmRanking');
+        updateHiddenCount();
+        fetchAlarm();
+    }
 });
 
-//이벤트
-  $('.select-button').click(function() {
-	  fetchAlarm();
-  });
+// ✅ tbody 더블클릭 이벤트
+$(document).on("dblclick", "#tableAlarm tbody tr", function() {
+    var rowData = $(this).data("rowdata");
+    if (!rowData) return;
 
+    var addr    = rowData.alarm_address;
+    var comment = rowData.comment || addr;
 
+    if (hiddenAlarmRanking.includes(addr)) return;
 
+    if (confirm("'" + comment + "' 알람을 숨기겠습니까?")) {
+        hiddenAlarmRanking.push(addr);
+        localStorage.setItem('hiddenAlarmRanking', JSON.stringify(hiddenAlarmRanking));
+        $(this).hide();
+        updateHiddenCount();
+    }
+});
 
-  function fetchAlarm(){
-	    $.ajax({
-	        url: "/mibogear/monitoring/getAlarmRankingList",
-	        method: "POST",
-	        data: {
-	            startDate: $("#s_sdate").val(),
-	            endDate: $("#s_edate").val(),
-	            machine_name: $("#machineSelect").val()
-	        },
-	        dataType: "json",
-	        success: function(resp){
-	 
-	            var arr = Array.isArray(resp) ? resp : (resp.data || resp.rows || (resp ? [resp] : []));
-	            var $tbody = $("#tableAlarm tbody").empty();
-	            if(!arr || arr.length === 0){
-	                $tbody.append('<tr><td colspan="6">조회된 데이터가 없습니다.</td></tr>');
-	                return;
-	            }
+$(function() {
+    $("#s_sdate").val(yesterDate());
+    $("#s_edate").val(todayDate());
+    updateHiddenCount();
+    fetchAlarm();
+});
 
-	            arr.forEach(function(r, idx){
-	                var tr = $("<tr></tr>");
-	                tr.append("<td>"+(idx+1)+"</td>");
-	                tr.append("<td>"+(r.alarm_address || "")+"</td>");
-	                tr.append("<td padding-left:12px;'>"+(r.comment || "")+"</td>");
-	                tr.append("<td>"+(r.alarm_count || "")+"</td>")
-	                tr.data("rowdata", r);
+$('.select-button').click(function() {
+    fetchAlarm();
+});
 
+function fetchAlarm(){
+    $.ajax({
+        url: "/mibogear/monitoring/getAlarmRankingList",
+        method: "POST",
+        data: {
+            startDate:    $("#s_sdate").val(),
+            endDate:      $("#s_edate").val(),
+            machine_name: $("#machineSelect").val()
+        },
+        dataType: "json",
+        success: function(resp){
+            var arr = Array.isArray(resp) ? resp : (resp.data || resp.rows || (resp ? [resp] : []));
+            var $tbody = $("#tableAlarm tbody").empty();
 
-	                $tbody.append(tr);
-	            });
-	        },
-	        error: function(xhr){
-	            console.error("fetchAlarm error", xhr);
-	        }
-	    });
-	}
+            if(!arr || arr.length === 0){
+                $tbody.append('<tr><td colspan="4">조회된 데이터가 없습니다.</td></tr>');
+                return;
+            }
 
+            arr.forEach(function(r, idx){
+                var tr = $("<tr></tr>");
+                tr.append("<td>"+(idx+1)+"</td>");
+                tr.append("<td>"+(r.alarm_address || "")+"</td>");
+                tr.append("<td>"+(r.comment || "")+"</td>");
+                tr.append("<td>"+(r.alarm_count || "")+"</td>");
+                tr.data("rowdata", r);
+
+                // ✅ 숨김 처리된 주소면 hide
+                if(hiddenAlarmRanking.includes(r.alarm_address)){
+                    tr.hide();
+                }
+
+                $tbody.append(tr);
+            });
+        },
+        error: function(xhr){
+            console.error("fetchAlarm error", xhr);
+        }
+    });
+}
 </script>
 
 </body>

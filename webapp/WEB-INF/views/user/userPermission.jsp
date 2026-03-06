@@ -245,6 +245,8 @@ $(function(){
 		    });
 		  }
 
+
+  
   function getPermissionUserSelectPermission(){
 	  var code = $('#user_code').val();
 	  console.log('user_code 전송 값:', code); 
