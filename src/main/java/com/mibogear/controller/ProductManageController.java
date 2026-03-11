@@ -437,4 +437,42 @@ public class ProductManageController {
 			return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 		}
 	}
+	
+	
+	
+	
+	
+	
+	//입고관리 로드
+	@RequestMapping(value= "/productionManagement/ipgo", method = RequestMethod.GET)
+	public String ipgo(Model model) {
+		return "/productionManagement/ipgo.jsp";  
+	} 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	//출고관리 로드
+	@RequestMapping(value= "/productionManagement/chulgo", method = RequestMethod.GET)
+	public String chulgo(Model model) {
+		return "/productionManagement/chulgo.jsp";  
+	} 
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

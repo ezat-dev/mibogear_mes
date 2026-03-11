@@ -20,6 +20,8 @@
 
   	<mapper resource="mybatis/mapper/condition.xml"/>
   	
+  	<mapper resource="mybatis/mapper/annualCheck.xml"/>
+  	
   	<!-- 스페어 쿼리 -->
   	<mapper resource="mybatis/mapper/machineSpare.xml"/>
   	

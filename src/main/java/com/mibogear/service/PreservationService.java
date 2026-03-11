@@ -2,6 +2,7 @@ package com.mibogear.service;
 
 import java.util.List;
 
+import com.mibogear.domain.AnnualCheck;
 import com.mibogear.domain.Bega;
 import com.mibogear.domain.Product;
 import com.mibogear.domain.SparePart;
@@ -43,5 +44,13 @@ public interface PreservationService {
 	void suriHistoryUpdateSave(Suri srui);
 	
 	void suriHistoryDelete(String ffx_no);
-
+	
+	
+	List<AnnualCheck> getAnnualCheckSummary(AnnualCheck annualCheck);
+	List<AnnualCheck> getCheckResultByMonth(AnnualCheck annualCheck);
+	AnnualCheck       getCheckResultById(int id);
+	boolean           insertCheckResult(AnnualCheck annualCheck);
+	boolean           updateCheckResult(AnnualCheck annualCheck);
+	boolean           deleteCheckResult(int id);
+	boolean updateCheckResultCell(int id, String fieldName, String fieldValue);
 }

@@ -1,12 +1,14 @@
 package com.mibogear.dao;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
+import com.mibogear.domain.AnnualCheck;
 import com.mibogear.domain.Bega;
 import com.mibogear.domain.SparePart;
 import com.mibogear.domain.Suri;
@@ -104,9 +106,41 @@ public class PreservationDAOImpl implements PreservationDAO{
 	
 	
 	
+	// ===================== PreservationDAOImpl.java (구현체 추가분) =====================
+	@Override
+	public List<AnnualCheck> getAnnualCheckSummary(AnnualCheck annualCheck) {
+	    return sqlSession.selectList("annualCheck.getAnnualCheckSummary", annualCheck);
+	}
+
+	@Override
+	public List<AnnualCheck> getCheckResultByMonth(AnnualCheck annualCheck) {
+	    return sqlSession.selectList("annualCheck.getCheckResultByMonth", annualCheck);
+	}
+
+	@Override
+	public AnnualCheck getCheckResultById(int id) {
+	    return sqlSession.selectOne("annualCheck.getCheckResultById", id);
+	}
+
+	@Override
+	public int insertCheckResult(AnnualCheck annualCheck) {
+	    return sqlSession.insert("annualCheck.insertCheckResult", annualCheck);
+	}
+
+	@Override
+	public int updateCheckResult(AnnualCheck annualCheck) {
+	    return sqlSession.update("annualCheck.updateCheckResult", annualCheck);
+	}
+
+	@Override
+	public int deleteCheckResult(int id) {
+	    return sqlSession.delete("annualCheck.deleteCheckResult", id);
+	}
 	
-	
-	
+	@Override
+	public int updateCheckResultCell(Map<String, Object> params) {
+	    return sqlSession.update("annualCheck.updateCheckResultCell", params);
+	}
 	
 	
 	

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="annualCheck">
+
+    <resultMap id="annualCheckMap" type="com.mibogear.domain.AnnualCheck">
+        <id     property="id"              column="id"/>
+        <result property="equipType"       column="equip_type"/>
+        <result property="checkYear"       column="check_year"/>
+        <result property="checkMonth"      column="check_month"/>
+        <result property="detail"          column="detail"/>
+        <result property="cycle"           column="cycle"/>
+        <result property="planMonths"      column="plan_months"/>
+        <result property="checkDetail"     column="check_detail"/>
+        <result property="checker"         column="checker"/>
+        <result property="checkNote"       column="check_note"/>
+        <result property="checkDataBefore" column="check_data_before"/>
+        <result property="checkDataAfter"  column="check_data_after"/>
+        <result property="dataBeforeNote"  column="data_before_note"/>
+        <result property="note"            column="note"/>
+        <result property="userCode"        column="user_code"/>
+        <result property="regDate"         column="reg_date"/>
+    </resultMap>
+
+    <!-- 종합현황 -->
+    <select id="getAnnualCheckSummary" parameterType="com.mibogear.domain.AnnualCheck"
+            resultMap="annualCheckMap">
+        SELECT id, equip_type, check_year, check_month,
+               detail, cycle, plan_months, check_detail,
+               checker, check_note, check_data_before, check_data_after,
+               data_before_note, note, user_code, reg_date
+        FROM tb_annual_check_result
+        WHERE check_year = #{checkYear}
+        ORDER BY
+            FIELD(equip_type,'변성로','침탄로','세정기','템퍼링로','기타'),
+            detail, check_month
+    </select>
+
+    <!-- 월별 조회 -->
+    <select id="getCheckResultByMonth" parameterType="com.mibogear.domain.AnnualCheck"
+            resultMap="annualCheckMap">
+        SELECT id, equip_type, check_year, check_month,
+               detail, cycle, plan_months, check_detail,
+               checker, check_note, check_data_before, check_data_after,
+               data_before_note, note, user_code, reg_date
+        FROM tb_annual_check_result
+        WHERE check_year  = #{checkYear}
+          AND check_month = #{checkMonth}
+          AND equip_type  = #{equipType}
+        ORDER BY id
+    </select>
+
+    <!-- 단건 조회 -->
+    <select id="getCheckResultById" parameterType="int" resultMap="annualCheckMap">
+        SELECT id, equip_type, check_year, check_month,
+               detail, cycle, plan_months, check_detail,
+               checker, check_note, check_data_before, check_data_after,
+               data_before_note, note, user_code, reg_date
+        FROM tb_annual_check_result
+        WHERE id = #{id}
+    </select>
+
+    <!-- 신규 등록 -->
+    <insert id="insertCheckResult" parameterType="com.mibogear.domain.AnnualCheck">
+        INSERT INTO tb_annual_check_result
+            (equip_type, check_year, check_month, detail, cycle, plan_months,
+             check_detail, checker, check_note,
+             check_data_before, check_data_after, data_before_note,
+             note, user_code)
+        VALUES
+            (#{equipType}, #{checkYear}, #{checkMonth}, #{detail}, #{cycle}, #{planMonths},
+             #{checkDetail}, #{checker}, #{checkNote},
+             #{checkDataBefore}, #{checkDataAfter}, #{dataBeforeNote},
+             #{note}, #{userCode})
+    </insert>
+
+    <!-- 수정 (전체) -->
+    <update id="updateCheckResult" parameterType="com.mibogear.domain.AnnualCheck">
+        UPDATE tb_annual_check_result SET
+            detail            = #{detail},
+            cycle             = #{cycle},
+            plan_months       = #{planMonths},
+            check_detail      = #{checkDetail},
+            checker           = #{checker},
+            check_note        = #{checkNote},
+            check_data_before = #{checkDataBefore},
+            check_data_after  = #{checkDataAfter},
+            data_before_note  = #{dataBeforeNote},
+            note              = #{note},
+            user_code         = #{userCode}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 셀 단건 수정 (cellEdited) -->
+    <update id="updateCheckResultCell" parameterType="map">
+        UPDATE tb_annual_check_result
+        SET ${fieldName} = #{fieldValue}
+        WHERE id = #{id}
+    </update>
+
+    <!-- 삭제 -->
+    <delete id="deleteCheckResult" parameterType="int">
+        DELETE FROM tb_annual_check_result WHERE id = #{id}
+    </delete>
+
+</mapper>

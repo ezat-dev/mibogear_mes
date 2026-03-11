@@ -262,6 +262,14 @@
 				<ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 				<ul class="collapse__menu" id="fMenu"></ul>
 			</div>
+			
+			
+			<div class="nav__link collapse">
+				<ion-icon name="folder-outline" class="nav__icon"></ion-icon>
+				<span class="nav_name">제품관리</span>
+				<ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
+				<ul class="collapse__menu" id="gMenu"></ul>
+			</div>
 		
 		</div>
 	</div>
@@ -344,6 +352,9 @@
 							}else if(key.indexOf("f") != -1){
 								_group = "기준정보";
 								_groupID = "fMenu";
+							}else if(key.indexOf("g") != -1){
+								_group = "제품관리";
+								_groupID = "gMenu";
 							}
 					
 							

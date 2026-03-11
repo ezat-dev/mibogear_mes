@@ -1,5 +1,6 @@
 package com.mibogear.controller;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -13,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.mibogear.domain.AnnualCheck;
 import com.mibogear.domain.Bega;
 import com.mibogear.domain.Product;
 import com.mibogear.domain.SparePart;
@@ -404,6 +406,131 @@ public class PreservationController {
 
 		return result;
 	}	
+	
+	
+	
+	
+	
+	
+	@RequestMapping(value = "/preservation/yearCheck", method = RequestMethod.GET)
+	public String yearCheck() {
+	    return "/preservation/yearCheck.jsp";
+	}
+
+	@RequestMapping(value = "/preservation/yearCheck/getAnnualCheckSummary", method = RequestMethod.POST)
+	@ResponseBody
+	public List<AnnualCheck> getAnnualCheckSummary(@RequestParam String checkYear) {
+	    AnnualCheck a = new AnnualCheck();
+	    a.setCheckYear(checkYear);
+	    return preservationService.getAnnualCheckSummary(a);
+	}
+
+	@RequestMapping(value = "/preservation/yearCheck/getCheckResultByMonth", method = RequestMethod.POST)
+	@ResponseBody
+	public List<AnnualCheck> getCheckResultByMonth(
+	        @RequestParam String checkYear,
+	        @RequestParam int    checkMonth,
+	        @RequestParam String equipType) {
+	    AnnualCheck a = new AnnualCheck();
+	    a.setCheckYear(checkYear);
+	    a.setCheckMonth(checkMonth);
+	    a.setEquipType(equipType);
+	    return preservationService.getCheckResultByMonth(a);
+	}
+
+	@RequestMapping(value = "/preservation/yearCheck/getCheckResultById", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> getCheckResultById(@RequestParam int id) {
+	    Map<String, Object> result = new HashMap<>();
+	    result.put("data", preservationService.getCheckResultById(id));
+	    return result;
+	}
+
+	@RequestMapping(value = "/preservation/yearCheck/saveCheckResult", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> saveCheckResult(
+	        @ModelAttribute AnnualCheck annualCheck,
+	        @RequestParam("mode") String mode) {
+	    Map<String, Object> result = new HashMap<>();
+	    try {
+	        boolean ok;
+	        if ("insert".equalsIgnoreCase(mode)) {
+	            ok = preservationService.insertCheckResult(annualCheck);
+	        } else {
+	            ok = preservationService.updateCheckResult(annualCheck);
+	        }
+	        result.put("status",  ok ? "success" : "error");
+	        result.put("message", ok ? "OK" : "처리 실패");
+	    } catch (Exception e) {
+	        result.put("status", "error");
+	        result.put("message", e.getMessage());
+	    }
+	    return result;
+	}
+
+	@RequestMapping(value = "/preservation/yearCheck/deleteCheckResult", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> deleteCheckResult(@RequestParam int id) {
+	    Map<String, Object> result = new HashMap<>();
+	    try {
+	        boolean ok = preservationService.deleteCheckResult(id);
+	        result.put("status",  ok ? "success" : "error");
+	        result.put("message", ok ? "삭제 완료" : "삭제 실패");
+	    } catch (Exception e) {
+	        result.put("status", "error");
+	        result.put("message", e.getMessage());
+	    }
+	    return result;
+	}
+	
+	
+	@RequestMapping(value = "/preservation/yearCheck/updateCheckResultCell", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> updateCheckResultCell(
+	        @RequestParam int    id,
+	        @RequestParam String fieldName,
+	        @RequestParam String fieldValue) {
+	    Map<String, Object> result = new HashMap<>();
+
+	    // ✅ SQL Injection 방지 - 허용된 컬럼명만 허용
+	    List<String> allowedFields = Arrays.asList(
+	        "check_detail","checker","check_note",
+	        "check_data_before","check_data_after","data_before_note","note"
+	    );
+	    if(!allowedFields.contains(fieldName)){
+	        result.put("status",  "error");
+	        result.put("message", "허용되지 않은 필드명");
+	        return result;
+	    }
+
+	    try {
+	        boolean ok = preservationService.updateCheckResultCell(id, fieldName, fieldValue);
+	        result.put("status",  ok ? "success" : "error");
+	        result.put("message", ok ? "OK" : "수정 실패");
+	    } catch (Exception e) {
+	        result.put("status", "error");
+	        result.put("message", e.getMessage());
+	    }
+	    return result;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 
 }
 

@@ -1,6 +1,8 @@
 package com.mibogear.service;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -8,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import com.mibogear.dao.PreservationDAO;
 import com.mibogear.dao.StandardDAO;
+import com.mibogear.domain.AnnualCheck;
 import com.mibogear.domain.Bega;
 import com.mibogear.domain.Corp;
 import com.mibogear.domain.Fac;
@@ -52,6 +55,46 @@ public class PreservationServiceImpl implements PreservationService {
 	
 	
 	
+	
+	@Override
+	public List<AnnualCheck> getAnnualCheckSummary(AnnualCheck a) {
+	    return preservationdDAO.getAnnualCheckSummary(a);
+	}
+
+	@Override
+	public List<AnnualCheck> getCheckResultByMonth(AnnualCheck a) {
+	    return preservationdDAO.getCheckResultByMonth(a);
+	}
+
+	@Override
+	public AnnualCheck getCheckResultById(int id) {
+	    return preservationdDAO.getCheckResultById(id);
+	}
+
+	@Override
+	public boolean insertCheckResult(AnnualCheck a) {
+	    return preservationdDAO.insertCheckResult(a) > 0;
+	}
+
+	@Override
+	public boolean updateCheckResult(AnnualCheck a) {
+	    return preservationdDAO.updateCheckResult(a) > 0;
+	}
+
+	@Override
+	public boolean deleteCheckResult(int id) {
+	    return preservationdDAO.deleteCheckResult(id) > 0;
+	}
+	
+	
+	@Override
+	public boolean updateCheckResultCell(int id, String fieldName, String fieldValue) {
+	    Map<String, Object> params = new HashMap<>();
+	    params.put("id",         id);
+	    params.put("fieldName",  fieldName);
+	    params.put("fieldValue", fieldValue);
+	    return preservationdDAO.updateCheckResultCell(params) > 0;
+	}
 	
 	
 	

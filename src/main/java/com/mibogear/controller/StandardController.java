@@ -51,124 +51,105 @@ public class StandardController {
 		return "/standardManagement/productInsert.jsp";
 	}	
 	
-	//제품 리스트 조회
-	@RequestMapping(value = "/standardManagement/productInsert/productList", method = RequestMethod.POST) 
-	@ResponseBody 
-	public Map<String, Object> getProductList(
-			) {
-		Map<String, Object> rtnMap = new HashMap<String, Object>();
+	// 제품 리스트 조회
+	@RequestMapping(value = "/standardManagement/productInsert/productList", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> getProductList() {
+	    Map<String, Object> rtnMap = new HashMap<>();
+	    Product product = new Product();
+	    List<Product> productList = standardService.getProductList(product);
+	    List<HashMap<String, Object>> rtnList = new ArrayList<>();
+	    for (int i = 0; i < productList.size(); i++) {
+	        HashMap<String, Object> rowMap = new HashMap<>();
+	        Product p = productList.get(i);
+	        rowMap.put("idx",       (i + 1));
+	        rowMap.put("prod_code", p.getProd_code());
+	        rowMap.put("corp_name", p.getCorp_name());
+	        rowMap.put("corp_code", p.getCorp_code());
+	        rowMap.put("prod_name", p.getProd_name());
+	        rowMap.put("prod_no",   p.getProd_no());
+	        rowMap.put("prod_gyu",  p.getProd_gyu());
+	        rowMap.put("prod_jai",  p.getProd_jai());
+	        rowMap.put("prod_gubn", p.getProd_gubn());
+	        rowMap.put("prod_model",p.getProd_model());
+	        rowMap.put("prod_cno",  p.getProd_cno());
+	        rowMap.put("prod_danj", p.getProd_danj());
+	        rowMap.put("tech_no",   p.getTech_no());
+	        rowMap.put("prod_pad",  p.getProd_pad());
+	        rowMap.put("prod_pg",   p.getProd_pg());
+	        rowMap.put("prod_pg1",  p.getProd_pg1());
+	        rowMap.put("prod_pg2",  p.getProd_pg2());
+	        rowMap.put("prod_si",   p.getProd_si());
+	        rowMap.put("prod_si1",  p.getProd_si1());
+	        rowMap.put("prod_si2",  p.getProd_si2());
+	        rowMap.put("prod_sr",   p.getProd_sr());
+	        rowMap.put("prod_sr1",  p.getProd_sr1());
+	        rowMap.put("prod_sr2",  p.getProd_sr2());
+	        rowMap.put("prod_sg",   p.getProd_sg());
+	        rowMap.put("prod_sg1",  p.getProd_sg1());
+	        rowMap.put("prod_sg2",  p.getProd_sg2());
+	        rowMap.put("prod_fac1", p.getProd_fac1());
+	        rowMap.put("prod_fac2", p.getProd_fac2());
+	        rowMap.put("prod_fac3", p.getProd_fac3());
+	        rowMap.put("prod_fac4", p.getProd_fac4());
+	        rowMap.put("prod_fac5", p.getProd_fac5());
+	        rowMap.put("prod_fac6", p.getProd_fac6());
+	        rowMap.put("prod_file_name",    p.getProd_file_name());
+	        rowMap.put("darwing_file_name", p.getDarwing_file_name());
+	        rtnList.add(rowMap);
+	    }
+	    rtnMap.put("data", rtnList);
+	    return rtnMap;
+	}
 
-		Product product = new Product();
-
-		List<Product> productList = standardService.getProductList(product);
-
-		List<HashMap<String, Object>> rtnList = new ArrayList<HashMap<String, Object>>();
-		for(int i=0; i<productList.size(); i++) {
-			HashMap<String, Object> rowMap = new HashMap<String, Object>();
-			rowMap.put("idx", (i+1));
-			rowMap.put("prod_code", productList.get(i).getProd_code());
-			rowMap.put("corp_name", productList.get(i).getCorp_name());
-			rowMap.put("corp_code", productList.get(i).getCorp_code());
-			rowMap.put("prod_name", productList.get(i).getProd_name());
-			rowMap.put("prod_no", productList.get(i).getProd_no());
-			rowMap.put("prod_gyu", productList.get(i).getProd_gyu());
-			rowMap.put("prod_jai", productList.get(i).getProd_jai());
-			rowMap.put("prod_fac1", productList.get(i).getProd_fac1());
-			rowMap.put("prod_fac2", productList.get(i).getProd_fac2());
-			rowMap.put("prod_fac3", productList.get(i).getProd_fac3());
-			rowMap.put("prod_fac4", productList.get(i).getProd_fac4());
-			rowMap.put("prod_fac5", productList.get(i).getProd_fac5());
-			rowMap.put("prod_fac6", productList.get(i).getProd_fac6());
-			rowMap.put("prod_cno", productList.get(i).getProd_cno());
-			rowMap.put("prod_gubn", productList.get(i).getProd_gubn());
-			rowMap.put("prod_model", productList.get(i).getProd_model());
-
-			rtnList.add(rowMap);
-		}
-
-		rtnMap.put("last_page",1);
-		rtnMap.put("data",rtnList);
-
-		return rtnMap; 
-	}	 
-	
-	
-	//제품등록, 수정 - insert,update
+	// 저장/수정 - 기존과 동일 (Product @ModelAttribute가 새 필드 자동 수신)
 	@RequestMapping(value = "/standardManagement/productInsert/productInsertSave", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> productInsertSave(
-			@ModelAttribute Product product,
-			@RequestParam("mode") String mode) { 
-
-		System.out.println("저장 컨트롤러 도착");
-
-		Map<String, Object> result = new HashMap<>();
-
-		System.out.println(product.getProd_code());
-
-		try {
-			if ("insert".equalsIgnoreCase(mode)) {
-				standardService.productInsertSave(product);
-			} else if ("update".equalsIgnoreCase(mode)) {
-				standardService.productUpdateSave(product);  
-			} else {
-				throw new IllegalArgumentException("Invalid mode: " + mode);
-			}
-
-			result.put("status", "success");
-			result.put("message", "OK");
-
-		} catch (Exception e) {
-			result.put("status", "error");
-			result.put("message", e.getMessage());
-			e.printStackTrace();
-		}
-
-		System.out.println(result.get("status"));
-		System.out.println(result.get("message"));
-
-		return result;
-
+	        @ModelAttribute Product product,
+	        @RequestParam("mode") String mode) {
+	    Map<String, Object> result = new HashMap<>();
+	    try {
+	        if ("insert".equalsIgnoreCase(mode)) {
+	            standardService.productInsertSave(product);
+	        } else if ("update".equalsIgnoreCase(mode)) {
+	            standardService.productUpdateSave(product);
+	        }
+	        result.put("status", "success");
+	        result.put("message", "OK");
+	    } catch (Exception e) {
+	        result.put("status", "error");
+	        result.put("message", e.getMessage());
+	    }
+	    return result;
 	}
 
-	
-	//제품 삭제 - delete
+	// 삭제 - 기존과 동일
 	@RequestMapping(value = "/standardManagement/productInsert/productDelete", method = RequestMethod.POST)
 	@ResponseBody
 	public Map<String, Object> productDelete(@RequestParam("prod_code") String prod_code) {
-		Map<String, Object> result = new HashMap<>();
-
-		try {
-			standardService.productDelete(prod_code);
-			result.put("status", "success");
-			result.put("message", "삭제 완료");
-		} catch (Exception e) {
-			result.put("status", "error");
-			result.put("message", e.getMessage());
-		}
-
-		System.out.println(result.get("status"));
-		System.out.println(result.get("message"));
-
-		return result;
+	    Map<String, Object> result = new HashMap<>();
+	    try {
+	        standardService.productDelete(prod_code);
+	        result.put("status", "success");
+	        result.put("message", "삭제 완료");
+	    } catch (Exception e) {
+	        result.put("status", "error");
+	        result.put("message", e.getMessage());
+	    }
+	    return result;
 	}
 
-
-	//제품 더블클릭조회
-	@RequestMapping(value = "/standardManagement/productInsert/productInsertDetail", method = RequestMethod.POST) 
-	@ResponseBody 
-	public Map<String, Object> productInsertDetail(
-			@RequestParam String prod_code) {
-		System.out.println("더블클릭 로그");
-		Map<String, Object> rtnMap = new HashMap<String, Object>();
-
-		Product product = new Product();
-		product.setProd_code(prod_code);
-		Product prodList = standardService.productInsertDetail(product);
-
-		rtnMap.put("data",prodList);
-
-		return rtnMap; 
+	// 더블클릭 상세조회 - 기존과 동일
+	@RequestMapping(value = "/standardManagement/productInsert/productInsertDetail", method = RequestMethod.POST)
+	@ResponseBody
+	public Map<String, Object> productInsertDetail(@RequestParam String prod_code) {
+	    Map<String, Object> rtnMap = new HashMap<>();
+	    Product product = new Product();
+	    product.setProd_code(prod_code);
+	    Product prodDetail = standardService.productInsertDetail(product);
+	    rtnMap.put("data", prodDetail);
+	    return rtnMap;
 	}
 	
 	

@@ -3,90 +3,86 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="product">
-    
-    
+
     <!-- 제품 조회 -->
-	<select id="getProductList" parameterType="product" resultType="product">
-		SELECT *
-		FROM tb_product
-		WHERE 1=1
-	</select>
-    <!-- 제품 등록 (INSERT) -->
+    <select id="getProductList" parameterType="product" resultType="product">
+        SELECT * FROM tb_product WHERE 1=1
+    </select>
+
+    <!-- 제품 등록 -->
     <insert id="productInsertSave" parameterType="product">
-	        INSERT INTO tb_product (
-	        prod_code,
-	        corp_code,
-	        prod_name,
-	        prod_no,
-	        prod_gyu,
-	        prod_jai,
-	        prod_fac1,
-	        prod_fac2,
-	        prod_fac3,
-	        prod_fac4,
-	        prod_fac5,
-	        prod_fac6,
-	        prod_gubn,
-	        prod_cno,
-	        prod_model,
-	        corp_name
-	    )
-	    SELECT
-	        CONCAT('P', LPAD(COALESCE(MAX(CAST(SUBSTRING(prod_code, 2) AS UNSIGNED)), 0) + 1, 4, '0')),
-	        #{corp_code},
-	        #{prod_name},
-	        #{prod_no},
-	        #{prod_gyu},
-	        #{prod_jai},
-	        #{prod_fac1},
-	        #{prod_fac2},
-	        #{prod_fac3},
-	        #{prod_fac4},
-	        #{prod_fac5},
-	        #{prod_fac6},
-	        #{prod_gubn},
-	        #{prod_cno},
-	        #{prod_model},
-	        #{corp_name}
-	    FROM tb_product
+        INSERT INTO tb_product (
+            prod_code, corp_code, corp_name,
+            prod_name, prod_no, prod_gyu, prod_jai,
+            prod_fac1, prod_fac2, prod_fac3, prod_fac4, prod_fac5, prod_fac6,
+            prod_gubn, prod_cno, prod_model,
+            prod_pg, prod_pg1, prod_pg2,
+            prod_si, prod_si1, prod_si2,
+            prod_sr, prod_sr1, prod_sr2,
+            prod_sg, prod_sg1, prod_sg2,
+            prod_danj, prod_pad, tech_no
+        )
+        SELECT
+            CONCAT('P', LPAD(COALESCE(MAX(CAST(SUBSTRING(prod_code, 2) AS UNSIGNED)), 0) + 1, 4, '0')),
+            #{corp_code}, #{corp_name},
+            #{prod_name}, #{prod_no}, #{prod_gyu}, #{prod_jai},
+            #{prod_fac1}, #{prod_fac2}, #{prod_fac3}, #{prod_fac4}, #{prod_fac5}, #{prod_fac6},
+            #{prod_gubn}, #{prod_cno}, #{prod_model},
+            #{prod_pg}, #{prod_pg1}, #{prod_pg2},
+            #{prod_si}, #{prod_si1}, #{prod_si2},
+            #{prod_sr}, #{prod_sr1}, #{prod_sr2},
+            #{prod_sg}, #{prod_sg1}, #{prod_sg2},
+            #{prod_danj}, #{prod_pad}, #{tech_no}
+        FROM tb_product
     </insert>
-    
-    <!-- 제품 업데이트 -->
+
+    <!-- 제품 수정 -->
     <update id="productUpdateSave" parameterType="product">
-	    UPDATE tb_product
-	    SET
-	        corp_code = #{corp_code},
-	        corp_name = #{corp_name},
-	        prod_name = #{prod_name},
-	        prod_no = #{prod_no},
-	        prod_gyu = #{prod_gyu},
-	        prod_jai = #{prod_jai},
-	        prod_fac1 = #{prod_fac1},
-	        prod_fac2 = #{prod_fac2},
-	        prod_fac3 = #{prod_fac3},
-	        prod_fac4 = #{prod_fac4},
-	        prod_fac5 = #{prod_fac5},
-	        prod_fac6 = #{prod_fac6},
-	        prod_gubn = #{prod_gubn},
-	        prod_cno = #{prod_cno},
-	        prod_model = #{prod_model}
-	    WHERE prod_code = #{prod_code}
-	</update>
-    
-    
-    <!-- 제품 더블클릭 -->
+        UPDATE tb_product SET
+            corp_code  = #{corp_code},
+            corp_name  = #{corp_name},
+            prod_name  = #{prod_name},
+            prod_no    = #{prod_no},
+            prod_gyu   = #{prod_gyu},
+            prod_jai   = #{prod_jai},
+            prod_fac1  = #{prod_fac1},
+            prod_fac2  = #{prod_fac2},
+            prod_fac3  = #{prod_fac3},
+            prod_fac4  = #{prod_fac4},
+            prod_fac5  = #{prod_fac5},
+            prod_fac6  = #{prod_fac6},
+            prod_gubn  = #{prod_gubn},
+            prod_cno   = #{prod_cno},
+            prod_model = #{prod_model},
+            prod_pg    = #{prod_pg},
+            prod_pg1   = #{prod_pg1},
+            prod_pg2   = #{prod_pg2},
+            prod_si    = #{prod_si},
+            prod_si1   = #{prod_si1},
+            prod_si2   = #{prod_si2},
+            prod_sr    = #{prod_sr},
+            prod_sr1   = #{prod_sr1},
+            prod_sr2   = #{prod_sr2},
+            prod_sg    = #{prod_sg},
+            prod_sg1   = #{prod_sg1},
+            prod_sg2   = #{prod_sg2},
+            prod_danj  = #{prod_danj},
+            prod_pad   = #{prod_pad},
+            tech_no    = #{tech_no}
+        WHERE prod_code = #{prod_code}
+    </update>
+
+    <!-- 상세 조회 -->
     <select id="productInsertDetail" parameterType="product" resultType="product">
-		SELECT *		 
-		  FROM tb_product, 
-		       tb_corp 
-		 WHERE tb_corp.corp_code = tb_product.corp_code 
-		       AND prod_code = #{prod_code}
-	</select>
-	
-	
-	<delete id="productDelete" parameterType="String">
-	    DELETE FROM tb_product
-	    WHERE prod_code = #{prod_code}
-	</delete>
-    
+        SELECT p.*, c.corp_name
+        FROM tb_product p
+        LEFT JOIN tb_corp c ON c.corp_code = p.corp_code
+        WHERE p.prod_code = #{prod_code}
+    </select>
+
+    <!-- 삭제 -->
+    <delete id="productDelete" parameterType="String">
+        DELETE FROM tb_product WHERE prod_code = #{prod_code}
+    </delete>
+
 </mapper>

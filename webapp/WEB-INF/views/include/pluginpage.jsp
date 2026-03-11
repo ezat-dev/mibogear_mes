@@ -225,7 +225,7 @@ function pageObject(paramKey){
 			"d01":["/mibogear/preservation/sparePart","Spare부품관리"],
 			//"d02":["/mibogear/preservation/begaInsert","설비비가동등록"],
 			"d03":["/mibogear/preservation/suriHistory","설비수리이력관리"],
-			"d04":"",
+			"d04":["/mibogear/preservation/yearCheck","연간점검"],
 			"d05":"",
 			"d06":"",
 			"d07":"",
@@ -250,8 +250,11 @@ function pageObject(paramKey){
 			"f05":["/mibogear/user/userInsert","사용자등록"],
 			"f06":["/mibogear/user/userPermission","사용자권한부여"],
 			"f07":["/mibogear/standardManagement/measurement","측정기기관리"],
-			"g01":"",
-			"g02":"",
+
+
+			//제품관리
+			"g01":["/mibogear/productionManagement/ipgo","입고관리"],
+			"g02":["/mibogear/productionManagement/chulgo","출고관리"],
 			"g03":"",
 			"g04":"",
 			"g05":"",
