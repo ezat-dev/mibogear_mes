@@ -20,6 +20,10 @@
 
   	<mapper resource="mybatis/mapper/condition.xml"/>
   	
+  	<mapper resource="mybatis/mapper/ipgo.xml"/>
+  	<mapper resource="mybatis/mapper/chulgo.xml"/>
+  	<mapper resource="mybatis/mapper/ipChulgoStatus.xml"/>
+  	
   	<mapper resource="mybatis/mapper/annualCheck.xml"/>
   	
   	<!-- 스페어 쿼리 -->

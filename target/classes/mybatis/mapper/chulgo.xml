@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chulgo">
+
+    <!-- 출고 리스트 조회 -->
+    <select id="getChulgoList" parameterType="chulgo" resultType="chulgo">
+        SELECT
+            c.och_code,
+            c.ord_code,
+            DATE_FORMAT(c.och_date, '%Y-%m-%d') AS och_date,
+            c.och_su,
+            c.och_amnt,
+            c.och_danw,
+            c.och_lot,
+            c.och_mon,
+            c.och_dang,
+            p.prod_name,
+            p.prod_no,
+            p.prod_gyu,
+            p.prod_jai,
+            p.tech_no,
+            p.corp_name
+        FROM tb_chulgo c
+        LEFT JOIN tb_ipgo  i ON i.ord_code  = c.ord_code
+        LEFT JOIN tb_product p ON p.prod_code = i.prod_code
+        WHERE 1=1
+        <if test="sdate != null and sdate != ''">
+            AND DATE(c.och_date) &gt;= #{sdate}
+        </if>
+        <if test="edate != null and edate != ''">
+            AND DATE(c.och_date) &lt;= #{edate}
+        </if>
+        <if test="corp_name != null and corp_name != ''">
+            AND p.corp_name LIKE CONCAT('%', #{corp_name}, '%')
+        </if>
+        <if test="prod_name != null and prod_name != ''">
+            AND p.prod_name LIKE CONCAT('%', #{prod_name}, '%')
+        </if>
+        <if test="prod_no != null and prod_no != ''">
+            AND p.prod_no LIKE CONCAT('%', #{prod_no}, '%')
+        </if>
+        ORDER BY c.och_date DESC, c.och_code DESC
+    </select>
+
+    <!-- 출고등록 모달 - 입고리스트 + 잔량 조회 -->
+    <select id="getIpgoForChulgo" parameterType="chulgo" resultType="chulgo">
+        SELECT
+            i.ord_code,
+            DATE_FORMAT(i.ord_date, '%Y-%m-%d') AS och_date,
+            i.ord_su,
+            i.ord_amnt,
+            i.ord_danw,
+            i.ord_danj,
+            p.prod_name,
+            p.prod_no,
+            p.prod_gyu,
+            p.prod_jai,
+            p.tech_no,
+            p.corp_name,
+            IFNULL(SUM(c.och_su), 0)                    AS chulgo_su,
+            (i.ord_su - IFNULL(SUM(c.och_su), 0))       AS jan_su
+        FROM tb_ipgo i
+        LEFT JOIN tb_product p ON p.prod_code = i.prod_code
+        LEFT JOIN tb_chulgo c  ON c.ord_code  = i.ord_code
+        WHERE 1=1
+        <if test="sdate != null and sdate != ''">
+            AND DATE(i.ord_date) &gt;= #{sdate}
+        </if>
+        <if test="edate != null and edate != ''">
+            AND DATE(i.ord_date) &lt;= #{edate}
+        </if>
+        <if test="corp_name != null and corp_name != ''">
+            AND p.corp_name LIKE CONCAT('%', #{corp_name}, '%')
+        </if>
+        <if test="prod_name != null and prod_name != ''">
+            AND p.prod_name LIKE CONCAT('%', #{prod_name}, '%')
+        </if>
+        GROUP BY
+            i.ord_code, i.ord_date, i.ord_su, i.ord_amnt,
+            i.ord_danw, i.ord_danj,
+            p.prod_name, p.prod_no, p.prod_gyu,
+            p.prod_jai, p.tech_no, p.corp_name
+        ORDER BY i.ord_date DESC
+    </select>
+
+    <!-- 출고 등록 -->
+    <insert id="insertChulgo" parameterType="chulgo">
+        INSERT INTO tb_chulgo (
+            och_code, ord_code, och_date,
+            och_su, och_amnt, och_danw,
+            och_lot, och_mon, och_dang
+        ) VALUES (
+            #{och_code},
+            #{ord_code},
+            STR_TO_DATE(#{och_date}, '%Y-%m-%d'),
+            #{och_su},
+            #{och_amnt},
+            #{och_danw},
+            #{och_lot},
+            #{och_mon},
+            #{och_dang}
+        )
+    </insert>
+
+    <!-- 당일 마지막 och_code -->
+    <select id="getLastOchCodeToday" resultType="String">
+        SELECT MAX(och_code)
+        FROM tb_chulgo
+        WHERE och_code LIKE CONCAT(DATE_FORMAT(NOW(), '%y%m%d'), '%')
+    </select>
+    
+    <update id="updateChulgo" parameterType="chulgo">
+	    UPDATE tb_chulgo SET
+	        och_date = STR_TO_DATE(#{och_date}, '%Y-%m-%d'),
+	        och_su   = #{och_su},
+	        och_amnt = #{och_amnt},
+	        och_dang = #{och_dang},
+	        och_mon  = #{och_mon},
+	        och_lot  = #{och_lot}
+	    WHERE och_code = #{och_code}
+	</update>
+
+</mapper>

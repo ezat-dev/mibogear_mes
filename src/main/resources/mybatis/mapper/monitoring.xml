@@ -4,7 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="monitoring">
 		<!-- 알람이력 조회 -->
-	<select id="getAlarmList" parameterType="Monitoring" resultType="Monitoring">
+	<!-- <select id="getAlarmList" parameterType="Monitoring" resultType="Monitoring">
 SELECT
     aa.alarm_address AS alarm_address,
     aa.comment AS comment,
@@ -31,7 +31,60 @@ AND alarm_address LIKE CONCAT('%', #{machine_name}, '%')
     AND aa.a_value = 1
     AND (aa.prev_value IS NULL OR aa.prev_value = 0)
 ORDER BY aa.regtime DESC;
+	</select> -->
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<select id="getAlarmList" parameterType="Monitoring" resultType="Monitoring">
+	    SELECT
+	        on_t.alarm_address,
+	        on_t.comment,
+	        on_t.regtime AS occur_time,
+	        off_t.regtime AS clear_time
+	    FROM tb_alarmlist on_t
+	    LEFT JOIN tb_alarmlist off_t
+	        ON  off_t.alarm_address = on_t.alarm_address
+	        AND off_t.status = 'OFF'
+	        AND off_t.regtime = (
+	            SELECT MIN(x.regtime)
+	            FROM tb_alarmlist x
+	            WHERE x.alarm_address = on_t.alarm_address
+	              AND x.status = 'OFF'
+	              AND x.regtime > on_t.regtime
+	        )
+	    WHERE on_t.status = 'ON'
+	    AND on_t.a_value = 1
+	    <if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+	        AND DATE(on_t.regtime) BETWEEN #{startDate} AND #{endDate}
+	    </if>
+	    <if test="machine_name != null and machine_name != ''">
+	        AND on_t.alarm_address LIKE CONCAT('%', #{machine_name}, '%')
+	    </if>
+	    ORDER BY on_t.regtime DESC
 	</select>
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 		<select id="getTempList" parameterType="Monitoring" resultType="Monitoring">
 SELECT * FROM tb_trend_temp AS tt
 LEFT JOIN tb_trend_memo AS tm

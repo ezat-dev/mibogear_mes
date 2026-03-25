@@ -5,7 +5,9 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.mibogear.domain.Chulgo;
 import com.mibogear.domain.DroppedGoods;
+import com.mibogear.domain.Ipgo;
 import com.mibogear.domain.Monitoring;
 import com.mibogear.domain.ProductManage;
 
@@ -23,5 +25,22 @@ public interface ProductManageDAO {
 	Monitoring integrationGetTemp(Monitoring monitoring);
 	List<ProductManage> workDailyList(ProductManage productManage);
 	List<ProductManage> workDailyListReport(ProductManage productManage);
+	
+	
+	List<Ipgo> getIpgoList(Ipgo ipgo);
+    void insertIpgo(Ipgo ipgo);
+    void updateIpgo(Ipgo ipgo);
+    void deleteIpgo(int ord_code);
+    String getLastOrdCodeToday();
+    
+    List<Chulgo> getChulgoList(Chulgo chulgo);
+    List<Chulgo> getIpgoForChulgo(Chulgo chulgo);
+    void insertChulgo(Chulgo chulgo);
+    String getLastOchCodeToday();
+    void updateChulgo(Chulgo chulgo);
+    
+    List<Map<String, Object>> getJanStatus(Ipgo param);
+    List<Ipgo> getIpgoHist(Ipgo param);
+    List<Chulgo> getChulgoHist(Chulgo param);
 
 }

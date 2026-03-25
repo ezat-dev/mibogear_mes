@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ipChulgoStatus">
+	
+	<!-- 잔량현황  -->
+    <select id="getJanStatus" parameterType="ipgo" resultType="hashmap">
+    SELECT
+        i.ord_code,
+        DATE_FORMAT(i.ord_date, '%Y-%m-%d')      AS ord_date,
+        p.corp_name,
+        p.prod_name,
+        p.prod_no,
+        p.prod_gyu,
+        p.prod_jai,
+        p.tech_no,
+        i.ord_danw,
+        i.ord_su                                  AS total_ipgo,
+        IFNULL(SUM(c.och_su), 0)                  AS total_chulgo,
+        (i.ord_su - IFNULL(SUM(c.och_su), 0))     AS jan_su
+    FROM tb_ipgo i
+    LEFT JOIN tb_product p  ON p.prod_code = i.prod_code
+    LEFT JOIN tb_chulgo  c  ON c.ord_code  = i.ord_code
+    WHERE 1=1
+    <if test="sdate != null and sdate != ''">
+        AND DATE(i.ord_date) &gt;= #{sdate}
+    </if>
+    <if test="edate != null and edate != ''">
+        AND DATE(i.ord_date) &lt;= #{edate}
+    </if>
+    <if test="corp_name != null and corp_name != ''">
+        AND p.corp_name LIKE CONCAT('%', #{corp_name}, '%')
+    </if>
+    <if test="prod_name != null and prod_name != ''">
+        AND p.prod_name LIKE CONCAT('%', #{prod_name}, '%')
+    </if>
+    <if test="prod_no != null and prod_no != ''">
+        AND p.prod_no LIKE CONCAT('%', #{prod_no}, '%')
+    </if>
+    GROUP BY
+        i.ord_code, i.ord_date, i.ord_su, i.ord_danw,
+        p.corp_name, p.prod_name, p.prod_no,
+        p.prod_gyu, p.prod_jai, p.tech_no
+    ORDER BY p.corp_name, p.prod_name, i.ord_date ASC
+</select>
+
+    <!-- 입고이력 -->
+    <select id="getIpgoHist" parameterType="ipgo" resultType="ipgo">
+        SELECT
+            i.ord_code,
+            DATE_FORMAT(i.ord_date, '%Y-%m-%d') AS ord_date,
+            i.ord_su,
+            i.ord_amnt,
+            i.ord_lot,
+            i.ord_boxsu,
+            i.ord_danw,
+            i.ord_danj,
+            p.prod_name,
+            p.prod_no,
+            p.prod_gyu,
+            p.prod_jai,
+            p.tech_no,
+            p.corp_name
+        FROM tb_ipgo i
+        LEFT JOIN tb_product p ON p.prod_code = i.prod_code
+        WHERE 1=1
+        <if test="sdate != null and sdate != ''">
+            AND DATE(i.ord_date) &gt;= #{sdate}
+        </if>
+        <if test="edate != null and edate != ''">
+            AND DATE(i.ord_date) &lt;= #{edate}
+        </if>
+        <if test="corp_name != null and corp_name != ''">
+            AND p.corp_name LIKE CONCAT('%', #{corp_name}, '%')
+        </if>
+        <if test="prod_name != null and prod_name != ''">
+            AND p.prod_name LIKE CONCAT('%', #{prod_name}, '%')
+        </if>
+        <if test="prod_no != null and prod_no != ''">
+            AND p.prod_no LIKE CONCAT('%', #{prod_no}, '%')
+        </if>
+        ORDER BY i.ord_date DESC, i.ord_code DESC
+    </select>
+
+    <!-- 출고이력 -->
+    <select id="getChulgoHist" parameterType="chulgo" resultType="chulgo">
+        SELECT
+            c.och_code,
+            c.ord_code,
+            DATE_FORMAT(c.och_date, '%Y-%m-%d') AS och_date,
+            c.och_su,
+            c.och_amnt,
+            c.och_danw,
+            c.och_lot,
+            c.och_mon,
+            c.och_dang,
+            p.prod_name,
+            p.prod_no,
+            p.prod_gyu,
+            p.prod_jai,
+            p.tech_no,
+            p.corp_name
+        FROM tb_chulgo c
+        LEFT JOIN tb_ipgo  i ON i.ord_code  = c.ord_code
+        LEFT JOIN tb_product p ON p.prod_code = i.prod_code
+        WHERE 1=1
+        <if test="sdate != null and sdate != ''">
+            AND DATE(c.och_date) &gt;= #{sdate}
+        </if>
+        <if test="edate != null and edate != ''">
+            AND DATE(c.och_date) &lt;= #{edate}
+        </if>
+        <if test="corp_name != null and corp_name != ''">
+            AND p.corp_name LIKE CONCAT('%', #{corp_name}, '%')
+        </if>
+        <if test="prod_name != null and prod_name != ''">
+            AND p.prod_name LIKE CONCAT('%', #{prod_name}, '%')
+        </if>
+        <if test="prod_no != null and prod_no != ''">
+            AND p.prod_no LIKE CONCAT('%', #{prod_no}, '%')
+        </if>
+        ORDER BY c.och_date DESC, c.och_code DESC
+    </select>
+
+</mapper>

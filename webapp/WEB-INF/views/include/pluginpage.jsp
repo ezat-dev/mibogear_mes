@@ -255,7 +255,7 @@ function pageObject(paramKey){
 			//제품관리
 			"g01":["/mibogear/productionManagement/ipgo","입고관리"],
 			"g02":["/mibogear/productionManagement/chulgo","출고관리"],
-			"g03":"",
+			"g03":["/mibogear/productionManagement/ipChulgoStatus","입출고관리현황"],
 			"g04":"",
 			"g05":"",
 			"g06":"",

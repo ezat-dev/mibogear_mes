@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="ipgo">
+
+    <!-- 입고 리스트 조회 -->
+    <select id="getIpgoList" parameterType="ipgo" resultType="ipgo">
+        SELECT
+            i.ord_code,
+            i.prod_code,
+            DATE_FORMAT(i.ord_date, '%Y-%m-%d') AS ord_date,
+            i.ord_su,
+            i.ord_amnt,
+            i.ord_lot,
+            i.ord_boxsu,
+            i.ord_danw,
+            i.ord_danj,
+            p.prod_name,
+            p.prod_no,
+            p.prod_gyu,
+            p.prod_jai,
+            p.tech_no,
+            p.corp_name
+        FROM tb_ipgo i
+        LEFT JOIN tb_product p ON p.prod_code = i.prod_code
+        WHERE 1=1
+        <if test="sdate != null and sdate != ''">
+            AND DATE(i.ord_date) &gt;= #{sdate}
+        </if>
+        <if test="edate != null and edate != ''">
+            AND DATE(i.ord_date) &lt;= #{edate}
+        </if>
+        <if test="corp_name != null and corp_name != ''">
+            AND p.corp_name LIKE CONCAT('%', #{corp_name}, '%')
+        </if>
+        <if test="prod_name != null and prod_name != ''">
+            AND p.prod_name LIKE CONCAT('%', #{prod_name}, '%')
+        </if>
+        <if test="prod_no != null and prod_no != ''">
+            AND p.prod_no LIKE CONCAT('%', #{prod_no}, '%')
+        </if>
+        ORDER BY i.ord_date DESC, i.ord_code DESC
+    </select>
+
+    <!-- 입고 등록 -->
+    <insert id="insertIpgo" parameterType="ipgo">
+	    INSERT INTO tb_ipgo (
+	        ord_code, prod_code, ord_date, ord_su,
+	        ord_amnt, ord_lot, ord_boxsu, ord_danw, ord_danj
+	    ) VALUES (
+	        #{ord_code},
+	        #{prod_code},
+	        STR_TO_DATE(#{ord_date}, '%Y-%m-%d'),
+	        #{ord_su},
+	        #{ord_amnt},
+	        #{ord_lot},
+	        #{ord_boxsu},
+	        #{ord_danw},
+	        #{ord_danj}
+	    )
+	</insert>
+
+    <!-- 입고 수정 -->
+    <update id="updateIpgo" parameterType="ipgo">
+        UPDATE tb_ipgo SET
+            prod_code = #{prod_code},
+            ord_date  = STR_TO_DATE(#{ord_date}, '%Y-%m-%d'),
+            ord_su    = #{ord_su},
+            ord_amnt  = #{ord_amnt},
+            ord_lot   = #{ord_lot},
+            ord_boxsu = #{ord_boxsu},
+            ord_danw  = #{ord_danw},
+            ord_danj  = #{ord_danj}
+        WHERE ord_code = #{ord_code}
+    </update>
+
+    <!-- 입고 삭제 -->
+    <delete id="deleteIpgo" parameterType="int">
+        DELETE FROM tb_ipgo WHERE ord_code = #{ord_code}
+    </delete>
+    
+    <select id="getLastOrdCodeToday" resultType="String">
+	    SELECT MAX(ord_code)
+	    FROM tb_ipgo
+	    WHERE ord_code LIKE CONCAT(DATE_FORMAT(NOW(), '%y%m%d'), '%')
+	</select>
+
+</mapper>
