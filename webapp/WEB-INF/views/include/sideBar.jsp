@@ -244,7 +244,7 @@
 <!--  d1 ~ d7 -->
 			<div class="nav__link collapse">
 				<ion-icon name="desktop-outline"></ion-icon>
-				<span class="nav_name">설비보존관리</span>
+				<span class="nav_name">설비보전관리</span>
 				<ion-icon name="chevron-down-outline" class="collapse__link"></ion-icon>
 				<ul class="collapse__menu" id="dMenu"></ul>
 			</div>

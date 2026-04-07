@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="prodData">
+
+    <!-- 리스트 조회 -->
+    <select id="getProdDataList" parameterType="map" resultType="hashmap">
+	    SELECT
+	        pd_code,
+	        lot_no,
+	        main_bcf_hogi,
+	        main_tf_hogi,
+	        status,
+	        pdf_path,   /* 추가 */
+	        DATE_FORMAT(reg_date, '%Y-%m-%d %H:%i') AS reg_date
+	    FROM TB_PROD_DATA
+	    WHERE reg_date BETWEEN CONCAT(#{startDate}, ' 00:00:00')
+	                       AND CONCAT(#{endDate},   ' 23:59:59')
+	    ORDER BY pd_code DESC
+	</select>
+
+    <!-- 상세 조회 -->
+    <select id="getProdDataDetail" parameterType="int" resultType="ProdData">
+        SELECT * FROM TB_PROD_DATA WHERE pd_code = #{pd_code}
+    </select>
+
+    <!-- 오늘 LOT 마지막 순번 -->
+    <select id="getTodayLotMaxSeq" resultType="int">
+        SELECT IFNULL(MAX(CAST(SUBSTRING(lot_no, 7) AS UNSIGNED)), 0)
+          FROM TB_PROD_DATA
+         WHERE LEFT(lot_no, 6) = DATE_FORMAT(NOW(), '%y%m%d')
+    </select>
+
+    <!-- INSERT -->
+    <insert id="insertProdData" parameterType="ProdData"
+            useGeneratedKeys="true" keyProperty="pd_code">
+        INSERT INTO TB_PROD_DATA (
+            lot_no,
+            main_auto_pattern_number, main_yn, main_bcf_pattern_number, main_tf_pattern_number,
+            main_bcf_hogi, main_tf_hogi,
+            main_spare_1, main_spare_2, main_spare_3, main_spare_4,
+            main_bigo_1,  main_bigo_2,  main_bigo_3,  main_bigo_4,  main_bigo_5,
+
+            upper_auto_pattern_number, upper_yn, upper_bcf_pattern_number, upper_tf_pattern_number,
+            upper_bcf_hogi, upper_tf_hogi,
+            upper_spare_1, upper_spare_2, upper_spare_3, upper_spare_4,
+            upper_bigo_1,  upper_bigo_2,  upper_bigo_3,  upper_bigo_4,  upper_bigo_5,
+
+            lower_auto_pattern_number, lower_yn, lower_bcf_pattern_number, lower_tf_pattern_number,
+            lower_bcf_hogi, lower_tf_hogi,
+            lower_spare_1, lower_spare_2, lower_spare_3, lower_spare_4,
+            lower_bigo_1,  lower_bigo_2,  lower_bigo_3,  lower_bigo_4,  lower_bigo_5,
+
+            belt_auto_pattern_number, belt_yn, belt_bcf_pattern_number, belt_tf_pattern_number,
+            belt_bcf_hogi, belt_tf_hogi,
+            belt_spare_1, belt_spare_2, belt_spare_3, belt_spare_4,
+            belt_bigo_1,  belt_bigo_2,  belt_bigo_3,  belt_bigo_4,  belt_bigo_5,
+
+            status, reg_date, reg_user
+        ) VALUES (
+            #{lot_no},
+            #{main_auto_pattern_number}, #{main_yn}, #{main_bcf_pattern_number}, #{main_tf_pattern_number},
+            #{main_bcf_hogi}, #{main_tf_hogi},
+            #{main_spare_1}, #{main_spare_2}, #{main_spare_3}, #{main_spare_4},
+            #{main_bigo_1},  #{main_bigo_2},  #{main_bigo_3},  #{main_bigo_4},  #{main_bigo_5},
+
+            #{upper_auto_pattern_number}, #{upper_yn}, #{upper_bcf_pattern_number}, #{upper_tf_pattern_number},
+            #{upper_bcf_hogi}, #{upper_tf_hogi},
+            #{upper_spare_1}, #{upper_spare_2}, #{upper_spare_3}, #{upper_spare_4},
+            #{upper_bigo_1},  #{upper_bigo_2},  #{upper_bigo_3},  #{upper_bigo_4},  #{upper_bigo_5},
+
+            #{lower_auto_pattern_number}, #{lower_yn}, #{lower_bcf_pattern_number}, #{lower_tf_pattern_number},
+            #{lower_bcf_hogi}, #{lower_tf_hogi},
+            #{lower_spare_1}, #{lower_spare_2}, #{lower_spare_3}, #{lower_spare_4},
+            #{lower_bigo_1},  #{lower_bigo_2},  #{lower_bigo_3},  #{lower_bigo_4},  #{lower_bigo_5},
+
+            #{belt_auto_pattern_number}, #{belt_yn}, #{belt_bcf_pattern_number}, #{belt_tf_pattern_number},
+            #{belt_bcf_hogi}, #{belt_tf_hogi},
+            #{belt_spare_1}, #{belt_spare_2}, #{belt_spare_3}, #{belt_spare_4},
+            #{belt_bigo_1},  #{belt_bigo_2},  #{belt_bigo_3},  #{belt_bigo_4},  #{belt_bigo_5},
+
+            'WAIT', NOW(), #{reg_user}
+        )
+    </insert>
+
+    <!-- UPDATE -->
+    <update id="updateProdData" parameterType="ProdData">
+        UPDATE TB_PROD_DATA SET
+            main_auto_pattern_number  = #{main_auto_pattern_number},
+            main_yn                   = #{main_yn},
+            main_bcf_pattern_number   = #{main_bcf_pattern_number},
+            main_tf_pattern_number    = #{main_tf_pattern_number},
+            main_bcf_hogi             = #{main_bcf_hogi},
+            main_tf_hogi              = #{main_tf_hogi},
+            main_spare_1 = #{main_spare_1}, main_spare_2 = #{main_spare_2},
+            main_spare_3 = #{main_spare_3}, main_spare_4 = #{main_spare_4},
+            main_bigo_1  = #{main_bigo_1},  main_bigo_2  = #{main_bigo_2},
+            main_bigo_3  = #{main_bigo_3},  main_bigo_4  = #{main_bigo_4},
+            main_bigo_5  = #{main_bigo_5},
+
+            upper_auto_pattern_number = #{upper_auto_pattern_number},
+            upper_yn                  = #{upper_yn},
+            upper_bcf_pattern_number  = #{upper_bcf_pattern_number},
+            upper_tf_pattern_number   = #{upper_tf_pattern_number},
+            upper_bcf_hogi            = #{upper_bcf_hogi},
+            upper_tf_hogi             = #{upper_tf_hogi},
+            upper_spare_1 = #{upper_spare_1}, upper_spare_2 = #{upper_spare_2},
+            upper_spare_3 = #{upper_spare_3}, upper_spare_4 = #{upper_spare_4},
+            upper_bigo_1  = #{upper_bigo_1},  upper_bigo_2  = #{upper_bigo_2},
+            upper_bigo_3  = #{upper_bigo_3},  upper_bigo_4  = #{upper_bigo_4},
+            upper_bigo_5  = #{upper_bigo_5},
+
+            lower_auto_pattern_number = #{lower_auto_pattern_number},
+            lower_yn                  = #{lower_yn},
+            lower_bcf_pattern_number  = #{lower_bcf_pattern_number},
+            lower_tf_pattern_number   = #{lower_tf_pattern_number},
+            lower_bcf_hogi            = #{lower_bcf_hogi},
+            lower_tf_hogi             = #{lower_tf_hogi},
+            lower_spare_1 = #{lower_spare_1}, lower_spare_2 = #{lower_spare_2},
+            lower_spare_3 = #{lower_spare_3}, lower_spare_4 = #{lower_spare_4},
+            lower_bigo_1  = #{lower_bigo_1},  lower_bigo_2  = #{lower_bigo_2},
+            lower_bigo_3  = #{lower_bigo_3},  lower_bigo_4  = #{lower_bigo_4},
+            lower_bigo_5  = #{lower_bigo_5},
+
+            belt_auto_pattern_number  = #{belt_auto_pattern_number},
+            belt_yn                   = #{belt_yn},
+            belt_bcf_pattern_number   = #{belt_bcf_pattern_number},
+            belt_tf_pattern_number    = #{belt_tf_pattern_number},
+            belt_bcf_hogi             = #{belt_bcf_hogi},
+            belt_tf_hogi              = #{belt_tf_hogi},
+            belt_spare_1 = #{belt_spare_1}, belt_spare_2 = #{belt_spare_2},
+            belt_spare_3 = #{belt_spare_3}, belt_spare_4 = #{belt_spare_4},
+            belt_bigo_1  = #{belt_bigo_1},  belt_bigo_2  = #{belt_bigo_2},
+            belt_bigo_3  = #{belt_bigo_3},  belt_bigo_4  = #{belt_bigo_4},
+            belt_bigo_5  = #{belt_bigo_5}
+        WHERE pd_code = #{pd_code}
+    </update>
+
+    <!-- DELETE -->
+    <delete id="deleteProdData" parameterType="int">
+        DELETE FROM TB_PROD_DATA WHERE pd_code = #{pd_code}
+    </delete>
+    
+    <update id="updatePdfPath" parameterType="ProdData">
+	    UPDATE TB_PROD_DATA
+	       SET pdf_path = #{pdf_path}
+	     WHERE pd_code = #{pd_code}
+	</update>
+
+</mapper>

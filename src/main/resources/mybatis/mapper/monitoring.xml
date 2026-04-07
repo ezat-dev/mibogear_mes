@@ -218,6 +218,12 @@ LIMIT 50
         -- 패턴 번호 (4개)
         bcf1_pattern_number, bcf2_pattern_number, bcf3_pattern_number, bcf4_pattern_number,
         
+        bcf4_rpm1, bcf3_rpm1, bcf1_rpm1, bcf2_rpm1, bcf4_rpm2, bcf3_rpm2, bcf1_rpm2, bcf2_rpm2,
+        
+        cm2_val1, bcf4_val1, bcf3_val1, bcf3_val2, bcf1_val1, bcf2_val1, cm_val1, 
+        
+        
+        
         -- 통 번호 (6개)
         cm2_tong_number, bcf4_tong_number, bcf3_tong_number, bcf2_tong_number, bcf1_tong_number, cm_tong_number,
         

@@ -168,10 +168,10 @@
 }
 
 /* 각 위치 지정 (예시 - 실제 위치는 조정 필요) */
-.bcf1_pattern_number { left: 100px; top: 50px; }
-.bcf2_pattern_number { left: 300px; top: 50px; }
-.bcf3_pattern_number { left: 500px; top: 50px; }
-.bcf4_pattern_number { left: 700px; top: 50px; }
+/* .bcf1_pattern_number { left: 997px; top: 95px; }
+.bcf2_pattern_number { left: 1107px; top: 95px; }
+.bcf3_pattern_number { left: 751px; top: 95px; }
+.bcf4_pattern_number { left: 641px; top: 95px; } */
 
 .cm2_tong_number { left: 100px; top: 100px; }
 .bcf4_tong_number { left: 250px; top: 100px; }
@@ -186,225 +186,155 @@
 
 
 
-
-
-/* ===== 처리품데이터 버튼 ===== */
 #btnProdData {
-    position: absolute;
-    top: 10px;
-    left: 10px;
-    z-index: 100;
-    padding: 8px 16px;
-    background: #2c3e50;
-    color: white;
-    border: none;
-    border-radius: 6px;
-    font-size: 13px;
-    font-weight: bold;
-    cursor: pointer;
-    box-shadow: 0 2px 6px rgba(0,0,0,0.3);
-    transition: all 0.2s;
+    position: fixed; top: 10px; left: 10px; z-index: 100;
+    padding: 8px 16px; background: #2c3e50; color: white;
+    border: none; border-radius: 6px; font-size: 13px; font-weight: bold; cursor: pointer;
 }
-#btnProdData:hover { background: #34495e; transform: translateY(-1px); }
+#btnProdData:hover { background: #34495e; }
 
-/* ===== 처리품 모달 오버레이 ===== */
 #prodDataOverlay {
-    display: none;
-    position: fixed;
-    top: 0; left: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
-    z-index: 1000;
+    display: none; position: fixed; inset: 0;
+    background: rgba(0,0,0,0.6); z-index: 1000;
 }
 #prodDataOverlay.active { display: block; }
 
-/* ===== 처리품 모달 ===== */
-#prodDataModal {
+/* ── 전체 래퍼: 왼쪽 정렬 ── */
+#prodDataWrapper {
     display: none;
     position: fixed;
-    top: 50%; left: 50%;
-    transform: translate(-50%, -50%);
-    width: 920px; max-width: 98vw;
-    max-height: 92vh;
-    background: white;
-    border-radius: 10px;
-    box-shadow: 0 10px 50px rgba(0,0,0,0.4);
+    top: 50%;
+    left: 10px;                        /* 왼쪽으로 붙임 */
+    transform: translateY(-50%);       /* 수직만 중앙 */
     z-index: 1001;
-    overflow: hidden;
-    flex-direction: column;
+    gap: 12px;
+    align-items: flex-start;
+    max-height: 92vh;
 }
-#prodDataModal.active { display: flex; }
+#prodDataWrapper.active { display: flex; }
 
-#prodDataModal .pd-modal-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 12px 20px;
-    background: linear-gradient(135deg, #1a6b2a, #2e8b3e);
-    color: white;
-    cursor: move;
-    flex-shrink: 0;
+/* ── 입력 모달 ── */
+#prodDataModal {
+    width: 680px; max-height: 92vh; background: white;
+    border-radius: 10px; box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0;
 }
-#prodDataModal .pd-modal-header h2 {
-    margin: 0; font-size: 16px; font-weight: 700;
+.pd-modal-header {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 10px 16px; background: linear-gradient(135deg,#1a6b2a,#2e8b3e);
+    color: white; cursor: move; flex-shrink: 0;
 }
-#prodDataModal .pd-close-btn {
-    background: none; border: none; color: white;
-    font-size: 24px; cursor: pointer;
-    transition: all 0.3s;
-}
-#prodDataModal .pd-close-btn:hover {
-    background: rgba(255,255,255,0.2);
-    transform: rotate(90deg);
-    border-radius: 4px;
-}
+.pd-modal-header h2 { margin: 0; font-size: 15px; font-weight: 700; }
+.pd-close-btn { background: none; border: none; color: white; font-size: 22px; cursor: pointer; }
+.pd-close-btn:hover { opacity: 0.7; }
 
-#prodDataModal .pd-modal-body {
-    flex: 1;
-    overflow-y: auto;
-    padding: 15px;
-    background: #1a7a2a;  /* 스카다 화면처럼 진한 초록 배경 */
-}
+.pd-modal-body { flex: 1; overflow-y: auto; padding: 10px; background: #1a7a2a; }
+.pd-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
 
-/* 처리품 그리드 (2x2) */
-.pd-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 10px;
-}
-
-/* 각 구역 카드 */
-.pd-card {
-    background: #1a7a2a;
-    border: 2px solid #2ea83e;
-    border-radius: 4px;
-    overflow: hidden;
-}
+.pd-card { background: #1a7a2a; border: 2px solid #2ea83e; border-radius: 4px; overflow: hidden; }
 .pd-card-title {
-    background: #4a90d9;
-    color: white;
-    text-align: center;
-    padding: 6px;
-    font-size: 13px;
-    font-weight: bold;
+    background: #4a90d9; color: white;
+    text-align: center; padding: 5px; font-size: 12px; font-weight: bold;
 }
 .pd-card-title.cyan { background: #00bcd4; }
 
-/* 입력 행 */
 .pd-row {
-    display: flex;
-    align-items: center;
-    border-bottom: 1px solid #2ea83e;
+    display: flex; align-items: center;
+    border-bottom: 1px solid #2ea83e; min-height: 26px;
 }
 .pd-row:last-child { border-bottom: none; }
-
 .pd-label {
-    flex: 1;
-    padding: 5px 8px;
-    font-size: 12px;
-    color: #fff;
-    background: #1a7a2a;
-    border-right: 1px solid #2ea83e;
-    white-space: nowrap;
+    flex: 1; padding: 4px 6px; font-size: 11px; color: #fff;
+    background: #1a7a2a; border-right: 1px solid #2ea83e; white-space: nowrap;
 }
+.pd-value { width: 110px; background: #f5a500; }
+.pd-value input, .pd-value select {
+    width: 100%; padding: 4px 5px; background: #f5a500;
+    border: none; outline: none; font-size: 12px; font-weight: bold;
+    color: #000; text-align: center;
+}
+.pd-value input:focus, .pd-value select:focus { background: #ffd54f; }
 
-.pd-value {
-    width: 120px;
-    padding: 0;
-    background: #f5a500;
-}
-.pd-value input,
-.pd-value select {
-    width: 100%;
-    padding: 5px 6px;
-    background: #f5a500;
-    border: none;
-    outline: none;
-    font-size: 12px;
-    font-weight: bold;
-    color: #000;
-    text-align: center;
-    box-sizing: border-box;
-}
-.pd-value input:focus,
-.pd-value select:focus {
-    background: #ffd54f;
-}
-.pd-value input::placeholder { color: #888; }
+.pd-row-spare .pd-label { color: #ffe082; }
+.pd-row-spare .pd-value input { background: #f5a500; color: #000; }
+.pd-row-spare .pd-value input:focus { background: #ffd54f; }
 
-/* 빈 행 (노란색만) */
-.pd-row-empty .pd-value {
-    background: #f5a500;
-    height: 26px;
-}
-.pd-row-empty .pd-label {
-    color: #ccc;
-}
+.pd-row-memo .pd-label { background: white; color: #666; font-size: 11px; }
+.pd-row-memo .pd-value { background: white; }
+.pd-row-memo .pd-value input { background: white; color: #333; }
+.pd-row-memo .pd-value input:focus { background: #fffde7; }
 
-/* 하단 물음표 행 (흰색 배경) */
-.pd-row-question .pd-label {
-    background: white;
-    color: #ccc;
-    font-size: 11px;
+.pd-modal-footer {
+    display: flex; justify-content: center; gap: 10px;
+    padding: 10px 16px; background: white;
+    border-top: 1px solid #dee2e6; flex-shrink: 0;
 }
-.pd-row-question .pd-value {
-    background: white;
+.pd-modal-footer button {
+    min-width: 100px; height: 34px; border: none; border-radius: 5px;
+    font-size: 12px; font-weight: 700; cursor: pointer;
 }
-.pd-row-question .pd-value input {
-    background: white;
-    color: #999;
-}
+.pd-btn-save   { background: linear-gradient(135deg,#51cf66,#37b24d); color: white; }
+.pd-btn-print  { background: linear-gradient(135deg,#339af0,#1c7ed6); color: white; }
+.pd-btn-cancel { background: linear-gradient(135deg,#868e96,#495057); color: white; }
 
-/* 모달 푸터 */
-#prodDataModal .pd-modal-footer {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    padding: 12px 20px;
-    background: white;
-    border-top: 1px solid #dee2e6;
-    flex-shrink: 0;
+/* ── 우측 리스트 패널 (더 넓게) ── */
+#prodListPanel {
+    width: 950px;                      /* 넓게 */
+    max-height: 92vh; background: white;
+    border-radius: 10px; box-shadow: 0 10px 50px rgba(0,0,0,0.5);
+    display: flex; flex-direction: column; overflow: hidden; flex-shrink: 0;
 }
-#prodDataModal .pd-modal-footer button {
-    min-width: 110px; height: 36px;
-    border: none; border-radius: 5px;
-    font-size: 13px; font-weight: 700;
-    cursor: pointer; transition: all 0.3s;
+.pl-header {
+    padding: 10px 16px; background: linear-gradient(135deg,#1a6b2a,#2e8b3e);
+    color: white; flex-shrink: 0;
 }
-.pd-btn-save {
-    background: linear-gradient(135deg, #51cf66, #37b24d);
-    color: white;
-}
-.pd-btn-save:hover {
-    background: linear-gradient(135deg, #40c057, #2f9e44);
-    transform: translateY(-2px);
-}
-.pd-btn-print {
-    background: linear-gradient(135deg, #339af0, #1c7ed6);
-    color: white;
-}
-.pd-btn-print:hover {
-    background: linear-gradient(135deg, #228be6, #1971c2);
-    transform: translateY(-2px);
-}
-.pd-btn-cancel {
-    background: linear-gradient(135deg, #868e96, #495057);
-    color: white;
-}
-.pd-btn-cancel:hover {
-    background: linear-gradient(135deg, #6c757d, #343a40);
-    transform: translateY(-2px);
-}
+.pl-header h3 { margin: 0; font-size: 15px; font-weight: 700; }
 
+/* ── 날짜 검색 바 (트렌드 스타일) ── */
+.pl-search-bar {
+    display: flex; align-items: center; gap: 10px;
+    padding: 8px 12px; background: #f4f4f4;
+    border-bottom: 1px solid #dee2e6; flex-shrink: 0; flex-wrap: wrap;
+}
+.pl-search-bar .daylabel {
+    font-size: 13px; font-weight: bold; color: #333; white-space: nowrap;
+}
+.pl-search-bar .datetimeSet {
+    height: 32px; font-size: 13px; padding: 0 10px;
+    border-radius: 5px; border: 1px solid #ccc;
+    background: white; text-align: center; width: 140px;
+}
+.pl-search-bar .datetimeSet:focus { outline: none; border-color: #007bff; }
+.pl-search-bar .mid { font-size: 15px; font-weight: bold; color: #555; }
+.pl-search-bar .pl-btn-search {
+    display: flex; align-items: center; gap: 5px;
+    height: 32px; padding: 0 14px;
+    border-radius: 5px; border: 1px solid #007bff;
+    background: #007bff; color: white; cursor: pointer;
+    font-size: 13px; font-weight: bold;
+}
+.pl-search-bar .pl-btn-search:hover { background: #0056b3; }
 
-
+.pl-body { flex: 1; overflow: hidden; padding: 8px; }
+.pl-footer {
+    padding: 8px 12px; background: #f8f9fa;
+    border-top: 1px solid #dee2e6; flex-shrink: 0;
+    display: flex; gap: 8px; justify-content: flex-end;
+}
+.pl-footer button {
+    padding: 5px 14px; border: none; border-radius: 4px;
+    font-size: 12px; font-weight: bold; cursor: pointer;
+}
+.pl-btn-new    { background: #37b24d; color: white; }
+.pl-btn-load   { background: #339af0; color: white; }
+.pl-btn-delete { background: #e03131; color: white; }
 </style>
     
     
     <body>
     
     <main class="main">
-    <button id="btnProdData">📋 처리품 데이터</button>
+    <button id="btnProdData" onclick="openProdModal()">처리품 데이터</button>
 		<div class="group-6">
     <div class="group-5">
       <img class="rail" src="/mibogear/image/overview/rail0.png" />
@@ -722,16 +652,73 @@
       <img class="doorNomal_12" src="/mibogear/image/overview/door-nomal-120.png" />
       <img class="doorClose_12" src="/mibogear/image/overview/door-close-120.png" />
       <img class="doorOpen_12" src="/mibogear/image/overview/door-open-120.png" />
-<!-- <div class="bcf4_pattern_number"></div>
-<div class="cm2_tong_number"></div>
+		
+		
+		<div class="bcf4_pattern_number"></div>
+		<div class="bcf4_pattern_text">패턴번호</div>
+		
+		<div class="bcf3_pattern_number"></div>
+		<div class="bcf3_pattern_text">패턴번호</div>
+		
+		<div class="bcf1_pattern_number"></div>
+		<div class="bcf1_pattern_text">패턴번호</div>
+		
+		<div class="bcf2_pattern_number"></div>
+		<div class="bcf2_pattern_text">패턴번호</div>
+		
+		
+		
+		<!-- <div class="bcf4_rpm1"></div>
+		<div class="bcf3_rpm1"></div>
+		<div class="bcf1_rpm1"></div>
+		<div class="bcf2_rpm1"></div>
+		<div class="bcf4_rpm2"></div>
+		<div class="bcf3_rpm2"></div>
+		<div class="bcf1_rpm2"></div>
+		<div class="bcf2_rpm2"></div>
+		
+		 -->
+		  <div class="rpm-4-box"></div>
+		  <div class="bcf4_rpm1"></div>
+		  <div class="bcf4_rpm2"></div>
+		  <div class="rpm">RPM</div>
+		  <div class="rpm2">RPM</div>
+		  <div class="rpm-3-box"></div>
+		  <div class="bcf3_rpm1"></div>
+		  <div class="bcf3_rpm2"></div>
+		  <div class="rpm3">RPM</div>
+		  <div class="rpm4">RPM</div>
+		  <div class="rpm-1-box"></div>
+		  <div class="bcf1_rpm1"></div>
+		  <div class="bcf1_rpm2"></div>
+		  <div class="rpm5">RPM</div>
+		  <div class="rpm6">RPM</div>
+		  <div class="rpm-2-box"></div>
+		  <div class="bcf2_rpm1"></div>
+		  <div class="bcf2_rpm2"></div>
+		  <div class="rpm7">RPM</div>
+		  <div class="rpm8">RPM</div>
+		  
+		  
+		  <div class="cm2_val1"></div>
+		<div class="bcf4_val1"></div>
+		<div class="bcf3_val1"></div>
+		<div class="bcf1_val1"></div>
+		<div class="bcf2_val1"></div>
+		<div class="cm_val1"></div>
+		
+		
+		
+		
+		
+		
+<!-- <div class="cm2_tong_number"></div>
 <div class="bcf4_tong_number"></div>
 <div class="bcf3_tong_number"></div>
 <div class="bcf1_tong_number"></div>
 <div class="bcf2_tong_number"></div>
 <div class="cm_tong_number"></div>
-<div class="bcf3_pattern_number"></div>
-<div class="bcf1_pattern_number"></div>
-<div class="bcf2_pattern_number"></div> -->
+ -->
     </div>
   </div>
   
@@ -1010,312 +997,389 @@
 
 
 
-
-<!-- 처리품데이터 오버레이 -->
 <div id="prodDataOverlay"></div>
 
-<!-- 처리품데이터 모달 -->
-<div id="prodDataModal">
+<div id="prodDataWrapper">
+
+  <!-- ① 입력 모달 -->
+  <div id="prodDataModal">
     <div class="pd-modal-header" id="pdModalHeader">
         <h2>처리품 데이터 입력</h2>
-        <button class="pd-close-btn" id="pdCloseBtn">&times;</button>
+        <button class="pd-close-btn" onclick="closeProdModal()">&times;</button>
     </div>
 
     <div class="pd-modal-body">
-        <div class="pd-grid">
+      <div class="pd-grid">
 
-            <!-- ① 침탄로 본체 처리품 -->
-            <div class="pd-card">
-                <div class="pd-card-title">침탄로 본체 처리품</div>
-                <div class="pd-row">
-                    <span class="pd-label">자동대차 패턴번호</span>
-                    <div class="pd-value"><input type="number" id="pd1_cart_pattern" placeholder="0"></div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">처리품 유/무</span>
-                    <div class="pd-value">
-                        <select id="pd1_prod_yn">
-                            <option value="Y">유</option>
-                            <option value="N">무</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">침탄로 처리패턴 번호</span>
-                    <div class="pd-value"><input type="number" id="pd1_carb_pattern" placeholder="0"></div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">소려로 처리패턴 번호</span>
-                    <div class="pd-value"><input type="number" id="pd1_temp_pattern" placeholder="0"></div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">침탄로 호기 선택</span>
-                    <div class="pd-value">
-                        <select id="pd1_hogi">
-                            <option value="">선택</option>
-                            <option value="BCF1">BCF1</option>
-                            <option value="BCF2">BCF2</option>
-                            <option value="BCF3">BCF3</option>
-                            <option value="BCF4">BCF4</option>
-                        </select>
-                    </div>
-                </div>
-                <!-- 빈 행 5개 (스카다와 동일) -->
-                <div class="pd-row pd-row-empty">
-                    <span class="pd-label"></span>
-                    <div class="pd-value"></div>
-                </div>
-                <div class="pd-row pd-row-empty">
-                    <span class="pd-label"></span>
-                    <div class="pd-value"></div>
-                </div>
-                <div class="pd-row pd-row-empty">
-                    <span class="pd-label"></span>
-                    <div class="pd-value"></div>
-                </div>
-                <div class="pd-row pd-row-empty">
-                    <span class="pd-label"></span>
-                    <div class="pd-value"></div>
-                </div>
-                <div class="pd-row pd-row-empty">
-                    <span class="pd-label"></span>
-                    <div class="pd-value"></div>
-                </div>
-                <!-- LOT 번호 -->
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">LOT 번호</span>
-                    <div class="pd-value"><input type="text" id="pd1_lot_no" placeholder="예)260325-001"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고1</span>
-                    <div class="pd-value"><input type="text" id="pd1_memo1"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고2</span>
-                    <div class="pd-value"><input type="text" id="pd1_memo2"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고3</span>
-                    <div class="pd-value"><input type="text" id="pd1_memo3"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고4</span>
-                    <div class="pd-value"><input type="text" id="pd1_memo4"></div>
-                </div>
+        <!-- ① 침탄로 본체 (main_) -->
+        <div class="pd-card">
+          <div class="pd-card-title">침탄로 본체 처리품</div>
+          <div class="pd-row">
+            <span class="pd-label">자동대차 패턴번호</span>
+            <div class="pd-value"><input type="number" class="main_auto_pattern_number"></div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">처리품 유/무</span>
+            <div class="pd-value">
+              <select class="main_yn">
+                <option value="Y">유</option>
+                <option value="N">무</option>
+              </select>
             </div>
-
-            <!-- ② 유조 E/V 체인 (상부) 처리품 -->
-            <div class="pd-card">
-                <div class="pd-card-title cyan">유조 E/V 체인 (상부) 처리품</div>
-                <div class="pd-row">
-                    <span class="pd-label">자동대차 패턴번호</span>
-                    <div class="pd-value"><input type="number" id="pd2_cart_pattern" placeholder="0"></div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">처리품 유/무</span>
-                    <div class="pd-value">
-                        <select id="pd2_prod_yn">
-                            <option value="Y">유</option>
-                            <option value="N">무</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">침탄로 처리패턴 번호</span>
-                    <div class="pd-value"><input type="number" id="pd2_carb_pattern" placeholder="0"></div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">소려로 처리패턴 번호</span>
-                    <div class="pd-value"><input type="number" id="pd2_temp_pattern" placeholder="0"></div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">침탄로 호기 선택</span>
-                    <div class="pd-value">
-                        <select id="pd2_hogi">
-                            <option value="">선택</option>
-                            <option value="BCF1">BCF1</option>
-                            <option value="BCF2">BCF2</option>
-                            <option value="BCF3">BCF3</option>
-                            <option value="BCF4">BCF4</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">LOT 번호</span>
-                    <div class="pd-value"><input type="text" id="pd2_lot_no" placeholder="예)260325-001"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고1</span>
-                    <div class="pd-value"><input type="text" id="pd2_memo1"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고2</span>
-                    <div class="pd-value"><input type="text" id="pd2_memo2"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고3</span>
-                    <div class="pd-value"><input type="text" id="pd2_memo3"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고4</span>
-                    <div class="pd-value"><input type="text" id="pd2_memo4"></div>
-                </div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">침탄로 처리패턴 번호</span>
+            <div class="pd-value"><input type="number" class="main_bcf_pattern_number"></div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">소려로 처리패턴 번호</span>
+            <div class="pd-value"><input type="number" class="main_tf_pattern_number"></div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">침탄로 호기</span>
+            <div class="pd-value">
+              <select class="main_bcf_hogi">
+                <option value="">선택</option>
+                <option value="BCF1">BCF1</option>
+                <option value="BCF2">BCF2</option>
+                <option value="BCF3">BCF3</option>
+                <option value="BCF4">BCF4</option>
+              </select>
             </div>
-
-            <!-- ③ 유조 E/V 체인 (하부) 처리품 -->
-            <div class="pd-card">
-                <div class="pd-card-title cyan">유조 E/V 체인 (하부) 처리품</div>
-                <div class="pd-row">
-                    <span class="pd-label">자동대차 패턴번호</span>
-                    <div class="pd-value"><input type="number" id="pd3_cart_pattern" placeholder="0"></div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">처리품 유/무</span>
-                    <div class="pd-value">
-                        <select id="pd3_prod_yn">
-                            <option value="Y">유</option>
-                            <option value="N">무</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">침탄로 처리패턴 번호</span>
-                    <div class="pd-value"><input type="number" id="pd3_carb_pattern" placeholder="0"></div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">소려로 처리패턴 번호</span>
-                    <div class="pd-value"><input type="number" id="pd3_temp_pattern" placeholder="0"></div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">침탄로 호기 선택</span>
-                    <div class="pd-value">
-                        <select id="pd3_hogi">
-                            <option value="">선택</option>
-                            <option value="BCF1">BCF1</option>
-                            <option value="BCF2">BCF2</option>
-                            <option value="BCF3">BCF3</option>
-                            <option value="BCF4">BCF4</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">LOT 번호</span>
-                    <div class="pd-value"><input type="text" id="pd3_lot_no" placeholder="예)260325-001"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고1</span>
-                    <div class="pd-value"><input type="text" id="pd3_memo1"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고2</span>
-                    <div class="pd-value"><input type="text" id="pd3_memo2"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고3</span>
-                    <div class="pd-value"><input type="text" id="pd3_memo3"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고4</span>
-                    <div class="pd-value"><input type="text" id="pd3_memo4"></div>
-                </div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">소려로 호기</span>
+            <div class="pd-value">
+              <select class="main_tf_hogi">
+                <option value="">선택</option>
+                <option value="TF1">TF1</option>
+                <option value="TF2">TF2</option>
+              </select>
             </div>
-
-            <!-- ④ 입구 콘베어 처리품 -->
-            <div class="pd-card">
-                <div class="pd-card-title">입구 콘베어 처리품</div>
-                <div class="pd-row">
-                    <span class="pd-label">자동대차 패턴번호</span>
-                    <div class="pd-value"><input type="number" id="pd4_cart_pattern" placeholder="0"></div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">처리품 유/무</span>
-                    <div class="pd-value">
-                        <select id="pd4_prod_yn">
-                            <option value="Y">유</option>
-                            <option value="N">무</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">침탄로 처리패턴 번호</span>
-                    <div class="pd-value"><input type="number" id="pd4_carb_pattern" placeholder="0"></div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">소려로 처리패턴 번호</span>
-                    <div class="pd-value"><input type="number" id="pd4_temp_pattern" placeholder="0"></div>
-                </div>
-                <div class="pd-row">
-                    <span class="pd-label">침탄로 호기 선택</span>
-                    <div class="pd-value">
-                        <select id="pd4_hogi">
-                            <option value="">선택</option>
-                            <option value="BCF1">BCF1</option>
-                            <option value="BCF2">BCF2</option>
-                            <option value="BCF3">BCF3</option>
-                            <option value="BCF4">BCF4</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-empty"><span class="pd-label"></span><div class="pd-value"></div></div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">LOT 번호</span>
-                    <div class="pd-value"><input type="text" id="pd4_lot_no" placeholder="예)260325-001"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고1</span>
-                    <div class="pd-value"><input type="text" id="pd4_memo1"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고2</span>
-                    <div class="pd-value"><input type="text" id="pd4_memo2"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고3</span>
-                    <div class="pd-value"><input type="text" id="pd4_memo3"></div>
-                </div>
-                <div class="pd-row pd-row-question">
-                    <span class="pd-label">비고4</span>
-                    <div class="pd-value"><input type="text" id="pd4_memo4"></div>
-                </div>
-            </div>
-
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어1</span>
+            <div class="pd-value"><input type="text" class="main_spare_1"></div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어2</span>
+            <div class="pd-value"><input type="text" class="main_spare_2"></div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어3</span>
+            <div class="pd-value"><input type="text" class="main_spare_3"></div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어4</span>
+            <div class="pd-value"><input type="text" class="main_spare_4"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고1</span>
+            <div class="pd-value"><input type="text" class="main_bigo_1"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고2</span>
+            <div class="pd-value"><input type="text" class="main_bigo_2"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고3</span>
+            <div class="pd-value"><input type="text" class="main_bigo_3"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고4</span>
+            <div class="pd-value"><input type="text" class="main_bigo_4"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고5</span>
+            <div class="pd-value"><input type="text" class="main_bigo_5"></div>
+          </div>
         </div>
+
+        <!-- ② 유조 E/V 체인 (상부) (upper_) -->
+        <div class="pd-card">
+          <div class="pd-card-title cyan">유조 E/V 체인 (상부) 처리품</div>
+          <div class="pd-row">
+            <span class="pd-label">자동대차 패턴번호</span>
+            <div class="pd-value"><input type="number" class="upper_auto_pattern_number"></div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">처리품 유/무</span>
+            <div class="pd-value">
+              <select class="upper_yn">
+                <option value="Y">유</option>
+                <option value="N">무</option>
+              </select>
+            </div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">침탄로 처리패턴 번호</span>
+            <div class="pd-value"><input type="number" class="upper_bcf_pattern_number"></div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">소려로 처리패턴 번호</span>
+            <div class="pd-value"><input type="number" class="upper_tf_pattern_number"></div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">침탄로 호기</span>
+            <div class="pd-value">
+              <select class="upper_bcf_hogi">
+                <option value="">선택</option>
+                <option value="BCF1">BCF1</option>
+                <option value="BCF2">BCF2</option>
+                <option value="BCF3">BCF3</option>
+                <option value="BCF4">BCF4</option>
+              </select>
+            </div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">소려로 호기</span>
+            <div class="pd-value">
+              <select class="upper_tf_hogi">
+                <option value="">선택</option>
+                <option value="TF1">TF1</option>
+                <option value="TF2">TF2</option>
+              </select>
+            </div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어1</span>
+            <div class="pd-value"><input type="text" class="upper_spare_1"></div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어2</span>
+            <div class="pd-value"><input type="text" class="upper_spare_2"></div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어3</span>
+            <div class="pd-value"><input type="text" class="upper_spare_3"></div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어4</span>
+            <div class="pd-value"><input type="text" class="upper_spare_4"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고1</span>
+            <div class="pd-value"><input type="text" class="upper_bigo_1"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고2</span>
+            <div class="pd-value"><input type="text" class="upper_bigo_2"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고3</span>
+            <div class="pd-value"><input type="text" class="upper_bigo_3"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고4</span>
+            <div class="pd-value"><input type="text" class="upper_bigo_4"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고5</span>
+            <div class="pd-value"><input type="text" class="upper_bigo_5"></div>
+          </div>
+        </div>
+
+        <!-- ③ 유조 E/V 체인 (하부) (lower_) -->
+        <div class="pd-card">
+          <div class="pd-card-title cyan">유조 E/V 체인 (하부) 처리품</div>
+          <div class="pd-row">
+            <span class="pd-label">자동대차 패턴번호</span>
+            <div class="pd-value"><input type="number" class="lower_auto_pattern_number"></div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">처리품 유/무</span>
+            <div class="pd-value">
+              <select class="lower_yn">
+                <option value="Y">유</option>
+                <option value="N">무</option>
+              </select>
+            </div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">침탄로 처리패턴 번호</span>
+            <div class="pd-value"><input type="number" class="lower_bcf_pattern_number"></div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">소려로 처리패턴 번호</span>
+            <div class="pd-value"><input type="number" class="lower_tf_pattern_number"></div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">침탄로 호기</span>
+            <div class="pd-value">
+              <select class="lower_bcf_hogi">
+                <option value="">선택</option>
+                <option value="BCF1">BCF1</option>
+                <option value="BCF2">BCF2</option>
+                <option value="BCF3">BCF3</option>
+                <option value="BCF4">BCF4</option>
+              </select>
+            </div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">소려로 호기</span>
+            <div class="pd-value">
+              <select class="lower_tf_hogi">
+                <option value="">선택</option>
+                <option value="TF1">TF1</option>
+                <option value="TF2">TF2</option>
+              </select>
+            </div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어1</span>
+            <div class="pd-value"><input type="text" class="lower_spare_1"></div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어2</span>
+            <div class="pd-value"><input type="text" class="lower_spare_2"></div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어3</span>
+            <div class="pd-value"><input type="text" class="lower_spare_3"></div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어4</span>
+            <div class="pd-value"><input type="text" class="lower_spare_4"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고1</span>
+            <div class="pd-value"><input type="text" class="lower_bigo_1"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고2</span>
+            <div class="pd-value"><input type="text" class="lower_bigo_2"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고3</span>
+            <div class="pd-value"><input type="text" class="lower_bigo_3"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고4</span>
+            <div class="pd-value"><input type="text" class="lower_bigo_4"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고5</span>
+            <div class="pd-value"><input type="text" class="lower_bigo_5"></div>
+          </div>
+        </div>
+
+        <!-- ④ 입구 콘베어 (belt_) -->
+        <div class="pd-card">
+          <div class="pd-card-title">입구 콘베어 처리품</div>
+          <div class="pd-row">
+            <span class="pd-label">자동대차 패턴번호</span>
+            <div class="pd-value"><input type="number" class="belt_auto_pattern_number"></div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">처리품 유/무</span>
+            <div class="pd-value">
+              <select class="belt_yn">
+                <option value="Y">유</option>
+                <option value="N">무</option>
+              </select>
+            </div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">침탄로 처리패턴 번호</span>
+            <div class="pd-value"><input type="number" class="belt_bcf_pattern_number"></div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">소려로 처리패턴 번호</span>
+            <div class="pd-value"><input type="number" class="belt_tf_pattern_number"></div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">침탄로 호기</span>
+            <div class="pd-value">
+              <select class="belt_bcf_hogi">
+                <option value="">선택</option>
+                <option value="BCF1">BCF1</option>
+                <option value="BCF2">BCF2</option>
+                <option value="BCF3">BCF3</option>
+                <option value="BCF4">BCF4</option>
+              </select>
+            </div>
+          </div>
+          <div class="pd-row">
+            <span class="pd-label">소려로 호기</span>
+            <div class="pd-value">
+              <select class="belt_tf_hogi">
+                <option value="">선택</option>
+                <option value="TF1">TF1</option>
+                <option value="TF2">TF2</option>
+              </select>
+            </div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어1</span>
+            <div class="pd-value"><input type="text" class="belt_spare_1"></div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어2</span>
+            <div class="pd-value"><input type="text" class="belt_spare_2"></div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어3</span>
+            <div class="pd-value"><input type="text" class="belt_spare_3"></div>
+          </div>
+          <div class="pd-row pd-row-spare">
+            <span class="pd-label">스페어4</span>
+            <div class="pd-value"><input type="text" class="belt_spare_4"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고1</span>
+            <div class="pd-value"><input type="text" class="belt_bigo_1"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고2</span>
+            <div class="pd-value"><input type="text" class="belt_bigo_2"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고3</span>
+            <div class="pd-value"><input type="text" class="belt_bigo_3"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고4</span>
+            <div class="pd-value"><input type="text" class="belt_bigo_4"></div>
+          </div>
+          <div class="pd-row pd-row-memo">
+            <span class="pd-label">비고5</span>
+            <div class="pd-value"><input type="text" class="belt_bigo_5"></div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
     <div class="pd-modal-footer">
-        <button class="pd-btn-save" onclick="saveProdData();">저장</button>
-        <button class="pd-btn-print" onclick="saveAndPrint();">작업지시서 생성</button>
-        <button class="pd-btn-cancel" onclick="closeProdModal();">닫기</button>
+        <button class="pd-btn-save"   onclick="saveProdData()">저장</button>
+        <button class="pd-btn-print"  onclick="saveAndPrint()">작업지시서 생성</button>
+        <button class="pd-btn-cancel" onclick="closeProdModal()">닫기</button>
     </div>
+  </div>
+
+  <!-- ② 우측 리스트 패널 -->
+  <div id="prodListPanel">
+    <div class="pl-header"><h3>처리품 데이터 목록</h3></div>
+
+    <!-- 날짜 검색 바 -->
+    <div class="pl-search-bar">
+        <span class="daylabel">검색 날짜 :</span>
+        <input type="text" class="datetimeSet" id="pdStartDate" autocomplete="off">
+        <span class="mid"> ~ </span>
+        <input type="text" class="datetimeSet" id="pdEndDate" autocomplete="off">
+        <button class="pl-btn-search" onclick="fetchProdList()">🔍 조회</button>
+    </div>
+
+    <div class="pl-body"><div id="pdListTabulator"></div></div>
+    <div class="pl-footer">
+        <button class="pl-btn-new"    onclick="resetForm()">신규</button>
+        <button class="pl-btn-load"   onclick="loadSelected()">불러오기</button>
+        <button class="pl-btn-delete" onclick="deleteSelected()">삭제</button>
+    </div>
+  </div>
+
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-  
 	</main>
 
 
@@ -1470,6 +1534,22 @@ function updateOverview() {
             $('.bcf2_tong_number').text(data.bcf2_tong_number || '0');
             $('.bcf1_tong_number').text(data.bcf1_tong_number || '0');
             $('.cm_tong_number').text(data.cm_tong_number || '0');
+
+            $('.bcf4_rpm1').text(data.bcf4_rpm1 || '0');
+            $('.bcf3_rpm1').text(data.bcf3_rpm1 || '0');
+            $('.bcf1_rpm1').text(data.bcf1_rpm1 || '0');
+            $('.bcf2_rpm1').text(data.bcf2_rpm1 || '0');
+            $('.bcf4_rpm2').text(data.bcf4_rpm2 || '0');
+            $('.bcf3_rpm2').text(data.bcf3_rpm2 || '0');
+            $('.bcf1_rpm2').text(data.bcf1_rpm2 || '0');
+            $('.bcf2_rpm2').text(data.bcf2_rpm2 || '0');
+
+            $('.cm2_val1').text(data.cm2_val1 || '0');
+            $('.bcf4_val1').text(data.bcf4_val1 || '0');
+            $('.bcf3_val1').text(data.bcf3_val1 || '0');
+            $('.bcf1_val1').text(data.bcf1_val1 || '0');
+            $('.bcf2_val1').text(data.bcf2_val1 || '0');
+            $('.cm_val1').text(data.cm_val1 || '0');
             
             
             // ========== 아날로그값 처리 (BCF 테이블에 값 표시) ==========
@@ -1583,142 +1663,297 @@ function updateOverview() {
 
 
 
+let now_page_code = "overview";   // now_page_code 오류 방지
+let pdListTable   = null;
+let selectedRow   = null;
+let currentPdCode = null;
 
+/* =====================================================
+   날짜 유틸
+===================================================== */
+function pad(n) { return n < 10 ? '0' + n : n; }
 
+function todayStr() {
+    const d = new Date();
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+}
 
+function weekAgoStr() {
+    const d = new Date();
+    d.setDate(d.getDate() - 7);
+    return d.getFullYear() + '-' + pad(d.getMonth() + 1) + '-' + pad(d.getDate());
+}
 
+/* =====================================================
+   모달 열기 / 닫기
+===================================================== */
+function openProdModal() {
+    document.getElementById('prodDataOverlay').classList.add('active');
+    document.getElementById('prodDataWrapper').classList.add('active');
+    document.getElementById('pdStartDate').value = weekAgoStr();
+    document.getElementById('pdEndDate').value   = todayStr();
+    if (!pdListTable) initListTable();
+    else fetchProdList();
+}
 
+function closeProdModal() {
+    document.getElementById('prodDataOverlay').classList.remove('active');
+    document.getElementById('prodDataWrapper').classList.remove('active');
+}
 
-//===== 처리품데이터 모달 =====
+/* =====================================================
+   드래그
+===================================================== */
+const wrapper    = document.getElementById('prodDataWrapper');
+const dragHandle = document.getElementById('pdModalHeader');
 
-//드래그
-let pdDragging = false, pdStartX, pdStartY, pdLeft, pdTop;
-$("#pdModalHeader").on("mousedown", function(e){
- if($(e.target).hasClass("pd-close-btn")) return;
- pdDragging = true;
- const offset = $("#prodDataModal").offset();
- pdStartX = e.pageX; pdStartY = e.pageY;
- pdLeft = offset.left; pdTop = offset.top;
- $("#prodDataModal").css("transform", "none");
- e.preventDefault();
+dragHandle.addEventListener('mousedown', function(e) {
+    const rect = wrapper.getBoundingClientRect();
+    wrapper.style.left      = rect.left + 'px';
+    wrapper.style.top       = rect.top  + 'px';
+    wrapper.style.transform = 'none';
+    let ox = e.clientX - rect.left, oy = e.clientY - rect.top;
+
+    function move(e) {
+        wrapper.style.left = (e.clientX - ox) + 'px';
+        wrapper.style.top  = (e.clientY - oy) + 'px';
+    }
+    function stop() {
+        window.removeEventListener('mousemove', move);
+        window.removeEventListener('mouseup',   stop);
+    }
+    window.addEventListener('mousemove', move);
+    window.addEventListener('mouseup',   stop);
 });
-$(document).on("mousemove", function(e){
- if(pdDragging) {
-     $("#prodDataModal").css({
-         left: (pdLeft + e.pageX - pdStartX) + "px",
-         top:  (pdTop  + e.pageY - pdStartY) + "px"
-     });
- }
-}).on("mouseup", function(){ pdDragging = false; });
 
-//버튼 클릭 - 모달 열기
-$("#btnProdData").on("click", function(){
- $("#prodDataOverlay").addClass("active");
- $("#prodDataModal").css({"left":"50%","top":"50%","transform":"translate(-50%,-50%)"});
- $("#prodDataModal").addClass("active");
-});
+/* =====================================================
+   폼 값 수집
+===================================================== */
+function collectFormData() {
+    const v = cls => {
+        const el = document.querySelector('.' + cls);
+        return el ? el.value : '';
+    };
 
-//닫기
-$("#pdCloseBtn").on("click", closeProdModal);
-$("#prodDataOverlay").on("click", closeProdModal);
+    const prefixes = ['main', 'upper', 'lower', 'belt'];
+    const result   = {};
 
-function closeProdModal(){
- $("#prodDataOverlay").removeClass("active");
- $("#prodDataModal").removeClass("active");
+    prefixes.forEach(p => {
+        result[p + '_auto_pattern_number'] = v(p + '_auto_pattern_number');
+        result[p + '_yn']                  = v(p + '_yn');
+        result[p + '_bcf_pattern_number']  = v(p + '_bcf_pattern_number');
+        result[p + '_tf_pattern_number']   = v(p + '_tf_pattern_number');
+        result[p + '_bcf_hogi']            = v(p + '_bcf_hogi');
+        result[p + '_tf_hogi']             = v(p + '_tf_hogi');
+        [1, 2, 3, 4].forEach(n    => result[p + '_spare_' + n] = v(p + '_spare_' + n));
+        [1, 2, 3, 4, 5].forEach(n => result[p + '_bigo_'  + n] = v(p + '_bigo_'  + n));
+    });
+
+    return result;
 }
 
-//저장
-function saveProdData(){
- const sections = ["pd1", "pd2", "pd3", "pd4"];
- const sectionNames = ["침탄로 본체", "유조 E/V 체인(상부)", "유조 E/V 체인(하부)", "입구 콘베어"];
-
- let dataList = [];
- sections.forEach(function(prefix, idx){
-     dataList.push({
-         section_name : sectionNames[idx],
-         cart_pattern : $("#" + prefix + "_cart_pattern").val(),
-         prod_yn      : $("#" + prefix + "_prod_yn").val(),
-         carb_pattern : $("#" + prefix + "_carb_pattern").val(),
-         temp_pattern : $("#" + prefix + "_temp_pattern").val(),
-         hogi         : $("#" + prefix + "_hogi").val(),
-         lot_no       : $("#" + prefix + "_lot_no").val(),
-         memo1        : $("#" + prefix + "_memo1").val(),
-         memo2        : $("#" + prefix + "_memo2").val(),
-         memo3        : $("#" + prefix + "_memo3").val(),
-         memo4        : $("#" + prefix + "_memo4").val()
-     });
- });
-
- $.ajax({
-     url: "/mibogear/productionManagement/workOrder/saveProdData",
-     type: "POST",
-     contentType: "application/json",
-     dataType: "json",
-     data: JSON.stringify({ prodDataList: dataList }),
-     success: function(result){
-         if(result.status === "success"){
-             alert("저장되었습니다.");
-         } else {
-             alert("저장 실패: " + result.message);
-         }
-     },
-     error: function(){ alert("저장 오류"); }
- });
+/* =====================================================
+   폼 바인딩 (불러오기)
+===================================================== */
+function bindFormData(d) {
+    Object.keys(d).forEach(key => {
+        const el = document.querySelector('.' + key);
+        if (el) el.value = d[key] || '';
+    });
 }
 
-//작업지시서 생성 (저장 후 출력창 오픈)
-function saveAndPrint(){
- const sections = ["pd1", "pd2", "pd3", "pd4"];
- const sectionNames = ["침탄로 본체", "유조 E/V 체인(상부)", "유조 E/V 체인(하부)", "입구 콘베어"];
-
- let dataList = [];
- sections.forEach(function(prefix, idx){
-     dataList.push({
-         section_name : sectionNames[idx],
-         cart_pattern : $("#" + prefix + "_cart_pattern").val(),
-         prod_yn      : $("#" + prefix + "_prod_yn").val(),
-         carb_pattern : $("#" + prefix + "_carb_pattern").val(),
-         temp_pattern : $("#" + prefix + "_temp_pattern").val(),
-         hogi         : $("#" + prefix + "_hogi").val(),
-         lot_no       : $("#" + prefix + "_lot_no").val(),
-         memo1        : $("#" + prefix + "_memo1").val(),
-         memo2        : $("#" + prefix + "_memo2").val(),
-         memo3        : $("#" + prefix + "_memo3").val(),
-         memo4        : $("#" + prefix + "_memo4").val()
-     });
- });
-
- $.ajax({
-     url: "/mibogear/productionManagement/workOrder/saveProdData",
-     type: "POST",
-     contentType: "application/json",
-     dataType: "json",
-     data: JSON.stringify({ prodDataList: dataList }),
-     success: function(result){
-         if(result.status === "success"){
-             // 저장된 wo_code들로 출력창 오픈
-             const woCodes = result.woCodes.join(",");
-             window.open(
-                 "/mibogear/productionManagement/workOrder/print?wo_codes=" + woCodes,
-                 "_blank",
-                 "width=900,height=700"
-             );
-         } else {
-             alert("저장 실패: " + result.message);
-         }
-     },
-     error: function(){ alert("저장 오류"); }
- });
+/* =====================================================
+   폼 초기화
+===================================================== */
+function resetForm() {
+    currentPdCode = null;
+    selectedRow   = null;
+    document.querySelectorAll('.pd-value input').forEach(el => el.value = '');
+    document.querySelectorAll('.pd-value select').forEach(el => el.selectedIndex = 0);
 }
 
+/* =====================================================
+   저장 (insert / update)
+===================================================== */
+function saveProdData() {
+    const data = collectFormData();
+    const mode = currentPdCode ? 'update' : 'insert';
+    if (currentPdCode) data.pd_code = currentPdCode;
 
+    $.ajax({
+        url: '/mibogear/prodData/save?mode=' + mode,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        dataType: 'json',
+        success: function(res) {
+            if (res.status === 'success') {
+                currentPdCode = res.pd_code;
+                alert('저장완료  LOT: ' + res.lot_no);
+                fetchProdList();
+            } else {
+                alert('오류: ' + res.message);
+            }
+        },
+        error: function(xhr) {
+            alert('저장 중 오류: ' + xhr.status);
+        }
+    });
+}
 
+/* =====================================================
+   작업지시서 생성
+===================================================== */
+function saveAndPrint() {
+    const data = collectFormData();
+    const mode = currentPdCode ? 'update' : 'insert';
+    if (currentPdCode) data.pd_code = currentPdCode;
 
+    $.ajax({
+        url: '/mibogear/prodData/save?mode=' + mode,
+        type: 'POST',
+        contentType: 'application/json',
+        data: JSON.stringify(data),
+        dataType: 'json',
+        success: function(res) {
+            if (res.status === 'success') {
+                currentPdCode = res.pd_code;
+                fetchProdList();
+                window.open('/mibogear/prodData/print?pd_code=' + res.pd_code, '_blank');
+            } else {
+                alert('오류: ' + res.message);
+            }
+        },
+        error: function(xhr) {
+            alert('저장 중 오류: ' + xhr.status);
+        }
+    });
+}
 
+/* =====================================================
+   리스트 조회
+===================================================== */
+function fetchProdList() {
+    const startDate = document.getElementById('pdStartDate').value;
+    const endDate   = document.getElementById('pdEndDate').value;
 
+    if (!startDate || !endDate) { alert('날짜를 입력하세요.'); return; }
 
+    if (pdListTable) {
+        pdListTable.setData(
+            '/mibogear/prodData/list',
+            { startDate: startDate, endDate: endDate },
+            'POST'
+        );
+        return;
+    }
+    initListTable(startDate, endDate);
+}
 
+/* =====================================================
+   타뷸레이터 초기화
+===================================================== */
+function initListTable(startDate, endDate) {
+    pdListTable = new Tabulator('#pdListTabulator', {
+        height: '560px',
+        layout: 'fitColumns',
+        selectable: 1,
+        placeholder: '조회된 데이터가 없습니다.',
+        ajaxURL: '/mibogear/prodData/list',
+        ajaxConfig: 'POST',
+        ajaxParams: { startDate: startDate, endDate: endDate },
+        ajaxResponse: function(url, params, res) {
+            return res.data;
+        },
+        columns: [
+            { title: 'No',        field: 'pd_code',       width: 55,  hozAlign: 'center' },
+            { title: 'LOT번호',   field: 'lot_no',        width: 110, hozAlign: 'center' },
+            { title: '침탄 호기', field: 'main_bcf_hogi', width: 80,  hozAlign: 'center' },
+            { title: '소려 호기', field: 'main_tf_hogi',  width: 80,  hozAlign: 'center' },
+            {
+                title: '상태', field: 'status', width: 70, hozAlign: 'center',
+                formatter: function(cell) {
+                    const v = cell.getValue();
+                    const c = v === 'DONE' ? '#37b24d' : '#f5a500';
+                    return '<span style="background:' + c + ';color:#fff;padding:2px 8px;'
+                         + 'border-radius:10px;font-size:11px;font-weight:bold;">' + v + '</span>';
+                }
+            },
+            { title: '등록일시', field: 'reg_date', width: 140, hozAlign: 'center' },
+            {
+                title: '작업지시서', field: 'print', width: 85, hozAlign: 'center',
+                formatter: function() {
+                    return '<button style="background:#339af0;color:white;border:none;'
+                         + 'padding:2px 8px;border-radius:3px;font-size:11px;cursor:pointer;">출력</button>';
+                },
+                cellClick: function(e, cell) {
+                    e.stopPropagation();
+                    const row = cell.getRow().getData();
+                    window.open('/mibogear/prodData/print?pd_code=' + row.pd_code, '_blank');
+                }
+            },
+        ],
+        rowClick: function(e, row) {
+            selectedRow = row.getData();
+        },
+        rowDblClick: function(e, row) {
+            selectedRow = row.getData();
+            loadSelected();
+        },
+    });
+}
 
+/* =====================================================
+   불러오기 (더블클릭 or 버튼)
+===================================================== */
+function loadSelected() {
+    if (!selectedRow) { alert('행을 선택하세요.'); return; }
+    currentPdCode = selectedRow.pd_code;
+
+    $.ajax({
+        url: '/mibogear/prodData/detail',
+        type: 'POST',
+        data: { pd_code: currentPdCode },
+        dataType: 'json',
+        success: function(res) {
+            if (res.status === 'success') {
+                bindFormData(res.data);
+            } else {
+                alert('불러오기 오류: ' + res.message);
+            }
+        },
+        error: function(xhr) {
+            alert('불러오기 중 오류: ' + xhr.status);
+        }
+    });
+}
+
+/* =====================================================
+   삭제
+===================================================== */
+function deleteSelected() {
+    if (!selectedRow) { alert('삭제할 행을 선택하세요.'); return; }
+    if (!confirm('LOT ' + selectedRow.lot_no + ' 를 삭제하시겠습니까?')) return;
+
+    $.ajax({
+        url: '/mibogear/prodData/delete',
+        type: 'POST',
+        data: { pd_code: selectedRow.pd_code },
+        dataType: 'json',
+        success: function(res) {
+            if (res.status === 'success') {
+                alert('삭제되었습니다.');
+                resetForm();
+                fetchProdList();
+            } else {
+                alert('삭제 오류: ' + res.message);
+            }
+        },
+        error: function(xhr) {
+            alert('삭제 중 오류: ' + xhr.status);
+        }
+    });
+}
 </script>
 
 	</body>

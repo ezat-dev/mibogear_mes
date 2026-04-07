@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports
+              http://jasperreports.sourceforge.net/xsd/jasperreport.xsd"
+              name="workOrder"
+              pageWidth="595" pageHeight="842"
+              columnWidth="535" leftMargin="30" rightMargin="30"
+              topMargin="20" bottomMargin="20"
+              language="groovy">
+
+    <!-- ===== 파라미터 정의 ===== -->
+    <parameter name="lot_no"                    class="java.lang.String"/>
+    <parameter name="reg_date"                  class="java.lang.String"/>
+    <parameter name="reg_user"                  class="java.lang.String"/>
+    <parameter name="BARCODE_IMAGE"             class="java.awt.Image"/>
+
+    <!-- main -->
+    <parameter name="main_auto_pattern_number"  class="java.lang.String"/>
+    <parameter name="main_yn"                   class="java.lang.String"/>
+    <parameter name="main_bcf_pattern_number"   class="java.lang.String"/>
+    <parameter name="main_tf_pattern_number"    class="java.lang.String"/>
+    <parameter name="main_bcf_hogi"             class="java.lang.String"/>
+    <parameter name="main_tf_hogi"              class="java.lang.String"/>
+    <parameter name="main_spare_1"              class="java.lang.String"/>
+    <parameter name="main_spare_2"              class="java.lang.String"/>
+    <parameter name="main_spare_3"              class="java.lang.String"/>
+    <parameter name="main_spare_4"              class="java.lang.String"/>
+    <parameter name="main_bigo_1"               class="java.lang.String"/>
+    <parameter name="main_bigo_2"               class="java.lang.String"/>
+    <parameter name="main_bigo_3"               class="java.lang.String"/>
+    <parameter name="main_bigo_4"               class="java.lang.String"/>
+    <parameter name="main_bigo_5"               class="java.lang.String"/>
+
+    <!-- upper -->
+    <parameter name="upper_auto_pattern_number" class="java.lang.String"/>
+    <parameter name="upper_yn"                  class="java.lang.String"/>
+    <parameter name="upper_bcf_pattern_number"  class="java.lang.String"/>
+    <parameter name="upper_tf_pattern_number"   class="java.lang.String"/>
+    <parameter name="upper_bcf_hogi"            class="java.lang.String"/>
+    <parameter name="upper_tf_hogi"             class="java.lang.String"/>
+    <parameter name="upper_spare_1"             class="java.lang.String"/>
+    <parameter name="upper_spare_2"             class="java.lang.String"/>
+    <parameter name="upper_spare_3"             class="java.lang.String"/>
+    <parameter name="upper_spare_4"             class="java.lang.String"/>
+    <parameter name="upper_bigo_1"              class="java.lang.String"/>
+    <parameter name="upper_bigo_2"              class="java.lang.String"/>
+    <parameter name="upper_bigo_3"              class="java.lang.String"/>
+    <parameter name="upper_bigo_4"              class="java.lang.String"/>
+    <parameter name="upper_bigo_5"              class="java.lang.String"/>
+
+    <!-- lower -->
+    <parameter name="lower_auto_pattern_number" class="java.lang.String"/>
+    <parameter name="lower_yn"                  class="java.lang.String"/>
+    <parameter name="lower_bcf_pattern_number"  class="java.lang.String"/>
+    <parameter name="lower_tf_pattern_number"   class="java.lang.String"/>
+    <parameter name="lower_bcf_hogi"            class="java.lang.String"/>
+    <parameter name="lower_tf_hogi"             class="java.lang.String"/>
+    <parameter name="lower_spare_1"             class="java.lang.String"/>
+    <parameter name="lower_spare_2"             class="java.lang.String"/>
+    <parameter name="lower_spare_3"             class="java.lang.String"/>
+    <parameter name="lower_spare_4"             class="java.lang.String"/>
+    <parameter name="lower_bigo_1"              class="java.lang.String"/>
+    <parameter name="lower_bigo_2"              class="java.lang.String"/>
+    <parameter name="lower_bigo_3"              class="java.lang.String"/>
+    <parameter name="lower_bigo_4"              class="java.lang.String"/>
+    <parameter name="lower_bigo_5"              class="java.lang.String"/>
+
+    <!-- belt -->
+    <parameter name="belt_auto_pattern_number"  class="java.lang.String"/>
+    <parameter name="belt_yn"                   class="java.lang.String"/>
+    <parameter name="belt_bcf_pattern_number"   class="java.lang.String"/>
+    <parameter name="belt_tf_pattern_number"    class="java.lang.String"/>
+    <parameter name="belt_bcf_hogi"             class="java.lang.String"/>
+    <parameter name="belt_tf_hogi"              class="java.lang.String"/>
+    <parameter name="belt_spare_1"              class="java.lang.String"/>
+    <parameter name="belt_spare_2"              class="java.lang.String"/>
+    <parameter name="belt_spare_3"              class="java.lang.String"/>
+    <parameter name="belt_spare_4"              class="java.lang.String"/>
+    <parameter name="belt_bigo_1"               class="java.lang.String"/>
+    <parameter name="belt_bigo_2"               class="java.lang.String"/>
+    <parameter name="belt_bigo_3"               class="java.lang.String"/>
+    <parameter name="belt_bigo_4"               class="java.lang.String"/>
+    <parameter name="belt_bigo_5"               class="java.lang.String"/>
+
+    <queryString><![CDATA[]]></queryString>
+
+    <title>
+        <band height="100" splitType="Stretch">
+
+            <!-- 제목 -->
+            <staticText>
+                <reportElement x="0" y="0" width="340" height="30"/>
+                <textElement verticalAlignment="Middle">
+                    <font size="18" isBold="true" pdfFontName="HYGoThic-Medium"
+                          pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/>
+                </textElement>
+                <text><![CDATA[작  업  지  시  서]]></text>
+            </staticText>
+
+            <!-- 바코드 이미지 (상단 우측) -->
+            <image scaleImage="RetainShape" hAlign="Right">
+                <reportElement x="360" y="0" width="175" height="60"/>
+                <imageExpression><![CDATA[$P{BARCODE_IMAGE}]]></imageExpression>
+            </image>
+
+            <!-- LOT번호 텍스트 (바코드 아래) -->
+            <textField>
+                <reportElement x="360" y="62" width="175" height="16"/>
+                <textElement textAlignment="Center">
+                    <font size="10" isBold="true" pdfFontName="HYGoThic-Medium"
+                          pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA["LOT: " + $P{lot_no}]]></textFieldExpression>
+            </textField>
+
+            <!-- 등록일 / 작성자 -->
+            <textField>
+                <reportElement x="0" y="34" width="340" height="16"/>
+                <textElement>
+                    <font size="9" pdfFontName="HYGoThic-Medium"
+                          pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/>
+                </textElement>
+                <textFieldExpression><![CDATA["등록일시 : " + $P{reg_date} + "    작성자 : " + $P{reg_user}]]></textFieldExpression>
+            </textField>
+
+            <!-- 구분선 -->
+            <line>
+                <reportElement x="0" y="98" width="535" height="1"/>
+                <graphicElement>
+                    <pen lineWidth="1.5"/>
+                </graphicElement>
+            </line>
+        </band>
+    </title>
+
+    <detail>
+        <band height="580" splitType="Stretch">
+
+            <!-- ===== 섹션 헤더 공통 스타일 정의용 헬퍼 ===== -->
+
+            <!-- ① 침탄로 본체 처리품 헤더 -->
+            <staticText>
+                <reportElement x="0" y="6" width="535" height="18"
+                               backcolor="#4A90D9" mode="Opaque"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="10" isBold="true" textColor="white"
+                          pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/>
+                </textElement>
+                <text><![CDATA[침탄로 본체 처리품]]></text>
+            </staticText>
+
+            <!-- 침탄로 본체 - 라벨행 -->
+            <staticText><reportElement x="0"   y="26" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[자동대차 패턴번호]]></text></staticText>
+            <staticText><reportElement x="89"  y="26" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[처리품 유/무]]></text></staticText>
+            <staticText><reportElement x="178" y="26" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[침탄로 패턴번호]]></text></staticText>
+            <staticText><reportElement x="267" y="26" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[소려로 패턴번호]]></text></staticText>
+            <staticText><reportElement x="356" y="26" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[침탄로 호기]]></text></staticText>
+            <staticText><reportElement x="445" y="26" width="90" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[소려로 호기]]></text></staticText>
+
+            <!-- 침탄로 본체 - 값행 -->
+            <textField><reportElement x="0"   y="40" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{main_auto_pattern_number}]]></textFieldExpression></textField>
+            <textField><reportElement x="89"  y="40" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{main_yn}]]></textFieldExpression></textField>
+            <textField><reportElement x="178" y="40" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{main_bcf_pattern_number}]]></textFieldExpression></textField>
+            <textField><reportElement x="267" y="40" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{main_tf_pattern_number}]]></textFieldExpression></textField>
+            <textField><reportElement x="356" y="40" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{main_bcf_hogi}]]></textFieldExpression></textField>
+            <textField><reportElement x="445" y="40" width="90" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{main_tf_hogi}]]></textFieldExpression></textField>
+
+            <!-- 침탄로 본체 - 스페어/비고 -->
+            <staticText><reportElement x="0" y="56" width="535" height="14" backcolor="#fffde7" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Left" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[  스페어/비고]]></text></staticText>
+            <textField isStretchWithOverflow="true"><reportElement x="0" y="70" width="535" height="14"/><box><pen lineWidth="0.5"/></box><textElement verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement>
+                <textFieldExpression><![CDATA["  S1:" + ($P{main_spare_1} != null ? $P{main_spare_1} : "") + "  S2:" + ($P{main_spare_2} != null ? $P{main_spare_2} : "") + "  S3:" + ($P{main_spare_3} != null ? $P{main_spare_3} : "") + "  S4:" + ($P{main_spare_4} != null ? $P{main_spare_4} : "")]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true"><reportElement x="0" y="84" width="535" height="14"/><box><pen lineWidth="0.5"/></box><textElement verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement>
+                <textFieldExpression><![CDATA["  비1:" + ($P{main_bigo_1} != null ? $P{main_bigo_1} : "") + "  비2:" + ($P{main_bigo_2} != null ? $P{main_bigo_2} : "") + "  비3:" + ($P{main_bigo_3} != null ? $P{main_bigo_3} : "") + "  비4:" + ($P{main_bigo_4} != null ? $P{main_bigo_4} : "") + "  비5:" + ($P{main_bigo_5} != null ? $P{main_bigo_5} : "")]]></textFieldExpression>
+            </textField>
+
+            <!-- ② 유조 E/V 체인 (상부) -->
+            <staticText>
+                <reportElement x="0" y="106" width="535" height="18"
+                               backcolor="#00BCD4" mode="Opaque"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="10" isBold="true" textColor="white"
+                          pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/>
+                </textElement>
+                <text><![CDATA[유조 E/V 체인 (상부) 처리품]]></text>
+            </staticText>
+            <staticText><reportElement x="0"   y="126" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[자동대차 패턴번호]]></text></staticText>
+            <staticText><reportElement x="89"  y="126" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[처리품 유/무]]></text></staticText>
+            <staticText><reportElement x="178" y="126" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[침탄로 패턴번호]]></text></staticText>
+            <staticText><reportElement x="267" y="126" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[소려로 패턴번호]]></text></staticText>
+            <staticText><reportElement x="356" y="126" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[침탄로 호기]]></text></staticText>
+            <staticText><reportElement x="445" y="126" width="90" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[소려로 호기]]></text></staticText>
+            <textField><reportElement x="0"   y="140" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{upper_auto_pattern_number}]]></textFieldExpression></textField>
+            <textField><reportElement x="89"  y="140" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{upper_yn}]]></textFieldExpression></textField>
+            <textField><reportElement x="178" y="140" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{upper_bcf_pattern_number}]]></textFieldExpression></textField>
+            <textField><reportElement x="267" y="140" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{upper_tf_pattern_number}]]></textFieldExpression></textField>
+            <textField><reportElement x="356" y="140" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{upper_bcf_hogi}]]></textFieldExpression></textField>
+            <textField><reportElement x="445" y="140" width="90" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{upper_tf_hogi}]]></textFieldExpression></textField>
+            <staticText><reportElement x="0" y="156" width="535" height="14" backcolor="#fffde7" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Left" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[  스페어/비고]]></text></staticText>
+            <textField isStretchWithOverflow="true"><reportElement x="0" y="170" width="535" height="14"/><box><pen lineWidth="0.5"/></box><textElement verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement>
+                <textFieldExpression><![CDATA["  S1:" + ($P{upper_spare_1} != null ? $P{upper_spare_1} : "") + "  S2:" + ($P{upper_spare_2} != null ? $P{upper_spare_2} : "") + "  S3:" + ($P{upper_spare_3} != null ? $P{upper_spare_3} : "") + "  S4:" + ($P{upper_spare_4} != null ? $P{upper_spare_4} : "")]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true"><reportElement x="0" y="184" width="535" height="14"/><box><pen lineWidth="0.5"/></box><textElement verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement>
+                <textFieldExpression><![CDATA["  비1:" + ($P{upper_bigo_1} != null ? $P{upper_bigo_1} : "") + "  비2:" + ($P{upper_bigo_2} != null ? $P{upper_bigo_2} : "") + "  비3:" + ($P{upper_bigo_3} != null ? $P{upper_bigo_3} : "") + "  비4:" + ($P{upper_bigo_4} != null ? $P{upper_bigo_4} : "") + "  비5:" + ($P{upper_bigo_5} != null ? $P{upper_bigo_5} : "")]]></textFieldExpression>
+            </textField>
+
+            <!-- ③ 유조 E/V 체인 (하부) -->
+            <staticText>
+                <reportElement x="0" y="206" width="535" height="18"
+                               backcolor="#00BCD4" mode="Opaque"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="10" isBold="true" textColor="white"
+                          pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/>
+                </textElement>
+                <text><![CDATA[유조 E/V 체인 (하부) 처리품]]></text>
+            </staticText>
+            <staticText><reportElement x="0"   y="226" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[자동대차 패턴번호]]></text></staticText>
+            <staticText><reportElement x="89"  y="226" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[처리품 유/무]]></text></staticText>
+            <staticText><reportElement x="178" y="226" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[침탄로 패턴번호]]></text></staticText>
+            <staticText><reportElement x="267" y="226" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[소려로 패턴번호]]></text></staticText>
+            <staticText><reportElement x="356" y="226" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[침탄로 호기]]></text></staticText>
+            <staticText><reportElement x="445" y="226" width="90" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[소려로 호기]]></text></staticText>
+            <textField><reportElement x="0"   y="240" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{lower_auto_pattern_number}]]></textFieldExpression></textField>
+            <textField><reportElement x="89"  y="240" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{lower_yn}]]></textFieldExpression></textField>
+            <textField><reportElement x="178" y="240" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{lower_bcf_pattern_number}]]></textFieldExpression></textField>
+            <textField><reportElement x="267" y="240" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{lower_tf_pattern_number}]]></textFieldExpression></textField>
+            <textField><reportElement x="356" y="240" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{lower_bcf_hogi}]]></textFieldExpression></textField>
+            <textField><reportElement x="445" y="240" width="90" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{lower_tf_hogi}]]></textFieldExpression></textField>
+            <staticText><reportElement x="0" y="256" width="535" height="14" backcolor="#fffde7" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Left" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[  스페어/비고]]></text></staticText>
+            <textField isStretchWithOverflow="true"><reportElement x="0" y="270" width="535" height="14"/><box><pen lineWidth="0.5"/></box><textElement verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement>
+                <textFieldExpression><![CDATA["  S1:" + ($P{lower_spare_1} != null ? $P{lower_spare_1} : "") + "  S2:" + ($P{lower_spare_2} != null ? $P{lower_spare_2} : "") + "  S3:" + ($P{lower_spare_3} != null ? $P{lower_spare_3} : "") + "  S4:" + ($P{lower_spare_4} != null ? $P{lower_spare_4} : "")]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true"><reportElement x="0" y="284" width="535" height="14"/><box><pen lineWidth="0.5"/></box><textElement verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement>
+                <textFieldExpression><![CDATA["  비1:" + ($P{lower_bigo_1} != null ? $P{lower_bigo_1} : "") + "  비2:" + ($P{lower_bigo_2} != null ? $P{lower_bigo_2} : "") + "  비3:" + ($P{lower_bigo_3} != null ? $P{lower_bigo_3} : "") + "  비4:" + ($P{lower_bigo_4} != null ? $P{lower_bigo_4} : "") + "  비5:" + ($P{lower_bigo_5} != null ? $P{lower_bigo_5} : "")]]></textFieldExpression>
+            </textField>
+
+            <!-- ④ 입구 콘베어 -->
+            <staticText>
+                <reportElement x="0" y="306" width="535" height="18"
+                               backcolor="#4A90D9" mode="Opaque"/>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font size="10" isBold="true" textColor="white"
+                          pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/>
+                </textElement>
+                <text><![CDATA[입구 콘베어 처리품]]></text>
+            </staticText>
+            <staticText><reportElement x="0"   y="326" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[자동대차 패턴번호]]></text></staticText>
+            <staticText><reportElement x="89"  y="326" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[처리품 유/무]]></text></staticText>
+            <staticText><reportElement x="178" y="326" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[침탄로 패턴번호]]></text></staticText>
+            <staticText><reportElement x="267" y="326" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[소려로 패턴번호]]></text></staticText>
+            <staticText><reportElement x="356" y="326" width="89" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[침탄로 호기]]></text></staticText>
+            <staticText><reportElement x="445" y="326" width="90" height="14" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[소려로 호기]]></text></staticText>
+            <textField><reportElement x="0"   y="340" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{belt_auto_pattern_number}]]></textFieldExpression></textField>
+            <textField><reportElement x="89"  y="340" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{belt_yn}]]></textFieldExpression></textField>
+            <textField><reportElement x="178" y="340" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{belt_bcf_pattern_number}]]></textFieldExpression></textField>
+            <textField><reportElement x="267" y="340" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{belt_tf_pattern_number}]]></textFieldExpression></textField>
+            <textField><reportElement x="356" y="340" width="89" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{belt_bcf_hogi}]]></textFieldExpression></textField>
+            <textField><reportElement x="445" y="340" width="90" height="14"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><textFieldExpression><![CDATA[$P{belt_tf_hogi}]]></textFieldExpression></textField>
+            <staticText><reportElement x="0" y="356" width="535" height="14" backcolor="#fffde7" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Left" verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[  스페어/비고]]></text></staticText>
+            <textField isStretchWithOverflow="true"><reportElement x="0" y="370" width="535" height="14"/><box><pen lineWidth="0.5"/></box><textElement verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement>
+                <textFieldExpression><![CDATA["  S1:" + ($P{belt_spare_1} != null ? $P{belt_spare_1} : "") + "  S2:" + ($P{belt_spare_2} != null ? $P{belt_spare_2} : "") + "  S3:" + ($P{belt_spare_3} != null ? $P{belt_spare_3} : "") + "  S4:" + ($P{belt_spare_4} != null ? $P{belt_spare_4} : "")]]></textFieldExpression>
+            </textField>
+            <textField isStretchWithOverflow="true"><reportElement x="0" y="384" width="535" height="14"/><box><pen lineWidth="0.5"/></box><textElement verticalAlignment="Middle"><font size="8" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement>
+                <textFieldExpression><![CDATA["  비1:" + ($P{belt_bigo_1} != null ? $P{belt_bigo_1} : "") + "  비2:" + ($P{belt_bigo_2} != null ? $P{belt_bigo_2} : "") + "  비3:" + ($P{belt_bigo_3} != null ? $P{belt_bigo_3} : "") + "  비4:" + ($P{belt_bigo_4} != null ? $P{belt_bigo_4} : "") + "  비5:" + ($P{belt_bigo_5} != null ? $P{belt_bigo_5} : "")]]></textFieldExpression>
+            </textField>
+
+            <!-- 하단 서명란 -->
+            <line><reportElement x="0" y="420" width="535" height="1"/><graphicElement><pen lineWidth="0.5"/></graphicElement></line>
+            <staticText><reportElement x="0"   y="426" width="178" height="20" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="9" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[작성자 확인]]></text></staticText>
+            <staticText><reportElement x="178" y="426" width="178" height="20" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="9" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[팀장 확인]]></text></staticText>
+            <staticText><reportElement x="356" y="426" width="179" height="20" backcolor="#f0f0f0" mode="Opaque"/><box><pen lineWidth="0.5"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font size="9" isBold="true" pdfFontName="HYGoThic-Medium" pdfEncoding="UniKS-UCS2-H" isPdfEmbedded="false"/></textElement><text><![CDATA[공장장 확인]]></text></staticText>
+            <staticText><reportElement x="0"   y="446" width="178" height="30"/><box><pen lineWidth="0.5"/></box><textElement/><text><![CDATA[]]></text></staticText>
+            <staticText><reportElement x="178" y="446" width="178" height="30"/><box><pen lineWidth="0.5"/></box><textElement/><text><![CDATA[]]></text></staticText>
+            <staticText><reportElement x="356" y="446" width="179" height="30"/><box><pen lineWidth="0.5"/></box><textElement/><text><![CDATA[]]></text></staticText>
+
+        </band>
+    </detail>
+
+</jasperReport>
