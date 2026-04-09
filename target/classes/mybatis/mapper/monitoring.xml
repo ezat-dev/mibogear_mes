@@ -83,18 +83,20 @@ ORDER BY aa.regtime DESC;
 	
 	
 	
+<select id="getTempList" parameterType="Monitoring" resultType="Monitoring">
+    SELECT * FROM tb_trend_temp AS tt
+    LEFT JOIN tb_trend_memo AS tm
+    ON LEFT(tt.date, 16) = tm.date
+    WHERE 1=1
+    <if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
+        AND tt.date BETWEEN STR_TO_DATE(#{startDate}, '%Y-%m-%d %H:%i')
+                        AND STR_TO_DATE(CONCAT(#{endDate}, ':59'), '%Y-%m-%d %H:%i:%s')
+    </if>
+    ORDER BY tt.date ASC
+</select>
 	
 	
-		<select id="getTempList" parameterType="Monitoring" resultType="Monitoring">
-SELECT * FROM tb_trend_temp AS tt
-LEFT JOIN tb_trend_memo AS tm
-ON LEFT(tt.date, 16) = tm.date
-WHERE 1=1
-<if test="startDate != null and startDate != '' and endDate != null and endDate != ''">
-AND tt.date between #{startDate} and #{endDate}
-</if>
-ORDER BY tt.date ASC;
-	</select>
+	
 	<!-- 알람 랭킹 -->
 		<select id="getAlarmRankingList" parameterType="Monitoring" resultType="Monitoring">
 SELECT

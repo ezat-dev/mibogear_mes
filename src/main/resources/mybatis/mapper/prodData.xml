@@ -10,8 +10,8 @@
 	        lot_no,
 	        main_bcf_hogi,
 	        main_tf_hogi,
+	        pdf_path,        <!-- ← 추가 -->
 	        status,
-	        pdf_path,   /* 추가 */
 	        DATE_FORMAT(reg_date, '%Y-%m-%d %H:%i') AS reg_date
 	    FROM TB_PROD_DATA
 	    WHERE reg_date BETWEEN CONCAT(#{startDate}, ' 00:00:00')
@@ -135,16 +135,16 @@
             belt_bigo_5  = #{belt_bigo_5}
         WHERE pd_code = #{pd_code}
     </update>
+    
+    <update id="updatePdfPath" parameterType="ProdData">
+	    UPDATE TB_PROD_DATA
+	       SET pdf_path = #{pdf_path}
+	     WHERE pd_code  = #{pd_code}
+	</update>
 
     <!-- DELETE -->
     <delete id="deleteProdData" parameterType="int">
         DELETE FROM TB_PROD_DATA WHERE pd_code = #{pd_code}
     </delete>
-    
-    <update id="updatePdfPath" parameterType="ProdData">
-	    UPDATE TB_PROD_DATA
-	       SET pdf_path = #{pdf_path}
-	     WHERE pd_code = #{pd_code}
-	</update>
 
 </mapper>

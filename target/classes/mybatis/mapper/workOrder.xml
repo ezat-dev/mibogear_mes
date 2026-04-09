@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="workOrder">
+
+    <!-- ── 리스트 조회 -->
+   <select id="getWorkOrderList" parameterType="map" resultType="hashmap">
+	    SELECT
+	        w.wo_code,
+	        w.lot_no,
+	        w.ord_code,
+	        w.corp_name,
+	        w.prod_name,
+	        w.prod_no,
+	        w.prod_gyu,
+	        w.prod_jai,
+	        w.ord_su,
+	        w.ord_lot,
+	        w.bcf_hogi,
+	        w.tf_hogi,
+	        w.bcf_cycle_no,
+	        w.tf_cycle_no,
+	        w.main_auto_pattern_number,
+	        w.main_yn,
+	        w.main_bcf_pattern_number,
+	        w.main_tf_pattern_number,
+	        w.main_bcf_hogi,
+	        w.main_tf_hogi,
+	        w.main_spare_1, w.main_spare_2, w.main_spare_3, w.main_spare_4,
+	        w.main_bigo_1,  w.main_bigo_2,  w.main_bigo_3,  w.main_bigo_4, w.main_bigo_5,
+	        w.status,
+	        w.reg_user,
+	        w.pdf_path,
+	        DATE_FORMAT(w.reg_date, '%Y-%m-%d %H:%i') AS reg_date,
+	        IFNULL(i.ord_su, 0) AS ipgo_su,
+	        IFNULL(
+	            (SELECT SUM(och_su) FROM tb_chulgo c WHERE c.ord_code = w.ord_code)
+	        , 0) AS chulgo_su,
+	        IFNULL(i.ord_su, 0) -
+	        IFNULL(
+	            (SELECT SUM(och_su) FROM tb_chulgo c WHERE c.ord_code = w.ord_code)
+	        , 0) AS jan_su
+	    FROM tb_work_order w
+	    LEFT JOIN tb_ipgo i ON i.ord_code = w.ord_code
+	    WHERE 1=1
+	    <if test="sdate != null and sdate != ''">
+	        AND DATE(w.reg_date) &gt;= #{sdate}
+	    </if>
+	    <if test="edate != null and edate != ''">
+	        AND DATE(w.reg_date) &lt;= #{edate}
+	    </if>
+	    <if test="lot_no != null and lot_no != ''">
+	        AND w.lot_no LIKE CONCAT('%', #{lot_no}, '%')
+	    </if>
+	    <if test="prod_name != null and prod_name != ''">
+	        AND w.prod_name LIKE CONCAT('%', #{prod_name}, '%')
+	    </if>
+	    <if test="corp_name != null and corp_name != ''">
+	        AND w.corp_name LIKE CONCAT('%', #{corp_name}, '%')
+	    </if>
+	    ORDER BY w.wo_code DESC
+	</select>
+
+    <!-- ── 상세 조회 -->
+    <select id="getWorkOrderDetail" parameterType="int" resultType="WorkOrder">
+        SELECT * FROM tb_work_order WHERE wo_code = #{wo_code}
+    </select>
+
+    <!-- ── 오늘 LOT 마지막 순번 -->
+    <select id="getTodayLastLotSeq" parameterType="String" resultType="String">
+	    SELECT IFNULL(MAX(lot_no), '')
+	    FROM tb_work_order
+	    WHERE lot_no LIKE CONCAT(#{prefix}, '%')
+	</select>
+
+    <!-- ── INSERT -->
+    <insert id="insertWorkOrder" parameterType="WorkOrder"
+            useGeneratedKeys="true" keyProperty="wo_code">
+        INSERT INTO tb_work_order (
+            lot_no,
+            ord_code, corp_name, prod_name, prod_no, prod_gyu, prod_jai, ord_su, ord_lot,
+            auto_pattern, bcf_cycle_no, tf_cycle_no, bcf_hogi, tf_hogi,
+            bcf_time_fanup, bcf_time_spare1, bcf_time_spare2, bcf_time_chim,
+            bcf_time_diff,  bcf_time_gang,  bcf_time_spare3, bcf_time_que, bcf_time_drain,
+            bcf_temp_fanup, bcf_temp_spare1, bcf_temp_spare2, bcf_temp_chim,
+            bcf_temp_diff,  bcf_temp_gang,  bcf_temp_spare3, bcf_temp_que, bcf_temp_drain,
+            bcf_cp_fanup, bcf_cp_spare1, bcf_cp_spare2, bcf_cp_chim, bcf_cp_diff, bcf_cp_gang,
+            tf_time_spare1, tf_time_spare2, tf_time_spare3, tf_time_spare4,
+            tf_time_dry,    tf_time_fanup,  tf_time_n2,     tf_time_tem,  tf_time_cool,
+            tf_temp_spare1, tf_temp_spare2, tf_temp_spare3, tf_temp_spare4,
+            tf_temp_dry,    tf_temp_fanup,  tf_temp_n2,     tf_temp_tem,  tf_temp_cool,
+            main_auto_pattern_number, main_yn,
+            main_bcf_pattern_number, main_tf_pattern_number,
+            main_bcf_hogi, main_tf_hogi,
+            main_spare_1, main_spare_2, main_spare_3, main_spare_4,
+            main_bigo_1,  main_bigo_2,  main_bigo_3,  main_bigo_4,  main_bigo_5,
+            status, reg_date, reg_user
+        ) VALUES (
+            #{lot_no},
+            #{ord_code}, #{corp_name}, #{prod_name}, #{prod_no}, #{prod_gyu}, #{prod_jai}, #{ord_su}, #{ord_lot},
+            #{auto_pattern}, #{bcf_cycle_no}, #{tf_cycle_no}, #{bcf_hogi}, #{tf_hogi},
+            #{bcf_time_fanup}, #{bcf_time_spare1}, #{bcf_time_spare2}, #{bcf_time_chim},
+            #{bcf_time_diff},  #{bcf_time_gang},  #{bcf_time_spare3}, #{bcf_time_que}, #{bcf_time_drain},
+            #{bcf_temp_fanup}, #{bcf_temp_spare1}, #{bcf_temp_spare2}, #{bcf_temp_chim},
+            #{bcf_temp_diff},  #{bcf_temp_gang},  #{bcf_temp_spare3}, #{bcf_temp_que}, #{bcf_temp_drain},
+            #{bcf_cp_fanup}, #{bcf_cp_spare1}, #{bcf_cp_spare2}, #{bcf_cp_chim}, #{bcf_cp_diff}, #{bcf_cp_gang},
+            #{tf_time_spare1}, #{tf_time_spare2}, #{tf_time_spare3}, #{tf_time_spare4},
+            #{tf_time_dry},    #{tf_time_fanup},  #{tf_time_n2},     #{tf_time_tem},  #{tf_time_cool},
+            #{tf_temp_spare1}, #{tf_temp_spare2}, #{tf_temp_spare3}, #{tf_temp_spare4},
+            #{tf_temp_dry},    #{tf_temp_fanup},  #{tf_temp_n2},     #{tf_temp_tem},  #{tf_temp_cool},
+            #{main_auto_pattern_number}, #{main_yn},
+            #{main_bcf_pattern_number}, #{main_tf_pattern_number},
+            #{main_bcf_hogi}, #{main_tf_hogi},
+            #{main_spare_1}, #{main_spare_2}, #{main_spare_3}, #{main_spare_4},
+            #{main_bigo_1},  #{main_bigo_2},  #{main_bigo_3},  #{main_bigo_4},  #{main_bigo_5},
+            'WAIT', NOW(), #{reg_user}
+        )
+    </insert>
+
+    <!-- ── UPDATE -->
+    <update id="updateWorkOrder" parameterType="WorkOrder">
+        UPDATE tb_work_order SET
+            ord_code  = #{ord_code},
+            corp_name = #{corp_name},
+            prod_name = #{prod_name},
+            prod_no   = #{prod_no},
+            prod_gyu  = #{prod_gyu},
+            prod_jai  = #{prod_jai},
+            ord_su    = #{ord_su},
+            ord_lot   = #{ord_lot},
+            auto_pattern = #{auto_pattern},
+            bcf_cycle_no = #{bcf_cycle_no},
+            tf_cycle_no  = #{tf_cycle_no},
+            bcf_hogi     = #{bcf_hogi},
+            tf_hogi      = #{tf_hogi},
+            bcf_time_fanup  = #{bcf_time_fanup},
+            bcf_time_spare1 = #{bcf_time_spare1},
+            bcf_time_spare2 = #{bcf_time_spare2},
+            bcf_time_chim   = #{bcf_time_chim},
+            bcf_time_diff   = #{bcf_time_diff},
+            bcf_time_gang   = #{bcf_time_gang},
+            bcf_time_spare3 = #{bcf_time_spare3},
+            bcf_time_que    = #{bcf_time_que},
+            bcf_time_drain  = #{bcf_time_drain},
+            bcf_temp_fanup  = #{bcf_temp_fanup},
+            bcf_temp_spare1 = #{bcf_temp_spare1},
+            bcf_temp_spare2 = #{bcf_temp_spare2},
+            bcf_temp_chim   = #{bcf_temp_chim},
+            bcf_temp_diff   = #{bcf_temp_diff},
+            bcf_temp_gang   = #{bcf_temp_gang},
+            bcf_temp_spare3 = #{bcf_temp_spare3},
+            bcf_temp_que    = #{bcf_temp_que},
+            bcf_temp_drain  = #{bcf_temp_drain},
+            bcf_cp_fanup  = #{bcf_cp_fanup},
+            bcf_cp_spare1 = #{bcf_cp_spare1},
+            bcf_cp_spare2 = #{bcf_cp_spare2},
+            bcf_cp_chim   = #{bcf_cp_chim},
+            bcf_cp_diff   = #{bcf_cp_diff},
+            bcf_cp_gang   = #{bcf_cp_gang},
+            tf_time_spare1 = #{tf_time_spare1},
+            tf_time_spare2 = #{tf_time_spare2},
+            tf_time_spare3 = #{tf_time_spare3},
+            tf_time_spare4 = #{tf_time_spare4},
+            tf_time_dry    = #{tf_time_dry},
+            tf_time_fanup  = #{tf_time_fanup},
+            tf_time_n2     = #{tf_time_n2},
+            tf_time_tem    = #{tf_time_tem},
+            tf_time_cool   = #{tf_time_cool},
+            tf_temp_spare1 = #{tf_temp_spare1},
+            tf_temp_spare2 = #{tf_temp_spare2},
+            tf_temp_spare3 = #{tf_temp_spare3},
+            tf_temp_spare4 = #{tf_temp_spare4},
+            tf_temp_dry    = #{tf_temp_dry},
+            tf_temp_fanup  = #{tf_temp_fanup},
+            tf_temp_n2     = #{tf_temp_n2},
+            tf_temp_tem    = #{tf_temp_tem},
+            tf_temp_cool   = #{tf_temp_cool},
+            main_auto_pattern_number = #{main_auto_pattern_number},
+            main_yn                  = #{main_yn},
+            main_bcf_pattern_number  = #{main_bcf_pattern_number},
+            main_tf_pattern_number   = #{main_tf_pattern_number},
+            main_bcf_hogi            = #{main_bcf_hogi},
+            main_tf_hogi             = #{main_tf_hogi},
+            main_spare_1 = #{main_spare_1}, main_spare_2 = #{main_spare_2},
+            main_spare_3 = #{main_spare_3}, main_spare_4 = #{main_spare_4},
+            main_bigo_1  = #{main_bigo_1},  main_bigo_2  = #{main_bigo_2},
+            main_bigo_3  = #{main_bigo_3},  main_bigo_4  = #{main_bigo_4},
+            main_bigo_5  = #{main_bigo_5},
+            reg_user = #{reg_user}
+        WHERE wo_code = #{wo_code}
+    </update>
+
+    <!-- ── pdf_path 업데이트 -->
+    <update id="updatePdfPath" parameterType="WorkOrder">
+        UPDATE tb_work_order SET pdf_path = #{pdf_path} WHERE wo_code = #{wo_code}
+    </update>
+
+    <!-- ── DELETE -->
+    <delete id="deleteWorkOrder" parameterType="int">
+        DELETE FROM tb_work_order WHERE wo_code = #{wo_code}
+    </delete>
+
+</mapper>

@@ -8,52 +8,80 @@ import javax.annotation.Resource;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
-import com.mibogear.domain.Chulgo;
-import com.mibogear.domain.DroppedGoods;
-import com.mibogear.domain.Ipgo;
-import com.mibogear.domain.Monitoring;
-import com.mibogear.domain.ProdData;
-import com.mibogear.domain.ProductManage;
+import com.mibogear.domain.PatternRequest;
+import com.mibogear.domain.WorkOrder;
 
 @Repository
 public class ProdDataDAOImpl implements ProdDataDAO {
-	
-	@Resource(name="session")
-	private SqlSession sqlSession;
-	
-	@Override
-    public List<Map<String, Object>> getProdDataList(Map<String, Object> params) {
-        return sqlSession.selectList("prodData.getProdDataList", params);
-    }
+
+    @Resource(name = "session")
+    private SqlSession sqlSession;
 
     @Override
-    public ProdData getProdDataDetail(int pd_code) {
-        return sqlSession.selectOne("prodData.getProdDataDetail", pd_code);
+    public List<Map<String, Object>> getWorkOrderList(Map<String, Object> params) {
+        return sqlSession.selectList("workOrder.getWorkOrderList", params);
     }
-
+ 
     @Override
-    public int getTodayLotMaxSeq() {
-        Integer result = sqlSession.selectOne("prodData.getTodayLotMaxSeq");
-        return result != null ? result : 0;
+    public WorkOrder getWorkOrderDetail(int wo_code) {
+        return sqlSession.selectOne("workOrder.getWorkOrderDetail", wo_code);
     }
-
+ 
+    public String getTodayLastLotSeq(String prefix) {
+        return sqlSession.selectOne("workOrder.getTodayLastLotSeq", prefix);
+    }
+ 
     @Override
-    public void insertProdData(ProdData prodData) {
-        sqlSession.insert("prodData.insertProdData", prodData);
+    public void insertWorkOrder(WorkOrder workOrder) {
+        sqlSession.insert("workOrder.insertWorkOrder", workOrder);
     }
-
+ 
     @Override
-    public void updateProdData(ProdData prodData) {
-        sqlSession.update("prodData.updateProdData", prodData);
+    public void updateWorkOrder(WorkOrder workOrder) {
+        sqlSession.update("workOrder.updateWorkOrder", workOrder);
     }
-
+ 
     @Override
-    public void deleteProdData(int pd_code) {
-        sqlSession.delete("prodData.deleteProdData", pd_code);
+    public void updatePdfPath(WorkOrder workOrder) {
+        sqlSession.update("workOrder.updatePdfPath", workOrder);
     }
-	
+ 
     @Override
-    public void updatePdfPath(ProdData prodData) {
-        sqlSession.update("prodData.updatePdfPath", prodData);
+    public void deleteWorkOrder(int wo_code) {
+        sqlSession.delete("workOrder.deleteWorkOrder", wo_code);
     }
+    
+    @Override
+    public PatternRequest getPattern() {
+        return sqlSession.selectOne("patternRequest.getPattern");
+    }
+ 
+    @Override
+    public int getPatternStatus() {
+        Integer status = sqlSession.selectOne("patternRequest.getPatternStatus");
+        return status != null ? status : 0;
+    }
+ 
+    @Override
+    public void requestPattern(PatternRequest patternRequest) {
+        sqlSession.update("patternRequest.requestPattern", patternRequest);
+    }
+ 
+    @Override
+    public void completePattern() {
+        sqlSession.update("patternRequest.completePattern");
+    }
+ 
+    @Override
+    public void resetPattern() {
+        sqlSession.update("patternRequest.resetPattern");
+    }
+    
+    
+    
+    
+    
+    
+    
+    
 }

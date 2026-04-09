@@ -338,6 +338,7 @@
 </div>
 
 <script>
+let now_page_code = "a05";
 /* ===================== 전역 변수 ===================== */
 let chart = null;
 let markerEnabled = false;
@@ -644,17 +645,23 @@ function fetchData(){
         url: "/mibogear/monitoring/getTempList",
         data: { startDate, endDate, machine },
         success: function(result){
-            if(!result || result.length === 0){
+            let list = result;
+            if (!Array.isArray(result)) {
+                list = result.data || result.list || result.result || [];
+            }
+
+            if(!list || list.length === 0){
                 alert("조회된 데이터가 없습니다.");
                 return;
             }
 
-            const times   = result.map(r => new Date(r.date).getTime());
+            // result → list 로 변경
+            const times   = list.map(r => new Date(r.date).getTime());
             const dataMin = Math.min(...times);
             const dataMax = Math.max(...times);
             const range   = dataMax - dataMin;
 
-            const series = buildSeries(result, hogi);
+            const series = buildSeries(list, hogi);  // result → list
             createChart(series, range);
         },
         error: function(xhr, status, error){

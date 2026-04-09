@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="patternRequest">
+
+    <!-- 단일 행 전체 조회 -->
+    <select id="getPattern" resultType="PatternRequest">
+        SELECT * FROM tb_pattern_request LIMIT 1
+    </select>
+
+    <!-- status 단독 조회 (폴링용) -->
+    <select id="getPatternStatus" resultType="int">
+        SELECT status FROM tb_pattern_request LIMIT 1
+    </select>
+
+    <!-- 패턴조회 요청: 사용자 입력값 + status=1 로 UPDATE -->
+    <update id="requestPattern" parameterType="PatternRequest">
+        UPDATE tb_pattern_request SET
+            auto_pattern  = #{auto_pattern},
+            bcf_cycle_no  = #{bcf_cycle_no},
+            tf_cycle_no   = #{tf_cycle_no},
+            bcf_hogi      = #{bcf_hogi},
+            tf_hogi       = #{tf_hogi},
+            status        = 1,
+            -- 온도/시간은 PLC가 채워줄 예정이므로 일단 NULL 초기화
+            bcf_time_fanup  = NULL, bcf_time_spare1 = NULL, bcf_time_spare2 = NULL,
+            bcf_time_chim   = NULL, bcf_time_diff   = NULL, bcf_time_gang   = NULL,
+            bcf_time_spare3 = NULL, bcf_time_que    = NULL, bcf_time_drain  = NULL,
+            bcf_temp_fanup  = NULL, bcf_temp_spare1 = NULL, bcf_temp_spare2 = NULL,
+            bcf_temp_chim   = NULL, bcf_temp_diff   = NULL, bcf_temp_gang   = NULL,
+            bcf_temp_spare3 = NULL, bcf_temp_que    = NULL, bcf_temp_drain  = NULL,
+            bcf_cp_fanup    = NULL, bcf_cp_spare1   = NULL, bcf_cp_spare2   = NULL,
+            bcf_cp_chim     = NULL, bcf_cp_diff     = NULL, bcf_cp_gang     = NULL,
+            tf_time_spare1  = NULL, tf_time_spare2  = NULL, tf_time_spare3  = NULL,
+            tf_time_spare4  = NULL, tf_time_dry     = NULL, tf_time_fanup   = NULL,
+            tf_time_n2      = NULL, tf_time_tem     = NULL, tf_time_cool    = NULL,
+            tf_temp_spare1  = NULL, tf_temp_spare2  = NULL, tf_temp_spare3  = NULL,
+            tf_temp_spare4  = NULL, tf_temp_dry     = NULL, tf_temp_fanup   = NULL,
+            tf_temp_n2      = NULL, tf_temp_tem     = NULL, tf_temp_cool    = NULL
+        WHERE req_code = (SELECT req_code FROM (SELECT req_code FROM tb_pattern_request LIMIT 1) t)
+    </update>
+
+    <!-- 완료 후 status=3(정리완료)으로 변경 -->
+    <update id="completePattern">
+        UPDATE tb_pattern_request SET status = 3
+        WHERE req_code = (SELECT req_code FROM (SELECT req_code FROM tb_pattern_request LIMIT 1) t)
+    </update>
+
+    <!-- 초기화: status=0 + 온도시간 컬럼 전부 0으로 -->
+	<update id="resetPattern">
+	    UPDATE tb_pattern_request SET
+	        status        = 0,
+	        auto_pattern  = 0,
+	        bcf_cycle_no  = 0,
+	        tf_cycle_no   = 0,
+	        bcf_hogi      = 0,
+	        tf_hogi       = 0,
+	        bcf_time_fanup  = 0, bcf_time_spare1 = 0, bcf_time_spare2 = 0,
+	        bcf_time_chim   = 0, bcf_time_diff   = 0, bcf_time_gang   = 0,
+	        bcf_time_spare3 = 0, bcf_time_que    = 0, bcf_time_drain  = 0,
+	        bcf_temp_fanup  = 0, bcf_temp_spare1 = 0, bcf_temp_spare2 = 0,
+	        bcf_temp_chim   = 0, bcf_temp_diff   = 0, bcf_temp_gang   = 0,
+	        bcf_temp_spare3 = 0, bcf_temp_que    = 0, bcf_temp_drain  = 0,
+	        bcf_cp_fanup    = 0, bcf_cp_spare1   = 0, bcf_cp_spare2   = 0,
+	        bcf_cp_chim     = 0, bcf_cp_diff     = 0, bcf_cp_gang     = 0,
+	        tf_time_spare1  = 0, tf_time_spare2  = 0, tf_time_spare3  = 0,
+	        tf_time_spare4  = 0, tf_time_dry     = 0, tf_time_fanup   = 0,
+	        tf_time_n2      = 0, tf_time_tem     = 0, tf_time_cool    = 0,
+	        tf_temp_spare1  = 0, tf_temp_spare2  = 0, tf_temp_spare3  = 0,
+	        tf_temp_spare4  = 0, tf_temp_dry     = 0, tf_temp_fanup   = 0,
+	        tf_temp_n2      = 0, tf_temp_tem     = 0, tf_temp_cool    = 0
+	    WHERE req_code = (SELECT req_code FROM (SELECT req_code FROM tb_pattern_request LIMIT 1) t)
+	</update>
+
+</mapper>
