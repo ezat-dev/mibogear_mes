@@ -54,6 +54,7 @@ public class ProdDataServiceImpl implements ProdDataService {
             
             String lotNo = prefix + String.format("%03d", seq);
             workOrder.setLot_no(lotNo);
+            workOrder.setMain_spare_1(lotNo);
             prodDataDAO.insertWorkOrder(workOrder);
         } else {
         	prodDataDAO.updateWorkOrder(workOrder);

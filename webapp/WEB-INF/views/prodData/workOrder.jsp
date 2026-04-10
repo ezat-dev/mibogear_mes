@@ -283,9 +283,9 @@
         <button class="excel-button" onclick="downloadExcel();">
             <img src="/mibogear/image/excel-icon.png" class="button-image">엑셀
         </button>
-        <button class="printer-button" onclick="printSelected();">
+        <!-- <button class="printer-button" onclick="printSelected();">
             <img src="/mibogear/image/printer-icon.png" class="button-image">작업지시서출력
-        </button>
+        </button> -->
     </div>
 </div>
 
@@ -600,8 +600,11 @@
                         <th></th><td></td>
                     </tr>
                     <tr>
-                        <th>스페어1</th>
-                        <td><input type="text" id="m_main_spare_1"></td>
+                        <th>LOT번호</th>
+                        <td><input type="text" id="m_main_spare_1" readonly
+           placeholder="LOT번호 부여예정"
+           style="width:100%; padding:5px; border:1px solid #aaa; border-radius:3px;
+                  font-size:13px; background:#f0f0f0; color:#888; cursor:default;"></td>
                         <th>스페어2</th>
                         <td><input type="text" id="m_main_spare_2"></td>
                     </tr>
@@ -684,15 +687,11 @@
     </div>
 </div>
 
-<!-- script 블록은 기존 workOrder.jsp의 <script> 그대로 유지 -->
+
 
 </body>
 </html>
 
-
-<!-- ============================================================ -->
-<!-- Script                                                        -->
-<!-- ============================================================ -->
 <script>
 let now_page_code = "b04";
 
@@ -764,6 +763,63 @@ function initWoList() {
             },
             { title: "작성자",   field: "reg_user",  width: 80,  hozAlign: "center" },
             { title: "등록일시", field: "reg_date",  width: 150, hozAlign: "center" },
+
+            // ── 출력 버튼 컬럼 추가
+            {
+                title: "출력", field: "_print", width: 70, hozAlign: "center",
+                headerSort: false,
+                formatter: function () {
+                    return '<button style="padding:3px 10px; border:none; border-radius:4px;' +
+                           'background:#339af0; color:white; font-size:11px; font-weight:600;' +
+                           'cursor:pointer;">출력</button>';
+                },
+                cellClick: function (e, cell) {
+                    e.stopPropagation();
+                    var data = cell.getRow().getData();
+                    if (!confirm("LOT: " + data.lot_no + "\n작업지시서를 출력하시겠습니까?")) return;
+                    $.ajax({
+                        url: "/mibogear/workOrder/print",
+                        type: "GET",
+                        data: { wo_code: data.wo_code },
+                        dataType: "json",
+                        success: function (r) {
+                            if (r.status === "success") {
+                                alert("출력 완료\nLOT: " + r.lot_no + "\n경로: " + r.pdfPath);
+                            } else { alert("출력 오류: " + r.message); }
+                        },
+                        error: function () { alert("출력 요청 오류"); }
+                    });
+                }
+            },
+
+            // ── 삭제 버튼 컬럼 추가
+            {
+                title: "삭제", field: "_delete", width: 70, hozAlign: "center",
+                headerSort: false,
+                formatter: function () {
+                    return '<button style="padding:3px 10px; border:none; border-radius:4px;' +
+                           'background:#ff6b6b; color:white; font-size:11px; font-weight:600;' +
+                           'cursor:pointer;">삭제</button>';
+                },
+                cellClick: function (e, cell) {
+                    e.stopPropagation();
+                    var data = cell.getRow().getData();
+                    if (!confirm("LOT: " + data.lot_no + "\n삭제하시겠습니까?")) return;
+                    $.ajax({
+                        url: "/mibogear/workOrder/delete",
+                        type: "POST",
+                        data: { wo_code: data.wo_code },
+                        dataType: "json",
+                        success: function (res) {
+                            if (res.status === "success") {
+                                alert("삭제되었습니다.");
+                                loadWoList();
+                            } else { alert("삭제 오류: " + res.message); }
+                        },
+                        error: function () { alert("삭제 요청 오류"); }
+                    });
+                }
+            }
         ],
         rowFormatter: function (row) {
             row.getElement().style.fontWeight = "700";
@@ -773,10 +829,10 @@ function initWoList() {
             $("#woListTabulator div.row_select").removeClass("row_select");
             row.getElement().classList.add("row_select");
             selectedRowData = row.getData();
-        },
+        },/* 
         rowDblClick: function (e, row) {
             openEditModal(row.getData());
-        },
+        }, */
         tableBuilt: function () {
             loadWoList();
         }
@@ -825,7 +881,7 @@ function openEditModal(data) {
     $("#woModalTitle").text("작업지시서 수정");
     $("#woModalBtnDelete").show();
     $("#woModalBtnPrint").show();
-
+	
     $("#displayLotNo").text(data.lot_no);
     $("#lotBadgeArea").show();
 
@@ -894,6 +950,7 @@ function clearWoModal() {
     $("#bcf_temp_fanup,#bcf_temp_chim,#bcf_temp_diff,#bcf_temp_gang,#bcf_temp_que_drain").val("");
     $("#bcf_cp_fanup,#bcf_cp_chim,#bcf_cp_diff,#bcf_cp_gang,#bcf_cp_que_drain").val("");
     $("#tf_time_dry,#tf_time_fanup,#tf_time_n2,#tf_time_tem,#tf_time_cool,#tf_temp_tem").val("");
+    $("#m_main_spare_1").val("");
     patternReceived = false;
     stopPatternPoll();
     /* 섹션③ */

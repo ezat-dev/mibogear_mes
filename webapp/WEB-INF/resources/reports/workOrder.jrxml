@@ -7,353 +7,1247 @@
               pageWidth="595" pageHeight="842"
               whenNoDataType="AllSectionsNoDetail"
               columnWidth="555" leftMargin="20" rightMargin="20"
-              topMargin="20" bottomMargin="20">
+              topMargin="15" bottomMargin="15"
+              isIgnorePagination="true"
+              uuid="29689bc5-4305-4211-be7f-71a8597336aa">
 
-    <parameter name="lot_no"                    class="java.lang.String"/>
-    <parameter name="reg_date"                  class="java.lang.String"/>
-    <parameter name="reg_user"                  class="java.lang.String"/>
-    <parameter name="BARCODE_IMAGE"             class="java.awt.Image"/>
-
-    <parameter name="main_auto_pattern_number"  class="java.lang.String"/>
-    <parameter name="main_yn"                   class="java.lang.String"/>
-    <parameter name="main_bcf_pattern_number"   class="java.lang.String"/>
-    <parameter name="main_tf_pattern_number"    class="java.lang.String"/>
-    <parameter name="main_bcf_hogi"             class="java.lang.String"/>
-    <parameter name="main_tf_hogi"              class="java.lang.String"/>
-    <parameter name="main_spare_1"              class="java.lang.String"/>
-    <parameter name="main_spare_2"              class="java.lang.String"/>
-    <parameter name="main_spare_3"              class="java.lang.String"/>
-    <parameter name="main_spare_4"              class="java.lang.String"/>
-    <parameter name="main_bigo_1"               class="java.lang.String"/>
-    <parameter name="main_bigo_2"               class="java.lang.String"/>
-    <parameter name="main_bigo_3"               class="java.lang.String"/>
-    <parameter name="main_bigo_4"               class="java.lang.String"/>
-    <parameter name="main_bigo_5"               class="java.lang.String"/>
-
-    <parameter name="upper_auto_pattern_number" class="java.lang.String"/>
-    <parameter name="upper_yn"                  class="java.lang.String"/>
-    <parameter name="upper_bcf_pattern_number"  class="java.lang.String"/>
-    <parameter name="upper_tf_pattern_number"   class="java.lang.String"/>
-    <parameter name="upper_bcf_hogi"            class="java.lang.String"/>
-    <parameter name="upper_tf_hogi"             class="java.lang.String"/>
-    <parameter name="upper_spare_1"             class="java.lang.String"/>
-    <parameter name="upper_spare_2"             class="java.lang.String"/>
-    <parameter name="upper_spare_3"             class="java.lang.String"/>
-    <parameter name="upper_spare_4"             class="java.lang.String"/>
-    <parameter name="upper_bigo_1"              class="java.lang.String"/>
-    <parameter name="upper_bigo_2"              class="java.lang.String"/>
-    <parameter name="upper_bigo_3"              class="java.lang.String"/>
-    <parameter name="upper_bigo_4"              class="java.lang.String"/>
-    <parameter name="upper_bigo_5"              class="java.lang.String"/>
-
-    <parameter name="lower_auto_pattern_number" class="java.lang.String"/>
-    <parameter name="lower_yn"                  class="java.lang.String"/>
-    <parameter name="lower_bcf_pattern_number"  class="java.lang.String"/>
-    <parameter name="lower_tf_pattern_number"   class="java.lang.String"/>
-    <parameter name="lower_bcf_hogi"            class="java.lang.String"/>
-    <parameter name="lower_tf_hogi"             class="java.lang.String"/>
-    <parameter name="lower_spare_1"             class="java.lang.String"/>
-    <parameter name="lower_spare_2"             class="java.lang.String"/>
-    <parameter name="lower_spare_3"             class="java.lang.String"/>
-    <parameter name="lower_spare_4"             class="java.lang.String"/>
-    <parameter name="lower_bigo_1"              class="java.lang.String"/>
-    <parameter name="lower_bigo_2"              class="java.lang.String"/>
-    <parameter name="lower_bigo_3"              class="java.lang.String"/>
-    <parameter name="lower_bigo_4"              class="java.lang.String"/>
-    <parameter name="lower_bigo_5"              class="java.lang.String"/>
-
-    <parameter name="belt_auto_pattern_number"  class="java.lang.String"/>
-    <parameter name="belt_yn"                   class="java.lang.String"/>
-    <parameter name="belt_bcf_pattern_number"   class="java.lang.String"/>
-    <parameter name="belt_tf_pattern_number"    class="java.lang.String"/>
-    <parameter name="belt_bcf_hogi"             class="java.lang.String"/>
-    <parameter name="belt_tf_hogi"              class="java.lang.String"/>
-    <parameter name="belt_spare_1"              class="java.lang.String"/>
-    <parameter name="belt_spare_2"              class="java.lang.String"/>
-    <parameter name="belt_spare_3"              class="java.lang.String"/>
-    <parameter name="belt_spare_4"              class="java.lang.String"/>
-    <parameter name="belt_bigo_1"               class="java.lang.String"/>
-    <parameter name="belt_bigo_2"               class="java.lang.String"/>
-    <parameter name="belt_bigo_3"               class="java.lang.String"/>
-    <parameter name="belt_bigo_4"               class="java.lang.String"/>
-    <parameter name="belt_bigo_5"               class="java.lang.String"/>
+    <!-- ===================== 파라미터 ===================== -->
+    <parameter name="lot_no"          class="java.lang.String"/>
+    <parameter name="reg_date"        class="java.lang.String"/>
+    <parameter name="reg_user"        class="java.lang.String"/>
+    <parameter name="ord_code"        class="java.lang.String"/>
+    <parameter name="corp_name"       class="java.lang.String"/>
+    <parameter name="prod_name"       class="java.lang.String"/>
+    <parameter name="prod_no"         class="java.lang.String"/>
+    <parameter name="prod_gyu"        class="java.lang.String"/>
+    <parameter name="prod_jai"        class="java.lang.String"/>
+    <parameter name="ord_su"          class="java.lang.String"/>
+    <parameter name="ord_lot"         class="java.lang.String"/>
+    <parameter name="bcf_hogi"        class="java.lang.String"/>
+    <parameter name="tf_hogi"         class="java.lang.String"/>
+    <parameter name="auto_pattern"    class="java.lang.String"/>
+    <parameter name="bcf_cycle_no"    class="java.lang.String"/>
+    <parameter name="tf_cycle_no"     class="java.lang.String"/>
+    <parameter name="bcf_temp_fanup"  class="java.lang.String"/>
+    <parameter name="bcf_temp_chim"   class="java.lang.String"/>
+    <parameter name="bcf_temp_diff"   class="java.lang.String"/>
+    <parameter name="bcf_temp_gang"   class="java.lang.String"/>
+    <parameter name="bcf_temp_que"    class="java.lang.String"/>
+    <parameter name="bcf_temp_drain"  class="java.lang.String"/>
+    <parameter name="bcf_time_fanup"  class="java.lang.String"/>
+    <parameter name="bcf_time_chim"   class="java.lang.String"/>
+    <parameter name="bcf_time_diff"   class="java.lang.String"/>
+    <parameter name="bcf_time_gang"   class="java.lang.String"/>
+    <parameter name="bcf_time_que"    class="java.lang.String"/>
+    <parameter name="bcf_time_drain"  class="java.lang.String"/>
+    <parameter name="bcf_cp_fanup"    class="java.lang.String"/>
+    <parameter name="bcf_cp_chim"     class="java.lang.String"/>
+    <parameter name="bcf_cp_diff"     class="java.lang.String"/>
+    <parameter name="bcf_cp_gang"     class="java.lang.String"/>
+    <parameter name="tf_temp_tem"     class="java.lang.String"/>
+    <parameter name="tf_time_dry"     class="java.lang.String"/>
+    <parameter name="tf_time_fanup"   class="java.lang.String"/>
+    <parameter name="tf_time_n2"      class="java.lang.String"/>
+    <parameter name="tf_time_tem"     class="java.lang.String"/>
+    <parameter name="tf_time_cool"    class="java.lang.String"/>
+    <parameter name="main_yn"         class="java.lang.String"/>
+    <parameter name="main_spare_1"    class="java.lang.String"/>
+    <parameter name="main_spare_2"    class="java.lang.String"/>
+    <parameter name="main_spare_3"    class="java.lang.String"/>
+    <parameter name="main_spare_4"    class="java.lang.String"/>
+    <parameter name="main_bigo_1"     class="java.lang.String"/>
+    <parameter name="main_bigo_2"     class="java.lang.String"/>
+    <parameter name="main_bigo_3"     class="java.lang.String"/>
+    <parameter name="main_bigo_4"     class="java.lang.String"/>
+    <parameter name="main_bigo_5"     class="java.lang.String"/>
 
     <queryString><![CDATA[]]></queryString>
 
     <title>
-        <band height="780" splitType="Stretch">
+        <band height="790" splitType="Stretch">
 
-            <!-- ===== 제목 + 바코드 (h=60) ===== -->
+            <!-- ============================================================
+                 타이틀 + 바코드 + 결재란
+                 y=0~44
+            ============================================================ -->
             <staticText>
-                <reportElement x="0" y="0" width="340" height="40"/>
-                <textElement textAlignment="Center" verticalAlignment="Middle">
+                <reportElement x="0" y="4" width="240" height="22" uuid="6dca4cb6-76a8-4c29-b6e2-8d1de609fa7d"/>
+                <textElement verticalAlignment="Middle">
                     <font fontName="굴림" size="16" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
                 </textElement>
-                <text><![CDATA[작  업  지  시  서]]></text>
+                <text><![CDATA[작 업 지 시 서]]></text>
             </staticText>
-            <image scaleImage="RetainShape">
-                <reportElement x="360" y="0" width="195" height="60"/>
-                <imageExpression><![CDATA[$P{BARCODE_IMAGE}]]></imageExpression>
-            </image>
 
-            <!-- LOT번호 / 등록일시 (y=42) -->
-            <staticText>
-                <reportElement x="0" y="42" width="70" height="22" mode="Transparent" backcolor="#F0EBEB"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
-                <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-                </textElement>
-                <text><![CDATA[LOT번호]]></text>
-            </staticText>
+            <!-- 바코드 -->
+            <componentElement>
+                <reportElement x="240" y="0" width="130" height="30" uuid="5b343e99-92af-4eb4-839f-53df581df57a"/>
+                <jr:barbecue xmlns:jr="http://jasperreports.sourceforge.net/jasperreports/components"
+                             xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd"
+                             type="Code128A" drawText="false" checksumRequired="false" barHeight="60">
+                    <jr:codeExpression><![CDATA[$P{lot_no}]]></jr:codeExpression>
+                </jr:barbecue>
+            </componentElement>
             <textField isBlankWhenNull="true">
-                <reportElement x="70" y="42" width="160" height="22"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
+                <reportElement x="240" y="30" width="130" height="12" uuid="5a34ab50-8ce5-4cee-9e90-1bf43d8fcffc"/>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                    <font fontName="굴림" size="7" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
                 </textElement>
                 <textFieldExpression><![CDATA[$P{lot_no}]]></textFieldExpression>
             </textField>
+
+            <!-- 결재란: 작성/확인/승인 -->
             <staticText>
-                <reportElement x="230" y="42" width="80" height="22" mode="Transparent" backcolor="#F0EBEB"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
+                <reportElement x="405" y="0" width="50" height="18" uuid="37450838-9f29-4e65-a68e-9bab25e8c6a4"/>
+                <box><pen lineWidth="0.5"/></box>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
                     <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[작성]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="455" y="0" width="50" height="18" uuid="51dc0340-99fd-4210-8ff3-e43b9964f34d"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[확인]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="505" y="0" width="50" height="18" uuid="5efd866e-0b40-4e1d-ba9e-2ab350337dae"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[승인]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="405" y="18" width="50" height="28" uuid="3e3fe876-e9ed-4a23-be4e-da4d0d68eaed"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="455" y="18" width="50" height="28" uuid="b807f0ec-0760-4a19-a8a2-df205c89c120"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="505" y="18" width="50" height="28" uuid="9b8ed6a8-dde0-446f-9790-6d8b59e7529f"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[]]></text>
+            </staticText>
+
+            <!-- ============================================================
+                 ① 입고정보  y=46~114
+            ============================================================ -->
+            <!-- 섹션 헤더 -->
+            <staticText>
+                <reportElement x="0" y="46" width="555" height="15" uuid="7fd1599a-bad9-40fb-9ae0-213a539fb1a8" backcolor="#D6EAF8"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[  ① 입 고 정 보]]></text>
+            </staticText>
+
+            <!-- 거래처 / 제품명 -->
+            <staticText>
+                <reportElement x="0" y="61" width="55" height="15" uuid="9b6f19ae-215b-45af-a91c-43549ef8d5d4"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[거래처]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="55" y="61" width="175" height="15" uuid="adabfc99-1a7c-4174-9b12-a561b4c30a40"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{corp_name}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="230" y="61" width="55" height="15" uuid="81e65cad-8ba8-45a7-b64b-b40db2814b73"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[제품명]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="285" y="61" width="270" height="15" uuid="5aa30eb3-465d-4470-abe9-3d6a24946b86"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{prod_name}]]></textFieldExpression>
+            </textField>
+
+            <!-- 품번 / 규격 / 재질 -->
+            <staticText>
+                <reportElement x="0" y="76" width="55" height="15" uuid="df5a929a-85aa-4483-9b81-31a5fcf480ae"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[품번]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="55" y="76" width="175" height="15" uuid="41f3b5b5-1478-474c-a4ab-ce6ae3934317"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{prod_no}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="230" y="76" width="55" height="15" uuid="c90140c3-0929-428a-b740-1ea47b3cbd6a"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[규격]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="285" y="76" width="135" height="15" uuid="44c1f268-70e7-4bee-8b8e-b9bf899ab28c"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{prod_gyu}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="420" y="76" width="40" height="15" uuid="c8dc120b-2969-4ef3-9104-da14b21a80b5"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[재질]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="460" y="76" width="95" height="15" uuid="5c0da778-14e2-4abe-9ffe-b05fcaecda5c"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{prod_jai}]]></textFieldExpression>
+            </textField>
+
+            <!-- 입고수량 / 입고LOT / 입고코드 -->
+            <staticText>
+                <reportElement x="0" y="91" width="55" height="15" uuid="a1da96a7-3e6d-4c91-9046-9807f27698b8"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[입고수량]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="55" y="91" width="80" height="15" uuid="2a7e2895-5d08-41d4-b9b1-18349679a2a7"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{ord_su}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="135" y="91" width="55" height="15" uuid="740f0258-de3e-4c56-ae03-897a3b9d8da0"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[입고LOT]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="190" y="91" width="150" height="15" uuid="a6fc67eb-aa6a-42ce-87f2-45a93649eec8"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{ord_lot}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="340" y="91" width="55" height="15" uuid="86a9f8b8-56b0-446f-8390-f68fd6209956"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[입고코드]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="395" y="91" width="160" height="15" uuid="5cf13b5f-d3c0-4ea6-94f5-18f69a52d387"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{ord_code}]]></textFieldExpression>
+            </textField>
+
+            <!-- ============================================================
+                 ② 패턴정보  y=112~
+            ============================================================ -->
+            <staticText>
+                <reportElement x="0" y="112" width="555" height="15" uuid="392ddc6e-181f-4d58-98ad-b7ad501b62ab" backcolor="#FDEBD0"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[  ② 패 턴 정 보]]></text>
+            </staticText>
+
+            <!-- 호기/패턴번호 -->
+            <staticText>
+                <reportElement x="0" y="127" width="65" height="15" uuid="d34b9b9f-8fb6-418a-bc37-d16e9943f3c1"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[침탄로 호기]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="65" y="127" width="46" height="15" uuid="6e3e14b6-f54a-4b00-980f-5900a28e538d"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA["BCF" + $P{bcf_hogi}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="111" y="127" width="65" height="15" uuid="3aa9dc4b-65dd-4d03-974a-b39e530322a5"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[소려로 호기]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="176" y="127" width="46" height="15" uuid="810c9d68-2e35-48eb-bfb5-1bfec7b87363"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA["TF" + $P{tf_hogi}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="222" y="127" width="75" height="15" uuid="d6feca0a-9d6e-4aae-8f7c-730ffd9a21b8"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[자동대차 패턴No.]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="297" y="127" width="46" height="15" uuid="b506dacb-5900-44ba-8310-dc7255560aa8"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{auto_pattern}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="343" y="127" width="72" height="15" uuid="42baf945-2f98-4ee3-ab28-6a7c70347535"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[침탄로 패턴번호]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="415" y="127" width="46" height="15" uuid="aea11048-6947-4e67-a00f-80dcd7dd3bc4"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_cycle_no}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="461" y="127" width="49" height="15" uuid="7e6a7a8d-8433-4a1b-8e2c-0aa361aceca4"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[소려로패턴No.]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="510" y="127" width="45" height="15" uuid="720ecd79-d5da-411f-8109-52727c69e926"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{tf_cycle_no}]]></textFieldExpression>
+            </textField>
+
+            <!-- ============================================================
+                 BCF 침탄로 온도 그래프
+                 workheat.jrxml 방식: line(대각선) + rectangle(수평선) 조합
+                 그래프 영역: x=35~555, y=142~242 (100px 높이)
+                 6공정 구간폭: 520/6 ≈ 87px
+                   승온&팬정지: x=35~122
+                   침탄:        x=122~209
+                   확산:        x=209~296
+                   강온&소입:   x=296~383
+                   퀜칭:        x=383~470
+                   드레인:      x=470~555
+            ============================================================ -->
+
+            <!-- BCF 그래프 타이틀 -->
+            <staticText>
+                <reportElement x="0" y="142" width="555" height="13" uuid="b0ccf73b-8ce0-4985-a7ad-abba3a761d5d" backcolor="#EBF5FB"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[[ BCF 침탄로 온도 패턴 그래프 ]]]></text>
+            </staticText>
+
+            <!-- 그래프 외곽 박스 -->
+            <rectangle>
+                <reportElement x="35" y="155" width="520" height="88" uuid="6bee78f9-7be2-44ef-b1e2-700cd548d32f"/>
+                <graphicElement><pen lineWidth="0.5"/></graphicElement>
+            </rectangle>
+
+            <!-- Y축 기준선 -->
+            <rectangle>
+                <reportElement x="35" y="155" width="1" height="88" uuid="eca30c06-b130-4969-9798-019a7398118a"/>
+                <graphicElement><pen lineWidth="1.0"/></graphicElement>
+            </rectangle>
+
+            <!--
+                온도 그래프 라인 (workheat 방식 동일하게)
+                y=155(최상단=고온) ~ y=243(최하단=저온)
+                고온(예: 930℃) → y=158
+                중온(예: 700℃) → y=193
+                저온(예: 0℃)   → y=240
+
+                실제 패턴:
+                승온: 저→고 (BottomUp 대각선)  x=42~72, y=162~243
+                침탄: 고온 수평               x=72~209, y=162
+                확산: 고온 수평               x=209~296, y=162
+                강온: 고→중 (하강 대각선)      x=296~326, y=162~210
+                소입후 퀜칭: 급강하            x=326~383, y=210~243
+                드레인: 저온 수평              x=383~555, y=240
+            -->
+
+            <!-- 승온&팬정지: 저온→고온 상승 (BottomUp) -->
+            <line direction="BottomUp">
+                <reportElement x="42" y="162" width="30" height="80" uuid="71d8dc0c-d727-415e-8ae0-8ca754b8b71c"/>
+                <graphicElement><pen lineWidth="2.0"/></graphicElement>
+            </line>
+
+            <!-- 침탄: 고온 수평 유지 -->
+            <rectangle>
+                <reportElement x="72" y="162" width="137" height="1" uuid="d1a02555-035e-4dce-840a-2c4971ba140c"/>
+                <graphicElement><pen lineWidth="2.0"/></graphicElement>
+            </rectangle>
+
+            <!-- 확산: 고온 수평 유지 -->
+            <rectangle>
+                <reportElement x="209" y="162" width="87" height="1" uuid="fe1d4fb4-82da-400f-aa0f-bdaa4b39a7ee"/>
+                <graphicElement><pen lineWidth="2.0"/></graphicElement>
+            </rectangle>
+
+            <!-- 강온&소입: 고온→중온 하강 -->
+            <line>
+                <reportElement x="296" y="162" width="40" height="52" uuid="bc504f59-9163-4c9e-9501-b59fdd2abf46"/>
+                <graphicElement><pen lineWidth="2.0"/></graphicElement>
+            </line>
+
+            <!-- 소입 후 수평 (짧게) -->
+            <rectangle>
+                <reportElement x="336" y="214" width="47" height="1" uuid="14c392b5-59a6-4fbb-ad76-f686a071c750"/>
+                <graphicElement><pen lineWidth="2.0"/></graphicElement>
+            </rectangle>
+
+            <!-- 퀜칭: 급냉 하강 -->
+            <line>
+                <reportElement x="383" y="214" width="15" height="26" uuid="a47220ab-b0d3-434a-8d48-25e4229474f7"/>
+                <graphicElement><pen lineWidth="2.0"/></graphicElement>
+            </line>
+
+            <!-- 퀜칭 저온 수평 -->
+            <rectangle>
+                <reportElement x="398" y="240" width="72" height="1" uuid="321521d0-c032-45f0-ac5f-4d9f7da51a8e"/>
+                <graphicElement><pen lineWidth="2.0"/></graphicElement>
+            </rectangle>
+
+            <!-- 드레인: 저온 수평 -->
+            <rectangle>
+                <reportElement x="470" y="240" width="80" height="1" uuid="6b305429-81e6-48ea-950a-355b2f26c6b4"/>
+                <graphicElement><pen lineWidth="2.0"/></graphicElement>
+            </rectangle>
+
+            <!-- 구간 구분 수직 점선 -->
+            <rectangle>
+                <reportElement x="122" y="155" width="1" height="88" uuid="dc4a4222-8a48-412a-98d2-00b961e32344" forecolor="#BBBBBB"/>
+                <graphicElement><pen lineWidth="0.5" lineStyle="Dashed"/></graphicElement>
+            </rectangle>
+            <rectangle>
+                <reportElement x="209" y="155" width="1" height="88" uuid="ce13a06e-6017-498b-8f2d-c3750ff702b1" forecolor="#BBBBBB"/>
+                <graphicElement><pen lineWidth="0.5" lineStyle="Dashed"/></graphicElement>
+            </rectangle>
+            <rectangle>
+                <reportElement x="296" y="155" width="1" height="88" uuid="e710f523-c395-4b5d-a6dc-4cee42b64e40" forecolor="#BBBBBB"/>
+                <graphicElement><pen lineWidth="0.5" lineStyle="Dashed"/></graphicElement>
+            </rectangle>
+            <rectangle>
+                <reportElement x="383" y="155" width="1" height="88" uuid="ff607e78-4451-4a09-9955-2200be56c169" forecolor="#BBBBBB"/>
+                <graphicElement><pen lineWidth="0.5" lineStyle="Dashed"/></graphicElement>
+            </rectangle>
+            <rectangle>
+                <reportElement x="470" y="155" width="1" height="88" uuid="ce9f0875-496f-4e77-b82d-4ef1afeff0c7" forecolor="#BBBBBB"/>
+                <graphicElement><pen lineWidth="0.5" lineStyle="Dashed"/></graphicElement>
+            </rectangle>
+
+            <!-- 공정명 (그래프 내부 상단) -->
+            <staticText>
+                <reportElement x="35" y="156" width="87" height="10" uuid="4be18047-3be8-4c35-bcb1-4488c1fe1ca9"/>
+                <textElement textAlignment="Center" verticalAlignment="Top">
+                    <font fontName="굴림" size="6" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[승온&팬정지]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="122" y="156" width="87" height="10" uuid="697fe6e5-441b-4488-b15b-351d3b04b274"/>
+                <textElement textAlignment="Center" verticalAlignment="Top">
+                    <font fontName="굴림" size="6" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[침탄]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="209" y="156" width="87" height="10" uuid="8f750246-599b-4301-87b8-51371922250b"/>
+                <textElement textAlignment="Center" verticalAlignment="Top">
+                    <font fontName="굴림" size="6" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[확산]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="296" y="156" width="87" height="10" uuid="aae445ca-f4eb-4392-88e7-1b1c3910dada"/>
+                <textElement textAlignment="Center" verticalAlignment="Top">
+                    <font fontName="굴림" size="6" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[강온&소입]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="383" y="156" width="87" height="10" uuid="24d6df00-7134-4d96-80c2-6ef8c88153b0"/>
+                <textElement textAlignment="Center" verticalAlignment="Top">
+                    <font fontName="굴림" size="6" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[퀜칭]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="470" y="156" width="85" height="10" uuid="d68f97b5-2b4f-4a49-ac64-568eb2ed1b76"/>
+                <textElement textAlignment="Center" verticalAlignment="Top">
+                    <font fontName="굴림" size="6" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[드레인]]></text>
+            </staticText>
+
+            <!-- ============================================================
+                 BCF 데이터 테이블 (온도/시간/CP)  y=243~285
+            ============================================================ -->
+            <!-- 헤더행 -->
+            <staticText>
+                <reportElement x="0" y="243" width="35" height="13" uuid="2eb7ce08-de05-4fcf-b9cf-1ee230d79f2a"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[구분]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="35" y="243" width="87" height="13" uuid="cea525b5-272a-4bc6-8765-74f5e83498ce"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[승온&팬정지]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="122" y="243" width="87" height="13" uuid="474f7da9-3aba-480e-8edc-6d446ed256f1"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[침탄]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="209" y="243" width="87" height="13" uuid="79ae705b-9a22-4e74-8375-415e580fef1f"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[확산]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="296" y="243" width="87" height="13" uuid="7f31c227-af40-4cc4-ab60-3fd2e8f1985a"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[강온&소입]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="383" y="243" width="87" height="13" uuid="ac6cbc4f-f018-4f7d-9008-6a66a3bf1a14"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[퀜칭]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="470" y="243" width="85" height="13" uuid="8ec4a8d2-1637-42e0-9c81-b964a5b6e8b2"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[드레인]]></text>
+            </staticText>
+
+            <!-- 온도 행 -->
+            <staticText>
+                <reportElement x="0" y="256" width="35" height="13" uuid="1740d539-91b8-44fb-b89d-61a88c408a9a"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[온도(℃)]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="35" y="256" width="87" height="13" uuid="aeede926-8e33-49c7-8ec5-2a8d3e21bcf8"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_temp_fanup}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="122" y="256" width="87" height="13" uuid="b3f2a5a0-f8a8-420d-8dbd-df74aa2b4bdb"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_temp_chim}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="209" y="256" width="87" height="13" uuid="988251c1-c4d4-4e98-ae8c-6d90fbabbc0c"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_temp_diff}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="296" y="256" width="87" height="13" uuid="ec943d1f-ea6a-4644-a553-bbc69bae008e"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_temp_gang}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="383" y="256" width="87" height="13" uuid="3efed986-96b7-4220-bbc0-7ff548c2c098"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_temp_que}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="470" y="256" width="85" height="13" uuid="d01dfde9-aa7e-4805-919f-212ff20eaef5"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_temp_drain}]]></textFieldExpression>
+            </textField>
+
+            <!-- 시간 행 -->
+            <staticText>
+                <reportElement x="0" y="269" width="35" height="13" uuid="3c7cfcc6-82fe-4a0b-bb47-1f4cba6eac73"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[시간(분)]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="35" y="269" width="87" height="13" uuid="1aa04961-522c-4950-a44f-ca0c1e8acd60"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_time_fanup}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="122" y="269" width="87" height="13" uuid="3b487352-621e-4c0d-9945-034e669f8f5b"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_time_chim}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="209" y="269" width="87" height="13" uuid="67146672-1659-4297-8b6b-7d003b9fbadb"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_time_diff}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="296" y="269" width="87" height="13" uuid="a9e198ae-e14f-4e1d-9933-504d57254636"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_time_gang}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="383" y="269" width="87" height="13" uuid="d482df46-ef1b-4dd2-9503-c1ca67d51082"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_time_que}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="470" y="269" width="85" height="13" uuid="60d85d1c-83a3-4d62-afb0-55dd5c750e5a"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_time_drain}]]></textFieldExpression>
+            </textField>
+
+            <!-- CP 행 -->
+            <staticText>
+                <reportElement x="0" y="282" width="35" height="13" uuid="d7224d74-3b54-41f9-ba01-625495f5eb86"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[C.P.(%)]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="35" y="282" width="87" height="13" uuid="978e6d39-1c89-47a9-9350-2b6a2f216340"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_cp_fanup}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="122" y="282" width="87" height="13" uuid="e22f6082-d173-474b-b513-7d5631554f5f"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_cp_chim}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="209" y="282" width="87" height="13" uuid="d2c6d66f-cfb9-4aca-bae4-0e11d305c039"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_cp_diff}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="296" y="282" width="87" height="13" uuid="55da6342-3f5b-492e-86b9-7396f0529d45"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{bcf_cp_gang}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="383" y="282" width="172" height="13" uuid="9657e464-1149-477c-9a42-106324fd85ca" forecolor="#999999"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[-]]></text>
+            </staticText>
+
+            <!-- ============================================================
+                 TF 소려로 온도 그래프
+                 그래프 영역: y=302~370 (68px 높이)
+                 5공정 구간폭: 520/5 = 104px
+                   건조:        x=35~139
+                   팬정지&승온: x=139~243
+                   N2퍼지:      x=243~347
+                   소려:        x=347~451
+                   냉각:        x=451~555
+            ============================================================ -->
+            <staticText>
+                <reportElement x="0" y="302" width="555" height="13" uuid="6ca79ed0-ba2d-4861-a948-ed20bac873ee" backcolor="#E9F7EF"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[[ TF 소려로 온도 패턴 그래프 ]]]></text>
+            </staticText>
+
+            <!-- TF 그래프 외곽 박스 -->
+            <rectangle>
+                <reportElement x="35" y="315" width="520" height="68" uuid="5c2c5367-f75b-4a60-a7b5-85cda8b13e1a"/>
+                <graphicElement><pen lineWidth="0.5"/></graphicElement>
+            </rectangle>
+            <rectangle>
+                <reportElement x="35" y="315" width="1" height="68" uuid="de6c6f30-8463-4dc8-90f8-257d44e78ff1"/>
+                <graphicElement><pen lineWidth="1.0"/></graphicElement>
+            </rectangle>
+
+            <!--
+                TF 그래프 라인:
+                건조:        저온 수평  y=370
+                팬정지&승온: 저→고 상승 x=139~169, y=340~370
+                N2퍼지:      고온 수평  y=340
+                소려:        고온 수평  y=340
+                냉각:        고→저 하강 x=451~511, y=340~370
+            -->
+            <!-- 건조: 저온 수평 -->
+            <rectangle>
+                <reportElement x="35" y="369" width="104" height="1" uuid="f62b63f9-8679-42c0-bd19-08796ea2f8fc"/>
+                <graphicElement><pen lineWidth="2.0"/></graphicElement>
+            </rectangle>
+
+            <!-- 팬정지&승온: 상승 (BottomUp) -->
+            <line direction="BottomUp">
+                <reportElement x="139" y="340" width="30" height="30" uuid="2b925733-9c1a-4ea0-8adb-bf4b0c2d43cc"/>
+                <graphicElement><pen lineWidth="2.0"/></graphicElement>
+            </line>
+
+            <!-- N2퍼지: 고온 수평 -->
+            <rectangle>
+                <reportElement x="169" y="340" width="74" height="1" uuid="5cf57fec-2c5e-4b1f-956f-ad8cda5c26d4"/>
+                <graphicElement><pen lineWidth="2.0"/></graphicElement>
+            </rectangle>
+
+            <!-- 소려: 고온 수평 -->
+            <rectangle>
+                <reportElement x="347" y="340" width="104" height="1" uuid="ece0c26f-2bcd-465e-ba9e-bf36a123516b"/>
+                <graphicElement><pen lineWidth="2.0"/></graphicElement>
+            </rectangle>
+
+            <!-- 냉각: 하강 -->
+            <line>
+                <reportElement x="451" y="340" width="60" height="30" uuid="324b0dd3-ace6-4830-ae0f-b5e70230e2be"/>
+                <graphicElement><pen lineWidth="2.0"/></graphicElement>
+            </line>
+
+            <!-- TF 구간 구분선 -->
+            <rectangle>
+                <reportElement x="139" y="315" width="1" height="68" uuid="6dc4a9d1-650e-4953-8f03-2e95e9b08666" forecolor="#BBBBBB"/>
+                <graphicElement><pen lineWidth="0.5" lineStyle="Dashed"/></graphicElement>
+            </rectangle>
+            <rectangle>
+                <reportElement x="243" y="315" width="1" height="68" uuid="1357193c-3eda-4fed-b09e-48bec2fa3769" forecolor="#BBBBBB"/>
+                <graphicElement><pen lineWidth="0.5" lineStyle="Dashed"/></graphicElement>
+            </rectangle>
+            <rectangle>
+                <reportElement x="347" y="315" width="1" height="68" uuid="b9c22fc5-88d5-4223-8990-b9bf76459e4b" forecolor="#BBBBBB"/>
+                <graphicElement><pen lineWidth="0.5" lineStyle="Dashed"/></graphicElement>
+            </rectangle>
+            <rectangle>
+                <reportElement x="451" y="315" width="1" height="68" uuid="c56ca502-defc-4d04-af13-add53f099bae" forecolor="#BBBBBB"/>
+                <graphicElement><pen lineWidth="0.5" lineStyle="Dashed"/></graphicElement>
+            </rectangle>
+
+            <!-- TF 공정명 라벨 (그래프 내부) -->
+            <staticText>
+                <reportElement x="35" y="316" width="104" height="10" uuid="46850d6b-d1b8-4e76-9e47-81912a92829a"/>
+                <textElement textAlignment="Center" verticalAlignment="Top">
+                    <font fontName="굴림" size="6" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[건조]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="139" y="316" width="104" height="10" uuid="d96a676b-f292-41f6-9fcd-d2857b68bb9b"/>
+                <textElement textAlignment="Center" verticalAlignment="Top">
+                    <font fontName="굴림" size="6" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[팬정지&승온]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="243" y="316" width="104" height="10" uuid="fcdf7af1-915b-4175-8a8c-0bde359d8f5a"/>
+                <textElement textAlignment="Center" verticalAlignment="Top">
+                    <font fontName="굴림" size="6" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[N2퍼지]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="347" y="316" width="104" height="10" uuid="e95f48c7-53e1-40d1-8e4f-f18da50304b6"/>
+                <textElement textAlignment="Center" verticalAlignment="Top">
+                    <font fontName="굴림" size="6" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[소려]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="451" y="316" width="104" height="10" uuid="18d07808-4a86-4bc8-a6f7-96c6a8075a1c"/>
+                <textElement textAlignment="Center" verticalAlignment="Top">
+                    <font fontName="굴림" size="6" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[냉각]]></text>
+            </staticText>
+
+            <!-- ============================================================
+                 TF 데이터 테이블  y=383~
+            ============================================================ -->
+            <staticText>
+                <reportElement x="0" y="383" width="35" height="13" uuid="c277c63e-a8ec-4234-82f0-7b3f266a16e6"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[구분]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="35" y="383" width="104" height="13" uuid="3f10c3ba-5d6e-464b-ad4c-a9a46b2183a5"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[건조]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="139" y="383" width="104" height="13" uuid="a11ade6d-3cdc-4c69-9a33-be147ab28354"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[팬정지&승온]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="243" y="383" width="104" height="13" uuid="8c315cb8-8781-4018-98c6-48f2ed2e87dd"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[N2퍼지]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="347" y="383" width="104" height="13" uuid="431f1ea5-6ae3-453e-8ef2-a1a3e93583ab"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[소려]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="451" y="383" width="104" height="13" uuid="bb9a3517-0a8f-4096-9fb4-d1a1c5f72178"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[냉각]]></text>
+            </staticText>
+
+            <!-- TF 온도 행 (소려 온도만 유효) -->
+            <staticText>
+                <reportElement x="0" y="396" width="35" height="13" uuid="f9db23ca-6814-4df4-9845-df10f9e439c5"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[온도(℃)]]></text>
+            </staticText>
+            <staticText>
+                <reportElement x="35" y="396" width="312" height="13" uuid="6046b303-6353-46c2-bcf0-aa7de7aa8481" forecolor="#AAAAAA"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[-]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="347" y="396" width="104" height="13" uuid="61945a1d-c152-4b1f-b367-92ecaafb02b3"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{tf_temp_tem}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="451" y="396" width="104" height="13" uuid="f91e9598-b4ff-41b3-810b-cbcedc602254" forecolor="#AAAAAA"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[-]]></text>
+            </staticText>
+
+            <!-- TF 시간 행 -->
+            <staticText>
+                <reportElement x="0" y="409" width="35" height="13" uuid="391349d8-b608-45b4-a2c9-bf206013ae83"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[시간(분)]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="35" y="409" width="104" height="13" uuid="62315af8-905a-4209-a60b-6fa45e97d636"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{tf_time_dry}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="139" y="409" width="104" height="13" uuid="d7571fe4-2092-462a-9a1a-f187c09745aa"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{tf_time_fanup}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="243" y="409" width="104" height="13" uuid="673969c2-d734-4bad-a65c-ff32d7d1b1ba"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{tf_time_n2}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="347" y="409" width="104" height="13" uuid="4461e9c7-95b3-4ae8-90c3-1f373c800fc1"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{tf_time_tem}]]></textFieldExpression>
+            </textField>
+            <textField isBlankWhenNull="true">
+                <reportElement x="451" y="409" width="104" height="13" uuid="15c0fe5b-10a8-40d1-bc4c-f90ef5e202c7"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{tf_time_cool}]]></textFieldExpression>
+            </textField>
+
+            <!-- ============================================================
+                 ③ 침탄로 본체 처리품정보  y=430~
+            ============================================================ -->
+            <staticText>
+                <reportElement x="0" y="430" width="555" height="14" uuid="f9cda193-27de-466f-993b-6e9ed61d6e4c" backcolor="#E9F7EF"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Left" verticalAlignment="Middle">
+                    <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[  ③ 침탄로 본체 처리품 정보]]></text>
+            </staticText>
+
+            <!-- 처리품 유/무 / 작성자 -->
+            <staticText>
+                <reportElement x="0" y="444" width="65" height="14" uuid="81cd4457-b3f6-4321-95da-aaff46d474ab"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[처리품 유/무]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="65" y="444" width="65" height="14" uuid="e0213d2d-381e-4225-913f-f0327fe3b4e6"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="9" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{main_yn}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="130" y="444" width="50" height="14" uuid="e4ebb3f5-7eb3-490d-b281-68eba8d08f8c"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[작성자]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="180" y="444" width="375" height="14" uuid="5b0cb682-1880-4948-b7fd-ebdbd4c8470c"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{reg_user}]]></textFieldExpression>
+            </textField>
+
+            <!-- 스페어 1~4 -->
+            <staticText>
+                <reportElement x="0" y="458" width="50" height="14" uuid="6768716c-93a4-4489-ab8f-46a39ebbc0ca"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[스페어1]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="50" y="458" width="88" height="14" uuid="c90e8d36-9074-44fc-9fbf-c6fb5244161f"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{main_spare_1}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="138" y="458" width="50" height="14" uuid="eb429c66-2773-44ce-9887-958ac031eee7"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[스페어2]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="188" y="458" width="90" height="14" uuid="3ba1d079-84aa-438e-a382-9769eccf5683"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{main_spare_2}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="278" y="458" width="50" height="14" uuid="cae9780f-9346-4198-8dbd-f78d3ab21922"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[스페어3]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="328" y="458" width="88" height="14" uuid="ff5773eb-66e0-49fd-9abb-ff08f07aa408"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{main_spare_3}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="416" y="458" width="50" height="14" uuid="af547442-4f21-4892-a5f7-6513b8600d2f"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[스페어4]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="466" y="458" width="89" height="14" uuid="8332257b-afc4-456c-b42e-45fbcb26b64c"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{main_spare_4}]]></textFieldExpression>
+            </textField>
+
+            <!-- 비고 1~5 -->
+            <staticText>
+                <reportElement x="0" y="472" width="40" height="14" uuid="5ae2711b-5305-4b5b-aeb8-57c31feae34c"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[비고1]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="40" y="472" width="71" height="14" uuid="b250737f-aaf0-4034-8605-44cdaddce70f"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{main_bigo_1}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="111" y="472" width="40" height="14" uuid="df7d58a7-1244-495b-8e5d-5e5fd6aa6ba6"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[비고2]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="151" y="472" width="71" height="14" uuid="61cc8067-dbc2-473b-bdb0-a8cbce9a0e55"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{main_bigo_2}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="222" y="472" width="40" height="14" uuid="f0657273-eb2e-454d-bc20-786bf38b60c4"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[비고3]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="262" y="472" width="71" height="14" uuid="7767b100-c08e-4c45-803a-032f6b5b659e"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{main_bigo_3}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="333" y="472" width="40" height="14" uuid="92eb95aa-a5d5-4d99-b604-c324e7063e77"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[비고4]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="373" y="472" width="71" height="14" uuid="c9a4592a-4265-4eb6-a98f-2bbd9b6828dc"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{main_bigo_4}]]></textFieldExpression>
+            </textField>
+            <staticText>
+                <reportElement x="444" y="472" width="40" height="14" uuid="b87dcebe-1000-4f66-8968-b1a971ffd13e"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <text><![CDATA[비고5]]></text>
+            </staticText>
+            <textField isBlankWhenNull="true">
+                <reportElement x="484" y="472" width="71" height="14" uuid="758b04b0-bc2f-4327-9575-d4b74be07fca"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                </textElement>
+                <textFieldExpression><![CDATA[$P{main_bigo_5}]]></textFieldExpression>
+            </textField>
+
+            <!-- 등록일시 -->
+            <staticText>
+                <reportElement x="0" y="486" width="65" height="14" uuid="43a3ecd0-1235-4082-ac06-e78e43627b0e"/>
+                <box><pen lineWidth="0.5"/></box>
+                <textElement textAlignment="Center" verticalAlignment="Middle">
+                    <font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
                 </textElement>
                 <text><![CDATA[등록일시]]></text>
             </staticText>
             <textField isBlankWhenNull="true">
-                <reportElement x="310" y="42" width="110" height="22"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
+                <reportElement x="65" y="486" width="490" height="14" uuid="d9677c6d-7982-44ae-8945-672e351c7392"/>
+                <box><pen lineWidth="0.5"/></box>
                 <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font fontName="굴림" size="9" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+                    <font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
                 </textElement>
                 <textFieldExpression><![CDATA[$P{reg_date}]]></textFieldExpression>
             </textField>
 
-            <!-- 구분선 (y=68) -->
-            <rectangle>
-                <reportElement x="0" y="68" width="555" height="2"/>
-                <graphicElement><pen lineWidth="2.0"/></graphicElement>
-            </rectangle>
-
-            <!-- ============================================================ -->
-            <!-- 섹션1: 침탄로 본체 처리품  y=76                               -->
-            <!-- ============================================================ -->
-            <staticText>
-                <reportElement x="0" y="76" width="555" height="22" mode="Transparent" backcolor="#F0EBEB"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="굴림" size="10" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-                </textElement>
-                <text><![CDATA[  침탄로 본체 처리품]]></text>
-            </staticText>
-            <!-- 헤더 y=98 h=20 -->
-            <staticText><reportElement x="0"   y="98" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[자동대차 패턴번호]]></text></staticText>
-            <staticText><reportElement x="92"  y="98" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[처리품 유/무]]></text></staticText>
-            <staticText><reportElement x="184" y="98" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[침탄로 패턴번호]]></text></staticText>
-            <staticText><reportElement x="276" y="98" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[소려로 패턴번호]]></text></staticText>
-            <staticText><reportElement x="368" y="98" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[침탄로 호기]]></text></staticText>
-            <staticText><reportElement x="460" y="98" width="95" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[소려로 호기]]></text></staticText>
-            <!-- 데이터 y=118 h=22 -->
-            <textField isBlankWhenNull="true"><reportElement x="0"   y="118" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_auto_pattern_number}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="92"  y="118" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_yn}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="184" y="118" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_bcf_pattern_number}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="276" y="118" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_tf_pattern_number}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="368" y="118" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_bcf_hogi}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="460" y="118" width="95" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_tf_hogi}]]></textFieldExpression></textField>
-            <!-- 스페어 y=140 h=20 -->
-            <staticText><reportElement x="0"   y="140" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어1]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="60"  y="140" width="78" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_spare_1}]]></textFieldExpression></textField>
-            <staticText><reportElement x="138" y="140" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어2]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="198" y="140" width="78" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_spare_2}]]></textFieldExpression></textField>
-            <staticText><reportElement x="276" y="140" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어3]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="336" y="140" width="78" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_spare_3}]]></textFieldExpression></textField>
-            <staticText><reportElement x="414" y="140" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어4]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="474" y="140" width="81" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_spare_4}]]></textFieldExpression></textField>
-            <!-- 비고 y=160 h=20 -->
-            <staticText><reportElement x="0"   y="160" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고1]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="50"  y="160" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_bigo_1}]]></textFieldExpression></textField>
-            <staticText><reportElement x="111" y="160" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고2]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="161" y="160" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_bigo_2}]]></textFieldExpression></textField>
-            <staticText><reportElement x="222" y="160" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고3]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="272" y="160" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_bigo_3}]]></textFieldExpression></textField>
-            <staticText><reportElement x="333" y="160" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고4]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="383" y="160" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_bigo_4}]]></textFieldExpression></textField>
-            <staticText><reportElement x="444" y="160" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고5]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="494" y="160" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{main_bigo_5}]]></textFieldExpression></textField>
-
-            <!-- ============================================================ -->
-            <!-- 섹션2: 엘리베이터 체인 (상부)  y=192                           -->
-            <!-- ============================================================ -->
-            <staticText>
-                <reportElement x="0" y="192" width="555" height="22" mode="Transparent" backcolor="#F0EBEB"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="굴림" size="10" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-                </textElement>
-                <text><![CDATA[  엘리베이터 체인 (상부) 처리품]]></text>
-            </staticText>
-            <staticText><reportElement x="0"   y="214" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[자동대차 패턴번호]]></text></staticText>
-            <staticText><reportElement x="92"  y="214" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[처리품 유/무]]></text></staticText>
-            <staticText><reportElement x="184" y="214" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[침탄로 패턴번호]]></text></staticText>
-            <staticText><reportElement x="276" y="214" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[소려로 패턴번호]]></text></staticText>
-            <staticText><reportElement x="368" y="214" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[침탄로 호기]]></text></staticText>
-            <staticText><reportElement x="460" y="214" width="95" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[소려로 호기]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="0"   y="234" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_auto_pattern_number}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="92"  y="234" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_yn}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="184" y="234" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_bcf_pattern_number}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="276" y="234" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_tf_pattern_number}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="368" y="234" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_bcf_hogi}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="460" y="234" width="95" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_tf_hogi}]]></textFieldExpression></textField>
-            <staticText><reportElement x="0"   y="256" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어1]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="60"  y="256" width="78" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_spare_1}]]></textFieldExpression></textField>
-            <staticText><reportElement x="138" y="256" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어2]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="198" y="256" width="78" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_spare_2}]]></textFieldExpression></textField>
-            <staticText><reportElement x="276" y="256" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어3]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="336" y="256" width="78" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_spare_3}]]></textFieldExpression></textField>
-            <staticText><reportElement x="414" y="256" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어4]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="474" y="256" width="81" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_spare_4}]]></textFieldExpression></textField>
-            <staticText><reportElement x="0"   y="276" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고1]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="50"  y="276" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_bigo_1}]]></textFieldExpression></textField>
-            <staticText><reportElement x="111" y="276" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고2]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="161" y="276" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_bigo_2}]]></textFieldExpression></textField>
-            <staticText><reportElement x="222" y="276" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고3]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="272" y="276" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_bigo_3}]]></textFieldExpression></textField>
-            <staticText><reportElement x="333" y="276" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고4]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="383" y="276" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_bigo_4}]]></textFieldExpression></textField>
-            <staticText><reportElement x="444" y="276" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고5]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="494" y="276" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{upper_bigo_5}]]></textFieldExpression></textField>
-
-            <!-- ============================================================ -->
-            <!-- 섹션3: 엘리베이터 체인 (하부)  y=308                           -->
-            <!-- ============================================================ -->
-            <staticText>
-                <reportElement x="0" y="308" width="555" height="22" mode="Transparent" backcolor="#F0EBEB"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="굴림" size="10" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-                </textElement>
-                <text><![CDATA[  엘리베이터 체인 (하부) 처리품]]></text>
-            </staticText>
-            <staticText><reportElement x="0"   y="330" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[자동대차 패턴번호]]></text></staticText>
-            <staticText><reportElement x="92"  y="330" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[처리품 유/무]]></text></staticText>
-            <staticText><reportElement x="184" y="330" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[침탄로 패턴번호]]></text></staticText>
-            <staticText><reportElement x="276" y="330" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[소려로 패턴번호]]></text></staticText>
-            <staticText><reportElement x="368" y="330" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[침탄로 호기]]></text></staticText>
-            <staticText><reportElement x="460" y="330" width="95" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[소려로 호기]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="0"   y="350" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_auto_pattern_number}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="92"  y="350" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_yn}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="184" y="350" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_bcf_pattern_number}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="276" y="350" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_tf_pattern_number}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="368" y="350" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_bcf_hogi}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="460" y="350" width="95" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_tf_hogi}]]></textFieldExpression></textField>
-            <staticText><reportElement x="0"   y="372" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어1]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="60"  y="372" width="78" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_spare_1}]]></textFieldExpression></textField>
-            <staticText><reportElement x="138" y="372" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어2]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="198" y="372" width="78" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_spare_2}]]></textFieldExpression></textField>
-            <staticText><reportElement x="276" y="372" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어3]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="336" y="372" width="78" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_spare_3}]]></textFieldExpression></textField>
-            <staticText><reportElement x="414" y="372" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어4]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="474" y="372" width="81" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_spare_4}]]></textFieldExpression></textField>
-            <staticText><reportElement x="0"   y="392" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고1]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="50"  y="392" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_bigo_1}]]></textFieldExpression></textField>
-            <staticText><reportElement x="111" y="392" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고2]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="161" y="392" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_bigo_2}]]></textFieldExpression></textField>
-            <staticText><reportElement x="222" y="392" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고3]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="272" y="392" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_bigo_3}]]></textFieldExpression></textField>
-            <staticText><reportElement x="333" y="392" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고4]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="383" y="392" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_bigo_4}]]></textFieldExpression></textField>
-            <staticText><reportElement x="444" y="392" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고5]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="494" y="392" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{lower_bigo_5}]]></textFieldExpression></textField>
-
-            <!-- ============================================================ -->
-            <!-- 섹션4: 입구 컨베어 처리품  y=424                               -->
-            <!-- ============================================================ -->
-            <staticText>
-                <reportElement x="0" y="424" width="555" height="22" mode="Transparent" backcolor="#F0EBEB"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
-                <textElement verticalAlignment="Middle">
-                    <font fontName="굴림" size="10" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-                </textElement>
-                <text><![CDATA[  입구 컨베어 처리품]]></text>
-            </staticText>
-            <staticText><reportElement x="0"   y="446" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[자동대차 패턴번호]]></text></staticText>
-            <staticText><reportElement x="92"  y="446" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[처리품 유/무]]></text></staticText>
-            <staticText><reportElement x="184" y="446" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[침탄로 패턴번호]]></text></staticText>
-            <staticText><reportElement x="276" y="446" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[소려로 패턴번호]]></text></staticText>
-            <staticText><reportElement x="368" y="446" width="92" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[침탄로 호기]]></text></staticText>
-            <staticText><reportElement x="460" y="446" width="95" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[소려로 호기]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="0"   y="466" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_auto_pattern_number}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="92"  y="466" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_yn}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="184" y="466" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_bcf_pattern_number}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="276" y="466" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_tf_pattern_number}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="368" y="466" width="92" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_bcf_hogi}]]></textFieldExpression></textField>
-            <textField isBlankWhenNull="true"><reportElement x="460" y="466" width="95" height="22"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_tf_hogi}]]></textFieldExpression></textField>
-            <staticText><reportElement x="0"   y="488" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어1]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="60"  y="488" width="78" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_spare_1}]]></textFieldExpression></textField>
-            <staticText><reportElement x="138" y="488" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어2]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="198" y="488" width="78" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_spare_2}]]></textFieldExpression></textField>
-            <staticText><reportElement x="276" y="488" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어3]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="336" y="488" width="78" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_spare_3}]]></textFieldExpression></textField>
-            <staticText><reportElement x="414" y="488" width="60" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[스페어4]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="474" y="488" width="81" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_spare_4}]]></textFieldExpression></textField>
-            <staticText><reportElement x="0"   y="508" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고1]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="50"  y="508" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_bigo_1}]]></textFieldExpression></textField>
-            <staticText><reportElement x="111" y="508" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고2]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="161" y="508" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_bigo_2}]]></textFieldExpression></textField>
-            <staticText><reportElement x="222" y="508" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고3]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="272" y="508" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_bigo_3}]]></textFieldExpression></textField>
-            <staticText><reportElement x="333" y="508" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고4]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="383" y="508" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_bigo_4}]]></textFieldExpression></textField>
-            <staticText><reportElement x="444" y="508" width="50" height="20" mode="Transparent" backcolor="#F0EBEB"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><text><![CDATA[비고5]]></text></staticText>
-            <textField isBlankWhenNull="true"><reportElement x="494" y="508" width="61" height="20"/><box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box><textElement textAlignment="Center" verticalAlignment="Middle"><font fontName="굴림" size="8" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/></textElement><textFieldExpression><![CDATA[$P{belt_bigo_5}]]></textFieldExpression></textField>
-
-            <!-- ===== 하단 서명란 y=546 ===== -->
-            <rectangle>
-                <reportElement x="0" y="546" width="555" height="2"/>
-                <graphicElement><pen lineWidth="1.5"/></graphicElement>
-            </rectangle>
-            <staticText>
-                <reportElement x="0"   y="554" width="185" height="26" mode="Transparent" backcolor="#F0EBEB"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
-                <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font fontName="굴림" size="10" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-                </textElement>
-                <text><![CDATA[작성자 확인]]></text>
-            </staticText>
-            <staticText>
-                <reportElement x="185" y="554" width="185" height="26" mode="Transparent" backcolor="#F0EBEB"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
-                <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font fontName="굴림" size="10" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-                </textElement>
-                <text><![CDATA[팀장 확인]]></text>
-            </staticText>
-            <staticText>
-                <reportElement x="370" y="554" width="185" height="26" mode="Transparent" backcolor="#F0EBEB"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
-                <textElement textAlignment="Center" verticalAlignment="Middle">
-                    <font fontName="굴림" size="10" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
-                </textElement>
-                <text><![CDATA[공장장 확인]]></text>
-            </staticText>
-            <staticText>
-                <reportElement x="0"   y="580" width="185" height="60"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
-                <textElement/><text><![CDATA[]]></text>
-            </staticText>
-            <staticText>
-                <reportElement x="185" y="580" width="185" height="60"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
-                <textElement/><text><![CDATA[]]></text>
-            </staticText>
-            <staticText>
-                <reportElement x="370" y="580" width="185" height="60"/>
-                <box><topPen lineWidth="1.0"/><leftPen lineWidth="1.0"/><bottomPen lineWidth="1.0"/><rightPen lineWidth="1.0"/></box>
-                <textElement/><text><![CDATA[]]></text>
-            </staticText>
-
         </band>
     </title>
-
 </jasperReport>
