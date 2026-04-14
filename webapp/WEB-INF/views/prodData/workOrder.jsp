@@ -368,10 +368,6 @@
                     <label>입고수량</label>
                     <input type="text" id="m_ord_su" readonly placeholder="-">
                 </div>
-                <div class="field-col">
-                    <label>입고LOT</label>
-                    <input type="text" id="m_ord_lot" readonly placeholder="-">
-                </div>
             </div>
             <div class="field-row">
                 <div class="field-col">
@@ -687,7 +683,20 @@
     </div>
 </div>
 
-
+<!-- 출력 로딩 오버레이 -->
+<div id="printLoadingOverlay" style="display:none; position:fixed;
+     top:0; left:0; width:100%; height:100%;
+     background:rgba(0,0,0,0.55); z-index:9999;
+     align-items:center; justify-content:center; flex-direction:column;">
+    <div style="background:white; border-radius:12px; padding:36px 48px;
+                text-align:center; box-shadow:0 8px 40px rgba(0,0,0,0.3);">
+        <div style="width:48px; height:48px; border:5px solid #dee2e6;
+                    border-top-color:#339af0; border-radius:50%;
+                    animation:spin 0.8s linear infinite; margin:0 auto 16px;"></div>
+        <div style="font-size:16px; font-weight:700; color:#2c3e50;">출력 중입니다...</div>
+        <div style="font-size:12px; color:#868e96; margin-top:6px;">잠시만 기다려 주세요</div>
+    </div>
+</div>
 
 </body>
 </html>
@@ -777,17 +786,25 @@ function initWoList() {
                     e.stopPropagation();
                     var data = cell.getRow().getData();
                     if (!confirm("LOT: " + data.lot_no + "\n작업지시서를 출력하시겠습니까?")) return;
+
+                    // 로딩 오버레이 표시
+                    $("#printLoadingOverlay").css("display", "flex");
+
                     $.ajax({
                         url: "/mibogear/workOrder/print",
                         type: "GET",
                         data: { wo_code: data.wo_code },
                         dataType: "json",
                         success: function (r) {
+                            $("#printLoadingOverlay").hide();
                             if (r.status === "success") {
                                 alert("출력 완료\nLOT: " + r.lot_no + "\n경로: " + r.pdfPath);
                             } else { alert("출력 오류: " + r.message); }
                         },
-                        error: function () { alert("출력 요청 오류"); }
+                        error: function () {
+                            $("#printLoadingOverlay").hide();
+                            alert("출력 요청 오류");
+                        }
                     });
                 }
             },
@@ -1027,7 +1044,6 @@ function collectFormData() {
         prod_gyu:  $("#m_prod_gyu").val(),
         prod_jai:  $("#m_prod_jai").val(),
         ord_su:    $("#m_ord_su").val(),
-        ord_lot:   $("#m_ord_lot").val(),
         /* 섹션② 패턴 */
         auto_pattern: $("#m_auto_pattern").val() || null,
         bcf_cycle_no: $("#m_bcf_cycle_no").val() || null,
@@ -1195,7 +1211,6 @@ function selectIpgoRow(d) {
     $("#m_prod_gyu").val(d.prod_gyu  || "");
     $("#m_prod_jai").val(d.prod_jai  || "");
     $("#m_ord_su").val(d.ord_su      || "");
-    $("#m_ord_lot").val(d.ord_lot    || "");
 
     $("#m_jan_su").val("조회 중...");
     $("#m_jan_badge").hide();
@@ -1233,7 +1248,7 @@ function selectIpgoRow(d) {
 function clearIpgoSection() {
     $("#m_ord_code,#h_ord_code,#m_ord_date").val("");
     $("#m_corp_name,#m_prod_name,#m_prod_no").val("");
-    $("#m_prod_gyu,#m_prod_jai,#m_ord_su,#m_ord_lot").val("");
+    $("#m_prod_gyu,#m_prod_jai,#m_ord_su").val("");
     $("#m_jan_su").val(""); $("#m_jan_badge").hide();
 }
 

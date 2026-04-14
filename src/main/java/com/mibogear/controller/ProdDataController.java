@@ -280,7 +280,8 @@ public class ProdDataController {
         p.put("prod_gyu",  nvlWo(d.getProd_gyu()));
         p.put("prod_jai",  nvlWo(d.getProd_jai()));
         p.put("ord_su",    d.getOrd_su() != null ? d.getOrd_su().toString() : "");
-        p.put("ord_lot",   nvlWo(d.getOrd_lot()));
+        p.put("ord_code",  nvlWo(d.getOrd_code()));
+        p.put("auto_pattern", d.getAuto_pattern() != null ? d.getAuto_pattern().toString() : "");
         // 패턴 호기/번호
         p.put("bcf_hogi",     d.getBcf_hogi()     != null ? d.getBcf_hogi().toString()     : "");
         p.put("tf_hogi",      d.getTf_hogi()      != null ? d.getTf_hogi().toString()      : "");

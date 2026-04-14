@@ -33,33 +33,30 @@ public class ProdDataServiceImpl implements ProdDataService {
     @Override
     public Map<String, Object> saveWorkOrder(WorkOrder workOrder, String mode) {
         Map<String, Object> result = new HashMap<>();
- 
+
         if ("insert".equalsIgnoreCase(mode)) {
-            // LOT번호 자동생성: yyMMdd-BCFn-순번3자리
             String today = new SimpleDateFormat("yyMMdd").format(new Date());
-            
-            // bcf_hogi 값으로 설비코드 결정 (1→BCF1, 2→BCF2, 3→BCF3, 4→BCF4)
-            String hogiCode = "BCF" + (workOrder.getBcf_hogi() != null ? workOrder.getBcf_hogi() : "0");
-            
-            // 오늘 + 해당 설비 기준으로 마지막 순번 조회
+
+            // bcf_hogi 숫자만 사용 (BCF 텍스트 제거)
+            String hogiCode = (workOrder.getBcf_hogi() != null ? workOrder.getBcf_hogi().toString() : "0");
+
             String prefix = today + "-" + hogiCode + "-";
             String lastNo = prodDataDAO.getTodayLastLotSeq(prefix);
-            
+
             int seq = 1;
             if (lastNo != null && !lastNo.isEmpty()) {
-                // prefix 이후 숫자 3자리만 파싱
                 String seqPart = lastNo.replace(prefix, "");
                 try { seq = Integer.parseInt(seqPart) + 1; } catch (NumberFormatException e) { seq = 1; }
             }
-            
+
             String lotNo = prefix + String.format("%03d", seq);
             workOrder.setLot_no(lotNo);
             workOrder.setMain_spare_1(lotNo);
             prodDataDAO.insertWorkOrder(workOrder);
         } else {
-        	prodDataDAO.updateWorkOrder(workOrder);
+            prodDataDAO.updateWorkOrder(workOrder);
         }
- 
+
         result.put("wo_code", workOrder.getWo_code());
         result.put("lot_no",  workOrder.getLot_no());
         return result;
