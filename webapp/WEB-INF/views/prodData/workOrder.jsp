@@ -772,8 +772,6 @@ function initWoList() {
             },
             { title: "작성자",   field: "reg_user",  width: 80,  hozAlign: "center" },
             { title: "등록일시", field: "reg_date",  width: 150, hozAlign: "center" },
-
-            // ── 출력 버튼 컬럼 추가
             {
                 title: "출력", field: "_print", width: 70, hozAlign: "center",
                 headerSort: false,
@@ -786,10 +784,7 @@ function initWoList() {
                     e.stopPropagation();
                     var data = cell.getRow().getData();
                     if (!confirm("LOT: " + data.lot_no + "\n작업지시서를 출력하시겠습니까?")) return;
-
-                    // 로딩 오버레이 표시
                     $("#printLoadingOverlay").css("display", "flex");
-
                     $.ajax({
                         url: "/mibogear/workOrder/print",
                         type: "GET",
@@ -808,8 +803,6 @@ function initWoList() {
                     });
                 }
             },
-
-            // ── 삭제 버튼 컬럼 추가
             {
                 title: "삭제", field: "_delete", width: 70, hozAlign: "center",
                 headerSort: false,
@@ -846,10 +839,7 @@ function initWoList() {
             $("#woListTabulator div.row_select").removeClass("row_select");
             row.getElement().classList.add("row_select");
             selectedRowData = row.getData();
-        },/* 
-        rowDblClick: function (e, row) {
-            openEditModal(row.getData());
-        }, */
+        },
         tableBuilt: function () {
             loadWoList();
         }
@@ -898,11 +888,10 @@ function openEditModal(data) {
     $("#woModalTitle").text("작업지시서 수정");
     $("#woModalBtnDelete").show();
     $("#woModalBtnPrint").show();
-	
+
     $("#displayLotNo").text(data.lot_no);
     $("#lotBadgeArea").show();
 
-    /* 섹션① 입고정보 */
     if (data.ord_code) {
         $("#m_ord_code").val(data.ord_code);
         $("#h_ord_code").val(data.ord_code);
@@ -928,7 +917,6 @@ function openEditModal(data) {
         badge.show();
     }
 
-    /* 섹션③ 처리품정보 */
     $("#m_main_yn").val(data.main_yn || "Y");
     for (var i = 1; i <= 4; i++) $("#m_main_spare_" + i).val(data["main_spare_" + i] || "");
     for (var i = 1; i <= 5; i++) $("#m_main_bigo_"  + i).val(data["main_bigo_"  + i] || "");
@@ -945,24 +933,22 @@ function openWoModal() {
 
 function closeWoModal() {
     stopPatternPoll();
+    // status 상태와 무관하게 항상 reset으로 초기화
     $.post("/mibogear/workOrder/pattern/reset");
     $("#woOverlay").removeClass("active");
     $("#woModal").removeClass("active");
 }
 
 function clearWoModal() {
-    /* 섹션① */
     $("#m_ord_code,#h_ord_code,#h_prod_code").val("");
     $("#m_ord_date,#m_corp_name,#m_prod_name,#m_prod_no").val("");
     $("#m_prod_gyu,#m_prod_jai,#m_ord_su,#m_ord_lot").val("");
     $("#m_jan_su").val(""); $("#m_jan_badge").hide();
-    /* 섹션② 패턴 */
     $("#m_bcf_hogi").val("");
     $("#m_tf_hogi_display").val("");
     $("#m_auto_pattern,#m_bcf_cycle_no,#m_tf_cycle_no").val("");
     $("#patternLoading,#patternResult,#patternTimeout").hide();
     $("#btnPatternSearch").prop("disabled", false).css("opacity", "1");
- // 패턴 인풋 초기화
     $("#bcf_time_fanup,#bcf_time_chim,#bcf_time_diff,#bcf_time_gang,#bcf_time_que,#bcf_time_drain").val("");
     $("#bcf_temp_fanup,#bcf_temp_chim,#bcf_temp_diff,#bcf_temp_gang,#bcf_temp_que_drain").val("");
     $("#bcf_cp_fanup,#bcf_cp_chim,#bcf_cp_diff,#bcf_cp_gang,#bcf_cp_que_drain").val("");
@@ -970,7 +956,6 @@ function clearWoModal() {
     $("#m_main_spare_1").val("");
     patternReceived = false;
     stopPatternPoll();
-    /* 섹션③ */
     $("#m_main_yn").val("Y");
     for (var i = 1; i <= 4; i++) $("#m_main_spare_" + i).val("");
     for (var i = 1; i <= 5; i++) $("#m_main_bigo_"  + i).val("");
@@ -1020,7 +1005,14 @@ function doSave(callback) {
         dataType: "json",
         success: function (res) {
             if (res.status === "success") {
-                $.post("/mibogear/workOrder/pattern/reset");
+                // ── 수정: patternReceived 여부에 따라 분기 ──
+                if (patternReceived) {
+                    // 패턴 조회 완료 후 저장 → 싸이먼 통해 정상 종료 (status=3)
+                    $.post("/mibogear/workOrder/pattern/complete");
+                } else {
+                    // 패턴 조회 없이 저장 → 웹에서 직접 reset (status=0)
+                    $.post("/mibogear/workOrder/pattern/reset");
+                }
                 if (callback) callback(res);
             } else { alert("오류: " + res.message); }
         },
@@ -1036,7 +1028,6 @@ function collectFormData() {
     })();
 
     return {
-        /* 섹션① */
         ord_code:  $("#h_ord_code").val(),
         corp_name: $("#m_corp_name").val(),
         prod_name: $("#m_prod_name").val(),
@@ -1044,42 +1035,38 @@ function collectFormData() {
         prod_gyu:  $("#m_prod_gyu").val(),
         prod_jai:  $("#m_prod_jai").val(),
         ord_su:    $("#m_ord_su").val(),
-        /* 섹션② 패턴 */
         auto_pattern: $("#m_auto_pattern").val() || null,
         bcf_cycle_no: $("#m_bcf_cycle_no").val() || null,
         tf_cycle_no:  $("#m_tf_cycle_no").val()  || null,
         bcf_hogi:     $("#m_bcf_hogi").val()     || null,
         tf_hogi:      tfHogiNum,
-        /* 온도/시간 */
         bcf_time_fanup:  patternReceived ? ($("#bcf_time_fanup").val()  || null) : null,
-		bcf_time_chim:   patternReceived ? ($("#bcf_time_chim").val()   || null) : null,
-		bcf_time_diff:   patternReceived ? ($("#bcf_time_diff").val()   || null) : null,
-		bcf_time_gang:   patternReceived ? ($("#bcf_time_gang").val()   || null) : null,
-		bcf_time_que:    patternReceived ? ($("#bcf_time_que").val()    || null) : null,
-		bcf_time_drain:  patternReceived ? ($("#bcf_time_drain").val()  || null) : null,
-		bcf_temp_fanup:  patternReceived ? ($("#bcf_temp_fanup").val()  || null) : null,
-		bcf_temp_chim:   patternReceived ? ($("#bcf_temp_chim").val()   || null) : null,
-		bcf_temp_diff:   patternReceived ? ($("#bcf_temp_diff").val()   || null) : null,
-		bcf_temp_gang:   patternReceived ? ($("#bcf_temp_gang").val()   || null) : null,
-		bcf_temp_que:    patternReceived ? ($("#bcf_temp_que_drain").val() || null) : null,
-		bcf_cp_fanup:    patternReceived ? ($("#bcf_cp_fanup").val()    || null) : null,
-		bcf_cp_chim:     patternReceived ? ($("#bcf_cp_chim").val()     || null) : null,
-		bcf_cp_diff:     patternReceived ? ($("#bcf_cp_diff").val()     || null) : null,
-		bcf_cp_gang:     patternReceived ? ($("#bcf_cp_gang").val()     || null) : null,
-		tf_time_dry:     patternReceived ? ($("#tf_time_dry").val()     || null) : null,
-		tf_time_fanup:   patternReceived ? ($("#tf_time_fanup").val()   || null) : null,
-		tf_time_n2:      patternReceived ? ($("#tf_time_n2").val()      || null) : null,
-		tf_time_tem:     patternReceived ? ($("#tf_time_tem").val()     || null) : null,
-		tf_time_cool:    patternReceived ? ($("#tf_time_cool").val()    || null) : null,
-		tf_temp_tem:     patternReceived ? ($("#tf_temp_tem").val()     || null) : null,
-		// 나머지 예비 스텝은 null
-		bcf_time_spare1: null, bcf_time_spare2: null, bcf_time_spare3: null,
-		bcf_temp_spare1: null, bcf_temp_spare2: null, bcf_temp_spare3: null,
-		bcf_cp_spare1: null, bcf_cp_spare2: null,
-		tf_time_spare1: null, tf_time_spare2: null, tf_time_spare3: null, tf_time_spare4: null,
-		tf_temp_spare1: null, tf_temp_spare2: null, tf_temp_spare3: null, tf_temp_spare4: null,
-		tf_temp_dry: null, tf_temp_fanup: null, tf_temp_n2: null, tf_temp_cool: null,
-        /* 섹션③ - 호기/패턴번호는 섹션②에서 가져옴 */
+        bcf_time_chim:   patternReceived ? ($("#bcf_time_chim").val()   || null) : null,
+        bcf_time_diff:   patternReceived ? ($("#bcf_time_diff").val()   || null) : null,
+        bcf_time_gang:   patternReceived ? ($("#bcf_time_gang").val()   || null) : null,
+        bcf_time_que:    patternReceived ? ($("#bcf_time_que").val()    || null) : null,
+        bcf_time_drain:  patternReceived ? ($("#bcf_time_drain").val()  || null) : null,
+        bcf_temp_fanup:  patternReceived ? ($("#bcf_temp_fanup").val()  || null) : null,
+        bcf_temp_chim:   patternReceived ? ($("#bcf_temp_chim").val()   || null) : null,
+        bcf_temp_diff:   patternReceived ? ($("#bcf_temp_diff").val()   || null) : null,
+        bcf_temp_gang:   patternReceived ? ($("#bcf_temp_gang").val()   || null) : null,
+        bcf_temp_que:    patternReceived ? ($("#bcf_temp_que_drain").val() || null) : null,
+        bcf_cp_fanup:    patternReceived ? ($("#bcf_cp_fanup").val()    || null) : null,
+        bcf_cp_chim:     patternReceived ? ($("#bcf_cp_chim").val()     || null) : null,
+        bcf_cp_diff:     patternReceived ? ($("#bcf_cp_diff").val()     || null) : null,
+        bcf_cp_gang:     patternReceived ? ($("#bcf_cp_gang").val()     || null) : null,
+        tf_time_dry:     patternReceived ? ($("#tf_time_dry").val()     || null) : null,
+        tf_time_fanup:   patternReceived ? ($("#tf_time_fanup").val()   || null) : null,
+        tf_time_n2:      patternReceived ? ($("#tf_time_n2").val()      || null) : null,
+        tf_time_tem:     patternReceived ? ($("#tf_time_tem").val()     || null) : null,
+        tf_time_cool:    patternReceived ? ($("#tf_time_cool").val()    || null) : null,
+        tf_temp_tem:     patternReceived ? ($("#tf_temp_tem").val()     || null) : null,
+        bcf_time_spare1: null, bcf_time_spare2: null, bcf_time_spare3: null,
+        bcf_temp_spare1: null, bcf_temp_spare2: null, bcf_temp_spare3: null,
+        bcf_cp_spare1: null, bcf_cp_spare2: null,
+        tf_time_spare1: null, tf_time_spare2: null, tf_time_spare3: null, tf_time_spare4: null,
+        tf_temp_spare1: null, tf_temp_spare2: null, tf_temp_spare3: null, tf_temp_spare4: null,
+        tf_temp_dry: null, tf_temp_fanup: null, tf_temp_n2: null, tf_temp_cool: null,
         main_auto_pattern_number: $("#m_auto_pattern").val()  || null,
         main_bcf_pattern_number:  $("#m_bcf_cycle_no").val()  || null,
         main_tf_pattern_number:   $("#m_tf_cycle_no").val()   || null,
@@ -1281,32 +1268,35 @@ function requestPattern() {
     patternPollSec = 0;
     $("#pollCount").text("0");
 
-    $.ajax({
-        url: "/mibogear/workOrder/pattern/request",
-        type: "POST",
-        contentType: "application/json",
-        data: JSON.stringify({
-            auto_pattern: $("#m_auto_pattern").val() || null,
-            bcf_cycle_no: parseInt(bcfCycleNo),
-            tf_cycle_no:  parseInt(tfCycleNo),
-            bcf_hogi:     parseInt(bcfHogi),
-            tf_hogi:      tfHogi
-        }),
-        dataType: "json",
-        success: function (res) {
-            if (res.status === "success") {
-                startPatternPoll();
-            } else {
-                alert("패턴 요청 오류: " + res.message);
+    // ── 추가: 새 요청 전 기존 상태 reset 후 request ──
+    $.post("/mibogear/workOrder/pattern/reset", function() {
+        $.ajax({
+            url: "/mibogear/workOrder/pattern/request",
+            type: "POST",
+            contentType: "application/json",
+            data: JSON.stringify({
+                auto_pattern: $("#m_auto_pattern").val() || null,
+                bcf_cycle_no: parseInt(bcfCycleNo),
+                tf_cycle_no:  parseInt(tfCycleNo),
+                bcf_hogi:     parseInt(bcfHogi),
+                tf_hogi:      tfHogi
+            }),
+            dataType: "json",
+            success: function (res) {
+                if (res.status === "success") {
+                    startPatternPoll();
+                } else {
+                    alert("패턴 요청 오류: " + res.message);
+                    $("#patternLoading").hide();
+                    $("#btnPatternSearch").prop("disabled", false).css("opacity", "1");
+                }
+            },
+            error: function () {
+                alert("패턴 요청 중 오류가 발생했습니다.");
                 $("#patternLoading").hide();
                 $("#btnPatternSearch").prop("disabled", false).css("opacity", "1");
             }
-        },
-        error: function () {
-            alert("패턴 요청 중 오류가 발생했습니다.");
-            $("#patternLoading").hide();
-            $("#btnPatternSearch").prop("disabled", false).css("opacity", "1");
-        }
+        });
     });
 }
 
@@ -1332,7 +1322,7 @@ function startPatternPoll() {
                     stopPatternPoll();
                     patternReceived = true;
                     fillPatternResult(res.data);
-                    $.post("/mibogear/workOrder/pattern/complete");
+                    // ← complete 제거 (저장 버튼 클릭 시 doSave에서 호출)
                     $("#patternLoading").hide();
                     $("#patternResult").show();
                     $("#btnPatternSearch").prop("disabled", false).css("opacity", "1");
@@ -1352,38 +1342,30 @@ function stopPatternPoll() {
 
 function fillPatternResult(d) {
     if (!d) return;
-
-    // BCF 침탄로
     $("#bcf_time_fanup").val(d.bcf_time_fanup  != null ? d.bcf_time_fanup  : "");
     $("#bcf_time_chim").val(d.bcf_time_chim    != null ? d.bcf_time_chim   : "");
     $("#bcf_time_diff").val(d.bcf_time_diff    != null ? d.bcf_time_diff   : "");
     $("#bcf_time_gang").val(d.bcf_time_gang    != null ? d.bcf_time_gang   : "");
     $("#bcf_time_que").val(d.bcf_time_que      != null ? d.bcf_time_que    : "");
     $("#bcf_time_drain").val(d.bcf_time_drain  != null ? d.bcf_time_drain  : "");
-
     $("#bcf_temp_fanup").val(d.bcf_temp_fanup  != null ? d.bcf_temp_fanup  : "");
     $("#bcf_temp_chim").val(d.bcf_temp_chim    != null ? d.bcf_temp_chim   : "");
     $("#bcf_temp_diff").val(d.bcf_temp_diff    != null ? d.bcf_temp_diff   : "");
     $("#bcf_temp_gang").val(d.bcf_temp_gang    != null ? d.bcf_temp_gang   : "");
-    // 퀜칭/드레인 온도는 동일한 값으로 표시
     $("#bcf_temp_que_drain").val(d.bcf_temp_que != null ? d.bcf_temp_que   : "");
-
     $("#bcf_cp_fanup").val(d.bcf_cp_fanup      != null ? d.bcf_cp_fanup    : "");
     $("#bcf_cp_chim").val(d.bcf_cp_chim        != null ? d.bcf_cp_chim     : "");
     $("#bcf_cp_diff").val(d.bcf_cp_diff        != null ? d.bcf_cp_diff     : "");
     $("#bcf_cp_gang").val(d.bcf_cp_gang        != null ? d.bcf_cp_gang     : "");
-    $("#bcf_cp_que_drain").val("");  // CP없는 구간
-
-    // TF 소려로
+    $("#bcf_cp_que_drain").val("");
     $("#tf_time_dry").val(d.tf_time_dry        != null ? d.tf_time_dry     : "");
     $("#tf_time_fanup").val(d.tf_time_fanup    != null ? d.tf_time_fanup   : "");
     $("#tf_time_n2").val(d.tf_time_n2          != null ? d.tf_time_n2      : "");
     $("#tf_time_tem").val(d.tf_time_tem        != null ? d.tf_time_tem     : "");
     $("#tf_time_cool").val(d.tf_time_cool      != null ? d.tf_time_cool    : "");
-
-    // TF 소려로 온도는 소려 온도 하나로 표시 (실제 처리온도)
     $("#tf_temp_tem").val(d.tf_temp_tem        != null ? d.tf_temp_tem     : "");
 }
+
 function doResetPattern() {
     stopPatternPoll();
     patternReceived = false;

@@ -36,7 +36,7 @@ public class ProdDataController {
     @Autowired
     private ProdDataService prodDataService;
 
-    private static final String PDF_ROOT = "C:/mibogear/workorder/";
+    private static final String PDF_ROOT = "D:/미보기아파일/작업지시서/";
 
     // ==========================================================
     // 작업지시서 페이지
