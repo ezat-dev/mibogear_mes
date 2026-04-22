@@ -439,12 +439,13 @@
                                color:white; font-size:14px; font-weight:700; cursor:pointer;">
                     패턴 조회
                 </button>
-                <button type="button" onclick="doResetPattern();"
-                        style="min-width:80px; height:36px; border:none; border-radius:6px;
-                               background:#dee2e6; color:#495057;
-                               font-size:13px; font-weight:600; cursor:pointer; margin-left:8px;">
-                    초기화
-                </button>
+                <button type="button" id="btnPatternReset" onclick="doResetPattern();"
+				        disabled
+				        style="min-width:80px; height:36px; border:none; border-radius:6px;
+				               background:#dee2e6; color:#495057;
+				               font-size:13px; font-weight:600; cursor:pointer; margin-left:8px; opacity:0.4;">
+				    초기화
+				</button>
             </div>
 
             <!-- 진행 표시 -->
@@ -492,8 +493,8 @@
                                             <td>승온&amp;팬정지</td>
                                             <td>침탄</td>
                                             <td>확산</td>
-                                            <td>강온&amp;소입</td>
-                                            <td>퀜칭</td>
+                                            <td>강온</td>
+                                            <td>소입(퀜칭)</td>
                                             <td>드레인</td>
                                         </tr>
                                     </thead>
@@ -575,68 +576,99 @@
         <!-- 섹션③ 처리품정보                                    -->
         <!-- ================================================== -->
         <div class="field-section">
-            <h3 class="section-title">
-                <span class="section-badge badge-green">③</span>
-                침탄로 본체 처리품 정보
-            </h3>
-
-            <table class="wo-table">
-                <colgroup>
-                    <col width="120px"><col><col width="120px"><col>
-                </colgroup>
-                <tbody>
-                    <tr>
-                        <th>처리품 유/무</th>
-                        <td>
-                            <select id="m_main_yn">
-                                <option value="Y">Y</option>
-                                <option value="N">N</option>
-                            </select>
-                        </td>
-                        <th></th><td></td>
-                    </tr>
-                    <tr>
-                        <th>LOT번호</th>
-                        <td><input type="text" id="m_main_spare_1" readonly
-           placeholder="LOT번호 부여예정"
-           style="width:100%; padding:5px; border:1px solid #aaa; border-radius:3px;
-                  font-size:13px; background:#f0f0f0; color:#888; cursor:default;"></td>
-                        <th>스페어2</th>
-                        <td><input type="text" id="m_main_spare_2"></td>
-                    </tr>
-                    <tr>
-                        <th>스페어3</th>
-                        <td><input type="text" id="m_main_spare_3"></td>
-                        <th>스페어4</th>
-                        <td><input type="text" id="m_main_spare_4"></td>
-                    </tr>
-                    <tr>
-                        <th>비고1</th>
-                        <td><input type="text" id="m_main_bigo_1"></td>
-                        <th>비고2</th>
-                        <td><input type="text" id="m_main_bigo_2"></td>
-                    </tr>
-                    <tr>
-                        <th>비고3</th>
-                        <td><input type="text" id="m_main_bigo_3"></td>
-                        <th>비고4</th>
-                        <td><input type="text" id="m_main_bigo_4"></td>
-                    </tr>
-                    <tr>
-                        <th>비고5</th>
-                        <td colspan="3">
-                            <input type="text" id="m_main_bigo_5">
-                        </td>
-                    </tr>
-                    <tr>
-                        <th>작성자</th>
-                        <td><input type="text" id="m_reg_user"></td>
-                        <th></th><td></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div><!-- /섹션③ -->
-
+		    <h3 class="section-title">
+		        <span class="section-badge badge-green">③</span>
+		        침탄로 본체 처리품 정보
+		    </h3>
+		
+		    <table class="wo-table">
+		        <colgroup>
+		            <col width="120px"><col><col width="120px"><col>
+		        </colgroup>
+		        <tbody>
+		            <tr>
+		                <th>처리품 유/무</th>
+		                <td>
+		                    <select id="m_main_yn">
+		                        <option value="Y">Y</option>
+		                        <option value="N">N</option>
+		                    </select>
+		                </td>
+		                <th></th><td></td>
+		            </tr>
+		
+		            <!-- 비고1 = LOT번호 자동부여 (문자만, 숫자 없음) -->
+		            <tr>
+		                <th>LOT 번호(자동부여 예정)</th>
+		                <td colspan="3">
+		                    <input type="text" id="m_main_bigo_1" readonly
+		                       placeholder="LOT번호 부여예정"
+		                       style="width:100%; padding:5px; border:1px solid #aaa; border-radius:3px;
+		                              font-size:13px; background:#f0f0f0; color:#888; cursor:default;">
+		                </td>
+		            </tr>
+		
+		            <!-- 비고2 -->
+		            <tr>
+		                <th>비고1</th>
+		                <td colspan="3">
+		                    <div style="display:flex; gap:6px;">
+		                        <input type="text"   id="m_main_bigo_2"     placeholder="문자 입력" style="flex:2;">
+		                        <input type="number" id="m_main_bigo_2_num" placeholder="숫자 입력" style="flex:1;">
+		                    </div>
+		                </td>
+		            </tr>
+		            <!-- 비고3 -->
+		            <tr>
+		                <th>비고2</th>
+		                <td colspan="3">
+		                    <div style="display:flex; gap:6px;">
+		                        <input type="text"   id="m_main_bigo_3"     placeholder="문자 입력" style="flex:2;">
+		                        <input type="number" id="m_main_bigo_3_num" placeholder="숫자 입력" style="flex:1;">
+		                    </div>
+		                </td>
+		            </tr>
+		            <!-- 비고4 -->
+		            <tr>
+		                <th>비고3</th>
+		                <td colspan="3">
+		                    <div style="display:flex; gap:6px;">
+		                        <input type="text"   id="m_main_bigo_4"     placeholder="문자 입력" style="flex:2;">
+		                        <input type="number" id="m_main_bigo_4_num" placeholder="숫자 입력" style="flex:1;">
+		                    </div>
+		                </td>
+		            </tr>
+		            <!-- 비고5 -->
+		            <tr>
+		                <th>비고4</th>
+		                <td colspan="3">
+		                    <div style="display:flex; gap:6px;">
+		                        <input type="text"   id="m_main_bigo_5"     placeholder="문자 입력" style="flex:2;">
+		                        <input type="number" id="m_main_bigo_5_num" placeholder="숫자 입력" style="flex:1;">
+		                    </div>
+		                </td>
+		            </tr>
+		
+		            <tr>
+		                <th>작성자</th>
+		                <td><input type="text" id="m_reg_user"></td>
+		                <th></th><td></td>
+		            </tr>
+		
+		            <!-- 스페어, spare_1 숨김 -->
+		            <tr style="display:none;">
+		                <th>LOT(spare_1)</th>
+		                <td><input type="text" id="m_main_spare_1"></td>
+		                <th>스페어2</th><td><input type="text" id="m_main_spare_2"></td>
+		            </tr>
+		            <tr style="display:none;">
+		                <th>스페어3</th><td><input type="text" id="m_main_spare_3"></td>
+		                <th>스페어4</th><td><input type="text" id="m_main_spare_4"></td>
+		            </tr>
+		
+		        </tbody>
+		    </table>
+</div>
     </div><!-- /modal-body -->
 
     <div class="modal-footer">
@@ -698,9 +730,31 @@
     </div>
 </div>
 
+<!-- PDF 미리보기 모달 -->
+<div id="pdfPreviewOverlay" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%;
+     background:rgba(0,0,0,0.7); z-index:2000; justify-content:center; align-items:center;">
+    <div style="background:#fff; width:80%; height:90%; border-radius:8px; display:flex;
+                flex-direction:column; overflow:hidden;">
+        <div style="display:flex; justify-content:space-between; align-items:center;
+                    padding:12px 16px; background:#343a40; color:#fff;">
+            <span id="pdfPreviewTitle" style="font-weight:700; font-size:14px;">작업지시서 미리보기</span>
+            <div style="display:flex; gap:8px;">
+                <button onclick="downloadPdf()"
+                        style="padding:6px 14px; border:none; border-radius:4px;
+                               background:#339af0; color:#fff; font-size:13px;
+                               font-weight:600; cursor:pointer;">💾 저장</button>
+                <button onclick="closePdfPreview()"
+                        style="padding:6px 14px; border:none; border-radius:4px;
+                               background:#868e96; color:#fff; font-size:13px;
+                               font-weight:600; cursor:pointer;">✕ 닫기</button>
+            </div>
+        </div>
+        <iframe id="pdfPreviewFrame" src="" style="flex:1; border:none;"></iframe>
+    </div>
+</div>
+
 </body>
 </html>
-
 <script>
 let now_page_code = "b04";
 
@@ -711,11 +765,12 @@ var selectedWoCode  = null;
 var selectedRowData = null;
 
 // 패턴 관련 전역변수
-var patternPollTimer = null;
-var patternPollSec   = 0;
-var MAX_POLL_SEC     = 60;
-var patternReceived  = false;
-
+var patternPollTimer  = null;
+var patternPollSec    = 0;
+var MAX_POLL_SEC      = 60;
+var patternReceived   = false;
+var currentPdfWoCode = null;
+var currentPdfLotNo  = null;
 /* ── 초기화 ── */
 $(function () {
     const today = todayDate();
@@ -729,12 +784,20 @@ $(function () {
     });
 
     $("#woModalClose, #woModalBtnCancel").on("click", closeWoModal);
+    $("#woOverlay").on("click", closeWoModal);
 
     $("#sdate,#edate,#s_lot_no,#s_prod_name,#s_corp_name").on("keydown", function (e) {
         if (e.keyCode === 13) loadWoList();
     });
 
     initWoList();
+
+    // ★ 페이지 이탈 시 patternReceived 상태면 reset
+    window.addEventListener("beforeunload", function () {
+        if (patternReceived) {
+            navigator.sendBeacon("/mibogear/workOrder/pattern/reset");
+        }
+    });
 });
 
 /* ============================================================ */
@@ -780,27 +843,12 @@ function initWoList() {
                            'background:#339af0; color:white; font-size:11px; font-weight:600;' +
                            'cursor:pointer;">출력</button>';
                 },
+                // ★ 기존 cellClick 전체를 아래로 교체
                 cellClick: function (e, cell) {
                     e.stopPropagation();
                     var data = cell.getRow().getData();
-                    if (!confirm("LOT: " + data.lot_no + "\n작업지시서를 출력하시겠습니까?")) return;
-                    $("#printLoadingOverlay").css("display", "flex");
-                    $.ajax({
-                        url: "/mibogear/workOrder/print",
-                        type: "GET",
-                        data: { wo_code: data.wo_code },
-                        dataType: "json",
-                        success: function (r) {
-                            $("#printLoadingOverlay").hide();
-                            if (r.status === "success") {
-                                alert("출력 완료\nLOT: " + r.lot_no + "\n경로: " + r.pdfPath);
-                            } else { alert("출력 오류: " + r.message); }
-                        },
-                        error: function () {
-                            $("#printLoadingOverlay").hide();
-                            alert("출력 요청 오류");
-                        }
-                    });
+                    if (!confirm("LOT: " + data.lot_no + "\n작업지시서를 미리보기 하시겠습니까?")) return;
+                    openPdfPreview(data.wo_code, data.lot_no);
                 }
             },
             {
@@ -884,6 +932,7 @@ function openInsertModal() {
 function openEditModal(data) {
     isEditMode     = true;
     selectedWoCode = data.wo_code;
+
     clearWoModal();
     $("#woModalTitle").text("작업지시서 수정");
     $("#woModalBtnDelete").show();
@@ -892,10 +941,11 @@ function openEditModal(data) {
     $("#displayLotNo").text(data.lot_no);
     $("#lotBadgeArea").show();
 
+    /* 섹션① 입고정보 */
     if (data.ord_code) {
         $("#m_ord_code").val(data.ord_code);
         $("#h_ord_code").val(data.ord_code);
-        $("#m_ord_date").val(data.ord_date || "");
+        $("#m_ord_date").val(data.ord_date   || "");
         $("#m_corp_name").val(data.corp_name || "");
         $("#m_prod_name").val(data.prod_name || "");
         $("#m_prod_no").val(data.prod_no     || "");
@@ -903,25 +953,38 @@ function openEditModal(data) {
         $("#m_prod_jai").val(data.prod_jai   || "");
         $("#m_ord_su").val(data.ord_su       || "");
         $("#m_ord_lot").val(data.ord_lot     || "");
-
-        var jan   = parseFloat(data.jan_su) || 0;
-        var badge = $("#m_jan_badge");
-        $("#m_jan_su").val(jan);
-        if (jan <= 0) {
-            badge.text("재고 없음").css({ background:"#ffe3e3", color:"#c92a2a", border:"1px solid #ffa8a8" });
-        } else if (jan <= 100) {
-            badge.text("잔량 부족").css({ background:"#fff3bf", color:"#e67700", border:"1px solid #ffd43b" });
-        } else {
-            badge.text("재고 있음").css({ background:"#d3f9d8", color:"#2b8a3e", border:"1px solid #8ce99a" });
-        }
-        badge.show();
     }
 
-    $("#m_main_yn").val(data.main_yn || "Y");
-    for (var i = 1; i <= 4; i++) $("#m_main_spare_" + i).val(data["main_spare_" + i] || "");
-    for (var i = 1; i <= 5; i++) $("#m_main_bigo_"  + i).val(data["main_bigo_"  + i] || "");
-    $("#m_reg_user").val(data.reg_user || "");
+    /* 섹션② 패턴정보 */
+    $("#m_bcf_hogi").val(data.bcf_hogi     || "");
+    $("#m_tf_hogi_display").val(data.tf_hogi ? "TF" + data.tf_hogi : "");
+    $("#m_auto_pattern").val(data.auto_pattern  || "");
+    $("#m_bcf_cycle_no").val(data.bcf_cycle_no  || "");
+    $("#m_tf_cycle_no").val(data.tf_cycle_no    || "");
 
+    if (data.bcf_cycle_no) {
+        patternReceived = true;
+        fillPatternResult(data);
+        $("#patternResult").show();
+    }
+
+    /* 섹션③ 처리품정보 */
+    $("#m_main_auto_pattern").val(data.main_auto_pattern_number || "");
+    $("#m_main_yn").val(data.main_yn || "Y");
+    $("#m_main_bcf_pattern").val(data.main_bcf_pattern_number  || "");
+    $("#m_main_tf_pattern").val(data.main_tf_pattern_number    || "");
+    $("#m_main_bcf_hogi").val(data.main_bcf_hogi || "");
+    $("#m_main_tf_hogi").val(data.main_tf_hogi   || "");
+
+    for (var i = 1; i <= 4; i++) $("#m_main_spare_" + i).val(data["main_spare_" + i] || "");
+
+    $("#m_main_bigo_1").val(data.main_bigo_1 || "");
+    for (var i = 2; i <= 5; i++) {
+        $("#m_main_bigo_" + i).val(data["main_bigo_" + i]               || "");
+        $("#m_main_bigo_" + i + "_num").val(data["main_bigo_" + i + "_num"] || "");
+    }
+
+    $("#m_reg_user").val(data.reg_user || "");
     openWoModal();
 }
 
@@ -931,50 +994,60 @@ function openWoModal() {
     $("#woModal").addClass("active");
 }
 
+/* ============================================================ */
+/* closeWoModal — 닫기/X/오버레이 클릭 모두 동일 처리            */
+/* ============================================================ */
 function closeWoModal() {
+    resetPatternIfNeeded();
     stopPatternPoll();
-    // status 상태와 무관하게 항상 reset으로 초기화
-    $.post("/mibogear/workOrder/pattern/reset");
+    unlockPatternUI();
     $("#woOverlay").removeClass("active");
     $("#woModal").removeClass("active");
 }
 
+/* ============================================================ */
+/* clearWoModal                                                   */
+/* ============================================================ */
 function clearWoModal() {
+    /* 입고 */
     $("#m_ord_code,#h_ord_code,#h_prod_code").val("");
     $("#m_ord_date,#m_corp_name,#m_prod_name,#m_prod_no").val("");
     $("#m_prod_gyu,#m_prod_jai,#m_ord_su,#m_ord_lot").val("");
-    $("#m_jan_su").val(""); $("#m_jan_badge").hide();
+    /* 패턴 */
     $("#m_bcf_hogi").val("");
     $("#m_tf_hogi_display").val("");
     $("#m_auto_pattern,#m_bcf_cycle_no,#m_tf_cycle_no").val("");
     $("#patternLoading,#patternResult,#patternTimeout").hide();
-    $("#btnPatternSearch").prop("disabled", false).css("opacity", "1");
-    $("#bcf_time_fanup,#bcf_time_chim,#bcf_time_diff,#bcf_time_gang,#bcf_time_que,#bcf_time_drain").val("");
-    $("#bcf_temp_fanup,#bcf_temp_chim,#bcf_temp_diff,#bcf_temp_gang,#bcf_temp_que_drain").val("");
-    $("#bcf_cp_fanup,#bcf_cp_chim,#bcf_cp_diff,#bcf_cp_gang,#bcf_cp_que_drain").val("");
-    $("#tf_time_dry,#tf_time_fanup,#tf_time_n2,#tf_time_tem,#tf_time_cool,#tf_temp_tem").val("");
-    $("#m_main_spare_1").val("");
     patternReceived = false;
+    patternPollSec  = 0;
     stopPatternPoll();
+    unlockPatternUI(); // ★ 모달 열 때마다 UI 잠금 해제 상태로
+    /* 섹션③ */
     $("#m_main_yn").val("Y");
     for (var i = 1; i <= 4; i++) $("#m_main_spare_" + i).val("");
-    for (var i = 1; i <= 5; i++) $("#m_main_bigo_"  + i).val("");
+    for (var i = 1; i <= 5; i++) $("#m_main_bigo_" + i).val("");
+    $("#m_main_bigo_2_num,#m_main_bigo_3_num,#m_main_bigo_4_num,#m_main_bigo_5_num").val("");
     $("#m_reg_user").val("");
 }
 
 /* ============================================================ */
 /* 저장 / 삭제 / 출력                                             */
 /* ============================================================ */
+/* ============================================================ */
+/* 저장 — reset은 resetPatternIfNeeded가 처리                    */
+/* ============================================================ */
 function saveWorkOrder() {
     doSave(function (res) {
         alert("저장 완료  LOT: " + res.lot_no);
+        resetPatternIfNeeded();
         closeWoModal();
         loadWoList();
     });
 }
 
-function saveAndPrint() {
+/* function saveAndPrint() {
     doSave(function (res) {
+        resetPatternIfNeeded();
         closeWoModal();
         loadWoList();
         $.ajax({
@@ -990,7 +1063,7 @@ function saveAndPrint() {
             error: function () { alert("출력 요청 오류"); }
         });
     });
-}
+} */
 
 function doSave(callback) {
     var data = collectFormData();
@@ -1005,19 +1078,21 @@ function doSave(callback) {
         dataType: "json",
         success: function (res) {
             if (res.status === "success") {
-                // ── 수정: patternReceived 여부에 따라 분기 ──
-                if (patternReceived) {
-                    // 패턴 조회 완료 후 저장 → 싸이먼 통해 정상 종료 (status=3)
-                    $.post("/mibogear/workOrder/pattern/complete");
-                } else {
-                    // 패턴 조회 없이 저장 → 웹에서 직접 reset (status=0)
-                    $.post("/mibogear/workOrder/pattern/reset");
-                }
                 if (callback) callback(res);
             } else { alert("오류: " + res.message); }
         },
         error: function (xhr) { alert("저장 오류: " + xhr.status); }
     });
+}
+
+/* ============================================================ */
+/* resetPatternIfNeeded — 모달 벗어나는 모든 경우 호출           */
+/* ============================================================ */
+function resetPatternIfNeeded() {
+    if (patternReceived) {
+        $.post("/mibogear/workOrder/pattern/reset");
+        patternReceived = false;
+    }
 }
 
 function collectFormData() {
@@ -1028,61 +1103,95 @@ function collectFormData() {
     })();
 
     return {
-        ord_code:  $("#h_ord_code").val(),
-        corp_name: $("#m_corp_name").val(),
-        prod_name: $("#m_prod_name").val(),
-        prod_no:   $("#m_prod_no").val(),
-        prod_gyu:  $("#m_prod_gyu").val(),
-        prod_jai:  $("#m_prod_jai").val(),
-        ord_su:    $("#m_ord_su").val(),
+        /* 섹션① 입고정보 */
+        ord_code:  $("#m_ord_code").val()  || null,
+        ord_date:  $("#m_ord_date").val()  || null,
+        corp_name: $("#m_corp_name").val() || null,
+        prod_name: $("#m_prod_name").val() || null,
+        prod_no:   $("#m_prod_no").val()   || null,
+        prod_gyu:  $("#m_prod_gyu").val()  || null,
+        prod_jai:  $("#m_prod_jai").val()  || null,
+        ord_su:    $("#m_ord_su").val()    || null,
+        ord_lot:   $("#m_ord_lot").val()   || null,
+
+        /* 섹션② 패턴정보 */
+        bcf_hogi:     $("#m_bcf_hogi").val()    || null,
+        tf_hogi:      tfHogiNum,
         auto_pattern: $("#m_auto_pattern").val() || null,
         bcf_cycle_no: $("#m_bcf_cycle_no").val() || null,
         tf_cycle_no:  $("#m_tf_cycle_no").val()  || null,
-        bcf_hogi:     $("#m_bcf_hogi").val()     || null,
-        tf_hogi:      tfHogiNum,
+
         bcf_time_fanup:  patternReceived ? ($("#bcf_time_fanup").val()  || null) : null,
+        bcf_time_spare1: patternReceived ? ($("#bcf_time_spare1").val() || null) : null,
+        bcf_time_spare2: patternReceived ? ($("#bcf_time_spare2").val() || null) : null,
         bcf_time_chim:   patternReceived ? ($("#bcf_time_chim").val()   || null) : null,
         bcf_time_diff:   patternReceived ? ($("#bcf_time_diff").val()   || null) : null,
         bcf_time_gang:   patternReceived ? ($("#bcf_time_gang").val()   || null) : null,
+        bcf_time_spare3: patternReceived ? ($("#bcf_time_spare3").val() || null) : null,
         bcf_time_que:    patternReceived ? ($("#bcf_time_que").val()    || null) : null,
         bcf_time_drain:  patternReceived ? ($("#bcf_time_drain").val()  || null) : null,
+
         bcf_temp_fanup:  patternReceived ? ($("#bcf_temp_fanup").val()  || null) : null,
+        bcf_temp_spare1: patternReceived ? ($("#bcf_temp_spare1").val() || null) : null,
+        bcf_temp_spare2: patternReceived ? ($("#bcf_temp_spare2").val() || null) : null,
         bcf_temp_chim:   patternReceived ? ($("#bcf_temp_chim").val()   || null) : null,
         bcf_temp_diff:   patternReceived ? ($("#bcf_temp_diff").val()   || null) : null,
         bcf_temp_gang:   patternReceived ? ($("#bcf_temp_gang").val()   || null) : null,
-        bcf_temp_que:    patternReceived ? ($("#bcf_temp_que_drain").val() || null) : null,
-        bcf_cp_fanup:    patternReceived ? ($("#bcf_cp_fanup").val()    || null) : null,
-        bcf_cp_chim:     patternReceived ? ($("#bcf_cp_chim").val()     || null) : null,
-        bcf_cp_diff:     patternReceived ? ($("#bcf_cp_diff").val()     || null) : null,
-        bcf_cp_gang:     patternReceived ? ($("#bcf_cp_gang").val()     || null) : null,
-        tf_time_dry:     patternReceived ? ($("#tf_time_dry").val()     || null) : null,
-        tf_time_fanup:   patternReceived ? ($("#tf_time_fanup").val()   || null) : null,
-        tf_time_n2:      patternReceived ? ($("#tf_time_n2").val()      || null) : null,
-        tf_time_tem:     patternReceived ? ($("#tf_time_tem").val()     || null) : null,
-        tf_time_cool:    patternReceived ? ($("#tf_time_cool").val()    || null) : null,
-        tf_temp_tem:     patternReceived ? ($("#tf_temp_tem").val()     || null) : null,
-        bcf_time_spare1: null, bcf_time_spare2: null, bcf_time_spare3: null,
-        bcf_temp_spare1: null, bcf_temp_spare2: null, bcf_temp_spare3: null,
-        bcf_cp_spare1: null, bcf_cp_spare2: null,
-        tf_time_spare1: null, tf_time_spare2: null, tf_time_spare3: null, tf_time_spare4: null,
-        tf_temp_spare1: null, tf_temp_spare2: null, tf_temp_spare3: null, tf_temp_spare4: null,
-        tf_temp_dry: null, tf_temp_fanup: null, tf_temp_n2: null, tf_temp_cool: null,
+        bcf_temp_spare3: patternReceived ? ($("#bcf_temp_spare3").val() || null) : null,
+        bcf_temp_que: patternReceived ? ($("#bcf_temp_que_drain").val() || null) : null,
+        bcf_temp_drain:  patternReceived ? ($("#bcf_temp_drain").val()  || null) : null,
+
+        bcf_cp_fanup:  patternReceived ? (parseFloat($("#bcf_cp_fanup").val())  || null) : null,
+        bcf_cp_spare1: patternReceived ? (parseFloat($("#bcf_cp_spare1").val()) || null) : null,
+        bcf_cp_spare2: patternReceived ? (parseFloat($("#bcf_cp_spare2").val()) || null) : null,
+        bcf_cp_chim:   patternReceived ? (parseFloat($("#bcf_cp_chim").val())   || null) : null,
+        bcf_cp_diff:   patternReceived ? (parseFloat($("#bcf_cp_diff").val())   || null) : null,
+        bcf_cp_gang:   patternReceived ? (parseFloat($("#bcf_cp_gang").val())   || null) : null,
+        tf_time_spare1: patternReceived ? ($("#tf_time_spare1").val() || null) : null,
+        tf_time_spare2: patternReceived ? ($("#tf_time_spare2").val() || null) : null,
+        tf_time_spare3: patternReceived ? ($("#tf_time_spare3").val() || null) : null,
+        tf_time_spare4: patternReceived ? ($("#tf_time_spare4").val() || null) : null,
+        tf_time_dry:    patternReceived ? ($("#tf_time_dry").val()    || null) : null,
+        tf_time_fanup:  patternReceived ? ($("#tf_time_fanup").val()  || null) : null,
+        tf_time_n2:     patternReceived ? ($("#tf_time_n2").val()     || null) : null,
+        tf_time_tem:    patternReceived ? ($("#tf_time_tem").val()    || null) : null,
+        tf_time_cool:   patternReceived ? ($("#tf_time_cool").val()   || null) : null,
+
+        tf_temp_spare1: patternReceived ? ($("#tf_temp_spare1").val() || null) : null,
+        tf_temp_spare2: patternReceived ? ($("#tf_temp_spare2").val() || null) : null,
+        tf_temp_spare3: patternReceived ? ($("#tf_temp_spare3").val() || null) : null,
+        tf_temp_spare4: patternReceived ? ($("#tf_temp_spare4").val() || null) : null,
+        tf_temp_dry:    patternReceived ? ($("#tf_temp_dry").val()    || null) : null,
+        tf_temp_fanup:  patternReceived ? ($("#tf_temp_fanup").val()  || null) : null,
+        tf_temp_n2:     patternReceived ? ($("#tf_temp_n2").val()     || null) : null,
+        tf_temp_tem:    patternReceived ? ($("#tf_temp_tem").val()    || null) : null,
+        tf_temp_cool:   patternReceived ? ($("#tf_temp_cool").val()   || null) : null,
+
+        /* 섹션③ 처리품정보 */
         main_auto_pattern_number: $("#m_auto_pattern").val()  || null,
         main_bcf_pattern_number:  $("#m_bcf_cycle_no").val()  || null,
         main_tf_pattern_number:   $("#m_tf_cycle_no").val()   || null,
         main_bcf_hogi: $("#m_bcf_hogi").val() ? "BCF" + $("#m_bcf_hogi").val() : "",
-        main_tf_hogi:  tfHogiNum              ? "TF"  + tfHogiNum              : "",
-        main_yn:      $("#m_main_yn").val(),
-        main_spare_1: $("#m_main_spare_1").val(),
-        main_spare_2: $("#m_main_spare_2").val(),
-        main_spare_3: $("#m_main_spare_3").val(),
-        main_spare_4: $("#m_main_spare_4").val(),
-        main_bigo_1:  $("#m_main_bigo_1").val(),
-        main_bigo_2:  $("#m_main_bigo_2").val(),
-        main_bigo_3:  $("#m_main_bigo_3").val(),
-        main_bigo_4:  $("#m_main_bigo_4").val(),
-        main_bigo_5:  $("#m_main_bigo_5").val(),
-        reg_user: $("#m_reg_user").val()
+        main_tf_hogi:  tfHogiNum               ? "TF"  + tfHogiNum             : "",
+        main_yn: $("#m_main_yn").val() === "Y" ? "1" : "0",
+
+        main_spare_1: $("#m_main_spare_1").val() || null,
+        main_spare_2: $("#m_main_spare_2").val() || null,
+        main_spare_3: $("#m_main_spare_3").val() || null,
+        main_spare_4: $("#m_main_spare_4").val() || null,
+
+        main_bigo_1: $("#m_main_bigo_1").val() || null,
+        main_bigo_2: $("#m_main_bigo_2").val() || null,
+        main_bigo_3: $("#m_main_bigo_3").val() || null,
+        main_bigo_4: $("#m_main_bigo_4").val() || null,
+        main_bigo_5: $("#m_main_bigo_5").val() || null,
+
+        main_bigo_2_num: $("#m_main_bigo_2_num").val() || null,
+        main_bigo_3_num: $("#m_main_bigo_3_num").val() || null,
+        main_bigo_4_num: $("#m_main_bigo_4_num").val() || null,
+        main_bigo_5_num: $("#m_main_bigo_5_num").val() || null,
+
+        reg_user: $("#m_reg_user").val() || null
     };
 }
 
@@ -1268,7 +1377,6 @@ function requestPattern() {
     patternPollSec = 0;
     $("#pollCount").text("0");
 
-    // ── 추가: 새 요청 전 기존 상태 reset 후 request ──
     $.post("/mibogear/workOrder/pattern/reset", function() {
         $.ajax({
             url: "/mibogear/workOrder/pattern/request",
@@ -1299,7 +1407,39 @@ function requestPattern() {
         });
     });
 }
+/* ============================================================ */
+/* 패턴 조회 완료 시 UI 잠금 / 해제                               */
+/* ============================================================ */
+function lockPatternUI() {
+    // 버튼 비활성화
+    $("#btnPatternSearch").prop("disabled", true).css("opacity", "0.4");
+    // 입력 필드 readonly
+    $("#m_bcf_hogi").prop("readonly", true).css("background", "#f1f3f5");
+    $("#m_tf_hogi_display").prop("readonly", true).css("background", "#f1f3f5");
+    $("#m_auto_pattern").prop("readonly", true).css("background", "#f1f3f5");
+    $("#m_bcf_cycle_no").prop("readonly", true).css("background", "#f1f3f5");
+    $("#m_tf_cycle_no").prop("readonly", true).css("background", "#f1f3f5");
+    // 초기화 버튼 활성화
+    $("#btnPatternReset").prop("disabled", false).css("opacity", "1");
+}
 
+function unlockPatternUI() {
+    // 버튼 활성화
+    $("#btnPatternSearch").prop("disabled", false).css("opacity", "1");
+    // readonly 해제
+    $("#m_bcf_hogi").prop("readonly", false).css("background", "");
+    $("#m_tf_hogi_display").prop("readonly", false).css("background", "");
+    $("#m_auto_pattern").prop("readonly", false).css("background", "");
+    $("#m_bcf_cycle_no").prop("readonly", false).css("background", "");
+    $("#m_tf_cycle_no").prop("readonly", false).css("background", "");
+    // 초기화 버튼 비활성화 (패턴 없을 땐 초기화 불필요)
+    $("#btnPatternReset").prop("disabled", true).css("opacity", "0.4");
+}
+
+
+/* ============================================================ */
+/* 패턴 폴링                                                      */
+/* ============================================================ */
 function startPatternPoll() {
     patternPollTimer = setInterval(function () {
         patternPollSec++;
@@ -1322,11 +1462,18 @@ function startPatternPoll() {
                     stopPatternPoll();
                     patternReceived = true;
                     fillPatternResult(res.data);
-                    // ← complete 제거 (저장 버튼 클릭 시 doSave에서 호출)
                     $("#patternLoading").hide();
                     $("#patternResult").show();
-                    $("#btnPatternSearch").prop("disabled", false).css("opacity", "1");
                     alert("패턴 조회가 완료되었습니다.");
+                    // ★ 패턴 완료 시점에 UI 잠금
+                    lockPatternUI();
+                } else if (res.patternStatus === -1) {
+                    stopPatternPoll();
+                    $("#patternLoading").hide();
+                    $("#btnPatternSearch").prop("disabled", false).css("opacity", "1");
+                    alert("패턴번호 불일치 오류!\n요청한 패턴번호와 PLC 응답값이 다릅니다.\n다시 시도해주세요.");
+                    $.post("/mibogear/workOrder/pattern/reset");
+                    patternReceived = false;
                 }
             }
         });
@@ -1342,39 +1489,66 @@ function stopPatternPoll() {
 
 function fillPatternResult(d) {
     if (!d) return;
-    $("#bcf_time_fanup").val(d.bcf_time_fanup  != null ? d.bcf_time_fanup  : "");
-    $("#bcf_time_chim").val(d.bcf_time_chim    != null ? d.bcf_time_chim   : "");
-    $("#bcf_time_diff").val(d.bcf_time_diff    != null ? d.bcf_time_diff   : "");
-    $("#bcf_time_gang").val(d.bcf_time_gang    != null ? d.bcf_time_gang   : "");
-    $("#bcf_time_que").val(d.bcf_time_que      != null ? d.bcf_time_que    : "");
-    $("#bcf_time_drain").val(d.bcf_time_drain  != null ? d.bcf_time_drain  : "");
-    $("#bcf_temp_fanup").val(d.bcf_temp_fanup  != null ? d.bcf_temp_fanup  : "");
-    $("#bcf_temp_chim").val(d.bcf_temp_chim    != null ? d.bcf_temp_chim   : "");
-    $("#bcf_temp_diff").val(d.bcf_temp_diff    != null ? d.bcf_temp_diff   : "");
-    $("#bcf_temp_gang").val(d.bcf_temp_gang    != null ? d.bcf_temp_gang   : "");
-    $("#bcf_temp_que_drain").val(d.bcf_temp_que != null ? d.bcf_temp_que   : "");
-    $("#bcf_cp_fanup").val(d.bcf_cp_fanup      != null ? d.bcf_cp_fanup    : "");
-    $("#bcf_cp_chim").val(d.bcf_cp_chim        != null ? d.bcf_cp_chim     : "");
-    $("#bcf_cp_diff").val(d.bcf_cp_diff        != null ? d.bcf_cp_diff     : "");
-    $("#bcf_cp_gang").val(d.bcf_cp_gang        != null ? d.bcf_cp_gang     : "");
-    $("#bcf_cp_que_drain").val("");
-    $("#tf_time_dry").val(d.tf_time_dry        != null ? d.tf_time_dry     : "");
-    $("#tf_time_fanup").val(d.tf_time_fanup    != null ? d.tf_time_fanup   : "");
-    $("#tf_time_n2").val(d.tf_time_n2          != null ? d.tf_time_n2      : "");
-    $("#tf_time_tem").val(d.tf_time_tem        != null ? d.tf_time_tem     : "");
-    $("#tf_time_cool").val(d.tf_time_cool      != null ? d.tf_time_cool    : "");
-    $("#tf_temp_tem").val(d.tf_temp_tem        != null ? d.tf_temp_tem     : "");
+    $("#bcf_time_fanup").val(d.bcf_time_fanup   != null ? d.bcf_time_fanup   : "");
+    $("#bcf_time_spare1").val(d.bcf_time_spare1 != null ? d.bcf_time_spare1  : "");
+    $("#bcf_time_spare2").val(d.bcf_time_spare2 != null ? d.bcf_time_spare2  : "");
+    $("#bcf_time_chim").val(d.bcf_time_chim     != null ? d.bcf_time_chim    : "");
+    $("#bcf_time_diff").val(d.bcf_time_diff     != null ? d.bcf_time_diff    : "");
+    $("#bcf_time_gang").val(d.bcf_time_gang     != null ? d.bcf_time_gang    : "");
+    $("#bcf_time_spare3").val(d.bcf_time_spare3 != null ? d.bcf_time_spare3  : "");
+    $("#bcf_time_que").val(d.bcf_time_que       != null ? d.bcf_time_que     : "");
+    $("#bcf_time_drain").val(d.bcf_time_drain   != null ? d.bcf_time_drain   : "");
+    $("#bcf_temp_fanup").val(d.bcf_temp_fanup   != null ? d.bcf_temp_fanup   : "");
+    $("#bcf_temp_spare1").val(d.bcf_temp_spare1 != null ? d.bcf_temp_spare1  : "");
+    $("#bcf_temp_spare2").val(d.bcf_temp_spare2 != null ? d.bcf_temp_spare2  : "");
+    $("#bcf_temp_chim").val(d.bcf_temp_chim     != null ? d.bcf_temp_chim    : "");
+    $("#bcf_temp_diff").val(d.bcf_temp_diff     != null ? d.bcf_temp_diff    : "");
+    $("#bcf_temp_gang").val(d.bcf_temp_gang     != null ? d.bcf_temp_gang    : "");
+    $("#bcf_temp_spare3").val(d.bcf_temp_spare3 != null ? d.bcf_temp_spare3  : "");
+    $("#bcf_temp_que_drain").val(d.bcf_temp_que != null ? d.bcf_temp_que : "");
+    $("#bcf_temp_drain").val(d.bcf_temp_drain   != null ? d.bcf_temp_drain   : "");
+    $("#bcf_cp_fanup").val(d.bcf_cp_fanup  != null ? (parseFloat(d.bcf_cp_fanup)  / 1000).toFixed(3) : "");
+    $("#bcf_cp_spare1").val(d.bcf_cp_spare1 != null ? (parseFloat(d.bcf_cp_spare1) / 1000).toFixed(3) : "");
+    $("#bcf_cp_spare2").val(d.bcf_cp_spare2 != null ? (parseFloat(d.bcf_cp_spare2) / 1000).toFixed(3) : "");
+    $("#bcf_cp_chim").val(d.bcf_cp_chim    != null ? (parseFloat(d.bcf_cp_chim)   / 1000).toFixed(3) : "");
+    $("#bcf_cp_diff").val(d.bcf_cp_diff    != null ? (parseFloat(d.bcf_cp_diff)   / 1000).toFixed(3) : "");
+    $("#bcf_cp_gang").val(d.bcf_cp_gang    != null ? (parseFloat(d.bcf_cp_gang)   / 1000).toFixed(3) : "");
+    $("#tf_time_spare1").val(d.tf_time_spare1   != null ? d.tf_time_spare1   : "");
+    $("#tf_time_spare2").val(d.tf_time_spare2   != null ? d.tf_time_spare2   : "");
+    $("#tf_time_spare3").val(d.tf_time_spare3   != null ? d.tf_time_spare3   : "");
+    $("#tf_time_spare4").val(d.tf_time_spare4   != null ? d.tf_time_spare4   : "");
+    $("#tf_time_dry").val(d.tf_time_dry         != null ? d.tf_time_dry      : "");
+    $("#tf_time_fanup").val(d.tf_time_fanup     != null ? d.tf_time_fanup    : "");
+    $("#tf_time_n2").val(d.tf_time_n2           != null ? d.tf_time_n2       : "");
+    $("#tf_time_tem").val(d.tf_time_tem         != null ? d.tf_time_tem      : "");
+    $("#tf_time_cool").val(d.tf_time_cool       != null ? d.tf_time_cool     : "");
+    $("#tf_temp_spare1").val(d.tf_temp_spare1   != null ? d.tf_temp_spare1   : "");
+    $("#tf_temp_spare2").val(d.tf_temp_spare2   != null ? d.tf_temp_spare2   : "");
+    $("#tf_temp_spare3").val(d.tf_temp_spare3   != null ? d.tf_temp_spare3   : "");
+    $("#tf_temp_spare4").val(d.tf_temp_spare4   != null ? d.tf_temp_spare4   : "");
+    $("#tf_temp_dry").val(d.tf_temp_dry         != null ? d.tf_temp_dry      : "");
+    $("#tf_temp_fanup").val(d.tf_temp_fanup     != null ? d.tf_temp_fanup    : "");
+    $("#tf_temp_n2").val(d.tf_temp_n2           != null ? d.tf_temp_n2       : "");
+    $("#tf_temp_tem").val(d.tf_temp_tem         != null ? d.tf_temp_tem      : "");
+    $("#tf_temp_cool").val(d.tf_temp_cool       != null ? d.tf_temp_cool     : "");
 }
 
+/* ============================================================ */
+/* 패턴 초기화 버튼 — 저장버튼과 동일한 reset 처리               */
+/* ============================================================ */
 function doResetPattern() {
+    if (!confirm("패턴 정보를 초기화하시겠습니까?\n조회된 패턴 데이터가 모두 삭제됩니다.")) return;
+    resetPatternIfNeeded();
     stopPatternPoll();
     patternReceived = false;
+    // 입력값 초기화
     $("#m_bcf_hogi").val("");
     $("#m_tf_hogi_display").val("");
     $("#m_auto_pattern,#m_bcf_cycle_no,#m_tf_cycle_no").val("");
+    // 패턴 결과 영역 숨김
     $("#patternLoading,#patternResult,#patternTimeout").hide();
-    $("#btnPatternSearch").prop("disabled", false).css("opacity", "1");
-    $.post("/mibogear/workOrder/pattern/reset");
+    // UI 잠금 해제
+    unlockPatternUI();
 }
 
 /* ============================================================ */
@@ -1393,6 +1567,52 @@ $("#woModalHeader").on("mousedown", function (e) {
 $(document).on("mousemove", function (e) {
     if (isDragging) $("#woModal").css({ left:(mLeft+e.pageX-startX)+"px", top:(mTop+e.pageY-startY)+"px" });
 }).on("mouseup", function () { isDragging = false; });
+
+
+/* ── 미리보기 열기 */
+function openPdfPreview(wo_code, lot_no) {
+    currentPdfWoCode = wo_code;
+    currentPdfLotNo  = lot_no;
+    $("#pdfPreviewTitle").text("작업지시서 미리보기 — " + lot_no);
+    $("#pdfPreviewFrame").attr("src", "/mibogear/workOrder/preview?wo_code=" + wo_code);
+    $("#pdfPreviewOverlay").css("display", "flex");
+}
+
+/* ── 미리보기 닫기 */
+function closePdfPreview() {
+    $("#pdfPreviewOverlay").hide();
+    $("#pdfPreviewFrame").attr("src", "");
+    currentPdfWoCode = null;
+    currentPdfLotNo  = null;
+}
+
+/* ── 저장 (다운로드) */
+function downloadPdf() {
+    if (!currentPdfWoCode) return;
+    var a = document.createElement("a");
+    a.href = "/mibogear/workOrder/preview?wo_code=" + currentPdfWoCode;
+    a.download = currentPdfLotNo + ".pdf";
+    a.click();
+}
+
+
+
+/* ── saveAndPrint() 수정 → 저장 후 미리보기 */
+function saveAndPrint() {
+    doSave(function (res) {
+        resetPatternIfNeeded();
+        closeWoModal();
+        loadWoList();
+        openPdfPreview(res.wo_code, res.lot_no);
+    });
+}
+
+/* ── 모달 내 출력버튼 (woModalBtnPrint) */
+function printSelected() {
+    if (!selectedWoCode) { alert("출력할 항목이 없습니다."); return; }
+    var lotNo = $("#displayLotNo").text();
+    openPdfPreview(selectedWoCode, lotNo);
+}
 
 /* ============================================================ */
 /* 유틸                                                           */

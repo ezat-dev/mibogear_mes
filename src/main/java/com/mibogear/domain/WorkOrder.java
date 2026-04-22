@@ -93,7 +93,15 @@ public class WorkOrder {
     // 검색 조건용
     private String  sdate;
     private String  edate;
-
+    
+    
+    private Integer main_bigo_1_num;
+    private Integer main_bigo_2_num;
+    private Integer main_bigo_3_num;
+    private Integer main_bigo_4_num;
+    private Integer main_bigo_5_num;
+    
+    
     // ── Getters & Setters ──
 
     public int getWo_code() { return wo_code; }
@@ -329,4 +337,19 @@ public class WorkOrder {
 
     public String getEdate() { return edate; }
     public void setEdate(String edate) { this.edate = edate; }
+    
+    public Integer getMain_bigo_1_num() { return main_bigo_1_num; }
+    public void setMain_bigo_1_num(Integer main_bigo_1_num) { this.main_bigo_1_num = main_bigo_1_num; }
+
+    public Integer getMain_bigo_2_num() { return main_bigo_2_num; }
+    public void setMain_bigo_2_num(Integer main_bigo_2_num) { this.main_bigo_2_num = main_bigo_2_num; }
+
+    public Integer getMain_bigo_3_num() { return main_bigo_3_num; }
+    public void setMain_bigo_3_num(Integer main_bigo_3_num) { this.main_bigo_3_num = main_bigo_3_num; }
+
+    public Integer getMain_bigo_4_num() { return main_bigo_4_num; }
+    public void setMain_bigo_4_num(Integer main_bigo_4_num) { this.main_bigo_4_num = main_bigo_4_num; }
+
+    public Integer getMain_bigo_5_num() { return main_bigo_5_num; }
+    public void setMain_bigo_5_num(Integer main_bigo_5_num) { this.main_bigo_5_num = main_bigo_5_num; }
 }

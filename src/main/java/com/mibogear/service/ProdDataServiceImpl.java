@@ -33,30 +33,23 @@ public class ProdDataServiceImpl implements ProdDataService {
     @Override
     public Map<String, Object> saveWorkOrder(WorkOrder workOrder, String mode) {
         Map<String, Object> result = new HashMap<>();
-
         if ("insert".equalsIgnoreCase(mode)) {
             String today = new SimpleDateFormat("yyMMdd").format(new Date());
-
-            // bcf_hogi 숫자만 사용 (BCF 텍스트 제거)
             String hogiCode = (workOrder.getBcf_hogi() != null ? workOrder.getBcf_hogi().toString() : "0");
-
             String prefix = today + "-" + hogiCode + "-";
             String lastNo = prodDataDAO.getTodayLastLotSeq(prefix);
-
             int seq = 1;
             if (lastNo != null && !lastNo.isEmpty()) {
                 String seqPart = lastNo.replace(prefix, "");
                 try { seq = Integer.parseInt(seqPart) + 1; } catch (NumberFormatException e) { seq = 1; }
             }
-
             String lotNo = prefix + String.format("%03d", seq);
             workOrder.setLot_no(lotNo);
-            workOrder.setMain_spare_1(lotNo);
+            workOrder.setMain_bigo_1(lotNo);
             prodDataDAO.insertWorkOrder(workOrder);
         } else {
             prodDataDAO.updateWorkOrder(workOrder);
         }
-
         result.put("wo_code", workOrder.getWo_code());
         result.put("lot_no",  workOrder.getLot_no());
         return result;

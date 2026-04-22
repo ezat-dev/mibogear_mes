@@ -93,7 +93,7 @@
             main_bcf_pattern_number, main_tf_pattern_number,
             main_bcf_hogi, main_tf_hogi,
             main_spare_1, main_spare_2, main_spare_3, main_spare_4,
-            main_bigo_1,  main_bigo_2,  main_bigo_3,  main_bigo_4,  main_bigo_5,
+            main_bigo_1,  main_bigo_2,  main_bigo_3,  main_bigo_4,  main_bigo_5, main_bigo_2_num, main_bigo_3_num, main_bigo_4_num, main_bigo_5_num,
             status, reg_date, reg_user
         ) VALUES (
             #{lot_no},
@@ -112,7 +112,7 @@
             #{main_bcf_pattern_number}, #{main_tf_pattern_number},
             #{main_bcf_hogi}, #{main_tf_hogi},
             #{main_spare_1}, #{main_spare_2}, #{main_spare_3}, #{main_spare_4},
-            #{main_bigo_1},  #{main_bigo_2},  #{main_bigo_3},  #{main_bigo_4},  #{main_bigo_5},
+            #{main_bigo_1},  #{main_bigo_2},  #{main_bigo_3},  #{main_bigo_4},  #{main_bigo_5}, #{main_bigo_2_num}, #{main_bigo_3_num}, #{main_bigo_4_num}, #{main_bigo_5_num},
             'WAIT', NOW(), #{reg_user}
         )
     </insert>
@@ -186,6 +186,11 @@
             main_bigo_1  = #{main_bigo_1},  main_bigo_2  = #{main_bigo_2},
             main_bigo_3  = #{main_bigo_3},  main_bigo_4  = #{main_bigo_4},
             main_bigo_5  = #{main_bigo_5},
+           
+			main_bigo_2_num = #{main_bigo_2_num},
+			main_bigo_3_num = #{main_bigo_3_num},
+			main_bigo_4_num = #{main_bigo_4_num},
+			main_bigo_5_num = #{main_bigo_5_num},
             reg_user = #{reg_user}
         WHERE wo_code = #{wo_code}
     </update>

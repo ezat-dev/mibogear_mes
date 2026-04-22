@@ -7,6 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import net.sf.jasperreports.engine.JasperCompileManager;
 import net.sf.jasperreports.engine.JasperFillManager;
@@ -256,9 +257,28 @@ public class ProdDataController {
     // ==========================================================
 
     private String nvlWo(Object val) {
-        return (val == null) ? "" : val.toString();
+        if (val == null) return "";
+        if (val instanceof java.math.BigDecimal) {
+            java.math.BigDecimal bd = (java.math.BigDecimal) val;
+            // 소수점 이하가 0이면 정수로, 아니면 그대로
+            if (bd.stripTrailingZeros().scale() <= 0) {
+                return bd.toBigInteger().toString();
+            }
+            return bd.stripTrailingZeros().toPlainString();
+        }
+        return val.toString();
     }
-
+    
+    private String formatCp(Object val) {
+        if (val == null) return "";
+        try {
+            java.math.BigDecimal bd = new java.math.BigDecimal(val.toString());
+            return String.format("%.3f", bd);
+        } catch (Exception e) {
+            return val.toString();
+        }
+    }
+    
     private BufferedImage generateWoBarcodeImage(String text, int width, int height) throws Exception {
         com.google.zxing.MultiFormatWriter writer = new com.google.zxing.MultiFormatWriter();
         com.google.zxing.common.BitMatrix matrix =
@@ -308,12 +328,12 @@ public class ProdDataController {
         p.put("bcf_temp_que",    nvlWo(d.getBcf_temp_que()));
         p.put("bcf_temp_drain",  nvlWo(d.getBcf_temp_drain()));
         // BCF CP
-        p.put("bcf_cp_fanup",  nvlWo(d.getBcf_cp_fanup()));
-        p.put("bcf_cp_spare1", nvlWo(d.getBcf_cp_spare1()));
-        p.put("bcf_cp_spare2", nvlWo(d.getBcf_cp_spare2()));
-        p.put("bcf_cp_chim",   nvlWo(d.getBcf_cp_chim()));
-        p.put("bcf_cp_diff",   nvlWo(d.getBcf_cp_diff()));
-        p.put("bcf_cp_gang",   nvlWo(d.getBcf_cp_gang()));
+        p.put("bcf_cp_fanup",  formatCp(d.getBcf_cp_fanup()));
+        p.put("bcf_cp_spare1", formatCp(d.getBcf_cp_spare1()));
+        p.put("bcf_cp_spare2", formatCp(d.getBcf_cp_spare2()));
+        p.put("bcf_cp_chim",   formatCp(d.getBcf_cp_chim()));
+        p.put("bcf_cp_diff",   formatCp(d.getBcf_cp_diff()));
+        p.put("bcf_cp_gang",   formatCp(d.getBcf_cp_gang()));
         // TF 시간
         p.put("tf_time_spare1", nvlWo(d.getTf_time_spare1()));
         p.put("tf_time_spare2", nvlWo(d.getTf_time_spare2()));
@@ -350,6 +370,70 @@ public class ProdDataController {
         p.put("main_bigo_3",   nvlWo(d.getMain_bigo_3()));
         p.put("main_bigo_4",   nvlWo(d.getMain_bigo_4()));
         p.put("main_bigo_5",   nvlWo(d.getMain_bigo_5()));
+        p.put("main_bigo_2_num", d.getMain_bigo_2_num() != null ? d.getMain_bigo_2_num().toString() : "");
+        p.put("main_bigo_3_num", d.getMain_bigo_3_num() != null ? d.getMain_bigo_3_num().toString() : "");
+        p.put("main_bigo_4_num", d.getMain_bigo_4_num() != null ? d.getMain_bigo_4_num().toString() : "");
+        p.put("main_bigo_5_num", d.getMain_bigo_5_num() != null ? d.getMain_bigo_5_num().toString() : "");
         return p;
+    }
+    
+ // ── PDF 미리보기 (브라우저에 스트리밍)
+    @RequestMapping(value = "/workOrder/preview", method = RequestMethod.GET)
+    public void previewWorkOrder(
+            @RequestParam int wo_code,
+            HttpServletRequest request,
+            HttpServletResponse response) {
+
+        try {
+            WorkOrder data = prodDataService.getWorkOrderDetail(wo_code);
+            if (data == null) return;
+
+            String lotNo = data.getLot_no();
+            String pdfPath = PDF_ROOT + lotNo + ".pdf";
+
+            // PDF 파일이 없으면 새로 생성
+            File pdfFile = new File(pdfPath);
+            if (!pdfFile.exists()) {
+                File dir = new File(PDF_ROOT);
+                if (!dir.exists()) dir.mkdirs();
+
+                BufferedImage barcodeImg = generateWoBarcodeImage(lotNo, 300, 60);
+                Map<String, Object> params = buildJasperParams(data, barcodeImg);
+
+                String jrxmlPath = request.getServletContext()
+                        .getRealPath("/WEB-INF/resources/reports/workOrder.jrxml");
+
+                JasperReport jasperReport = JasperCompileManager.compileReport(jrxmlPath);
+                JasperPrint jasperPrint = JasperFillManager.fillReport(
+                        jasperReport, params,
+                        new JRBeanCollectionDataSource(new ArrayList<>()));
+
+                JRPdfExporter exporter = new JRPdfExporter();
+                exporter.setExporterInput(new SimpleExporterInput(jasperPrint));
+                exporter.setExporterOutput(new SimpleOutputStreamExporterOutput(pdfPath));
+                exporter.exportReport();
+
+                data.setPdf_path(pdfPath);
+                prodDataService.updatePdfPath(data);
+            }
+
+            // 브라우저에 PDF 스트리밍
+            response.setContentType("application/pdf");
+            response.setHeader("Content-Disposition", "inline; filename=\"" + lotNo + ".pdf\"");
+            response.setContentLength((int) pdfFile.length());
+
+            java.io.FileInputStream fis = new java.io.FileInputStream(pdfFile);
+            java.io.OutputStream os = response.getOutputStream();
+            byte[] buffer = new byte[4096];
+            int bytesRead;
+            while ((bytesRead = fis.read(buffer)) != -1) {
+                os.write(buffer, 0, bytesRead);
+            }
+            fis.close();
+            os.flush();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }
