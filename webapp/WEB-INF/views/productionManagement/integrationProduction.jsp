@@ -300,7 +300,7 @@ body, html {
                 <div class="cell gray">침탄</div>
                 <div class="cell gray">유조</div>
                 <div class="cell gray">CP</div>
-                <div class="cell gray">소려</div>
+                <div class="cell gray">템퍼링</div>
             </div>
             <div class="row">
                 <div class="cell yellow">설정값</div>
@@ -385,7 +385,7 @@ body, html {
                 <div class="cell gray">침탄</div>
                 <div class="cell gray">유조</div>
                 <div class="cell gray">CP</div>
-                <div class="cell gray">소려</div>
+                <div class="cell gray">템퍼링</div>
             </div>
             <div class="row">
                 <div class="cell yellow">설정값</div>
@@ -466,21 +466,21 @@ body, html {
     </div>
   </div>
 
-  <!-- 소입 존 -->
+  <!-- 퀜칭 존 -->
   <div class="form-section">
-    <h3>소입 존</h3>
+    <h3>퀜칭 존</h3>
     <div class="grid grid-7">
-      <div class="form-group"><label>소입1존</label>
+      <div class="form-group"><label>퀜칭1존</label>
       <input type="text" name="q1_zone" class="q1_zone"></div>
-      <div class="form-group"><label>소입2존</label>
+      <div class="form-group"><label>퀜칭2존</label>
       <input type="text" name="q2_zone" class="q2_zone"></div>
-      <div class="form-group"><label>소입3존</label>
+      <div class="form-group"><label>퀜칭3존</label>
       <input type="text" name="q3_4_zone" class="q3_4_zone"></div>
-      <div class="form-group"><label>소입4존</label>
+      <div class="form-group"><label>퀜칭4존</label>
       <input type="text" class="q3_4_zone" readonly="readonly"></div>
-      <div class="form-group"><label>소입5존</label>
+      <div class="form-group"><label>퀜칭5존</label>
       <input type="text" name="q5_zone" class="q5_zone"></div>
-      <div class="form-group"><label>소입인버터</label>
+      <div class="form-group"><label>퀜칭인버터</label>
       <input type="text" name="q_speed" class="q_speed"></div>
       <div class="form-group"><label>CP</label>
       <input type="text" name="cp" class="cp"></div>
@@ -489,19 +489,19 @@ body, html {
 
   <!-- 소려 존 -->
   <div class="form-section">
-    <h3>소려 존</h3>
+    <h3>템퍼링 존</h3>
     <div class="grid grid-6">
-      <div class="form-group"><label>소려1존</label>
+      <div class="form-group"><label>템퍼링1존</label>
       <input type="text" name="t1_zone" class="t1_zone"></div>
-      <div class="form-group"><label>소려2존</label>
+      <div class="form-group"><label>템퍼링2존</label>
       <input type="text" name="t2_5_zone" class="t2_5_zone"></div>
-      <div class="form-group"><label>소려3존</label>
+      <div class="form-group"><label>템퍼링3존</label>
       <input type="text" class="t2_5_zone" readonly="readonly"></div>
-      <div class="form-group"><label>소려4존</label>
+      <div class="form-group"><label>템퍼링4존</label>
       <input type="text" class="t2_5_zone" readonly="readonly"></div>
-      <div class="form-group"><label>소려5존</label>
+      <div class="form-group"><label>템퍼링5존</label>
       <input type="text" class="t2_5_zone" readonly="readonly"></div>
-      <div class="form-group"><label>소려인버터</label>
+      <div class="form-group"><label>템퍼링인버터</label>
       <input type="text" name="t_speed" class="t_speed"></div>
     </div>
   </div>

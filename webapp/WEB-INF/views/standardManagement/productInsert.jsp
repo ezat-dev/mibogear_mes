@@ -332,32 +332,6 @@ textarea {
                         </div>
                     </div>
                     <div class="spec-item">
-                        <label>소입경도</label>
-                        <div class="spec-inputs">
-                            <select id="prod_si" name="prod_si">
-                                <option>HRC</option><option>HV</option><option>HS</option>
-                                <option>HRA</option><option>HRB</option><option>HB</option>
-                            </select>
-                            <input type="text" id="prod_si1" name="prod_si1" placeholder="MIN">
-                            <span>~</span>
-                            <input type="text" id="prod_si2" name="prod_si2" placeholder="MAX">
-                        </div>
-                    </div>
-                </div>
-                <div class="spec-grid">
-                    <div class="spec-item">
-                        <label>소려경도</label>
-                        <div class="spec-inputs">
-                            <select id="prod_sr" name="prod_sr">
-                                <option>HRC</option><option>HV</option><option>HS</option>
-                                <option>HRA</option><option>HRB</option><option>HB</option>
-                            </select>
-                            <input type="text" id="prod_sr1" name="prod_sr1" placeholder="MIN">
-                            <span>~</span>
-                            <input type="text" id="prod_sr2" name="prod_sr2" placeholder="MAX">
-                        </div>
-                    </div>
-                    <div class="spec-item">
                         <label>심부경도</label>
                         <div class="spec-inputs">
                             <select id="prod_sg" name="prod_sg">
@@ -367,6 +341,20 @@ textarea {
                             <input type="text" id="prod_sg1" name="prod_sg1" placeholder="MIN">
                             <span>~</span>
                             <input type="text" id="prod_sg2" name="prod_sg2" placeholder="MAX">
+                        </div>
+                    </div>
+                </div>
+                <div class="spec-grid">
+                    <div class="spec-item">
+                        <label>유효경화깊이</label>
+                        <div class="spec-inputs">
+                            <select id="prod_sr" name="prod_sr">
+                                <option>HRC</option><option>HV</option><option>HS</option>
+                                <option>HRA</option><option>HRB</option><option>HB</option>
+                            </select>
+                            <input type="text" id="prod_sr1" name="prod_sr1" placeholder="MIN">
+                            <span>~</span>
+                            <input type="text" id="prod_sr2" name="prod_sr2" placeholder="MAX">
                         </div>
                     </div>
                 </div>
@@ -394,7 +382,7 @@ textarea {
                     </div>
                     <div class="process-item">
                         <input type="checkbox" id="prod_fac5" name="prod_fac5">
-                        <label for="prod_fac5">소입</label>
+                        <label for="prod_fac5">퀜칭</label>
                     </div>
                     <div class="process-item">
                         <input type="checkbox" id="prod_fac6" name="prod_fac6">

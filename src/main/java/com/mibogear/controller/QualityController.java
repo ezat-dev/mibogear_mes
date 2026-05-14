@@ -28,79 +28,82 @@ import com.mibogear.service.QualityService;
 
 @Controller
 public class QualityController {
-	@Autowired
-	private QualityService qualityService;
+    @Autowired
+    private QualityService qualityService;
 
-	//fproof 페이지 이동
-    @RequestMapping(value= "/quality/fProof", method = RequestMethod.GET)
+    // fproof 페이지 이동
+    @RequestMapping(value = "/quality/fProof", method = RequestMethod.GET)
     public String fProof(Model model) {
-        return "/quality/fProof.jsp"; 
+        return "/quality/fProof.jsp";
     }
-    //fproof 조회
+
+    // fproof 조회
     @RequestMapping(value = "/quality/dailyCheck/list", method = RequestMethod.POST)
     @ResponseBody
     public List<Quality> dailyCheckList(Quality quality) {
         return qualityService.getDailyCheckList(quality);
     }
-    //fproof 업데이트
+
+    // fproof 업데이트
     @RequestMapping(value = "/quality/dailyCheckUpdate", method = RequestMethod.POST)
     @ResponseBody
     public boolean dailyCheckUpdate(Quality quality) {
-    		return qualityService.dailyCheckUpdate(quality);
+        return qualityService.dailyCheckUpdate(quality);
     }
-    //fproof 삭제
+
+    // fproof 삭제
     @RequestMapping(value = "/quality/dailyCheckDelete", method = RequestMethod.POST)
     @ResponseBody
     public boolean dailyCheckDelete(Quality quality) {
-    		return qualityService.dailyCheckDelete(quality);
+        return qualityService.dailyCheckDelete(quality);
     }
-    //fproof 추가
+
+    // fproof 추가
     @RequestMapping(value = "/quality/dailyCheckInsert", method = RequestMethod.POST)
     @ResponseBody
     public boolean dailyCheckInsert(Quality quality) {
-    		return qualityService.dailyCheckInsert(quality);
+        return qualityService.dailyCheckInsert(quality);
     }
-	//온도균일성 조사보고서 페이지 이동
-    @RequestMapping(value= "/quality/tempUniformity", method = RequestMethod.GET)
+
+    // 설비별 초기 항목 일괄 INSERT
+    @RequestMapping(value = "/quality/dailyCheckInitEquip", method = RequestMethod.POST)
+    @ResponseBody
+    public boolean dailyCheckInitEquip(@RequestBody Map<String, Object> body) {
+        return qualityService.dailyCheckInitEquip(body);
+    }
+
+    // 온도균일성 페이지 이동
+    @RequestMapping(value = "/quality/tempUniformity", method = RequestMethod.GET)
     public String tempUniformity(Model model) {
-        return "/quality/tempUniformity.jsp"; 
+        return "/quality/tempUniformity.jsp";
     }
-    //온도균일성 조회
+
+    // 온도균일성 조회
     @RequestMapping(value = "/quality/getTempUniformityList", method = RequestMethod.POST)
     @ResponseBody
     public List<Quality> getTempUniformityList(Quality quality) {
         return qualityService.getTempUniformityList(quality);
     }
-    //온도균일성 업데이트
+
+    // 온도균일성 업데이트
     @RequestMapping(value = "/quality/updateTempUniformity", method = RequestMethod.POST)
     @ResponseBody
     public Map<String, Object> savetusTest(@ModelAttribute Quality quality,
                                            @RequestParam(value = "uploadFile", required = false) MultipartFile uploadFile) {
         Map<String, Object> rtnMap = new HashMap<>();
 
-   
         if (quality.getT_month() != null && quality.getT_month().length() >= 4) {
-            String year = quality.getT_month().substring(0, 4);
-            quality.setT_year(year);
+            quality.setT_year(quality.getT_month().substring(0, 4));
         }
 
-
-
-      
         if (uploadFile != null && !uploadFile.isEmpty()) {
             try {
                 String originalFilename = uploadFile.getOriginalFilename();
                 String savePath = "D:/미보기아파일/온도균일성/";
-
                 File dir = new File(savePath);
                 if (!dir.exists()) dir.mkdirs();
-
-                File dest = new File(savePath + originalFilename);
-                uploadFile.transferTo(dest);
-
-              
+                uploadFile.transferTo(new File(savePath + originalFilename));
                 quality.setT_url(originalFilename);
-
             } catch (IOException e) {
                 e.printStackTrace();
                 rtnMap.put("result", "fail");
@@ -109,52 +112,42 @@ public class QualityController {
             }
         }
 
-   
         qualityService.updateTempUniformity(quality);
-
         rtnMap.put("result", "success");
         return rtnMap;
     }
-    
+
+    // 파일 다운로드
     @RequestMapping(value = "/download_tusTest", method = RequestMethod.GET)
     public void downloadExcel(@RequestParam("filename") String filename,
                               HttpServletResponse response) throws IOException {
-
         String baseDir = "D:/미보기아파일/온도균일성/";
 
-       
         if (filename.contains("..") || filename.contains("/") || filename.contains("\\")) {
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
             return;
         }
 
         File file = new File(baseDir + filename);
-      
         if (!file.exists()) {
             response.setStatus(HttpServletResponse.SC_NOT_FOUND);
             return;
         }
 
         String mimeType = Files.probeContentType(file.toPath());
-        if (mimeType == null) {
-            mimeType = "application/octet-stream";
-        }
+        if (mimeType == null) mimeType = "application/octet-stream";
+
         response.setContentType(mimeType);
         response.setContentLengthLong(file.length());
-
-   
-        String encodedFilename = URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20");
-
-
-        response.setHeader("Content-Disposition", "attachment; filename*=UTF-8''" + encodedFilename);
+        response.setHeader("Content-Disposition",
+            "attachment; filename*=UTF-8''" +
+            URLEncoder.encode(filename, "UTF-8").replaceAll("\\+", "%20"));
 
         try (FileInputStream fis = new FileInputStream(file);
              OutputStream os = response.getOutputStream()) {
             byte[] buffer = new byte[1024];
             int len;
-            while ((len = fis.read(buffer)) != -1) {
-                os.write(buffer, 0, len);
-            }
+            while ((len = fis.read(buffer)) != -1) os.write(buffer, 0, len);
             os.flush();
         }
     }

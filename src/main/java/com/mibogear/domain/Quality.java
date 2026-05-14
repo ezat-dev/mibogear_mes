@@ -75,7 +75,10 @@ public class Quality {
 	    private String d_field;
 	    private String d_value;
 	    private String date;
-	    
+	    private String d_equip;
+	    private String d_inspector;
+	    private String d_action;
+	    // getter/setter 추가
 	    
 		public String getDate() {
 			return date;
@@ -490,6 +493,24 @@ public class Quality {
 		}
 		public void setImprovement(String improvement) {
 			this.improvement = improvement;
+		}
+		public String getD_equip() {
+			return d_equip;
+		}
+		public void setD_equip(String d_equip) {
+			this.d_equip = d_equip;
+		}
+		public String getD_inspector() {
+			return d_inspector;
+		}
+		public void setD_inspector(String d_inspector) {
+			this.d_inspector = d_inspector;
+		}
+		public String getD_action() {
+			return d_action;
+		}
+		public void setD_action(String d_action) {
+			this.d_action = d_action;
 		}
 	    
 	    

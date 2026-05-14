@@ -285,10 +285,10 @@ button-container.button {
 				<input type="text" name="steel_grade"> <label>T급</label> <input
 					type="text" name="t_grade"> <label>진합로트</label> <input
 					type="text" name="batch"> <label>참고 기준정보</label> <label>소입온도</label>
-				<input type="text" name="ref_soak_temp"> <label>소려온도</label>
+				<input type="text" name="ref_soak_temp"> <label>템퍼링온도</label>
 				<input type="text" name="ref_cool_temp"> <label>CP</label> <input
 					type="text" name="ref_cp"> <label>적용 기준정보</label> <label>소입온도</label>
-				<input type="text" name="apply_soak_temp"> <label>소려온도</label>
+				<input type="text" name="apply_soak_temp"> <label>템퍼링온도</label>
 				<input type="text" name="apply_cool_temp"> <label>CP</label>
 				<input type="text" name="apply_cp"> <label>장입량1</label> <input
 					type="text" name="load1"> <label>장입량2</label> <input
@@ -349,7 +349,7 @@ button-container.button {
             title:"참고 기준정보",
             columns:[
                 {title:"소입온도", field:"ref_soak_temp"},
-                {title:"소려온도", field:"ref_cool_temp"},
+                {title:"템퍼링온도", field:"ref_cool_temp"},
                 {title:"CP", field:"ref_cp"},
             ]
         },
@@ -357,7 +357,7 @@ button-container.button {
         title:"적용 기준정보",
         columns:[
             {title:"소입온도", field:"apply_soak_temp"},
-            {title:"소려온도", field:"apply_cool_temp"},
+            {title:"템퍼링온도", field:"apply_cool_temp"},
             {title:"CP", field:"apply_cp"},
         ]
     },

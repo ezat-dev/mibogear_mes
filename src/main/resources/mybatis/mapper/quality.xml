@@ -6,12 +6,16 @@
 
 	<!-- 일상점검일지 조회 -->
 		<select id="getDailyCheckList" parameterType="Quality" resultType="Quality">
-	SELECT * FROM tb_fproof
-	WHERE 1=1
-		<if test="date != null and date != ''">
-			AND d_ym LIKE CONCAT(#{date}, '%')
-		</if>
-	</select>
+    SELECT * FROM tb_fproof
+    WHERE 1=1
+    <if test="date != null and date != ''">
+        AND d_ym LIKE CONCAT(#{date}, '%')
+    </if>
+    <if test="d_equip != null and d_equip != ''">
+        AND d_equip = #{d_equip}
+    </if>
+    ORDER BY cnt ASC
+</select>
 		<!-- 일상점검일지 업데이트 -->
 	<update id="dailyCheckUpdate" parameterType="Quality">
 	UPDATE tb_fproof
@@ -25,16 +29,27 @@
 	</delete>
 	<!-- 일상점검일지 추가 -->
 	<insert id="dailyCheckInsert" parameterType="Quality">
-INSERT INTO tb_fproof (
-        d_title,
-        d_desc,
-        d_ym
-    ) VALUES (
-        '',
-        '',
-        #{d_ym}
-    )
-	</insert>
+    INSERT INTO tb_fproof (d_title, d_desc, d_ym, d_equip)
+    VALUES ('', '', #{d_ym}, #{d_equip})
+</insert>
+
+<!-- 점검자 업데이트 -->
+<update id="dailyCheckInspectorUpdate" parameterType="Quality">
+    UPDATE tb_fproof
+    SET d_inspector = #{d_inspector}
+    WHERE cnt = #{cnt}
+</update>
+
+<!-- 이상발생조치이력 업데이트 -->
+<update id="dailyCheckActionUpdate" parameterType="Quality">
+    UPDATE tb_fproof
+    SET d_action = #{d_action}
+    WHERE cnt = #{cnt}
+</update>
+<delete id="dailyCheckDeleteByEquip" parameterType="map">
+    DELETE FROM tb_fproof
+    WHERE d_ym = #{d_ym} AND d_equip = #{d_equip}
+</delete>
 	<!-- 온도균일성 조회 -->
 	<select id="getTempUniformityList" parameterType="Quality" resultType="Quality">
 	SELECT * FROM tb_temp_uniformity

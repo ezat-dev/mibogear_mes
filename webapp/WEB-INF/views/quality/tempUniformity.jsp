@@ -310,7 +310,7 @@
             
             <label>발생설비</label>
 			<select name="mch_name" >
-		  	<option value="소려로 소입로">소려로 소입로</option>		  
+		  	<option value="템퍼링로 퀜칭로">템퍼링로 퀜칭로</option>		  
             </select>
             
             <label>연도</label>

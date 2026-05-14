@@ -411,10 +411,13 @@
                                 <option value="4">BCF4 (4호기)</option>
                             </select>
                         </td>
-                        <th>소려로 호기</th>
+                        <th>템퍼링로 호기</th>
                         <td>
-                            <input type="text" id="m_tf_hogi_display" readonly
-                                   placeholder="침탄호기 선택 시 자동결정">
+                            <select id="m_tf_hogi_display">
+							    <option value="">-- 선택 --</option>
+							    <option value="1">TF1 (1호기)</option>
+							    <option value="2">TF2 (2호기)</option>
+							</select>
                         </td>
                     </tr>
                     <tr>
@@ -424,7 +427,7 @@
                         <td><input type="number" id="m_bcf_cycle_no" placeholder="숫자 입력"></td>
                     </tr>
                     <tr>
-                        <th>소려로 패턴번호 <span style="color:#e03131;">*</span></th>
+                        <th>템퍼링로 패턴번호 <span style="color:#e03131;">*</span></th>
                         <td><input type="number" id="m_tf_cycle_no" placeholder="숫자 입력"></td>
                         <th></th><td></td>
                     </tr>
@@ -494,7 +497,7 @@
                                             <td>침탄</td>
                                             <td>확산</td>
                                             <td>강온</td>
-                                            <td>소입(퀜칭)</td>
+                                            <td>퀜칭(퀜칭)</td>
                                             <td>드레인</td>
                                         </tr>
                                     </thead>
@@ -535,7 +538,7 @@
 
                         <!-- TF 소려로 -->
                         <tr>
-                            <th>소려로 패턴</th>
+                            <th>템퍼링로 패턴</th>
                             <td colspan="3">
                                 <table class="wo-inner-table">
                                     <thead>
@@ -544,7 +547,7 @@
                                             <td>건조</td>
                                             <td>팬정지&amp;승온</td>
                                             <td>N2퍼지</td>
-                                            <td>소려</td>
+                                            <td>템퍼링</td>
                                             <td>냉각</td>
                                         </tr>
                                     </thead>
@@ -821,7 +824,7 @@ function initWoList() {
             { title: "제품명",   field: "prod_name", width: 160, hozAlign: "center", headerFilter: "input" },
             { title: "품번",     field: "prod_no",   width: 130, hozAlign: "center", headerFilter: "input" },
             { title: "침탄호기", field: "bcf_hogi",  width: 80,  hozAlign: "center" },
-            { title: "소려호기", field: "tf_hogi",   width: 80,  hozAlign: "center" },
+            { title: "템퍼링호기", field: "tf_hogi",   width: 80,  hozAlign: "center" },
             { title: "BCF패턴",  field: "bcf_cycle_no", width: 80, hozAlign: "center" },
             { title: "TF패턴",   field: "tf_cycle_no",  width: 80, hozAlign: "center" },
             { title: "입고수량", field: "ipgo_su",   width: 80,  hozAlign: "center" },
@@ -957,7 +960,7 @@ function openEditModal(data) {
 
     /* 섹션② 패턴정보 */
     $("#m_bcf_hogi").val(data.bcf_hogi     || "");
-    $("#m_tf_hogi_display").val(data.tf_hogi ? "TF" + data.tf_hogi : "");
+    $("#m_tf_hogi_display").val(data.tf_hogi || "");
     $("#m_auto_pattern").val(data.auto_pattern  || "");
     $("#m_bcf_cycle_no").val(data.bcf_cycle_no  || "");
     $("#m_tf_cycle_no").val(data.tf_cycle_no    || "");
@@ -1096,11 +1099,7 @@ function resetPatternIfNeeded() {
 }
 
 function collectFormData() {
-    var tfHogiNum = (function () {
-        var v = parseInt($("#m_bcf_hogi").val());
-        if (!v) return null;
-        return (v <= 2) ? 1 : 2;
-    })();
+	var tfHogiNum = $("#m_tf_hogi_display").val() ? parseInt($("#m_tf_hogi_display").val()) : null;
 
     return {
         /* 섹션① 입고정보 */
@@ -1355,7 +1354,8 @@ $("#ipgoSearchOverlay").on("click", function () { closeIpgoSearchModal(); });
 /* ============================================================ */
 function onBcfHogiChange(val) {
     if (!val) { $("#m_tf_hogi_display").val(""); return; }
-    $("#m_tf_hogi_display").val(parseInt(val) <= 2 ? "TF1 (1호기)" : "TF2 (2호기)");
+    // bcf 호기 변경 시 tf 선택 초기화
+    $("#m_tf_hogi_display").val("");
 }
 
 function requestPattern() {
@@ -1365,7 +1365,7 @@ function requestPattern() {
 
     if (!bcfHogi)    { alert("침탄로 호기를 선택하세요."); return; }
     if (!bcfCycleNo) { alert("침탄로 패턴번호를 입력하세요."); return; }
-    if (!tfCycleNo)  { alert("소려로 패턴번호를 입력하세요."); return; }
+    if (!tfCycleNo)  { alert("템퍼링로 패턴번호를 입력하세요."); return; }
 
     var tfHogi = (parseInt(bcfHogi) <= 2) ? 1 : 2;
 
@@ -1415,7 +1415,7 @@ function lockPatternUI() {
     $("#btnPatternSearch").prop("disabled", true).css("opacity", "0.4");
     // 입력 필드 readonly
     $("#m_bcf_hogi").prop("readonly", true).css("background", "#f1f3f5");
-    $("#m_tf_hogi_display").prop("readonly", true).css("background", "#f1f3f5");
+    $("#m_tf_hogi_display").prop("disabled", true).css("background", "#f1f3f5");
     $("#m_auto_pattern").prop("readonly", true).css("background", "#f1f3f5");
     $("#m_bcf_cycle_no").prop("readonly", true).css("background", "#f1f3f5");
     $("#m_tf_cycle_no").prop("readonly", true).css("background", "#f1f3f5");
@@ -1428,7 +1428,7 @@ function unlockPatternUI() {
     $("#btnPatternSearch").prop("disabled", false).css("opacity", "1");
     // readonly 해제
     $("#m_bcf_hogi").prop("readonly", false).css("background", "");
-    $("#m_tf_hogi_display").prop("readonly", false).css("background", "");
+    $("#m_tf_hogi_display").prop("disabled", false).css("background", "");
     $("#m_auto_pattern").prop("readonly", false).css("background", "");
     $("#m_bcf_cycle_no").prop("readonly", false).css("background", "");
     $("#m_tf_cycle_no").prop("readonly", false).css("background", "");

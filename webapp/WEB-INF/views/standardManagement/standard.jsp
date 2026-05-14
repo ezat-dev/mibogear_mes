@@ -447,7 +447,7 @@ textarea {
 		                <td>침탄(엔리치)</td>
 		                <td>확산</td>
 		                <td>강온</td>
-		                <td>소입(퀜칭)</td>
+		                <td>퀜칭(퀜칭)</td>
 		                <td>드레인</td>
 		            </tr>
 		            <tr>
@@ -479,7 +479,7 @@ textarea {
 		    </td>
             </tr>
             <tr>
-                <th>소려로 패턴</th>
+                <th>템퍼링로 패턴</th>
 		                <td colspan="3">
 		        <table class="inner-table">
 		            <tr>
@@ -597,7 +597,7 @@ textarea {
 					{title:"침탄(엔리치)", field:"chim_time", width:90, hozAlign:"center", headerSort: false},
 					{title:"확산", field:"diff_time", width:90, hozAlign:"center", headerSort: false},
 					{title:"강온", field:"gang_time", width:90, hozAlign:"center", headerSort: false},
-					{title:"소입(퀜칭)", field:"que_time", width:90, hozAlign:"center", headerSort: false},
+					{title:"퀜칭", field:"que_time", width:90, hozAlign:"center", headerSort: false},
 					{title:"드레인", field:"drain_time", width:90, hozAlign:"center", headerSort: false}
 					]
 				},
@@ -606,7 +606,7 @@ textarea {
 					{title:"침탄(엔리치)", field:"chim_pv", width:90, hozAlign:"center", headerSort: false},
 					{title:"확산", field:"diff_pv", width:90, hozAlign:"center", headerSort: false},
 					{title:"강온", field:"gang_pv", width:90, hozAlign:"center", headerSort: false},
-					{title:"소입(퀜칭)", field:"queDrain_pv", width:90, hozAlign:"center", headerSort: false}
+					{title:"퀜칭", field:"queDrain_pv", width:90, hozAlign:"center", headerSort: false}
 					]
 				},
 				{title:"처리 C.P(%)", columns: [
@@ -614,7 +614,7 @@ textarea {
 					{title:"침탄(엔리치)", field:"chim_cp", width:90, hozAlign:"center", headerSort: false},
 					{title:"확산", field:"diff_cp", width:90, hozAlign:"center", headerSort: false},
 					{title:"강온", field:"gang_cp", width:90, hozAlign:"center", headerSort: false},
-					{title:"소입(퀜칭)", field:"queDrain_cp", width:90, hozAlign:"center", headerSort: false}
+					{title:"퀜칭", field:"queDrain_cp", width:90, hozAlign:"center", headerSort: false}
 					]
 				},
 		        {title:"설비코드", field:"fac_code", sorter:"string", width:100, hozAlign:"center", visible:false},  	

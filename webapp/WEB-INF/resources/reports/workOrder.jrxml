@@ -136,7 +136,7 @@
 				<text><![CDATA[]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="58" width="555" height="18" backcolor="#D6EAF8" uuid="22222222-2222-2222-2222-222222222201"/>
+				<reportElement mode="Opaque" x="0" y="58" width="555" height="18" backcolor="#B5B5B5" uuid="22222222-2222-2222-2222-222222222201"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -146,7 +146,7 @@
 				<text><![CDATA[  ① 입 고 정 보]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="76" width="65" height="18" uuid="22222222-2222-2222-2222-222222222202"/>
+				<reportElement mode="Opaque" x="0" y="76" width="65" height="18" backcolor="#B5B5B5" uuid="22222222-2222-2222-2222-222222222202"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -166,7 +166,7 @@
 				<textFieldExpression><![CDATA[$P{corp_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="250" y="76" width="65" height="18" uuid="22222222-2222-2222-2222-222222222204"/>
+				<reportElement mode="Opaque" x="250" y="76" width="65" height="18" backcolor="#B5B5B5" uuid="22222222-2222-2222-2222-222222222204"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -186,7 +186,7 @@
 				<textFieldExpression><![CDATA[$P{prod_name}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="94" width="65" height="18" uuid="22222222-2222-2222-2222-222222222206"/>
+				<reportElement mode="Opaque" x="0" y="94" width="65" height="18" backcolor="#B5B5B5" uuid="22222222-2222-2222-2222-222222222206"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -206,7 +206,7 @@
 				<textFieldExpression><![CDATA[$P{prod_no}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="250" y="94" width="65" height="18" uuid="22222222-2222-2222-2222-222222222208"/>
+				<reportElement mode="Opaque" x="250" y="94" width="65" height="18" backcolor="#B5B5B5" uuid="22222222-2222-2222-2222-222222222208"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -246,7 +246,7 @@
 				<textFieldExpression><![CDATA[$P{prod_jai}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="112" width="65" height="18" uuid="62064f4e-ba81-470d-a7bc-be30afbcd117"/>
+				<reportElement mode="Opaque" x="0" y="112" width="65" height="18" backcolor="#B5B5B5" uuid="62064f4e-ba81-470d-a7bc-be30afbcd117"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -266,7 +266,7 @@
 				<textFieldExpression><![CDATA[$P{ord_su}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="180" y="112" width="75" height="18" uuid="352ed445-416d-4801-b798-221cb4fd01c1"/>
+				<reportElement mode="Opaque" x="180" y="112" width="75" height="18" backcolor="#B5B5B5" uuid="352ed445-416d-4801-b798-221cb4fd01c1"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -286,7 +286,7 @@
 				<textFieldExpression><![CDATA[$P{ord_code}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="148" width="555" height="18" backcolor="#FDEBD0" uuid="33333333-3333-3333-3333-333333333301"/>
+				<reportElement mode="Opaque" x="0" y="148" width="555" height="18" backcolor="#B5B5B5" uuid="33333333-3333-3333-3333-333333333301"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -296,7 +296,7 @@
 				<text><![CDATA[  ② 패 턴 정 보]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="166" width="70" height="18" uuid="33333333-3333-3333-3333-333333333302"/>
+				<reportElement mode="Opaque" x="0" y="166" width="70" height="18" backcolor="#B5B5B5" uuid="33333333-3333-3333-3333-333333333302"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -316,7 +316,7 @@
 				<textFieldExpression><![CDATA[$P{bcf_hogi}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="120" y="166" width="70" height="18" uuid="33333333-3333-3333-3333-333333333304"/>
+				<reportElement mode="Opaque" x="120" y="166" width="70" height="18" backcolor="#B5B5B5" uuid="33333333-3333-3333-3333-333333333304"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -336,7 +336,7 @@
 				<textFieldExpression><![CDATA[$P{tf_hogi}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="240" y="166" width="70" height="18" uuid="33333333-3333-3333-3333-333333333306"/>
+				<reportElement mode="Opaque" x="240" y="166" width="70" height="18" backcolor="#B5B5B5" uuid="33333333-3333-3333-3333-333333333306"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -356,7 +356,7 @@
 				<textFieldExpression><![CDATA[$P{auto_pattern}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="358" y="166" width="62" height="18" uuid="33333333-3333-3333-3333-333333333308"/>
+				<reportElement mode="Opaque" x="358" y="166" width="62" height="18" backcolor="#B5B5B5" uuid="33333333-3333-3333-3333-333333333308"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -376,7 +376,7 @@
 				<textFieldExpression><![CDATA[$P{bcf_cycle_no}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="460" y="166" width="60" height="18" uuid="33333333-3333-3333-3333-333333333310"/>
+				<reportElement mode="Opaque" x="460" y="166" width="60" height="18" backcolor="#B5B5B5" uuid="33333333-3333-3333-3333-333333333310"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -396,7 +396,7 @@
 				<textFieldExpression><![CDATA[$P{tf_cycle_no}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="192" width="555" height="16" backcolor="#EBF5FB" uuid="44444444-4444-4444-4444-444444444401"/>
+				<reportElement mode="Opaque" x="0" y="192" width="555" height="16" backcolor="#B5B5B5" uuid="44444444-4444-4444-4444-444444444401"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -729,7 +729,7 @@
 				<text><![CDATA[소려(템퍼링)]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="396" width="555" height="18" backcolor="#E9F7EF" uuid="55555555-5555-5555-5555-555555555501"/>
+				<reportElement mode="Opaque" x="0" y="681" width="555" height="18" backcolor="#B5B5B5" uuid="55555555-5555-5555-5555-555555555501"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -739,7 +739,7 @@
 				<text><![CDATA[  ③ 침탄로 본체 처리품 정보]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="0" y="414" width="60" height="18" uuid="55555555-5555-5555-5555-555555555502"/>
+				<reportElement mode="Opaque" x="0" y="699" width="60" height="18" backcolor="#B5B5B5" uuid="55555555-5555-5555-5555-555555555502"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -749,7 +749,7 @@
 				<text><![CDATA[처리품 유/무]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="60" y="414" width="80" height="18" uuid="55555555-5555-5555-5555-555555555503"/>
+				<reportElement x="60" y="699" width="80" height="18" uuid="55555555-5555-5555-5555-555555555503"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -759,7 +759,7 @@
 				<textFieldExpression><![CDATA[$P{main_yn}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="140" y="414" width="60" height="18" uuid="55555555-5555-5555-5555-555555555504"/>
+				<reportElement mode="Opaque" x="140" y="699" width="60" height="18" backcolor="#B5B5B5" uuid="55555555-5555-5555-5555-555555555504"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -769,7 +769,7 @@
 				<text><![CDATA[작성자]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="200" y="414" width="355" height="18" uuid="55555555-5555-5555-5555-555555555505"/>
+				<reportElement x="200" y="699" width="355" height="18" uuid="55555555-5555-5555-5555-555555555505"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -779,7 +779,7 @@
 				<textFieldExpression><![CDATA[$P{reg_user}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="432" width="60" height="18" uuid="55555555-5555-5555-5555-555555555506"/>
+				<reportElement mode="Opaque" x="0" y="717" width="60" height="18" backcolor="#B5B5B5" uuid="55555555-5555-5555-5555-555555555506"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -789,7 +789,7 @@
 				<text><![CDATA[LOT번호]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="60" y="432" width="495" height="18" uuid="55555555-5555-5555-5555-555555555507"/>
+				<reportElement x="60" y="717" width="495" height="18" uuid="55555555-5555-5555-5555-555555555507"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -799,7 +799,7 @@
 				<textFieldExpression><![CDATA[$P{main_bigo_1}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="450" width="60" height="36" uuid="55555555-5555-5555-5555-555555555522"/>
+				<reportElement mode="Opaque" x="0" y="735" width="60" height="36" backcolor="#B5B5B5" uuid="55555555-5555-5555-5555-555555555522"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -809,7 +809,7 @@
 				<text><![CDATA[비고1]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="60" y="450" width="85" height="18" uuid="55555555-5555-5555-5555-555555555523"/>
+				<reportElement x="60" y="735" width="85" height="18" uuid="55555555-5555-5555-5555-555555555523"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -819,7 +819,7 @@
 				<textFieldExpression><![CDATA[$P{main_bigo_2}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="60" y="468" width="85" height="18" uuid="55555555-5555-5555-5555-555555555b02"/>
+				<reportElement x="60" y="753" width="85" height="18" uuid="55555555-5555-5555-5555-555555555b02"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -829,7 +829,7 @@
 				<textFieldExpression><![CDATA[$P{main_bigo_2_num}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="145" y="450" width="60" height="36" uuid="55555555-5555-5555-5555-555555555524"/>
+				<reportElement mode="Opaque" x="145" y="735" width="60" height="36" backcolor="#B5B5B5" uuid="55555555-5555-5555-5555-555555555524"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -839,7 +839,7 @@
 				<text><![CDATA[비고2]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="205" y="450" width="85" height="18" uuid="55555555-5555-5555-5555-555555555525"/>
+				<reportElement x="205" y="735" width="85" height="18" uuid="55555555-5555-5555-5555-555555555525"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -849,7 +849,7 @@
 				<textFieldExpression><![CDATA[$P{main_bigo_3}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="205" y="468" width="85" height="18" uuid="55555555-5555-5555-5555-555555555b03"/>
+				<reportElement x="205" y="753" width="85" height="18" uuid="55555555-5555-5555-5555-555555555b03"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -859,7 +859,7 @@
 				<textFieldExpression><![CDATA[$P{main_bigo_3_num}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="290" y="450" width="60" height="36" uuid="55555555-5555-5555-5555-555555555526"/>
+				<reportElement mode="Opaque" x="290" y="735" width="60" height="36" backcolor="#B5B5B5" uuid="55555555-5555-5555-5555-555555555526"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -869,7 +869,7 @@
 				<text><![CDATA[비고3]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="350" y="450" width="85" height="18" uuid="55555555-5555-5555-5555-555555555527"/>
+				<reportElement x="350" y="735" width="85" height="18" uuid="55555555-5555-5555-5555-555555555527"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -879,7 +879,7 @@
 				<textFieldExpression><![CDATA[$P{main_bigo_4}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="350" y="468" width="85" height="18" uuid="55555555-5555-5555-5555-555555555b04"/>
+				<reportElement x="350" y="753" width="85" height="18" uuid="55555555-5555-5555-5555-555555555b04"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -889,7 +889,7 @@
 				<textFieldExpression><![CDATA[$P{main_bigo_4_num}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="435" y="450" width="60" height="36" uuid="55555555-5555-5555-5555-555555555528"/>
+				<reportElement mode="Opaque" x="435" y="735" width="60" height="36" backcolor="#B5B5B5" uuid="55555555-5555-5555-5555-555555555528"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -899,7 +899,7 @@
 				<text><![CDATA[비고4]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="495" y="450" width="60" height="18" uuid="55555555-5555-5555-5555-555555555529"/>
+				<reportElement x="495" y="735" width="60" height="18" uuid="55555555-5555-5555-5555-555555555529"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -909,7 +909,7 @@
 				<textFieldExpression><![CDATA[$P{main_bigo_5}]]></textFieldExpression>
 			</textField>
 			<textField isBlankWhenNull="true">
-				<reportElement x="495" y="468" width="60" height="18" uuid="55555555-5555-5555-5555-555555555b05"/>
+				<reportElement x="495" y="753" width="60" height="18" uuid="55555555-5555-5555-5555-555555555b05"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -919,7 +919,7 @@
 				<textFieldExpression><![CDATA[$P{main_bigo_5_num}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="0" y="486" width="60" height="18" uuid="55555555-5555-5555-5555-555555555530"/>
+				<reportElement mode="Opaque" x="0" y="771" width="60" height="18" backcolor="#B5B5B5" uuid="55555555-5555-5555-5555-555555555530"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -929,7 +929,7 @@
 				<text><![CDATA[등록일시]]></text>
 			</staticText>
 			<textField isBlankWhenNull="true">
-				<reportElement x="60" y="486" width="495" height="18" uuid="55555555-5555-5555-5555-555555555531"/>
+				<reportElement x="60" y="771" width="495" height="18" uuid="55555555-5555-5555-5555-555555555531"/>
 				<box>
 					<pen lineWidth="0.5"/>
 				</box>
@@ -938,6 +938,2056 @@
 				</textElement>
 				<textFieldExpression><![CDATA[$P{reg_date}]]></textFieldExpression>
 			</textField>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="387" width="47" height="36" backcolor="#B5B5B5" uuid="711d1c08-eba0-4088-9272-cb574d409d09"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[적재]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="47" y="387" width="104" height="12" backcolor="#B5B5B5" uuid="ae46ff05-77c7-4cb6-8bff-31a686c900aa"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="399" width="104" height="12" uuid="6d09054e-b109-4a0b-8398-60852cd22682"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[봉에걸어 단취]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="411" width="104" height="12" uuid="e33fe43b-b73f-4e2e-97f5-d64018dcf3e8"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[제품간 접촉 유무]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="47" y="423" width="104" height="12" backcolor="#B5B5B5" uuid="773dccc2-cc1e-44da-bbaf-4fa133b5d739"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[교대조]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="435" width="104" height="12" uuid="6b068a20-23e0-4c9f-a02b-fb709f0254d0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[열매체유온도(120±5°C)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="447" width="104" height="12" uuid="4e657cc1-2259-4371-9b3a-5b96b1016d7b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[잔류유분 없을것]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="47" y="459" width="104" height="12" backcolor="#B5B5B5" uuid="55d60018-ba91-4849-98fd-2be35520aa0b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="47" y="471" width="104" height="12" backcolor="#B5B5B5" uuid="fe184465-8b8c-4adb-9291-3e67f6db573d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[공정 구간]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="483" width="104" height="12" uuid="0be8c174-f2bb-4d68-be23-4f00e4b06dc0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[침탄온도(°C)_SETTING참조]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="495" width="104" height="12" uuid="a0361acd-1a39-48ac-90e5-9dede6edf41c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[담금질온도(°C)_SETTING참조]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="507" width="104" height="12" uuid="23d57db3-7cda-46cc-a9a8-d019c8f81dfc"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[프로판 유량(Max20 L/min)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="519" width="104" height="12" uuid="cc7d478a-71a6-4399-b0c9-089a72fcb364"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[가열실 FAN 회전]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="47" y="531" width="104" height="12" backcolor="#B5B5B5" uuid="a1c78469-1bda-4205-8c78-fefa7d67c3c0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[교대조]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="543" width="104" height="12" uuid="5d82e1e4-5bd3-46bb-bafa-e83012d38aff"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[열매체유온도(120±5°C)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="555" width="104" height="12" uuid="784abd72-b945-4b1c-9d66-183c21419474"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[잔류유분 없을것]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="47" y="567" width="104" height="12" backcolor="#B5B5B5" uuid="ed6c9fba-a714-4c8b-a3d1-dfc2b0242f3c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="579" width="104" height="12" uuid="01db8083-8b51-43da-9a4d-b39f4aee9b8b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[중간경도(HRC62이상)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="47" y="591" width="104" height="12" backcolor="#B5B5B5" uuid="913fd167-33e0-4496-9f52-2c447aad2cfe"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="603" width="104" height="12" uuid="e2e345f2-d8a0-4906-8e48-1f7d6063d9af"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[온도(°C)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="615" width="104" height="12" uuid="0fb7e330-7f34-4e79-a464-74b73fa8ae21"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[최종경도_SPEC참조]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="47" y="627" width="104" height="12" backcolor="#B5B5B5" uuid="c5cc777a-376e-43b0-a1c3-ab2b9c2e3db3"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="639" width="104" height="12" uuid="33a986d3-9454-4bbb-b3a3-7d5243edbeec"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[외관 누락 없을것]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="47" y="651" width="104" height="12" uuid="aca2c310-51d1-41df-9ff5-52e38a46c62a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[숏트시간(5~30min) X 2회]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="615" width="90" height="12" uuid="1323848e-0ea8-49d0-b038-4c8b5223e7d7"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="399" width="150" height="12" uuid="a38714ae-db8f-4195-ba5f-a42d17014f1b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="151" y="387" width="30" height="12" backcolor="#B5B5B5" uuid="154b7b7e-85ea-482a-9dc7-9be1106b0efc"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="579" width="90" height="12" uuid="8b7a494b-3c0f-4a34-b4fa-06cd2c4683d3"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="411" width="150" height="12" uuid="632327e9-bfaf-45e6-a307-3412c1b0f7d0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="651" width="150" height="12" uuid="4c6ecf33-56b1-4eb9-9365-44c5f499f062"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="151" y="423" width="60" height="12" backcolor="#B5B5B5" uuid="594aef0a-d907-45c1-b5a8-a5ab273866ed"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[주간]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="639" width="150" height="12" uuid="d5466e96-75bc-4fc9-8919-aa87bd112d95"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="423" width="47" height="36" backcolor="#B5B5B5" uuid="ba687d35-9fb3-4a1b-9519-e3ee30c68c48"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[전세정]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="459" width="47" height="72" backcolor="#B5B5B5" uuid="fc55b055-d5d7-4449-9e19-e95917be5e39"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[침탄]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="531" width="47" height="36" backcolor="#B5B5B5" uuid="307042e3-b741-4766-bbba-cb77f5b9036c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[후세정]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="567" width="47" height="24" backcolor="#B5B5B5" uuid="891673eb-85c7-415b-b8ee-222b3a75a903"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[중간검사]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="591" width="47" height="36" backcolor="#B5B5B5" uuid="ab20042a-e1df-4199-ad65-79d8237deba5"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[템퍼링]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="627" width="47" height="36" backcolor="#B5B5B5" uuid="1751549c-62bc-4704-b894-f86ec9f01d06"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[숏트]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="181" y="387" width="30" height="12" backcolor="#B5B5B5" uuid="7f6f454b-3175-4c89-a593-337ce78fa0b7"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="211" y="387" width="30" height="12" backcolor="#B5B5B5" uuid="d5274610-1632-460d-94b1-61be383cbc08"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="241" y="387" width="30" height="12" backcolor="#B5B5B5" uuid="14200b3c-6db5-4034-be66-6f19d240a1ef"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="271" y="387" width="30" height="12" backcolor="#B5B5B5" uuid="cde4be06-72f4-4467-9377-cc714fbad587"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="211" y="423" width="60" height="12" backcolor="#B5B5B5" uuid="969a189b-df32-4749-91cd-20f2192ce528"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[야간]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="271" y="423" width="30" height="12" backcolor="#B5B5B5" uuid="b41ce297-bcb3-470a-8e51-016b8e6fae21"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[비고]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="435" width="60" height="12" uuid="bf0987d3-2a00-4e98-892f-8b5247f90b54"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="435" width="60" height="12" uuid="b1bd3636-880a-4465-b838-9ce648415497"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="435" width="30" height="12" uuid="53d487e5-c0f0-40fe-9d68-2c28a1928e91"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="447" width="60" height="12" uuid="52285a39-20e7-4208-89f2-604cd709e1b4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="447" width="60" height="12" uuid="b51812fb-addf-46fc-b9fe-f81007faed5c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="447" width="30" height="12" uuid="3ec745f2-0f0d-4aaa-81bf-786b892961ca"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="151" y="459" width="30" height="12" backcolor="#B5B5B5" uuid="380ae11e-3cf8-4ed5-885a-529657397c8b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="181" y="459" width="30" height="12" backcolor="#B5B5B5" uuid="0458a621-7de4-4456-93bd-f4efd24f9b2a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="211" y="459" width="30" height="12" backcolor="#B5B5B5" uuid="9ebccde9-06e5-4433-b369-770376922ddf"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="241" y="459" width="30" height="12" backcolor="#B5B5B5" uuid="954fc050-d4e2-4005-b060-5395a5390340"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="271" y="459" width="30" height="12" backcolor="#B5B5B5" uuid="1f52f91b-d604-43f6-bbe5-d2b1a6f2ca01"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="151" y="471" width="30" height="12" backcolor="#B5B5B5" uuid="5ffe4cb1-d4bb-419d-9153-667a97f5ca98"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[승온]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="181" y="471" width="30" height="12" backcolor="#B5B5B5" uuid="a2bff636-4608-4dd0-bf90-1e3a64dc601f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[침탄]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="211" y="471" width="30" height="12" backcolor="#B5B5B5" uuid="7b465239-1e24-41fb-9e81-fd25f1763c69"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[확산]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="241" y="471" width="30" height="12" backcolor="#B5B5B5" uuid="dd930573-51c1-4b07-8bf8-56c4267b433f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[강온]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="271" y="471" width="30" height="12" backcolor="#B5B5B5" uuid="91e22b5c-b306-4631-bc80-a1ae372fcdbd"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[퀜칭]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="483" width="30" height="12" uuid="14218ac4-8e5b-48fc-88b6-d7028aaab814"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="181" y="483" width="30" height="12" uuid="06d1c144-fd5e-40bf-b5b3-fe7cec234f8e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="483" width="30" height="12" uuid="5df97dab-b103-4c6f-a3a8-95db002722a4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="483" width="30" height="12" uuid="0d1e99a2-16f6-4e71-abb2-0958a200faf2"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="483" width="30" height="12" uuid="8dc12a9b-4986-48f3-a874-16a654114333"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="495" width="30" height="12" uuid="4ad7549f-9af7-4a9d-992b-6db61c1aa718"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="181" y="495" width="30" height="12" uuid="843f9d64-0257-42fd-b670-9656fa14ee28"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="495" width="30" height="12" uuid="ede3e76d-3834-4489-9c33-2874500ea406"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="495" width="30" height="12" uuid="ec6b20bc-b8c9-4296-a1f4-670a9351046b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="495" width="30" height="12" uuid="96a609e1-3ff5-45f6-b9d8-52d213348e6b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="507" width="30" height="12" uuid="fd2acf43-7fe7-4728-9887-d0749a51b2ec"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="181" y="507" width="30" height="12" uuid="9734ecc9-6af6-4015-9ed9-ce6cf3d10213"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="507" width="30" height="12" uuid="ebe3f0a8-e66f-4617-89de-fd95927e1d21"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="507" width="30" height="12" uuid="d8b958e6-aec2-4247-bef1-52d98cb6eb3f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="507" width="30" height="12" uuid="2cab744c-a6bf-42cd-8cd8-fc84597ebdf9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="519" width="30" height="12" uuid="1b2d87ca-6f01-4f5b-9e94-ba494528155a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="181" y="519" width="30" height="12" uuid="f8db0851-c725-45d0-8180-2b60f7d1084c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="519" width="30" height="12" uuid="fd1a6ee7-95b2-4c86-a37d-00091d4f693e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="519" width="30" height="12" uuid="0d4cb4d9-009b-499d-a2d7-9fbd51144377"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="519" width="30" height="12" uuid="534f873e-2c9e-4c6a-b214-c7f1590184e4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="543" width="60" height="12" uuid="de8d91e5-3893-4963-8be9-b5c3d4de3866"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="543" width="30" height="12" uuid="eb943480-c0cd-4266-b61d-39b2e73f5dd9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="555" width="30" height="12" uuid="1c784420-377f-43c8-89f4-bcf74ce54649"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="555" width="60" height="12" uuid="e47137ec-0be4-48f5-bbb0-4989ead834c6"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="555" width="60" height="12" uuid="bbe4c7a3-e44b-470f-a6e8-55ffbec682d0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="151" y="531" width="60" height="12" backcolor="#B5B5B5" uuid="db3d87b0-3db1-4973-975f-08f6b01451a8"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[주간]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="271" y="531" width="30" height="12" backcolor="#B5B5B5" uuid="6dedfba4-a654-4c35-900c-fadf66323968"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[비고]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="211" y="531" width="60" height="12" backcolor="#B5B5B5" uuid="026aacc2-9f6d-4791-8dd5-5c4cbf501957"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[야간]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="543" width="60" height="12" uuid="d25e23ef-69ef-424e-b7ab-b41972725672"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="151" y="567" width="30" height="12" backcolor="#B5B5B5" uuid="78f303a1-2132-454b-8cef-fa6ff934e369"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="181" y="567" width="30" height="12" backcolor="#B5B5B5" uuid="2aac5ffc-56ac-4205-9b3c-744af20c76d8"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="211" y="567" width="30" height="12" backcolor="#B5B5B5" uuid="c39834b2-5837-4f4e-bcce-3d3d0d21ccf2"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="241" y="567" width="30" height="12" backcolor="#B5B5B5" uuid="30474cc8-ac4c-411c-879e-f8d7208f632e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="271" y="567" width="30" height="12" backcolor="#B5B5B5" uuid="db5cc4b2-32e2-49cf-ad35-3454145ba0fa"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="151" y="591" width="30" height="12" backcolor="#B5B5B5" uuid="c3b62b97-a60e-48ee-bde2-c0c8054faa22"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="181" y="591" width="30" height="12" backcolor="#B5B5B5" uuid="60ef5892-45f4-4bce-bf65-d8d00fc6ef58"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="211" y="591" width="30" height="12" backcolor="#B5B5B5" uuid="d3a8328f-2332-4d90-8346-f60965846669"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="241" y="591" width="30" height="12" backcolor="#B5B5B5" uuid="7cd3fac3-51c3-4685-96ae-ec6c0751f115"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="271" y="591" width="30" height="12" backcolor="#B5B5B5" uuid="25bb83c7-7cec-49ff-9b3f-53dd1e6bd31a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="151" y="627" width="30" height="12" backcolor="#B5B5B5" uuid="c73d7add-5246-43ca-8661-1fefbc21548a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="181" y="627" width="30" height="12" backcolor="#B5B5B5" uuid="faaea054-1a78-4c4e-8d0e-eeda2b678aa9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="211" y="627" width="30" height="12" backcolor="#B5B5B5" uuid="95e7e450-cae0-431a-ad7e-9eb98e6a0a71"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="241" y="627" width="30" height="12" backcolor="#B5B5B5" uuid="006c270a-dc14-4b4b-9283-cf6d910139a6"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="271" y="627" width="30" height="12" backcolor="#B5B5B5" uuid="4c6f5fda-1d66-4e2a-aa18-6ce40da204ad"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="579" width="60" height="12" uuid="29669a90-93a7-454c-8361-704ad6c98a32"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="271" y="603" width="30" height="12" uuid="dbfcfef7-e96f-4378-9ddd-62921916d97b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="603" width="30" height="12" uuid="82c8410b-66a2-47c7-bbca-2516343351bb"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="181" y="603" width="30" height="12" uuid="2402d182-89b9-4e77-8f17-7cd1e17e078f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="151" y="603" width="30" height="12" uuid="a62153f2-0fdf-4151-b3c3-2a27dde72f25"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="211" y="603" width="30" height="12" uuid="a5902083-527a-4c97-8d54-c69c83e8a2a5"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="241" y="615" width="60" height="12" uuid="f4c0d293-96fc-4087-80c3-ad38b71b2411"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="301" y="387" width="104" height="12" backcolor="#B5B5B5" uuid="2563cc5c-e71b-4d8b-a268-5bdf25b39dda"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="399" width="104" height="12" uuid="b3b77b2d-3249-46fc-86ed-8f7c05aa6b06"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[외관 찍힘 유무]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="411" width="104" height="12" uuid="19784f99-f34a-4b40-b0db-3fe7a39aeac2"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[적재 수량]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="301" y="423" width="104" height="12" backcolor="#B5B5B5" uuid="3cfb3340-51ce-4067-8ada-471ac09a3c56"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[교대조]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="435" width="104" height="12" uuid="3580bdc7-630e-4331-b2ac-8d65845bf091"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[세정 시간 (30분 이상)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="447" width="104" height="12" uuid="401674fb-2411-4607-b499-445a130adbdc"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="301" y="459" width="104" height="12" backcolor="#B5B5B5" uuid="fbb0974b-4e56-4629-bb16-f2d699915d72"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="301" y="471" width="104" height="12" backcolor="#B5B5B5" uuid="2933f6ee-74e0-41f1-bfee-6cf3fcf7a591"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[공정 구간]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="483" width="104" height="12" uuid="884ff967-c07c-42fa-bcc2-516dfa4330ee"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[CP(%)_SETTING 참조]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="495" width="104" height="12" uuid="2da92464-9965-4ee0-a07d-8e972074b97e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[RX-GAS유량(15±2㎥/h)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="507" width="104" height="12" uuid="d18e768b-72fe-4b83-84a6-fce02bdf3970"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[유조교반속도SETTING참조]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="519" width="104" height="12" uuid="ab4ffcf5-0656-4de0-bd42-9de1d7df94b7"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[담금질유지시간(20±10min)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="301" y="531" width="104" height="12" backcolor="#B5B5B5" uuid="9611d3ff-300b-456f-9f59-1a3b058aeaf0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[교대조]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="543" width="104" height="12" uuid="18444c2d-8d62-478f-9a8e-f91428d9bffd"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[세정 시간 (30분 이상)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="555" width="104" height="12" uuid="c7e37390-e559-4d19-87f6-e1d721414d3c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="301" y="591" width="104" height="12" backcolor="#B5B5B5" uuid="3dfccacb-1d80-44d2-97b7-490cf99c80a4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="603" width="104" height="12" uuid="9cd2750a-e577-479a-bf38-38ba14bbed06"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[가열실 FAN 회전]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="301" y="627" width="104" height="12" backcolor="#B5B5B5" uuid="b522b1cc-9279-42e6-8829-e3b24060f876"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[TIME]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="639" width="104" height="12" uuid="ccbfcf7f-9c2d-4746-b096-a4e475513452"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="651" width="104" height="12" uuid="562a3387-44bf-4316-8227-71f9ecff8a09"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[숏트임페라(2800±200 RPM)]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="399" width="150" height="12" uuid="528323ed-f7a1-47df-a0cf-ad01797e5097"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="405" y="387" width="30" height="12" backcolor="#B5B5B5" uuid="ec1c0594-b480-401c-8e00-66f04a6a8278"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="411" width="150" height="12" uuid="e697790a-c54f-41fa-a133-bacf4590465d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="651" width="150" height="12" uuid="a4a725cb-bac2-48ad-bdde-b1210c7471b4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="405" y="423" width="60" height="12" backcolor="#B5B5B5" uuid="a2daf60d-ba27-4456-9dc9-7965072ec402"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[주간]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="639" width="150" height="12" uuid="d4744eb8-0e89-4ce5-a225-fe5220506ef8"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="435" y="387" width="30" height="12" backcolor="#B5B5B5" uuid="92621be3-36a6-4591-8d7a-2f8d69280445"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="465" y="387" width="30" height="12" backcolor="#B5B5B5" uuid="418af1d7-7ee8-403d-992a-6f3ca6596c45"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="495" y="387" width="30" height="12" backcolor="#B5B5B5" uuid="a7e3e12c-f857-446f-b1c5-cd3487f4b157"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="525" y="387" width="30" height="12" backcolor="#B5B5B5" uuid="0cbe2841-a226-4255-9cdf-1882a89b1d87"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="465" y="423" width="60" height="12" backcolor="#B5B5B5" uuid="48918ee5-3984-44a4-90c8-55d0a1b5faf3"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[야간]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="525" y="423" width="30" height="12" backcolor="#B5B5B5" uuid="f3da447c-5886-4e7a-a077-918e8db752a4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[비고]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="435" width="60" height="12" uuid="b2a58ea1-1020-4e44-992c-b9baea6f44f3"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="435" width="60" height="12" uuid="f1ac8c0c-d950-4633-9cbd-ce6b28c12677"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="525" y="435" width="30" height="12" uuid="dd3003fb-8986-4565-ab25-34d60f6a2fa7"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="447" width="60" height="12" uuid="77695c5b-6b0c-4d86-a8ea-b57816c822ae"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="447" width="60" height="12" uuid="832f3fb4-b9fd-4f45-b003-917608ddabce"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="525" y="447" width="30" height="12" uuid="3417c506-2f15-4338-8a12-a16c89c5564d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="405" y="459" width="30" height="12" backcolor="#B5B5B5" uuid="26255780-5e7d-42ec-8e41-56f58840af3b"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="435" y="459" width="30" height="12" backcolor="#B5B5B5" uuid="0e321821-6182-4ca4-b0ab-0c5e085042c2"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="465" y="459" width="30" height="12" backcolor="#B5B5B5" uuid="ea95653a-dcd3-45ec-a3b2-b005ecdd9d84"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="495" y="459" width="30" height="12" backcolor="#B5B5B5" uuid="1f72dac5-a7f0-4615-8639-4f6a1c75127a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="525" y="459" width="30" height="12" backcolor="#B5B5B5" uuid="0e071143-23b5-4917-8c51-8c4e93a3880e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="405" y="471" width="30" height="12" backcolor="#B5B5B5" uuid="fc24bf0f-511c-4816-97a5-76aaa0ac5bb0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[승온]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="435" y="471" width="30" height="12" backcolor="#B5B5B5" uuid="83871b2e-aeb5-4239-adb6-4ee258efda67"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[침탄]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="465" y="471" width="30" height="12" backcolor="#B5B5B5" uuid="4e8e69a6-0ce6-40e2-af58-308b25a151aa"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[확산]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="495" y="471" width="30" height="12" backcolor="#B5B5B5" uuid="b0bf6271-5b48-4a17-9a97-431429de08b0"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[강온]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="525" y="471" width="30" height="12" backcolor="#B5B5B5" uuid="d1e7effd-93c8-4338-ad26-a5dd47425fe9"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[퀜칭]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="483" width="30" height="12" uuid="84ccf1ef-c5b2-46d8-b66c-a548f79f477a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="483" width="30" height="12" uuid="c5f628dd-57ff-4516-a15e-cd4f2a794485"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="483" width="30" height="12" uuid="252425b9-2ae2-408d-9baa-cc3cebc48ec4"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="495" y="483" width="30" height="12" uuid="952a4ea1-664a-4082-a557-efc48fee4168"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="525" y="483" width="30" height="12" uuid="8bb622df-5985-49e9-b609-1b1ba1144cd1"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="495" width="30" height="12" uuid="7c5fbdaf-5811-4990-ba46-6aca01b3eb48"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="495" width="30" height="12" uuid="090cc465-6df7-4588-9b9f-eeae91f72e14"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="495" width="30" height="12" uuid="cd8c2eba-f71e-486a-9924-2e1c6b14e038"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="495" y="495" width="30" height="12" uuid="dcc2be6e-4535-4564-ad5c-2d56728ba3c8"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="525" y="495" width="30" height="12" uuid="36dedff2-75b5-498d-b367-08af765d87ac"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="507" width="30" height="12" uuid="2e43b86a-b79b-4dbc-920a-696c803b8c4e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="507" width="30" height="12" uuid="01bf6a57-bb32-49e1-bc30-4f4ab8dae97e"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="507" width="30" height="12" uuid="532a0c0b-2ef8-441d-9556-067935c21313"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="495" y="507" width="30" height="12" uuid="f363731f-3372-4705-ac8f-0be912a64e89"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="525" y="507" width="30" height="12" uuid="c093a888-22fc-41b3-9622-13e64d55d8aa"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="519" width="30" height="12" uuid="2ecf2fea-1747-4dbb-ba3e-adfa1be1d5b2"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="519" width="30" height="12" uuid="21d02131-4c80-499d-b83c-8f2ad4c621e1"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="519" width="30" height="12" uuid="cdf19ce0-a0e1-42e7-8bab-3a23edf1778a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="495" y="519" width="30" height="12" uuid="dd52af10-98de-43cb-9c1e-86bbdf3b09e7"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[-]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="525" y="519" width="30" height="12" uuid="37231039-ccfa-426d-ac6a-d93ca4280154"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="543" width="60" height="12" uuid="6fd0603e-e3ab-44d9-a218-1089b5e8053a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="525" y="543" width="30" height="12" uuid="342237cb-45d0-4ad1-b79e-2b17a84f9734"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="525" y="555" width="30" height="12" uuid="c223b9aa-c920-429b-a551-de32cbf26cab"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="555" width="60" height="12" uuid="b6f20014-cae2-4ec8-b9d4-a8bc7133e713"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="555" width="60" height="12" uuid="d33f5c8d-5731-4f11-8d56-72769e5725de"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="405" y="531" width="60" height="12" backcolor="#B5B5B5" uuid="1ca47edb-a6c8-44bf-95e6-13d0392f3b2d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[주간]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="525" y="531" width="30" height="12" backcolor="#B5B5B5" uuid="e2de5bcf-a6e7-44d2-b820-b4bd09a23c63"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[비고]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="465" y="531" width="60" height="12" backcolor="#B5B5B5" uuid="b85172bc-c8cf-4ecf-a8d6-c09d564cc187"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[야간]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="543" width="60" height="12" uuid="fc4e4133-d68c-446d-a5f0-bcf75a2b7424"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="405" y="591" width="30" height="12" backcolor="#B5B5B5" uuid="bc725c32-e827-48dc-b188-3e5da6c2c324"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="435" y="591" width="30" height="12" backcolor="#B5B5B5" uuid="330b4b7e-be4e-4b31-8f12-b4a9b353af32"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="465" y="591" width="30" height="12" backcolor="#B5B5B5" uuid="8413aa47-7a26-409c-8de0-cfa1ce0e177c"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="495" y="591" width="30" height="12" backcolor="#B5B5B5" uuid="9ed43698-2a0b-48d3-9e8d-3b27b3bbda23"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="525" y="591" width="30" height="12" backcolor="#B5B5B5" uuid="ac70af82-825f-4d3e-8586-331c5d1a6faf"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="405" y="627" width="30" height="12" backcolor="#B5B5B5" uuid="a58dc492-8a53-4dbc-8f9c-0e1daf034960"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="435" y="627" width="30" height="12" backcolor="#B5B5B5" uuid="0bfe2041-af8c-4cc5-a372-610b5709818d"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="465" y="627" width="30" height="12" backcolor="#B5B5B5" uuid="28ed0653-afc3-44d1-a0d9-4acd2f904713"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="495" y="627" width="30" height="12" backcolor="#B5B5B5" uuid="d79da38b-c19d-440a-a09d-a8f8c60aeaaa"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement mode="Opaque" x="525" y="627" width="30" height="12" backcolor="#B5B5B5" uuid="e17a17cc-bfb5-40bf-9d6d-973f7c3b9bf3"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="525" y="603" width="30" height="12" uuid="5877001b-e407-4e3a-8556-061e83d7b638"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="495" y="603" width="30" height="12" uuid="98749424-e4b2-4246-91ea-6025f7ccad47"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="435" y="603" width="30" height="12" uuid="d8401bfc-e515-4793-a0a4-222f9a6ead5f"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="405" y="603" width="30" height="12" uuid="b86c422f-da2e-4d57-8ddc-38fc4dcd1846"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="465" y="603" width="30" height="12" uuid="fa7996e8-dc9f-4622-97b1-362e29ab2e0a"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="567" width="254" height="24" uuid="8a1ba681-030a-48de-a52f-f0c3ed617e01"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="301" y="615" width="254" height="12" uuid="fab658db-322d-4edb-9f76-6a406450cfa1"/>
+				<box>
+					<pen lineWidth="0.5"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="SansSerif" size="7" isBold="true" pdfFontName="fonts/gulim.ttf" pdfEncoding="Identity-H"/>
+				</textElement>
+				<text><![CDATA[]]></text>
+			</staticText>
 		</band>
 	</title>
 </jasperReport>
